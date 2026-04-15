@@ -1,0 +1,18 @@
+# Variáveis de ambiente (contém credenciais)
+.env
+
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
