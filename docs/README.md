@@ -1,98 +1,134 @@
-# 📂 Documentação do Projeto
+# 📚 Documentação Técnica — Sistema de Avaliação por Níveis com Certificação
 
-**Sistema de Avaliação por Níveis com Certificação** — ABP 1DSM 2026/1
+**ABP 1DSM 2026/1 · FATEC Jacareí · Equipe DEVassos**
 
-> 🏫 **Parceiro:** FATEC Jacareí (Interno) · **Contato:** Prof. Antonio Egydio São Thiago Graça · **Focal Point:** Prof. Marcelo Augusto Sudo
-
----
-
-## Estrutura Atual
-
-```text
-docs/
-├── edital/                        # Material de referência do desafio
-│   ├── Desafio 1DSM - 2026-1.pdf  # Enunciado oficial do desafio ABP (v. 06/02/2026)
-│   └── desafio-1dsm-2026-1.md     # Enunciado oficial (Markdown)
-│
-├── bd/                            # Modelagem do banco de dados
-├── manual-usuario/                # Documentação para o usuário final
-├── scrum/                         # Artefatos de gestão ágil (Scrum)
-│   ├── backlog/                   # Repositório de histórias
-│   ├── sprint-1/                  # Artefatos da Sprint 1 (13/04–30/04)
-│   │   └── atas/                  # Atas das cerimônias semanais
-│   │       └── dailies/           # Atas das Daily Scrums
-│   ├── sprint-2/                  # Artefatos da Sprint 2 (04/05–21/05)
-│   │   └── atas/                  # Atas das cerimônias semanais
-│   │       └── dailies/           # Atas das Daily Scrums
-│   ├── sprint-3/                  # Artefatos da Sprint 3 (25/05–11/06)
-│   │   └── atas/                  # Atas das cerimônias semanais
-│   │       └── dailies/           # Atas das Daily Scrums
-│   └── templates/                 # Modelos reutilizáveis para cerimônias
-└── uml/                           # Modelagem e diagramas do sistema
-    ├── casos-de-uso/
-    ├── classes/
-    ├── sequencia/
-    └── user-stories/
-```
-
-> **Nota:** As subpastas acima contêm apenas arquivos ocultos `.gitkeep` momentaneamente, para preservar a estrutura de diretórios no commit inicial. Os artefatos documentais (arquivos `.md`) serão adicionados ao longo das Sprints.
+> Esta é a central técnica do projeto. Utilize o índice abaixo para navegar pelos artefatos de documentação, requisitos, modelagem e gestão ágil.
+>
+> ← [Voltar ao README principal](../README.md)
 
 ---
 
-## Cronograma Resumido
+## 📋 Requisitos e Restrições
 
-| Etapa | Período |
-|-------|---------|
-| Kick-off | 09/04/2026 |
-| Sprint 1 — Setup, BD, Cadastro e Login | 13/04 — 30/04/2026 |
-| Sprint 2 — Avaliação: Sorteio e Tentativas | 04/05 — 21/05/2026 |
-| Sprint 3 — Resultado, Certificado, Histórico e Entrega Final | 25/05 — 11/06/2026 |
-| Apresentação Final | Semana de 22/06/2026 |
+Fonte: [Edital do Desafio ABP — versão 06/02/2026](./edital/desafio-1dsm-2026-1.md)
+
+### Requisitos Funcionais (RF)
+
+| ID                | Descrição                                                                           |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| RF01              | Cadastro de usuário com CPF (identificador único), nome, e-mail e senha             |
+| RF02              | Login exclusivamente por CPF e senha                                                |
+| RF03              | Seleção aleatória de 10 questões de um banco de 30 por módulo                       |
+| RF04              | Classificação das questões em: fácil, médio e difícil                               |
+| RF05              | Composição obrigatória da avaliação: 3 fáceis · 4 médias · 3 difíceis               |
+| RF06              | Limite de 2 tentativas por módulo por usuário                                       |
+| RF07              | Nota final do módulo = maior nota entre as tentativas realizadas                    |
+| RF08              | Resultado final = média das notas finais de cada módulo                             |
+| RF09              | Emissão de certificado com nome, CPF, e-mail, data e notas discriminadas por módulo |
+| RF10              | Histórico de tentativas contendo data/hora, pontuação e questões sorteadas          |
+| RF11              | Consulta de progresso (módulos concluídos, tentativas restantes e melhor nota)      |
+| RF12 _(opcional)_ | Área administrativa para cadastro e manutenção de questões, módulos e imagens       |
+
+### Requisitos Não Funcionais (RNF)
+
+| ID        | Descrição                                                                                                |
+| --------- | -------------------------------------------------------------------------------------------------------- |
+| RNF01     | Interface simples, clara e responsiva (mobile-friendly)                                                  |
+| RNF02     | Tempo de resposta adequado para carregamento e registro de respostas                                     |
+| **RNF03** | **Tratamento de dados pessoais em conformidade com a LGPD**                                              |
+| RNF04     | Prevenção de fraudes: lógica de notas e controle de tentativas obrigatoriamente no back-end              |
+| RNF05     | Práticas ágeis: backlog priorizado, sprints definidas, versionamento com Git e critérios de pronto (DoD) |
+| RNF06     | Documentação mínima: modelo de dados, instruções de execução e rotas da API                              |
+
+### Restrições de Projeto (RP)
+
+| ID       | Restrição                                                                                                                     |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| RP01     | O front-end deve ser desenvolvido exclusivamente com HTML, CSS e JavaScript puro — sem uso de frameworks ou bibliotecas de UI |
+| **RP02** | **O banco de dados é exclusivamente PostgreSQL, com DDL e DML explícitos — sem uso de ORMs**                                  |
+| RP03     | O sistema deve ser entregue e funcional dentro do prazo das 3 sprints definidas no cronograma                                 |
+| RP04     | Toda a lógica de negócio (cálculo de notas, controle de tentativas) deve residir no back-end, nunca no front-end              |
+| RP05     | O versionamento deve seguir o fluxo Git Flow adaptado, com contribuições via Pull Request aprovado                            |
 
 ---
 
-## Índice de Documentos
+## 📅 Metodologia Ágil
 
-### 📌 Referência do Desafio
+O projeto é conduzido com o framework **Scrum**, seguindo seus pilares de transparência, inspeção e adaptação. A adoção do Scrum é um requisito da disciplina (RNF05).
 
-| Documento | Descrição |
-|-----------|-----------|
+> **Nota:** Para detalhes sobre o cronograma oficial e a composição da equipe (papéis), consulte o [README principal](../README.md).
+
+### Cerimônias Scrum
+
+| Cerimônia                | Frequência            | Objetivo                                                            |
+| ------------------------ | --------------------- | ------------------------------------------------------------------- |
+| **Sprint Planning**      | Início de cada sprint | Selecionar itens do backlog e planejar tarefas da sprint            |
+| **Daily Scrum**          | Diária (≤ 15 min)     | Sincronizar o time: o que foi feito, o que será feito, impedimentos |
+| **Sprint Review**        | Final de cada sprint  | Apresentar o incremento entregue e coletar feedback                 |
+| **Sprint Retrospective** | Final de cada sprint  | Refletir sobre o processo e definir melhorias                       |
+| **Backlog Refinement**   | Durante a sprint      | Detalhar e estimar histórias futuras                                |
+
+As atas de todas as cerimônias são registradas e versionadas, organizadas por sprint em `scrum/sprint-N/atas/`.
+
+---
+
+## 🗂️ Índice de Documentos
+
+### 📌 Referência do Desafio (`edital/`)
+
+| Documento                                                           | Descrição                                            |
+| ------------------------------------------------------------------- | ---------------------------------------------------- |
 | [Desafio 1DSM - 2026-1.pdf](edital/Desafio%201DSM%20-%202026-1.pdf) | Enunciado oficial do desafio ABP (versão 06/02/2026) |
-| [desafio-1dsm-2026-1.md](edital/desafio-1dsm-2026-1.md) | Enunciado oficial em Markdown — RF01–RF12, RNF01–RNF06, RP01–RP05 |
+| [desafio-1dsm-2026-1.md](edital/desafio-1dsm-2026-1.md)             | Enunciado em Markdown — RF, RNF e RP completos       |
 
-> **Observação:** Abaixo estão listados os futuros arquivos de documentação a serem produzidos. Os hiperlinks foram desativados neste momento (já que os documentos correspondentes ainda não existem) e retornarão **à medida que** as entregas evoluírem nas Sprints.
+### 🔄 Gestão Ágil (`scrum/`)
 
-### 🔄 Gestão Ágil (Scrum)
+| Documento | Caminho | Descrição |
+| --------- | ------- | --------- |
+| Contexto Ágil (README) | `scrum/README.md` _(A adicionar)_ | Visão geral da gestão ágil: papéis, cerimônias e fluxo de trabalho |
+| Product Backlog | `scrum/backlog/product-backlog.md` _(A adicionar)_ | Histórias de usuário priorizadas (US01–US09) com critérios de aceite |
+| Riscos e Premissas | `scrum/riscos-premissas.md` _(A adicionar)_ | Registro de riscos, premissas e restrições do projeto |
 
-| Documento | Descrição |
-|-----------|-----------|
-| Product Backlog *(A ser adicionado em `scrum/backlog/product-backlog.md`)* | Histórias de usuário priorizadas com critérios de aceite |
-| Cronograma de Sprints *(A ser adicionado em `scrum/cronograma.md`)* | Sprint backlogs, metas e entregas planejadas |
-| DoR e DoD *(A ser adicionado em `scrum/templates/dor-dod-checklist.md`)* | Critérios de entrada e conclusão de histórias |
-| Sprint 1 *(A ser adicionado em `scrum/sprint-1/sprint-1.md`)* | Meta, backlog, burndown e atas da Sprint 1 (13/04–30/04) |
-| Riscos e Premissas *(A ser adicionado em `scrum/riscos-premissas.md`)* | Registro de riscos, premissas e restrições do projeto |
+#### Estrutura Padrão por Sprint
 
-### 🗄️ Banco de Dados
+As Sprints documentadas (Sprints 1 a 3) seguem a estrutura de diretórios abaixo, localizada em `scrum/sprint-N/`:
 
-| Documento | Descrição |
-|-----------|-----------|
-| Modelo Conceitual *(A ser adicionado em `bd/modelo-conceitual.md`)* | DER com entidades, atributos e relacionamentos |
-| Modelo Lógico *(A ser adicionado em `bd/modelo-logico.md`)* | DDL real das tabelas PostgreSQL, índices e seeds |
+| Arquivo | Descrição |
+| ------- | --------- |
+| `sprint-N.md` | Documento geral: meta, sprint backlog e burndown |
+| `dor-dod.md` | Critérios de entrada (DoR) e conclusão (DoD) validados por história |
+| `atas/sprint-planning.md` | Ata da Sprint Planning |
+| `atas/sprint-review.md` | Ata da Sprint Review |
+| `atas/sprint-retrospective.md` | Ata da Sprint Retrospective |
+| `atas/dailies/` | Atas das Daily Scrums |
 
-### 📐 Modelagem UML
+> **Status:** Na fase de Kick-off (atual), as pastas de Sprint contêm apenas arquivos `.gitkeep`. Os artefatos serão adicionados progressivamente.
 
-| Documento | Descrição |
-|-----------|-----------|
-| Índice UML *(A ser adicionado em `uml/README.md`)* | Rastreabilidade completa |
-| User Stories *(A ser adicionado em `uml/user-stories/user-stories.md`)* | Histórias de usuário no formato ágil com critérios de aceite |
-| Casos de Uso *(A ser adicionado em `uml/casos-de-uso/casos-de-uso.md`)* | Diagrama + descrição textual de Casos de Uso |
-| Diagrama de Classes *(A ser adicionado em `uml/classes/diagrama-de-classes.md`)* | Entidades do sistema (5 tabelas implementadas + valores calculados) |
-| Sequência — Cadastro/Login *(A ser adicionado em `uml/sequencia/fluxo-cadastro-login.md`)* | Fluxo de Cadastro e Login |
-| Sequência — Avaliação *(A ser adicionado em `uml/sequencia/fluxo-avaliacao.md`)* | Fluxo de Avaliação |
-| Sequência — Certificado *(A ser adicionado em `uml/sequencia/fluxo-certificado-progresso.md`)* | Fluxo de Certificado e Progresso |
+### 🗄️ Banco de Dados (`bd/`)
 
-### 📋 Usuário Final
+| Documento         | Caminho                                   | Descrição                                            |
+| ----------------- | ----------------------------------------- | ---------------------------------------------------- |
+| Modelo Conceitual | `bd/modelo-conceitual.md` _(A adicionar)_ | DER com entidades, atributos e relacionamentos       |
+| Modelo Lógico     | `bd/modelo-logico.md` _(A adicionar)_     | Tabelas PostgreSQL, tipos, PKs, FKs, índices e seeds |
 
-| Documento | Descrição |
-|-----------|-----------|
-| Manual do Usuário *(A ser adicionado em `manual-usuario/manual-usuario.md`)* | Guia de uso completo da plataforma |
+### 📐 Modelagem UML (`uml/`)
+
+| Documento                  | Caminho                                                        | Descrição                                       |
+| -------------------------- | -------------------------------------------------------------- | ----------------------------------------------- |
+| Casos de Uso               | `uml/casos-de-uso/casos-de-uso.md` _(A adicionar)_             | Diagrama e descrição textual de UC01–UC16        |
+| Diagrama de Classes        | `uml/classes/diagrama-de-classes.md` _(A adicionar)_           | Entidades, atributos, métodos e relacionamentos  |
+| Sequência — Cadastro/Login | `uml/sequencia/fluxo-cadastro-login.md` _(A adicionar)_        | Fluxo de cadastro e autenticação                 |
+| Sequência — Avaliação      | `uml/sequencia/fluxo-avaliacao.md` _(A adicionar)_             | Fluxo de sorteio, respostas e nota               |
+| Sequência — Certificado    | `uml/sequencia/fluxo-certificado-progresso.md` _(A adicionar)_ | Fluxo de emissão e validação do certificado      |
+
+### 📋 Usuário Final (`manual-usuario/`)
+
+| Documento         | Caminho                                            | Descrição                          |
+| ----------------- | -------------------------------------------------- | ---------------------------------- |
+| Manual do Usuário | `manual-usuario/manual-usuario.md` _(A adicionar)_ | Guia de uso completo da plataforma |
+
+---
+
+<div align="center">
+  <a href="../README.md">← Voltar ao README principal</a>
+</div>
