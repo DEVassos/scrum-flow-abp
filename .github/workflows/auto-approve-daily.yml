@@ -1,0 +1,17 @@
+name: Auto-approve Daily PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    if: startsWith(github.head_ref, 'daily/') && github.actor == 'travensolli'
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Aprovar PR automaticamente
+        uses: hmarr/auto-approve-action@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
