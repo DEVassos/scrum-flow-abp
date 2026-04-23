@@ -6,7 +6,7 @@
 
 > 🏫 **Parceiro:** FATEC Jacareí (Interno) · **Orientador:** Prof. Antonio Egydio São Thiago Graça · **Focal Point:** Prof. Marcelo Augusto Sudo · **Kick-off:** 09/04/2026
 
-[![Status](https://img.shields.io/badge/status-Kick--off-yellow)](https://github.com/DEVassos/scrum-flow-abp)
+[![Status](https://img.shields.io/badge/status-Desenvolvendo-yellow)](https://github.com/DEVassos/scrum-flow-abp)
 [![Kanban](https://img.shields.io/badge/Kanban-Board-blue?logo=github)](https://github.com/orgs/DEVassos/projects/4)
 [![Licença](https://img.shields.io/badge/licença-MIT-green)](./LICENSE)
 
@@ -70,7 +70,7 @@ O projeto integra em uma única entrega os conteúdos do semestre: **HTML, CSS e
 
 ## 🚀 Status e Como Executar
 
-> **Status Atual: Kick-off** — O repositório está na fase inicial de scaffolding documental.
+> **Status Atual: Em desenvolvimento**.
 
 As instruções de instalação, configuração de ambiente e execução da aplicação serão definidas e publicadas a partir da **Sprint 1** (início em 13/04/2026), quando a arquitetura de software estiver estabelecida.
 
