@@ -16,11 +16,11 @@
 | ID | Tarefa | Responsável | Status |
 |----|--------|-------------|:------:|
 | T1 | Elaboração `README.md` / Kanban | Gustavo, Gabriel | ✅ |
-| T2 | Diagramas de Caso de Uso | Marcello, Vinicius, Gustavo, Gabriel | ⏳ |
-| T3 | Diagramas de Classe | Marcello, Gustavo, Gabriel | ⏳ |
-| T4 | Diagramas de Sequência | Marcello, Vinicius, Gustavo, Gabriel | ⏳ |
-| T5 | Modelo Conceitual do BD | Marcello, Vinicius, Gabriel | ⏳ |
-| T6 | Modelo Lógico do BD | Marcello, Vinicius, Gustavo | ⏳ |
+| T2 | Diagramas de Caso de Uso | Marcello, Vinicius, Gustavo, Gabriel | ✅ |
+| T3 | Diagramas de Classe | Marcello, Gustavo, Gabriel | ✅ |
+| T4 | Diagramas de Sequência | Marcello, Vinicius, Gustavo, Gabriel | ✅ |
+| T5 | Modelo Conceitual do BD | Marcello, Vinicius, Gabriel | ✅ |
+| T6 | Modelo Lógico do BD | Marcello, Vinicius, Gustavo | ✅ |
 | T7 | Identidade Visual | Andrea, Henrique, Lucas | ⏳ |
 | T8 | Prototipação da Aplicação (Figma) | Andrea, Henrique, Lucas | ⏳ |
 
@@ -71,7 +71,7 @@ xychart-beta
     x-axis ["13/04", "14/04", "15/04", "16/04", "17/04", "22/04", "23/04", "24/04", "27/04", "28/04", "29/04", "30/04"]
     y-axis "Pontos Restantes" 0 --> 75
     line [69, 63, 56, 50, 44, 38, 31, 25, 19, 13, 6, 0]
-    line [75, 75, 75, 72, 72, 72, 72, 72, 72, 72, 72, 72]
+    line [75, 75, 75, 73, 52, 52, 52, 52, 52, 52, 52, 52]
     
     %%{init: {'themeVariables': {'xyChart': {'plotColorPalette': '#10b981, #ef4444'}}, 'legend': {'visible': true}}}%%
 ```
@@ -85,8 +85,8 @@ xychart-beta
 | 13/04 | Segunda | 69 | 75 | — |
 | 14/04 | Terça | 63 | 75 | — |
 | 15/04 | Quarta | 56 | 75 | — |
-| 16/04 | Quinta | 50 | 72 | — |
-| 17/04 | Sexta | 44 | — | — |
+| 16/04 | Quinta | 50 | 73 | — |
+| 17/04 | Sexta | 44 | 52 | — |
 | 22/04 | Quarta | 38 | — | — |
 | 23/04 | Quinta | 31 | — | — |
 | 24/04 | Sexta | 25 | — | — |
