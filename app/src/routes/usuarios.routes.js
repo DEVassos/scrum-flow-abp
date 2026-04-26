@@ -20,9 +20,9 @@ router.post("/", async function (req, res) {
     }
 
     // Validação: senha com comprimento mínimo
-    if (senha.trim().length < 6) {
+    if (senha.trim().length < 8) {
         return res.status(400).json({
-            error: "A senha deve conter pelo menos 6 caracteres"
+            error: "A senha deve conter pelo menos 8 caracteres"
         });
     }
 
