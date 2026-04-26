@@ -1,0 +1,521 @@
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
+
+:root {
+  /* Cores Principais (Navy) */
+  --navy-900: #0A1628;
+  --navy-800: #0F2044;
+  --navy-700: #162B5C;
+  --navy-600: #1E3A7A;
+  --navy-400: #4A6FA5;
+  --navy-200: #A3B8D8;
+  --navy-50:  #EEF3FB;
+
+  /* Cor Complementar (Amber) */
+  --amber-600: #D97706;
+  --amber-500: #F59E0B;
+  --amber-400: #FBB824;
+  --amber-100: #FEF3C7;
+
+  /* Cores de Apoio */
+  --teal-500:  #0D9488;
+  --teal-100:  #CCFBF1;
+  --red-500:   #EF4444;
+  --red-100:   #FEE2E2;
+  --slate-400: #94A3B8;
+  --slate-600: #475569;
+  --white:     #FFFFFF;
+
+  /* Fontes */
+  --font-logo: 'Jomhuria', cursive;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(10, 22, 40, 0.4);
+  --shadow-md: 0 4px 16px rgba(10, 22, 40, 0.5);
+  --shadow-lg: 0 8px 32px rgba(10, 22, 40, 0.6);
+  --shadow-glow-accent: 0 0 24px rgba(245, 158, 11, 0.3);
+}
+
+/* ================================
+   BASE
+   ================================ */
+
+/* Formas orgânicas decorativas fixas nos cantos — não interagem com o conteúdo */
+.blob-esquerda {
+    position: fixed;
+    top: -80px;
+    left: -80px;
+    width: 350px;
+    height: 400px;
+    background-color: var(--amber-500);
+    opacity: 0.12;
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob-direita {
+    position: fixed;
+    bottom: -60px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background-color: var(--amber-500);
+    opacity: 0.10;
+    border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+body {
+    background-color: var(--navy-900);
+    color: var(--white);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Impede scroll lateral causado pelos blobs saindo da tela */
+}
+
+/* ================================
+   NAVBAR
+   ================================ */
+
+/* Barra de navegação fixa no topo */
+/* position: fixed faz ela ficar visível mesmo ao rolar a página */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: rgba(10, 22, 40, 0.85); /* Navy 900 com 85% de opacidade */
+  backdrop-filter: blur(12px);              /* Efeito de vidro fosco no fundo */
+  border-bottom: 1px solid var(--navy-600); /* Linha sutil separando a navbar do conteúdo */
+  z-index: 1000;                            /* Garante que fique acima de outros elementos */
+  display: flex;
+  align-items: center;
+}
+
+/* Div interna que organiza logo, links e botões em linha */
+/* justify-content: space-between empurra os elementos para as extremidades */
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 48px;
+}
+
+.logo {
+  font-family: var(--font-logo); /* Fonte Jomhuria, exclusiva do logo */
+  font-size: 56px;
+  line-height: 1;
+  text-decoration: none;         /* Remove o sublinhado padrão de links */
+  color: var(--white);
+}
+
+/* A palavra "Flow" recebe a cor âmbar para destacar do restante do logo */
+.logo .flow {
+  color: var(--amber-500);
+}
+
+/* Remove os marcadores de lista (bolinhas) e o espaçamento padrão do <ul> */
+/* display: flex coloca os itens em linha com espaçamento entre eles */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo padrão de cada link de navegação */
+.nav-link {
+  color: var(--slate-400);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Ao passar o mouse, o link fica branco */
+.nav-link:hover {
+  color: var(--white);
+}
+
+/* Link da página atual fica em âmbar para indicar onde o usuário está */
+.nav-link.active {
+  color: var(--amber-500);
+}
+
+/* Agrupa os botões "Entrar" e "Criar conta" lado a lado */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ================================
+   BOTÕES
+   ================================ */
+
+/* Base compartilhada — btn-primary e btn-ghost só definem cor e borda */
+.btn {
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--amber-500);
+  color: var(--navy-900);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: var(--amber-600);
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--navy-600);
+}
+
+.btn-ghost:hover {
+  background: var(--navy-700);
+}
+
+/* padding-left: 42px reserva espaço para o .campo-icone posicionado em left: 14px */
+.input {
+  background: var(--navy-800);
+  border: 1px solid var(--navy-600);
+  border-radius: 8px;
+  padding: 12px 12px 12px 42px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  color: var(--slate-400);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--amber-500);
+  box-shadow: var(--shadow-glow-accent);
+}
+/* ================================
+   MODAL LATERAL (SLIDE-IN)
+   ================================ */
+
+/* Fundo escurecido que aparece atrás do modal */
+/* opacity: 0 + pointer-events: none = invisível e não clicável quando fechado */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 22, 40, 0.8);
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Quando a classe .aberto é adicionada via JS, o overlay aparece */
+.modal-overlay.aberto {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Painel lateral que desliza da direita */
+.modal-lateral {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 480px;
+  height: 100%;
+  background-color: var(--navy-800);
+  border-left: 1px solid var(--navy-600);
+  z-index: 1200;
+  padding: 48px 40px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);    /* Começa fora da tela, à direita */
+  transition: transform 0.3s ease;
+}
+
+/* Desliza para dentro quando .aberto é adicionado */
+.modal-lateral.aberto {
+  transform: translateX(0);
+}
+
+/* Logo no topo do modal */
+.modal-lateral .logo {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* Título principal do modal */
+.modal-titulo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--white);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+/* Subtítulo abaixo do título */
+.modal-subtitulo {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--slate-400);
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+/* Grupo de campo: label + input juntos */
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+/* Label do campo de formulário */
+.campo-label {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--slate-400);
+}
+
+/* Wrapper do input com ícone dentro */
+/* position: relative permite posicionar o ícone absolutamente */
+.campo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Ícone à esquerda do input */
+.campo-icone {
+  position: absolute;
+  left: 14px;
+  color: var(--slate-400);
+  font-size: 16px;
+  pointer-events: none; /* Não interfere no clique do input */
+}
+
+/* Ícone à direita (ex: olho da senha) */
+.campo-icone-direita {
+  position: absolute;
+  right: 14px;
+  color: var(--slate-400);
+  cursor: pointer;
+}
+
+/* Linha com checkbox e link "Esqueceu a senha?" */
+.modal-opcoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* Link âmbar (Esqueceu a senha, Criar conta) */
+.link-amber {
+  color: var(--amber-500);
+  font-size: 13px;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.link-amber:hover {
+  color: var(--amber-600);
+}
+
+/* Texto de rodapé do modal (Não tem conta? Criar conta) */
+.modal-rodape {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--slate-400);
+}
+
+/* ================================
+   CHECKBOX CUSTOMIZADO
+   ================================ */
+
+/* Esconde o checkbox nativo do browser */
+.checkbox-input {
+  display: none;
+}
+
+/* Label que envolve o checkbox e o texto */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--slate-400);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Caixa visual que substitui o checkbox nativo */
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--navy-600);
+  border-radius: 4px;
+  background-color: var(--navy-800);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* Quando o checkbox está marcado, o irmão .checkbox-custom fica âmbar */
+.checkbox-input:checked + .checkbox-custom {
+  background-color: var(--amber-500);
+  border-color: var(--amber-500);
+}
+
+/* Desenha o "check" (✓) com CSS puro usando ::after */
+.checkbox-input:checked + .checkbox-custom::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--navy-900);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+  display: block;
+}
+
+/* ================================
+   UTILITÁRIOS DE BOTÃO
+   ================================ */
+
+/* Faz o botão ocupar 100% da largura do container */
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ================================
+   VIEWS DO MODAL
+   ================================ */
+
+/* Todas as views têm espaço inferior para scrollar e ver o conteúdo do fim */
+.modal-view {
+  padding-bottom: 48px;
+}
+
+/* Avançar: nova view sobe de baixo */
+@keyframes entrarDeBaixo {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Voltar: nova view desce de cima */
+@keyframes entrarDeCima {
+  from { opacity: 0; transform: translateY(-28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-view.animando-avancar {
+  animation: entrarDeBaixo 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-view.animando-voltar {
+  animation: entrarDeCima 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================
+   ERROS DE VALIDAÇÃO
+   ================================ */
+
+/* Oculto por padrão; JS adiciona .visivel para exibir e .erro no input para a borda vermelha */
+.campo-erro {
+  font-size: 12px;
+  color: var(--red-500);
+  margin-top: 2px;
+  display: none;
+}
+
+.campo-erro.visivel {
+  display: block;
+}
+
+.input.erro {
+  border-color: var(--red-500);
+}
+
+/* ================================
+   BOTÃO VOLTAR
+   ================================ */
+
+.btn-voltar {
+  background: none;
+  border: none;
+  color: var(--slate-400);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.btn-voltar:hover {
+  color: var(--white);
+}
+
+/* ================================
+   TELA DE SUCESSO
+   ================================ */
+
+/* Exibida após cadastro válido — centraliza ícone, título e botão verticalmente */
+.modal-sucesso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 0;
+  gap: 8px;
+}
+
+.sucesso-icone {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--teal-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
