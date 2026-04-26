@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/pages/home.css">
+    <link rel="stylesheet" href="../assets/css/pages/index.css">
     <title>ScrumFlow | Home</title>
 </head>
 
@@ -34,6 +35,68 @@
             </div>
         </div>
     </nav>
+
+    <!-- Modal de cadastro — desliza da direita ao clicar em "Criar conta" -->
+    <div id="modal-login" class="modal-lateral">
+        <a href="home.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+        <!-- VIEW: CADASTRO -->
+        <div id="view-cadastro" class="modal-view">
+            <h2 class="modal-titulo">Criar conta</h2>
+            <p class="modal-subtitulo">Junte-se ao time e comece sua jornada Scrum.</p>
+
+            <form id="form-cadastro">
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-nome">Nome completo</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="text" id="cad-nome" class="input" placeholder="Seu nome completo">
+                    </div>
+                    <span class="campo-erro" id="erro-nome"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-cpf">CPF</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="text" id="cad-cpf" class="input" placeholder="000.000.000-00" maxlength="14">
+                    </div>
+                    <span class="campo-erro" id="erro-cpf"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-email">E-mail</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9993;</span>
+                        <input type="email" id="cad-email" class="input" placeholder="seu@email.com">
+                    </div>
+                    <span class="campo-erro" id="erro-email"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-senha">Senha</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="password" id="cad-senha" class="input" placeholder="Mínimo 6 caracteres">
+                        <span class="campo-icone-direita" id="toggle-cad-senha">&#128065;</span>
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-confirmar">Confirmar senha</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="password" id="cad-confirmar" class="input" placeholder="Repita a senha">
+                        <span class="campo-icone-direita" id="toggle-cad-confirmar">&#128065;</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Criar conta &rarr;</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/index.js"></script>
 
 </body>
 
