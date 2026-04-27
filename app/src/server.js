@@ -27,7 +27,7 @@ const pagesPath = path.join(publicPath, "pages");
 const assetsPath = path.join(publicPath, "assets");
 
 // Servir página inicial (HTML)
-app.get("/", express.static(pagesPath));
+app.use("/", express.static(pagesPath));
 
 // Servir assets (CSS, JS, imagens, etc)
 app.use("/assets", express.static(assetsPath));
