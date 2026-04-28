@@ -10,7 +10,7 @@ async function apiFetch(url, options = {}) {
 
   if (resp.status === 401) {
     limparSessao();
-    window.location.href = "login.html";
+    window.location.href = "index.html";
     return null;
   }
 
