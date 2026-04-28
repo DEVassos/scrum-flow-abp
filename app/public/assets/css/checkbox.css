@@ -1,0 +1,51 @@
+/* ================================
+   CHECKBOX CUSTOMIZADO
+   ================================ */
+
+/* Esconde o checkbox nativo do browser */
+.checkbox-input {
+  display: none;
+}
+
+/* Label que envolve o checkbox e o texto */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--slate-400);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Caixa visual que substitui o checkbox nativo */
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--navy-600);
+  border-radius: 4px;
+  background-color: var(--navy-800);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* Quando o checkbox está marcado, o irmão .checkbox-custom fica âmbar */
+.checkbox-input:checked + .checkbox-custom {
+  background-color: var(--amber-500);
+  border-color: var(--amber-500);
+}
+
+/* Desenha o "check" (✓) com CSS puro usando ::after */
+.checkbox-input:checked + .checkbox-custom::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--navy-900);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+  display: block;
+}
