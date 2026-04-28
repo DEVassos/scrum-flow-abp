@@ -89,7 +89,7 @@ xychart-beta
 | 17/04 | Sexta | 44 | 52 | — |
 | 22/04 | Quarta | 38 | 52 | — |
 | 23/04 | Quinta | 31 | 36 | — |
-| 24/04 | Sexta | 25 | — | — |
+| 24/04 | Sexta | 25 | 36 | Reunião não realizada |
 | 27/04 | Segunda | 19 | — | — |
 | 28/04 | Terça | 13 | — | — |
 | 29/04 | Quarta | 6 | — | — |
