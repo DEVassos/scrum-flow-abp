@@ -8,28 +8,7 @@ const views = {
   cadastro: document.getElementById("view-cadastro"),
 };
 
-// ================================
-//   ESTADO DA NAVBAR
-//   Detecta sessão ativa e alterna entre o estado logado e deslogado.
-//   Roda no carregamento da página para refletir o estado correto imediatamente.
-// ================================
 
-function atualizarNavbar() {
-  if (estaAutenticado()) {
-    document.getElementById('nav-deslogado').hidden = true;
-    document.getElementById('nav-logado').hidden = false;
-    document.getElementById('nav-saudacao').textContent = `Olá, ${obterNome()}`;
-
-    document.getElementById('btn-sair-index').addEventListener('click', function () {
-      limparSessao();
-      fecharModal();
-      document.getElementById('nav-logado').hidden = true;
-      document.getElementById('nav-deslogado').hidden = false;
-    });
-  }
-}
-
-atualizarNavbar();
 
 // ================================
 //   MODAL
