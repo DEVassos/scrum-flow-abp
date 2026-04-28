@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/pages/index.css">
+    <link rel="stylesheet" href="../assets/css/pages/index.css">
     <title>ScrumFlow | Home</title>
 </head>
 
@@ -36,9 +36,51 @@
         </div>
     </nav>
 
-    <!-- Modal de cadastro — desliza da direita ao clicar em "Criar conta" -->
+    <!-- Overlay escuro atrás do modal -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Modal de login/cadastro — desliza da direita -->
     <div id="modal-login" class="modal-lateral">
-        <a href="home.html" class="logo">Scrum<span class="flow">Flow</span></a>
+        <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+                <!-- VIEW: LOGIN -->
+        <div id="view-login" class="modal-view">
+            <h2 class="modal-titulo">Entrar no time</h2>
+            <p class="modal-subtitulo">Bem-vindo de volta! Faça login para continuar.</p>
+
+            <form id="form-login">
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cpf">CPF</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="text" id="cpf" class="input" placeholder="000.000.000-00">
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="senha">Senha</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="password" id="senha" class="input" placeholder="Digite sua senha">
+                        <span class="campo-icone-direita" id="toggle-senha">&#128065;</span>
+                    </div>
+                </div>
+
+                <div class="modal-opcoes">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="lembrar" class="checkbox-input">
+                        <span class="checkbox-custom"></span>
+                        Lembrar de mim
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Entrar no Sprint &rarr;</button>
+
+                <div class="modal-rodape">
+                    Não tem uma conta? <a href="#" id="link-ir-cadastro" class="link-amber">Criar conta</a>
+                </div>
+            </form>
+        </div>
 
         <!-- VIEW: CADASTRO -->
         <div id="view-cadastro" class="modal-view">
@@ -77,9 +119,10 @@
                     <label class="campo-label" for="cad-senha">Senha</label>
                     <div class="campo-wrapper">
                         <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="cad-senha" class="input" placeholder="Mínimo 6 caracteres">
+                        <input type="password" id="cad-senha" class="input" placeholder="Mínimo 8 caracteres">
                         <span class="campo-icone-direita" id="toggle-cad-senha">&#128065;</span>
                     </div>
+                    <span class="campo-erro" id="erro-senha"></span>
                 </div>
 
                 <div class="campo-grupo">
@@ -89,14 +132,19 @@
                         <input type="password" id="cad-confirmar" class="input" placeholder="Repita a senha">
                         <span class="campo-icone-direita" id="toggle-cad-confirmar">&#128065;</span>
                     </div>
+                    <span class="campo-erro" id="erro-confirmar"></span>
                 </div>
 
+                
                 <button type="submit" class="btn btn-primary btn-full">Criar conta &rarr;</button>
+                <div class="modal-rodape">
+                    Já tem conta? <a href="#" id="link-ir-login" class="link-amber">Entrar</a>
+                </div>
             </form>
         </div>
     </div>
 
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/index.js"></script>
 
 </body>
 

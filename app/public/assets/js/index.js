@@ -1,37 +1,69 @@
 const btnCriarConta = document.getElementById("btn-criar-conta");
 const btnEntrar = document.getElementById("btn-entrar");
-const modalCadastro = document.getElementById("modal-login");
+const overlay = document.getElementById("modal-overlay");
+const modalLogin = document.getElementById("modal-login");
+
+const views = {
+  login: document.getElementById("view-login"),
+  cadastro: document.getElementById("view-cadastro"),
+};
 
 // ================================
 //   MODAL
 // ================================
 
-function abrirModal() {
-  modalCadastro.classList.add("aberto");
+function abrirModal(viewInicial = "login") {
+  overlay.classList.add("aberto");
+  modalLogin.classList.add("aberto");
+  mostrarView(viewInicial);
 }
 
 function fecharModal() {
-  modalCadastro.classList.remove("aberto");
+  overlay.classList.remove("aberto");
+  modalLogin.classList.remove("aberto");
+  setTimeout(() => mostrarView("login", false), 300);
 }
-
-btnCriarConta.addEventListener("click", function (e) {
-  e.preventDefault();
-  abrirModal();
-});
 
 btnEntrar.addEventListener("click", function (e) {
   e.preventDefault();
-  window.location.href = "login.html";
+  abrirModal("login");
 });
 
-document.addEventListener("click", function (e) {
-  if (
-    modalCadastro.classList.contains("aberto") &&
-    !modalCadastro.contains(e.target) &&
-    e.target !== btnCriarConta
-  ) {
-    fecharModal();
+btnCriarConta.addEventListener("click", function (e) {
+  e.preventDefault();
+  abrirModal("cadastro");
+});
+
+overlay.addEventListener("click", fecharModal);
+
+// ================================
+//   TROCA DE VIEWS
+// ================================
+
+function mostrarView(id, direcao = "avancar") {
+  Object.values(views).forEach((v) => {
+    v.hidden = true;
+    v.classList.remove("animando-avancar", "animando-voltar");
+  });
+
+  const alvo = views[id];
+  alvo.hidden = false;
+  modalLogin.scrollTop = 0;
+
+  if (direcao) {
+    void alvo.offsetWidth;
+    alvo.classList.add("animando-" + direcao);
   }
+}
+
+document.getElementById("link-ir-cadastro").addEventListener("click", function (e) {
+  e.preventDefault();
+  mostrarView("cadastro", "avancar");
+});
+
+document.getElementById('link-ir-login').addEventListener('click', function (e) {
+  e.preventDefault();
+  mostrarView('login', 'voltar');
 });
 
 // ================================
@@ -46,6 +78,7 @@ function configurarToggleSenha(toggleId, inputId) {
   });
 }
 
+configurarToggleSenha("toggle-senha", "senha");
 configurarToggleSenha("toggle-cad-senha", "cad-senha");
 configurarToggleSenha("toggle-cad-confirmar", "cad-confirmar");
 
@@ -101,9 +134,8 @@ function validarEmail(email) {
 //   SUBMIT COM FETCH
 // ================================
 
-// Abre o modal automaticamente se vier de login.html com ?abrir=cadastro
 if (new URLSearchParams(window.location.search).get("abrir") === "cadastro") {
-  abrirModal();
+  abrirModal("cadastro");
 }
 
 document.getElementById("form-cadastro").addEventListener("submit", async function (e) {
@@ -167,7 +199,8 @@ document.getElementById("form-cadastro").addEventListener("submit", async functi
     const data = await resp.json();
 
     if (resp.status === 201) {
-      window.location.href = "login.html";
+      mostrarView('login', 'voltar');
+      e.target.reset();
       return;
     }
     if (resp.status === 409) {
