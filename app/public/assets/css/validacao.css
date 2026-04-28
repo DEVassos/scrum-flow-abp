@@ -1,0 +1,70 @@
+/* ================================
+   ERROS DE VALIDAÇÃO
+   ================================ */
+
+/* Oculto por padrão; JS adiciona .visivel para exibir e .erro no input para a borda vermelha */
+.campo-erro {
+  font-size: 12px;
+  color: var(--red-500);
+  margin-top: 2px;
+  display: none;
+}
+
+.campo-erro.visivel {
+  display: block;
+}
+
+.input.erro {
+  border-color: var(--red-500);
+}
+
+/* ================================
+   BOTÃO VOLTAR
+   ================================ */
+
+.btn-voltar {
+  background: none;
+  border: none;
+  color: var(--slate-400);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.btn-voltar:hover {
+  color: var(--white);
+}
+
+/* ================================
+   TELA DE SUCESSO
+   ================================ */
+
+/* Exibida após cadastro válido — centraliza ícone, título e botão verticalmente */
+.modal-sucesso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 0;
+  gap: 8px;
+}
+
+.sucesso-icone {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--teal-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--white);
+  margin-bottom: 8px;
+}

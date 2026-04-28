@@ -1,4 +1,10 @@
 /* Importa as variáveis de cor, fonte e sombra definidas no global.css */
+@import url("../blob.css");
+@import url("../button.css");
+@import url("../checkbox.css");
+@import url("../content.css");
 @import url("../global.css");
-
-
+@import url("../header.css");
+@import url("../modal.css");
+@import url("../navbar.css");
+@import url("../validacao.css");
