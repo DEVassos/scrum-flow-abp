@@ -25,15 +25,61 @@
                 <li><a href="scrum.html" class="nav-link">Scrum</a></li>
                 <li><a href="#cerimonias" class="nav-link">Cerimônias</a></li>
                 <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-                <li><a href="admin.html" class="nav-link">Admin</a></li>
             </ul>
 
             <div class="navbar__actions">
-                <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
-                <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
+                <!-- Estado: deslogado (padrão) -->
+                <div id="nav-deslogado">
+                    <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+                    <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
+                </div>
+                <!-- Estado: logado — exibido via JS quando há sessão ativa -->
+                <div id="nav-logado" hidden>
+                    <span id="nav-saudacao" class="nav-saudacao"></span>
+                    <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+                </div>
             </div>
         </div>
     </nav>
+
+    <header class="apresentacao">
+        <div class="container">
+            <div class="apresentacao__badge">
+                <span class="apresentacao__status-dot"></span>
+                Portal de Certificação em Metodologias Ágeis
+            </div>
+            <h1 class="apresentacao__title">Aprenda <strong>Scrum</strong> do zero ao certificado</h1>
+            <p class="apresentacao__subtitle">Domine a estrutura ágil mais utilizada no mundo, valide seus conhecimentos e
+                impulsione sua carreira tecnológica.</p>
+
+            <div class="apresentacao__actions">
+                <a href="cadastro.html" class="btn btn-primary">Começar agora →</a>
+                <a href="#oquee" class="btn btn-ghost">Conhecer o Scrum</a>
+            </div>
+
+            <div class="apresentacao__stats">
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Módulos de Ensino</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">+150</div>
+                    <div class="stat-label">Questões Práticas</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Online e Gratuito</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">ABP 1º Semestre</div>
+                    <div class="stat-label">FATEC Jacareí 2026</div>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Overlay escuro atrás do modal -->
     <div id="modal-overlay" class="modal-overlay"></div>
@@ -54,6 +100,7 @@
                         <span class="campo-icone">&#9679;</span>
                         <input type="text" id="cpf" class="input" placeholder="000.000.000-00">
                     </div>
+                    <span class="campo-erro" id="erro-cpf-login"></span>
                 </div>
 
                 <div class="campo-grupo">
@@ -63,6 +110,7 @@
                         <input type="password" id="senha" class="input" placeholder="Digite sua senha">
                         <span class="campo-icone-direita" id="toggle-senha">&#128065;</span>
                     </div>
+                    <span class="campo-erro" id="erro-senha-login"></span>
                 </div>
 
                 <div class="modal-opcoes">
@@ -143,7 +191,7 @@
         </div>
     </div>
 
-    <script src="../assets/js/index.js"></script>
+    <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. usados pelo index.js -->
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/index.js"></script>
 

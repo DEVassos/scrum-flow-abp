@@ -1,11 +1,5 @@
 @import url("../global.css");
 
-.nav-saudacao {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    color: var(--slate-400);
-}
-
 /* ================================
    LAYOUT
    ================================ */
