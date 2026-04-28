@@ -1,5 +1,7 @@
 # Product Backlog
 
+← [Índice da Documentação](../../00-INDICE.md)
+
 > Artefato mantido pelo **Product Owner**. Revisado e refinado ao início de cada sprint.  
 > Histórias seguem o formato: *"Como [persona], quero [ação] para [benefício]."*
 
@@ -173,3 +175,9 @@
 | Data | Alteração | Responsável |
 |------|-----------|-------------|
 | 14/04/2026 | Criação inicial do backlog | Gustavo Koiti (PO) |
+
+---
+
+<div align="center">
+  <a href="../../00-INDICE.md">← Voltar ao Índice</a>
+</div>

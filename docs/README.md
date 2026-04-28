@@ -1,3 +1,5 @@
+← [Voltar ao README principal](../README.md) · [📚 Índice da Documentação](./00-INDICE.md)
+
 # 📚 Documentação Técnica — Sistema de Avaliação por Níveis com Certificação
 
 **ABP 1DSM 2026/1 · FATEC Jacareí · Equipe DEVassos**
@@ -5,6 +7,15 @@
 > Esta é a central técnica do projeto. Utilize o índice abaixo para navegar pelos artefatos de documentação, requisitos, modelagem e gestão ágil.
 >
 > ← [Voltar ao README principal](../README.md)
+
+---
+
+## 🚀 Atalhos por Objetivo
+
+- 🆕 **Primeira vez aqui?** → [Quickstart em 5 min](./01-QUICKSTART.md)
+- 💻 **Vou desenvolver?** → [Guia do Desenvolvedor](./03-DEVELOPER-GUIDE.md)
+- 🔄 **Vim por causa do Scrum?** → [Gestão Ágil](./scrum/README.md)
+- 📖 **Procuro um doc específico?** → [Índice Completo](./00-INDICE.md)
 
 ---
 
@@ -130,5 +141,5 @@ As Sprints documentadas (Sprints 1 a 3) seguem a estrutura de diretórios abaixo
 ---
 
 <div align="center">
-  <a href="../README.md">← Voltar ao README principal</a>
+  <a href="../README.md">← Voltar ao README principal</a> · <a href="./00-INDICE.md">📚 Índice da Documentação</a>
 </div>

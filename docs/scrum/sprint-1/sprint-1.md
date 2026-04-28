@@ -1,5 +1,7 @@
 # Sprint 1
 
+← [Índice da Documentação](../../00-INDICE.md)
+
 **Período:** 13/04/2026 — 30/04/2026  
 **Sprint Goal:** Ao final desta sprint, qualquer usuário poderá se cadastrar e fazer login na plataforma, com dados validados no front-end, processados no back-end e persistidos no PostgreSQL. Paralelamente, toda a documentação técnica e de produto estará produzida e revisada.  
 **Histórias:** DOC, US01, US02  
@@ -135,3 +137,9 @@ Checklists de entrada (DoR) e conclusão (DoD) das histórias DOC, US01 e US02:
 > Registre desvios do burndown, bloqueios recorrentes, mudança de escopo ou qualquer fato relevante para a retrospectiva.
 
 _A preencher na Sprint Review / Retrospectiva._
+
+---
+
+<div align="center">
+  <a href="../../00-INDICE.md">← Voltar ao Índice</a>
+</div>
