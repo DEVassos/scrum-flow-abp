@@ -60,6 +60,21 @@ btnCriarConta.addEventListener("click", function (e) {
   abrirModal("cadastro");
 });
 
+// Botão hero "Começar agora":
+// - logado → vai direto para o dashboard
+// - deslogado → abre modal de cadastro
+const btnComecarAgora = document.getElementById("btn-comecar-agora");
+if (btnComecarAgora) {
+  btnComecarAgora.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (estaAutenticado()) {
+      window.location.href = "dashboard.html";
+    } else {
+      abrirModal("cadastro");
+    }
+  });
+}
+
 overlay.addEventListener("click", fecharModal);
 
 // ================================
