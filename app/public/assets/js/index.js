@@ -62,8 +62,8 @@ document.getElementById("link-ir-cadastro").addEventListener("click", function (
 });
 
 document.getElementById('link-ir-login').addEventListener('click', function (e) {
-    e.preventDefault();
-    mostrarView('login', 'voltar');
+  e.preventDefault();
+  mostrarView('login', 'voltar');
 });
 
 // ================================
@@ -199,7 +199,8 @@ document.getElementById("form-cadastro").addEventListener("submit", async functi
     const data = await resp.json();
 
     if (resp.status === 201) {
-      window.location.href = "login.html";
+      mostrarView('login', 'voltar');
+      e.target.reset();
       return;
     }
     if (resp.status === 409) {
