@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/pages/welcome.css">
+    <link rel="stylesheet" href="../assets/css/pages/dashboard.css">
     <title>ScrumFlow | Dashboard</title>
 </head>
 
@@ -16,6 +16,16 @@
     <nav class="navbar">
         <div class="navbar__container">
             <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+            <!-- A classe "active" marca o link da página atual -->
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
+                <li><a href="scrum.html" class="nav-link">Scrum</a></li>
+                <li><a href="#cerimonias" class="nav-link">Cerimônias</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            </ul>
+
             <div class="navbar__actions">
                 <span id="saudacao" class="nav-saudacao"></span>
                 <button id="btn-sair" class="btn btn-ghost">Sair</button>
@@ -121,7 +131,9 @@
         </section>
 
     </main>
-    <script src="../assets/js/welcome.js"></script>
+    <!-- auth.js primeiro: define estaAutenticado, obterNome, limparSessao -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
 
 </body>
 

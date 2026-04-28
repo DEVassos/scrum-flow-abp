@@ -76,3 +76,24 @@
   align-items: center;
   gap: 12px;
 }
+
+/* Wrappers internos do navbar__actions para alternar estado logado/deslogado.
+   O !important garante que o atributo HTML hidden não seja sobrescrito pelo display:flex. */
+#nav-deslogado,
+#nav-logado {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#nav-deslogado[hidden],
+#nav-logado[hidden] {
+  display: none !important;
+}
+
+/* Saudação ao usuário logado exibida na navbar */
+.nav-saudacao {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--slate-400);
+}

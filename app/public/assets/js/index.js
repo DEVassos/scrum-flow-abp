@@ -9,7 +9,32 @@ const views = {
 };
 
 // ================================
+//   ESTADO DA NAVBAR
+//   Detecta sessão ativa e alterna entre o estado logado e deslogado.
+//   Roda no carregamento da página para refletir o estado correto imediatamente.
+// ================================
+
+function atualizarNavbar() {
+  if (estaAutenticado()) {
+    document.getElementById('nav-deslogado').hidden = true;
+    document.getElementById('nav-logado').hidden = false;
+    document.getElementById('nav-saudacao').textContent = `Olá, ${obterNome()}`;
+
+    document.getElementById('btn-sair-index').addEventListener('click', function () {
+      limparSessao();
+      fecharModal();
+      document.getElementById('nav-logado').hidden = true;
+      document.getElementById('nav-deslogado').hidden = false;
+    });
+  }
+}
+
+atualizarNavbar();
+
+// ================================
 //   MODAL
+//   Controla abertura/fechamento do painel lateral de login/cadastro.
+//   O overlay escurece o fundo e fecha o modal ao ser clicado.
 // ================================
 
 function abrirModal(viewInicial = "login") {
@@ -21,6 +46,7 @@ function abrirModal(viewInicial = "login") {
 function fecharModal() {
   overlay.classList.remove("aberto");
   modalLogin.classList.remove("aberto");
+  // Reseta para login após a animação de saída terminar (300ms)
   setTimeout(() => mostrarView("login", false), 300);
 }
 
@@ -38,6 +64,8 @@ overlay.addEventListener("click", fecharModal);
 
 // ================================
 //   TROCA DE VIEWS
+//   Alterna entre a tela de login e a tela de cadastro dentro do modal.
+//   A direção ("avancar" / "voltar") define qual animação CSS é aplicada.
 // ================================
 
 function mostrarView(id, direcao = "avancar") {
@@ -51,6 +79,7 @@ function mostrarView(id, direcao = "avancar") {
   modalLogin.scrollTop = 0;
 
   if (direcao) {
+    // Força reflow para garantir que a animação reinicie corretamente
     void alvo.offsetWidth;
     alvo.classList.add("animando-" + direcao);
   }
@@ -68,6 +97,8 @@ document.getElementById('link-ir-login').addEventListener('click', function (e) 
 
 // ================================
 //   TOGGLE DE SENHA
+//   Alterna visibilidade do campo de senha entre "password" e "text".
+//   Aplicado ao login e aos dois campos de senha do cadastro.
 // ================================
 
 function configurarToggleSenha(toggleId, inputId) {
@@ -84,6 +115,8 @@ configurarToggleSenha("toggle-cad-confirmar", "cad-confirmar");
 
 // ================================
 //   MÁSCARA DE CPF
+//   Formata o input em tempo real para o padrão 000.000.000-00.
+//   Remove não-dígitos antes de formatar para evitar conflitos com ctrl+delete.
 // ================================
 
 document.getElementById("cad-cpf").addEventListener("input", function () {
@@ -105,6 +138,8 @@ document.getElementById("cpf").addEventListener("input", function () {
 
 // ================================
 //   VALIDAÇÃO
+//   Helpers para exibir e limpar mensagens de erro inline nos campos.
+//   A classe "erro" aplica a borda vermelha definida no CSS de validação.
 // ================================
 
 function mostrarErro(inputEl, erroEl, msg) {
@@ -119,6 +154,7 @@ function limparErro(inputEl, erroEl) {
   erroEl.classList.remove("visivel");
 }
 
+// Validação do dígito verificador do CPF (algoritmo oficial da Receita Federal)
 function validarCPF(cpf) {
   cpf = cpf.replace(/\D/g, "");
   if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
@@ -139,12 +175,20 @@ function validarEmail(email) {
 }
 
 // ================================
-//   SUBMIT COM FETCH
+//   ABERTURA AUTOMÁTICA VIA URL
+//   Permite que links externos abram direto o modal de cadastro
+//   usando a query string ?abrir=cadastro (ex: após clicar em CTA externo).
 // ================================
 
 if (new URLSearchParams(window.location.search).get("abrir") === "cadastro") {
   abrirModal("cadastro");
 }
+
+// ================================
+//   SUBMIT — CADASTRO
+//   Fluxo: validação client-side → POST /api/usuarios → volta para login.
+//   Em caso de CPF/e-mail duplicado (409), exibe erro inline no campo CPF.
+// ================================
 
 document.getElementById("form-cadastro").addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -207,6 +251,7 @@ document.getElementById("form-cadastro").addEventListener("submit", async functi
     const data = await resp.json();
 
     if (resp.status === 201) {
+      // Cadastro realizado: volta para login e limpa o formulário
       mostrarView('login', 'voltar');
       e.target.reset();
       return;
@@ -220,28 +265,43 @@ document.getElementById("form-cadastro").addEventListener("submit", async functi
       return;
     }
     console.error("Erro inesperado:", data);
-    alert("Erro inesperado. Tente novamente.");
   } catch (err) {
     console.error("Falha na requisição:", err);
-    alert("Sem conexão com o servidor. Verifique se o backend está rodando.");
   }
 });
+
+// ================================
+//   SUBMIT — LOGIN
+//   Fluxo: validação client-side → POST /api/auth/login → salva token
+//   no localStorage via auth.js → redireciona para /dashboard.html.
+//   Erros de autenticação são exibidos inline (sem alert nativo).
+// ================================
 
 document.getElementById("form-login").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const cpfInput = document.getElementById("cpf");
   const senhaInput = document.getElementById("senha");
+  const erroCpf = document.getElementById("erro-cpf-login");
+  const erroSenha = document.getElementById("erro-senha-login");
 
-  // Limpando mensagens de erro anteriores (se houver elementos de erro no HTML)
-  // No HTML atual do login não tem span de erro, mas é bom validar:
+  limparErro(cpfInput, erroCpf);
+  limparErro(senhaInput, erroSenha);
+
   const cpfVal = cpfInput.value.replace(/\D/g, "");
   const senhaVal = senhaInput.value;
 
-  if (cpfVal.length !== 11 || senhaVal.length < 1) {
-    alert("Por favor, preencha o CPF e a senha corretamente.");
-    return;
+  // Validação básica client-side antes de bater na API
+  let valido = true;
+  if (!validarCPF(cpfVal)) {
+    mostrarErro(cpfInput, erroCpf, "CPF inválido.");
+    valido = false;
   }
+  if (senhaVal.length < 1) {
+    mostrarErro(senhaInput, erroSenha, "Senha obrigatória.");
+    valido = false;
+  }
+  if (!valido) return;
 
   try {
     const resp = await fetch("/api/auth/login", {
@@ -256,18 +316,15 @@ document.getElementById("form-login").addEventListener("submit", async function 
     const data = await resp.json();
 
     if (resp.status === 200) {
-      // Login bem-sucedido!
-      // Usamos a função do auth.js para salvar os dados
+      // Salva token JWT e nome do usuário no localStorage (via auth.js)
       salvarToken(data.token, data.nome);
-
-      // Redireciona para uma página existente enquanto o dashboard não é criado
-      window.location.href = "/welcome.html";
+      window.location.href = "/dashboard.html";
     } else {
-      // Erro: Usuário ou senha inválidos (401)
-      alert(data.message || "Usuário ou senha incorretos.");
+      // 401: credenciais inválidas — exibe erro no campo de senha
+      mostrarErro(senhaInput, erroSenha, data.message || "Usuário ou senha incorretos.");
     }
   } catch (err) {
     console.error("Falha no login:", err);
-    alert("Erro ao conectar com o servidor.");
+    mostrarErro(senhaInput, erroSenha, "Erro ao conectar com o servidor.");
   }
 });

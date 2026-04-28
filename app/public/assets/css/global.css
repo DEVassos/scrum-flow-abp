@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
 
+/* Componentes — importados aqui para que as pages precisem apenas do global.css */
+@import url('./components/blob.css');
+@import url('./components/button.css');
+@import url('./components/checkbox.css');
+@import url('./components/content.css');
+@import url('./components/modal.css');
+@import url('./components/navbar.css');
+@import url('./components/validacao.css');
+
 :root {
   /* Cores Principais (Navy) */
   --navy-900: #0A1628;
