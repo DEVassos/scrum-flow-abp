@@ -1,34 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap");
 
 :root {
   /* Cores Principais (Navy) */
-  --navy-900: #0A1628;
-  --navy-800: #0F2044;
-  --navy-700: #162B5C;
-  --navy-600: #1E3A7A;
-  --navy-400: #4A6FA5;
-  --navy-200: #A3B8D8;
-  --navy-50:  #EEF3FB;
+  --navy-900: #0a1628;
+  --navy-800: #0f2044;
+  --navy-700: #162b5c;
+  --navy-600: #1e3a7a;
+  --navy-400: #4a6fa5;
+  --navy-200: #a3b8d8;
+  --navy-50: #eef3fb;
 
   /* Cor Complementar (Amber) */
-  --amber-600: #D97706;
-  --amber-500: #F59E0B;
-  --amber-400: #FBB824;
-  --amber-100: #FEF3C7;
+  --amber-600: #d97706;
+  --amber-500: #f59e0b;
+  --amber-400: #fbb824;
+  --amber-100: #fef3c7;
 
   /* Cores de Apoio */
-  --teal-500:  #0D9488;
-  --teal-100:  #CCFBF1;
-  --red-500:   #EF4444;
-  --red-100:   #FEE2E2;
-  --slate-400: #94A3B8;
+  --teal-500: #0d9488;
+  --teal-100: #ccfbf1;
+  --red-500: #ef4444;
+  --red-100: #fee2e2;
+  --slate-400: #94a3b8;
   --slate-600: #475569;
-  --white:     #FFFFFF;
+  --white: #ffffff;
 
   /* Fontes */
-  --font-logo: 'Jomhuria', cursive;
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-logo: "Jomhuria", cursive;
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
 
   /* Sombras */
   --shadow-sm: 0 1px 3px rgba(10, 22, 40, 0.4);
@@ -43,39 +43,38 @@
 
 /* Formas orgânicas decorativas fixas nos cantos — não interagem com o conteúdo */
 .blob-esquerda {
-    position: fixed;
-    top: -80px;
-    left: -80px;
-    width: 350px;
-    height: 400px;
-    background-color: var(--amber-500);
-    opacity: 0.12;
-    border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
-    z-index: 0;
-    pointer-events: none;
+  position: fixed;
+  top: -80px;
+  left: -80px;
+  width: 350px;
+  height: 400px;
+  background-color: var(--amber-500);
+  opacity: 0.12;
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .blob-direita {
-    position: fixed;
-    bottom: -60px;
-    right: -60px;
-    width: 250px;
-    height: 250px;
-    background-color: var(--amber-500);
-    opacity: 0.10;
-    border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
-    z-index: 0;
-    pointer-events: none;
+  position: fixed;
+  bottom: -60px;
+  right: -60px;
+  width: 250px;
+  height: 250px;
+  background-color: var(--amber-500);
+  opacity: 0.1;
+  border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+  z-index: 0;
+  pointer-events: none;
 }
 
-
 body {
-    background-color: var(--navy-900);
-    color: var(--white);
-    font-family: var(--font-body);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Impede scroll lateral causado pelos blobs saindo da tela */
+  background-color: var(--navy-900);
+  color: var(--white);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Impede scroll lateral causado pelos blobs saindo da tela */
 }
 
 /* ================================
@@ -91,9 +90,9 @@ body {
   width: 100%;
   height: 64px;
   background-color: rgba(10, 22, 40, 0.85); /* Navy 900 com 85% de opacidade */
-  backdrop-filter: blur(12px);              /* Efeito de vidro fosco no fundo */
+  backdrop-filter: blur(12px); /* Efeito de vidro fosco no fundo */
   border-bottom: 1px solid var(--navy-600); /* Linha sutil separando a navbar do conteúdo */
-  z-index: 1000;                            /* Garante que fique acima de outros elementos */
+  z-index: 1000; /* Garante que fique acima de outros elementos */
   display: flex;
   align-items: center;
 }
@@ -112,7 +111,7 @@ body {
   font-family: var(--font-logo); /* Fonte Jomhuria, exclusiva do logo */
   font-size: 56px;
   line-height: 1;
-  text-decoration: none;         /* Remove o sublinhado padrão de links */
+  text-decoration: none; /* Remove o sublinhado padrão de links */
   color: var(--white);
 }
 
@@ -155,6 +154,99 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+/* Container que separa em duas colunas */
+.scrum-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 120px 5% 60px; /* 120px no topo para não bater na navbar fixa */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Formatação do texto à esquerda */
+.scrum-texto {
+    flex: 1;
+    text-align: left; /* Tira o centralizado bagunçado */
+}
+
+.scrum-texto .oqe {
+    text-align: left; /* Título alinhado à esquerda como no Figma */
+    margin-top: 0;
+    color:#d97706;
+}
+
+.list-jornada {
+    list-style: decimal;
+    padding-left: 20px;
+    margin: 20px 0;
+    line-height: 1.6;
+    color: var(--navy-200);
+}
+
+/* A CAIXA ESTILO FIGMA (Glassmorphism) */
+.card-glass {
+    flex: 0 0 380px; /* Largura fixa da caixa */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); /* Suporte para Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+}
+
+.oqe-card {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--amber-500);
+    margin-bottom: 24px;
+}
+
+.indice-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.indice-lista li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--navy-200);
+    transition: 0.3s;
+}
+
+.indice-lista li:hover {
+    color: var(--amber-500);
+    padding-left: 10px;
+}
+
+.referencias {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--amber-500);
+}
+
+/* Ajuste do botão para não ficar centralizado se não quiser */
+.scrum-texto .btn {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+/* Responsividade: No celular, as colunas viram uma só */
+@media (max-width: 900px) {
+    .scrum-layout {
+        flex-direction: column;
+        padding-top: 100px;
+    }
+    .card-glass {
+        width: 100%;
+        flex: none;
+    }
 }
 
 /* ================================
@@ -252,7 +344,7 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  transform: translateX(100%);    /* Começa fora da tela, à direita */
+  transform: translateX(100%); /* Começa fora da tela, à direita */
   transition: transform 0.3s ease;
 }
 
@@ -398,7 +490,7 @@ body {
 
 /* Desenha o "check" (✓) com CSS puro usando ::after */
 .checkbox-input:checked + .checkbox-custom::after {
-  content: '';
+  content: "";
   width: 5px;
   height: 9px;
   border: 2px solid var(--navy-900);
@@ -431,14 +523,26 @@ body {
 
 /* Avançar: nova view sobe de baixo */
 @keyframes entrarDeBaixo {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Voltar: nova view desce de cima */
 @keyframes entrarDeCima {
-  from { opacity: 0; transform: translateY(-28px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .modal-view.animando-avancar {
