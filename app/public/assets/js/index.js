@@ -95,6 +95,14 @@ document.getElementById("cad-cpf").addEventListener("input", function () {
   this.value = v;
 });
 
+document.getElementById("cpf").addEventListener("input", function () {
+  let v = this.value.replace(/\D/g, "").slice(0, 11);
+  if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+  else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d+)/, "$1.$2.$3");
+  else if (v.length > 3) v = v.replace(/(\d{3})(\d+)/, "$1.$2");
+  this.value = v;
+});
+
 // ================================
 //   VALIDAÇÃO
 // ================================
@@ -216,5 +224,50 @@ document.getElementById("form-cadastro").addEventListener("submit", async functi
   } catch (err) {
     console.error("Falha na requisição:", err);
     alert("Sem conexão com o servidor. Verifique se o backend está rodando.");
+  }
+});
+
+document.getElementById("form-login").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const cpfInput = document.getElementById("cpf");
+  const senhaInput = document.getElementById("senha");
+
+  // Limpando mensagens de erro anteriores (se houver elementos de erro no HTML)
+  // No HTML atual do login não tem span de erro, mas é bom validar:
+  const cpfVal = cpfInput.value.replace(/\D/g, "");
+  const senhaVal = senhaInput.value;
+
+  if (cpfVal.length !== 11 || senhaVal.length < 1) {
+    alert("Por favor, preencha o CPF e a senha corretamente.");
+    return;
+  }
+
+  try {
+    const resp = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        cpf: cpfVal,
+        senha: senhaVal,
+      }),
+    });
+
+    const data = await resp.json();
+
+    if (resp.status === 200) {
+      // Login bem-sucedido!
+      // Usamos a função do auth.js para salvar os dados
+      salvarToken(data.token, data.nome);
+
+      // Redireciona para uma página existente enquanto o dashboard não é criado
+      window.location.href = "/welcome.html";
+    } else {
+      // Erro: Usuário ou senha inválidos (401)
+      alert(data.message || "Usuário ou senha incorretos.");
+    }
+  } catch (err) {
+    console.error("Falha no login:", err);
+    alert("Erro ao conectar com o servidor.");
   }
 });
