@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/pages/welcome.css">
+    <title>ScrumFlow | Dashboard</title>
+</head>
+
+<body>
+
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
+
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+            <div class="navbar__actions">
+                <span id="saudacao" class="nav-saudacao"></span>
+                <button id="btn-sair" class="btn btn-ghost">Sair</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+
+        <section class="dashboard-hero">
+            <div class="hero-content">
+                <span class="hero-tag">Bem-vindo de volta</span>
+                <h1 class="hero-titulo">
+                    Pronto para aprender, <span id="hero-nome" class="hero-nome-destaque">usuário</span>?
+                </h1>
+                <p class="hero-subtitulo">
+                    Continue sua jornada no Scrum Framework. Escolha um módulo abaixo para começar.
+                </p>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-valor">0</span>
+                    <span class="stat-label">Módulos concluídos</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-valor">0</span>
+                    <span class="stat-label">Questões respondidas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-valor">0%</span>
+                    <span class="stat-label">Progresso geral</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-modulos">
+            <div class="secao-cabecalho">
+                <h2 class="secao-titulo">Módulos de estudo</h2>
+                <span class="secao-contador">3 módulos</span>
+            </div>
+
+            <div class="modulos-grid">
+
+                <div class="modulo-card modulo-em-breve">
+                    <div class="modulo-topo">
+                        <div class="modulo-icone-wrapper modulo-icone--azul">
+                            <span class="modulo-icone">&#9881;</span>
+                        </div>
+                        <span class="modulo-badge">Em breve</span>
+                    </div>
+                    <div class="modulo-corpo">
+                        <h3 class="modulo-nome">Fundamentos do Scrum</h3>
+                        <p class="modulo-descricao">Papéis, eventos, artefatos e regras do framework Scrum.</p>
+                    </div>
+                    <div class="modulo-rodape">
+                        <div class="modulo-progresso-barra">
+                            <div class="modulo-progresso-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="modulo-progresso-label">0% concluído</span>
+                    </div>
+                </div>
+
+                <div class="modulo-card modulo-em-breve">
+                    <div class="modulo-topo">
+                        <div class="modulo-icone-wrapper modulo-icone--amber">
+                            <span class="modulo-icone">&#128200;</span>
+                        </div>
+                        <span class="modulo-badge">Em breve</span>
+                    </div>
+                    <div class="modulo-corpo">
+                        <h3 class="modulo-nome">Sprint Planning</h3>
+                        <p class="modulo-descricao">Como planejar e estimar uma sprint com eficácia.</p>
+                    </div>
+                    <div class="modulo-rodape">
+                        <div class="modulo-progresso-barra">
+                            <div class="modulo-progresso-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="modulo-progresso-label">0% concluído</span>
+                    </div>
+                </div>
+
+                <div class="modulo-card modulo-em-breve">
+                    <div class="modulo-topo">
+                        <div class="modulo-icone-wrapper modulo-icone--teal">
+                            <span class="modulo-icone">&#128203;</span>
+                        </div>
+                        <span class="modulo-badge">Em breve</span>
+                    </div>
+                    <div class="modulo-corpo">
+                        <h3 class="modulo-nome">Retrospectiva</h3>
+                        <p class="modulo-descricao">Inspecionar e adaptar o processo de trabalho da equipe.</p>
+                    </div>
+                    <div class="modulo-rodape">
+                        <div class="modulo-progresso-barra">
+                            <div class="modulo-progresso-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="modulo-progresso-label">0% concluído</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+    <script src="../assets/js/welcome.js"></script>
+
+</body>
+
+</html>
