@@ -38,7 +38,7 @@ Tabelas, tipos, PKs, FKs e índices para PostgreSQL.
 | `exames` | `id_exame`, `id_modulo`, `id_usuario`, `grupo`, `tentativa` | RF06, RF10 |
 | `respostas` | `id_resposta`, `id_exame`, `id_questao`, `nota`, `resposta`, `respondido_em` | RF07, RF10 |
 
-> **Estado atual (Sprint 1):** 4 módulos e 150 questões carregados via seed. O número de módulos será ajustado conforme a revisão dos requisitos nas sprints seguintes.
+> **Estado atual (Sprint 1):** 5 módulos e 150 questões carregados via seed.
 
 ---
 

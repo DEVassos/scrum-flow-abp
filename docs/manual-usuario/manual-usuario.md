@@ -11,12 +11,12 @@ Guia de uso da plataforma de certificação em metodologias ágeis.
 ## 📋 Sumário
 
 - [Cadastro e Login](#cadastro-e-login) ✅ Sprint 1
-- [Painel de Módulos](#painel-de-módulos) ✅ Sprint 1
-- [Realizar uma Avaliação](#realizar-uma-avaliação) 🔲 Sprint 2
-- [Resultado e Tentativas](#resultado-e-tentativas) 🔲 Sprint 2
-- [Acompanhar Progresso](#acompanhar-progresso) 🔲 Sprint 3
-- [Emitir Certificado](#emitir-certificado) 🔲 Sprint 3
-- [Histórico de Tentativas](#histórico-de-tentativas) 🔲 Sprint 3
+- [Painel de Boas-vindas](#painel-de-boas-vindas) ✅ Sprint 1
+- Realizar uma Avaliação 🔲 Sprint 2
+- Resultado e Tentativas 🔲 Sprint 2
+- Acompanhar Progresso 🔲 Sprint 3
+- Emitir Certificado 🔲 Sprint 3
+- Histórico de Tentativas 🔲 Sprint 3
 
 ---
 
@@ -41,11 +41,11 @@ Guia de uso da plataforma de certificação em metodologias ágeis.
 
 Após o login, você verá os 5 módulos da certificação:
 
-1. Fundamentos de Scrum
-2. Papéis e Responsabilidades
-3. Eventos do Scrum
-4. Artefatos
-5. Aplicação Avançada
+1. Fundamentos das Metodologias Ágeis
+2. Scrum: Estrutura, Papéis e Artefatos
+3. Eventos do Scrum e Fluxo de Trabalho
+4. Práticas Ágeis, Métricas e Qualidade
+5. Aplicação Prática, Cenários e Análise Crítica
 
 > Os módulos são desbloqueados conforme o avanço pela trilha. _(Comportamento detalhado a confirmar na Sprint 2.)_
 
