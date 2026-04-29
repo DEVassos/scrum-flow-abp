@@ -1,0 +1,195 @@
+@import url("../global.css");
+
+/* ================================
+   HERO
+   ================================ */
+
+.manifesto-hero {
+    padding: 120px 48px 56px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.manifesto-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background-color: rgba(254, 243, 199, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 100px;
+    color: var(--amber-400);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.manifesto-hero__titulo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--white);
+    margin: 0;
+}
+
+.manifesto-hero__destaque {
+    color: var(--amber-500);
+}
+
+.manifesto-hero__subtitulo {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--slate-400);
+    max-width: 560px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ================================
+   NAV DE PRINCÍPIOS
+   ================================ */
+
+.principios-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    padding: 0 48px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.principio-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: var(--navy-800);
+    border: 1px solid var(--navy-600);
+    border-radius: 10px;
+    color: var(--slate-400);
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.principio-chip:hover {
+    border-color: var(--amber-500);
+    color: var(--amber-500);
+    box-shadow: var(--shadow-glow-accent);
+}
+
+/* ================================
+   CARDS DE PRINCÍPIO
+   ================================ */
+
+.principios-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 48px 64px;
+}
+
+.principio-card {
+    background-color: var(--navy-800);
+    border: 1px solid var(--navy-600);
+    border-radius: 16px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    scroll-margin-top: 80px;
+}
+
+.principio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--amber-500), transparent);
+    border-radius: 16px 16px 0 0;
+}
+
+.principio-card:hover {
+    border-color: var(--navy-400);
+    box-shadow: var(--shadow-md);
+}
+
+.principio-numero {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--amber-500);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 40px;
+}
+
+.principio-texto {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--navy-50);
+    line-height: 1.75;
+    margin: 0;
+    padding-top: 4px;
+}
+
+/* ================================
+   RODAPÉ
+   ================================ */
+
+.manifesto-footer {
+    border-top: 1px solid var(--navy-600);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--slate-400);
+}
+
+.manifesto-footer a {
+    color: var(--amber-500);
+    text-decoration: none;
+}
+
+.manifesto-footer a:hover {
+    color: var(--amber-600);
+}
+
+.btn-topo {
+    display: block;
+    text-align: center;
+    margin: 0 auto 40px;
+    color: var(--slate-400);
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.btn-topo:hover {
+    color: var(--amber-500);
+}
+
+
