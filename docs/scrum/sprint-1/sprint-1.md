@@ -104,7 +104,7 @@ xychart-beta
 | Cerimônia | Ata |
 |-----------|-----|
 | Sprint Planning | [atas/sprint-planning.md](atas/sprint-planning.md) |
-| Sprint Review | Será realizada ao final da Sprint |
+| Sprint Review | [atas/sprint-review.md](atas/sprint-review.md) |
 | Sprint Retrospective | Será realizada ao final da Sprint |
 | Dailies | [atas/dailies/](atas/dailies/) |
 
