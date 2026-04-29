@@ -8,28 +8,7 @@ const views = {
   cadastro: document.getElementById("view-cadastro"),
 };
 
-// ================================
-//   ESTADO DA NAVBAR
-//   Detecta sessão ativa e alterna entre o estado logado e deslogado.
-//   Roda no carregamento da página para refletir o estado correto imediatamente.
-// ================================
 
-function atualizarNavbar() {
-  if (estaAutenticado()) {
-    document.getElementById('nav-deslogado').hidden = true;
-    document.getElementById('nav-logado').hidden = false;
-    document.getElementById('nav-saudacao').textContent = `Olá, ${obterNome()}`;
-
-    document.getElementById('btn-sair-index').addEventListener('click', function () {
-      limparSessao();
-      fecharModal();
-      document.getElementById('nav-logado').hidden = true;
-      document.getElementById('nav-deslogado').hidden = false;
-    });
-  }
-}
-
-atualizarNavbar();
 
 // ================================
 //   MODAL
@@ -59,6 +38,21 @@ btnCriarConta.addEventListener("click", function (e) {
   e.preventDefault();
   abrirModal("cadastro");
 });
+
+// Botão hero "Começar agora":
+// - logado → vai direto para o dashboard
+// - deslogado → abre modal de cadastro
+const btnComecarAgora = document.getElementById("btn-comecar-agora");
+if (btnComecarAgora) {
+  btnComecarAgora.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (estaAutenticado()) {
+      window.location.href = "dashboard.html";
+    } else {
+      abrirModal("cadastro");
+    }
+  });
+}
 
 overlay.addEventListener("click", fecharModal);
 

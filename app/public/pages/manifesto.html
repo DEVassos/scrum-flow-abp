@@ -1,125 +1,249 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/pages/index.css">
-    <title>SF | Manifesto Ágil</title>
+    <link rel="stylesheet" href="../assets/css/pages/manifesto.css">
+    <title>ScrumFlow | Manifesto Ágil</title>
 </head>
+
 <body>
-    <section>
-        <!-- Formas decorativas de fundo -->
-        <div class="blob-esquerda"></div>
-        <div class="blob-direita"></div>
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
 
-        <nav class="navbar">
-            <div class="navbar__container">
-                <a href="#" class="logo">Scrum<span class="flow">Flow</span></a>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
 
-                <!-- A classe "active" marca o link da página atual -->
-                <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
-                    <li><a href="scrum.html" class="nav-link">Scrum</a></li>
-                    <li><a href="#cerimonias" class="nav-link">Cerimônias</a></li>
-                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-                    <li><a href="admin.html" class="nav-link">Admin</a></li>
-                </ul>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
+                <li><a href="scrum.html" class="nav-link">Scrum</a></li>
+                <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            </ul>
 
-                <div class="navbar__actions">
-                    <a href="#" id="btn-criar-conta" class="btn btn-primary">
-                        Olá, <strong>Fulano</strong>
-                    </a>
+            <div class="navbar__actions">
+                <div id="nav-deslogado">
+                    <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+                    <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
                 </div>
+                <div id="nav-logado" hidden>
+                    <span id="nav-saudacao" class="nav-saudacao"></span>
+                    <button id="btn-sair" class="btn btn-ghost">Sair</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="manifesto-hero">
+        <div class="manifesto-hero__badge">
+            <span class="apresentacao__status-dot"></span>
+            Fundamentos do Desenvolvimento Ágil
+        </div>
+        <h1 class="manifesto-hero__titulo">Princípios do <span class="manifesto-hero__destaque">Manifesto Ágil</span></h1>
+        <p class="manifesto-hero__subtitulo">12 princípios que guiam equipes ágeis na entrega contínua de valor e na adaptação a mudanças.</p>
     </section>
-    
-    <section class="main-content">
-        <section class="background top-container">
-            <h1>Princípios do Manifesto Ágil</h1>
-        </section>
-        <section class="background principio-container">
-            <a class="principio-button" href="#principio-1">1º</a>
-            <a class="principio-button" href="#principio-2">2º</a>
-            <a class="principio-button" href="#principio-3">3º</a>
-            <a class="principio-button" href="#principio-4">4º</a>
-            <a class="principio-button" href="#principio-5">5º</a>
-            <a class="principio-button" href="#principio-6">6º</a>
-            <a class="principio-button" href="#principio-7">7º</a>
-            <a class="principio-button" href="#principio-8">8º</a>
-            <a class="principio-button" href="#principio-9">9º</a>
-            <a class="principio-button" href="#principio-10">10º</a>
-            <a class="principio-button" href="#principio-11">11º</a>
-            <a class="principio-button" href="#principio-12">12º</a>
-        </section>
-        <section class="background principio-content" id="principio-1">
-            Nossa maior prioridade é satisfazer o cliente
-            através da entrega contínua e adiantada
-            de software com valor agregado.
-        </section>
-        <section class="background principio-content" id="principio-2">
-            Mudanças nos requisitos são bem-vindas,
-            mesmo tardiamente no desenvolvimento.
-            Processos ágeis tiram vantagem das
-            mudanças visando vantagem competitiva para o cliente.
-        </section>
-        <section class="background principio-content" id="principio-3">
-            Entregar frequentemente software funcionando,
-            de poucas semanas a poucos meses,
-            com preferência à menor escala de tempo.
-        </section>
-        <section class="background principio-content" id="principio-4">
-            Pessoas de negócio e desenvolvedores devem trabalhar
-            diariamente em conjunto por todo o projeto.
-        </section>
-        <section class="background principio-content" id="principio-5">
-            Construa projetos em torno de indivíduos motivados.
-            Dê a eles o ambiente e o suporte necessário
-            e confie neles para fazer o trabalho.
-        </section>
-        <section class="background principio-content" id="principio-6">
-            O método mais eficiente e eficaz de transmitir
-            informações para e entre uma equipe de desenvolvimento
-            é através de conversa face a face.
-        </section>
-        <section class="background principio-content" id="principio-7">
-            Software funcionando é a medida primária de progresso.
-        </section>
-        <section class="background principio-content" id="principio-8">
-            Os processos ágeis promovem desenvolvimento
-            sustentável. Os patrocinadores, desenvolvedores e
-            usuários devem ser capazes de manter um ritmo
-            constante indefinidamente.
-        </section>
-        <section class="background principio-content" id="principio-9">
-            Contínua atenção à excelência técnica e bom design
-            aumenta a agilidade.
-        </section>
-        <section class="background principio-content" id="principio-10">
-            Simplicidade - a arte de maximizar a quantidade de
-            trabalho não realizado - é essencial.
-        </section>
-        <section class="background principio-content" id="principio-11">
-            As melhores arquiteturas, requisitos e designs
-            emergem de equipes auto-organizáveis.
-        </section>
-        <section class="background principio-content" id="principio-12">
-            Em intervalos regulares, a equipe reflete sobre como
-            se tornar mais eficaz e então refina e ajusta seu
-            comportamento de acordo.
-        </section>  
+
+    <!-- Nav de atalho para cada princípio -->
+    <nav class="principios-nav" aria-label="Ir para o princípio">
+        <a class="principio-chip" href="#principio-1">1</a>
+        <a class="principio-chip" href="#principio-2">2</a>
+        <a class="principio-chip" href="#principio-3">3</a>
+        <a class="principio-chip" href="#principio-4">4</a>
+        <a class="principio-chip" href="#principio-5">5</a>
+        <a class="principio-chip" href="#principio-6">6</a>
+        <a class="principio-chip" href="#principio-7">7</a>
+        <a class="principio-chip" href="#principio-8">8</a>
+        <a class="principio-chip" href="#principio-9">9</a>
+        <a class="principio-chip" href="#principio-10">10</a>
+        <a class="principio-chip" href="#principio-11">11</a>
+        <a class="principio-chip" href="#principio-12">12</a>
+    </nav>
+
+    <!-- Cards dos 12 princípios -->
+    <section class="principios-lista">
+        <div class="principio-card" id="principio-1">
+            <span class="principio-numero">01</span>
+            <p class="principio-texto">Nossa maior prioridade é satisfazer o cliente através da entrega contínua e adiantada de software com valor agregado.</p>
+        </div>
+
+        <div class="principio-card" id="principio-2">
+            <span class="principio-numero">02</span>
+            <p class="principio-texto">Mudanças nos requisitos são bem-vindas, mesmo tardiamente no desenvolvimento. Processos ágeis tiram vantagem das mudanças visando vantagem competitiva para o cliente.</p>
+        </div>
+
+        <div class="principio-card" id="principio-3">
+            <span class="principio-numero">03</span>
+            <p class="principio-texto">Entregar frequentemente software funcionando, de poucas semanas a poucos meses, com preferência à menor escala de tempo.</p>
+        </div>
+
+        <div class="principio-card" id="principio-4">
+            <span class="principio-numero">04</span>
+            <p class="principio-texto">Pessoas de negócio e desenvolvedores devem trabalhar diariamente em conjunto por todo o projeto.</p>
+        </div>
+
+        <div class="principio-card" id="principio-5">
+            <span class="principio-numero">05</span>
+            <p class="principio-texto">Construa projetos em torno de indivíduos motivados. Dê a eles o ambiente e o suporte necessário e confie neles para fazer o trabalho.</p>
+        </div>
+
+        <div class="principio-card" id="principio-6">
+            <span class="principio-numero">06</span>
+            <p class="principio-texto">O método mais eficiente e eficaz de transmitir informações para e entre uma equipe de desenvolvimento é através de conversa face a face.</p>
+        </div>
+
+        <div class="principio-card" id="principio-7">
+            <span class="principio-numero">07</span>
+            <p class="principio-texto">Software funcionando é a medida primária de progresso.</p>
+        </div>
+
+        <div class="principio-card" id="principio-8">
+            <span class="principio-numero">08</span>
+            <p class="principio-texto">Os processos ágeis promovem desenvolvimento sustentável. Os patrocinadores, desenvolvedores e usuários devem ser capazes de manter um ritmo constante indefinidamente.</p>
+        </div>
+
+        <div class="principio-card" id="principio-9">
+            <span class="principio-numero">09</span>
+            <p class="principio-texto">Contínua atenção à excelência técnica e bom design aumenta a agilidade.</p>
+        </div>
+
+        <div class="principio-card" id="principio-10">
+            <span class="principio-numero">10</span>
+            <p class="principio-texto">Simplicidade — a arte de maximizar a quantidade de trabalho não realizado — é essencial.</p>
+        </div>
+
+        <div class="principio-card" id="principio-11">
+            <span class="principio-numero">11</span>
+            <p class="principio-texto">As melhores arquiteturas, requisitos e designs emergem de equipes auto-organizáveis.</p>
+        </div>
+
+        <div class="principio-card" id="principio-12">
+            <span class="principio-numero">12</span>
+            <p class="principio-texto">Em intervalos regulares, a equipe reflete sobre como se tornar mais eficaz e então refina e ajusta seu comportamento de acordo.</p>
+        </div>
     </section>
-    <a href="#" id="top">Voltar ao topo</a>
-    <footer>
-        <section>
-            <h2>Referências</h2>
-            <section>
-                https://agilemanifesto.org/iso/ptbr/principles.html
-            </section>
-        </section>
-        <section>
-            DEVassos - 2026
-            <img scr="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="Github do Time">
-        </section>
+
+    <a href="#" class="btn-topo">↑ Voltar ao topo</a>
+
+    <footer class="manifesto-footer">
+        <span>Referência: <a href="https://agilemanifesto.org/iso/ptbr/principles.html" target="_blank" rel="noopener">agilemanifesto.org</a></span>
+        <span>DEVassos — 2026</span>
     </footer>
+
+    <!-- Overlay escuro atrás do modal -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Modal de login/cadastro — desliza da direita -->
+    <div id="modal-login" class="modal-lateral">
+        <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+        <!-- VIEW: LOGIN -->
+        <div id="view-login" class="modal-view">
+            <h2 class="modal-titulo">Entrar no time</h2>
+            <p class="modal-subtitulo">Bem-vindo de volta! Faça login para continuar.</p>
+
+            <form id="form-login">
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cpf">CPF</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="text" id="cpf" class="input" placeholder="000.000.000-00">
+                    </div>
+                    <span class="campo-erro" id="erro-cpf-login"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="senha">Senha</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="password" id="senha" class="input" placeholder="Digite sua senha">
+                        <span class="campo-icone-direita" id="toggle-senha">&#128065;</span>
+                    </div>
+                    <span class="campo-erro" id="erro-senha-login"></span>
+                </div>
+
+                <div class="modal-opcoes">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="lembrar" class="checkbox-input">
+                        <span class="checkbox-custom"></span>
+                        Lembrar de mim
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Entrar no Sprint &rarr;</button>
+
+                <div class="modal-rodape">
+                    Não tem uma conta? <a href="#" id="link-ir-cadastro" class="link-amber">Criar conta</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- VIEW: CADASTRO -->
+        <div id="view-cadastro" class="modal-view">
+            <h2 class="modal-titulo">Criar conta</h2>
+            <p class="modal-subtitulo">Junte-se ao time e comece sua jornada Scrum.</p>
+
+            <form id="form-cadastro">
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-nome">Nome completo</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="text" id="cad-nome" class="input" placeholder="Seu nome completo">
+                    </div>
+                    <span class="campo-erro" id="erro-nome"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-cpf">CPF</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="text" id="cad-cpf" class="input" placeholder="000.000.000-00" maxlength="14">
+                    </div>
+                    <span class="campo-erro" id="erro-cpf"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-email">E-mail</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9993;</span>
+                        <input type="email" id="cad-email" class="input" placeholder="seu@email.com">
+                    </div>
+                    <span class="campo-erro" id="erro-email"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-senha">Senha</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="password" id="cad-senha" class="input" placeholder="Mínimo 8 caracteres">
+                        <span class="campo-icone-direita" id="toggle-cad-senha">&#128065;</span>
+                    </div>
+                    <span class="campo-erro" id="erro-senha"></span>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="cad-confirmar">Confirmar senha</label>
+                    <div class="campo-wrapper">
+                        <span class="campo-icone">&#9679;</span>
+                        <input type="password" id="cad-confirmar" class="input" placeholder="Repita a senha">
+                        <span class="campo-icone-direita" id="toggle-cad-confirmar">&#128065;</span>
+                    </div>
+                    <span class="campo-erro" id="erro-confirmar"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Criar conta &rarr;</button>
+                <div class="modal-rodape">
+                    Já tem conta? <a href="#" id="link-ir-login" class="link-amber">Entrar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/index.js"></script>
 </body>
+
 </html>
