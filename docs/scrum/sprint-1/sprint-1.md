@@ -105,7 +105,7 @@ xychart-beta
 |-----------|-----|
 | Sprint Planning | [atas/sprint-planning.md](atas/sprint-planning.md) |
 | Sprint Review | [atas/sprint-review.md](atas/sprint-review.md) |
-| Sprint Retrospective | Será realizada ao final da Sprint |
+| Sprint Retrospective | [atas/sprint-retrospectiva.md](atas/sprint-retrospectiva.md) |
 | Dailies | [atas/dailies/](atas/dailies/) |
 
 > As atas são criadas a partir dos templates em [`templates/`](../templates/).
