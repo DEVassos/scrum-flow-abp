@@ -1,3 +1,6 @@
+<!-- Template — copie para seu destino e ajuste o caminho do Índice -->
+← [Índice da Documentação](../../00-INDICE.md)
+
 # Sprint Planning — Sprint X
 
 **Data:** DD/MM/YYYY  
@@ -56,3 +59,4 @@ _Exemplo: "Ao final desta sprint, o usuário conseguirá se cadastrar, fazer log
 ## Observações e Decisões Tomadas
 
 _Registre aqui decisões técnicas ou de escopo tomadas durante a cerimônia._
+
