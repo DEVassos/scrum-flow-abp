@@ -1,21 +1,9 @@
-CREATE TEMP TABLE IF NOT EXISTS modulos_import (
-  id_modulo INTEGER,
-  titulo VARCHAR(255)
-);
-
-TRUNCATE TABLE modulos_import;
-
-COPY modulos_import (id_modulo, titulo)
-FROM '__SEED_DATA_DIR__/modulos.csv'
-WITH (
-  FORMAT csv,
-  HEADER true,
-  DELIMITER ';',
-  ENCODING 'UTF8'
-);
-
-INSERT INTO public.modulos (id_modulo, titulo)
-SELECT mi.id_modulo, mi.titulo
-FROM modulos_import AS mi
+INSERT INTO public.modulos (id_modulo, titulo) VALUES
+(1, 'Fundamentos das Metodologias Ágeis'),
+(2, 'Scrum: Estrutura, Papéis e Artefatos'),
+(3, 'Eventos do Scrum e Fluxo de Trabalho'),
+(4, 'Práticas Ágeis, Métricas e Qualidade'),
+(5, 'Aplicação Prática, Cenários e Análise Crítica')
 ON CONFLICT (id_modulo)
 DO UPDATE SET titulo = EXCLUDED.titulo;
+
