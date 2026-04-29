@@ -5,8 +5,6 @@
 **ABP 1DSM 2026/1 · FATEC Jacareí · Equipe DEVassos**
 
 > Esta é a central técnica do projeto. Utilize o índice abaixo para navegar pelos artefatos de documentação, requisitos, modelagem e gestão ágil.
->
-> ← [Voltar ao README principal](../README.md)
 
 ---
 
@@ -96,9 +94,9 @@ As atas de todas as cerimônias são registradas e versionadas, organizadas por 
 
 | Documento | Caminho | Descrição |
 | --------- | ------- | --------- |
-| Contexto Ágil (README) | `scrum/README.md` _(A adicionar)_ | Visão geral da gestão ágil: papéis, cerimônias e fluxo de trabalho |
-| Product Backlog | `scrum/backlog/product-backlog.md` _(A adicionar)_ | Histórias de usuário priorizadas (US01–US09) com critérios de aceite |
-| Riscos e Premissas | `scrum/riscos-premissas.md` _(A adicionar)_ | Registro de riscos, premissas e restrições do projeto |
+| Contexto Ágil (README) | [scrum/README.md](scrum/README.md) | Visão geral da gestão ágil: papéis, cerimônias e fluxo de trabalho |
+| Product Backlog | [scrum/backlog/product-backlog.md](scrum/backlog/product-backlog.md) | Histórias de usuário priorizadas (US01–US09) com critérios de aceite |
+
 
 #### Estrutura Padrão por Sprint
 
@@ -113,30 +111,25 @@ As Sprints documentadas (Sprints 1 a 3) seguem a estrutura de diretórios abaixo
 | `atas/sprint-retrospective.md` | Ata da Sprint Retrospective |
 | `atas/dailies/` | Atas das Daily Scrums |
 
-> **Status:** Na fase de Kick-off (atual), as pastas de Sprint contêm apenas arquivos `.gitkeep`. Os artefatos serão adicionados progressivamente.
+> **Status:** A Sprint 1 está em andamento — `sprint-1.md`, `dor-dod.md` e atas já disponíveis. As pastas de Sprint 2 e 3 serão preenchidas nas respectivas sprints.
 
 ### 🗄️ Banco de Dados (`bd/`)
 
 | Documento         | Caminho                                   | Descrição                                            |
 | ----------------- | ----------------------------------------- | ---------------------------------------------------- |
-| Modelo Conceitual | `bd/modelo-conceitual.md` _(A adicionar)_ | DER com entidades, atributos e relacionamentos       |
-| Modelo Lógico     | `bd/modelo-logico.md` _(A adicionar)_     | Tabelas PostgreSQL, tipos, PKs, FKs, índices e seeds |
+| Modelos de Banco de Dados | [modelos/bd/README.md](modelos/bd/README.md) | Modelos Conceitual e Lógico com entidades e relacionamentos       |
 
 ### 📐 Modelagem UML (`uml/`)
 
 | Documento                  | Caminho                                                        | Descrição                                       |
 | -------------------------- | -------------------------------------------------------------- | ----------------------------------------------- |
-| Casos de Uso               | `uml/casos-de-uso/casos-de-uso.md` _(A adicionar)_             | Diagrama e descrição textual de UC01–UC16        |
-| Diagrama de Classes        | `uml/classes/diagrama-de-classes.md` _(A adicionar)_           | Entidades, atributos, métodos e relacionamentos  |
-| Sequência — Cadastro/Login | `uml/sequencia/fluxo-cadastro-login.md` _(A adicionar)_        | Fluxo de cadastro e autenticação                 |
-| Sequência — Avaliação      | `uml/sequencia/fluxo-avaliacao.md` _(A adicionar)_             | Fluxo de sorteio, respostas e nota               |
-| Sequência — Certificado    | `uml/sequencia/fluxo-certificado-progresso.md` _(A adicionar)_ | Fluxo de emissão e validação do certificado      |
+| Diagramas UML Gerais       | [modelos/uml/README.md](modelos/uml/README.md)             | Diagramas UML por requisito        |
 
 ### 📋 Usuário Final (`manual-usuario/`)
 
 | Documento         | Caminho                                            | Descrição                          |
 | ----------------- | -------------------------------------------------- | ---------------------------------- |
-| Manual do Usuário | `manual-usuario/manual-usuario.md` _(A adicionar)_ | Guia de uso completo da plataforma |
+| Manual do Usuário | [manual-usuario/manual-usuario.md](manual-usuario/manual-usuario.md) | Guia de uso completo da plataforma |
 
 ---
 

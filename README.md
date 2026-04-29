@@ -70,15 +70,18 @@ O projeto integra em uma única entrega os conteúdos do semestre: **HTML, CSS e
 
 ## 🚀 Status e Como Executar
 
-> **Status Atual: Em desenvolvimento**.
+> **Status Atual: Em desenvolvimento — Sprint 1 em andamento.**
 
-As instruções de instalação, configuração de ambiente e execução da aplicação serão definidas e publicadas a partir da **Sprint 1** (início em 13/04/2026), quando a arquitetura de software estiver estabelecida.
+Para rodar a aplicação localmente em 5 minutos, siga o [Quickstart](./docs/01-QUICKSTART.md).
 
 ```bash
-# Por enquanto, clone o repositório para acesso local à documentação
 git clone https://github.com/DEVassos/scrum-flow-abp.git
-cd scrum-flow-abp
+cd scrum-flow-abp/app
+cp .env.example .env   # preencha POSTGRES_PASSWORD e JWT_SECRET
+npm install && createdb abp && npm run db:init && npm run dev
 ```
+
+Acesse: [http://localhost:3005](http://localhost:3005)
 
 ---
 
