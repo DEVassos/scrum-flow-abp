@@ -35,8 +35,8 @@
 | T13 | Criptografia de senha no cadastro (bcrypt) | Marcello, Gustavo | ✅ |
 | T14 | Validar CPF único no backend | Vinicius, Gabriel | ✅ |
 | T15 | Script de inicialização do BD (schema.sql) | Andrea, Gustavo | ✅ |
-| T16 | Conectar API no frontend (fetch) | Henrique, Lucas | 🔲 |
-| T17 | Teste de fluxo completo de cadastro | Vinicius, Gabriel | 🔲 |
+| T16 | Conectar API no frontend (fetch) | Henrique, Lucas | ✅ |
+| T17 | Teste de fluxo completo de cadastro | Vinicius, Gabriel | ✅ |
 
 ### US02 — Login
 
@@ -48,9 +48,9 @@
 | T21 | Verificar senha com hash | Andrea, Henrique, Lucas | ✅ |
 | T22 | Armazenar JWT/Token no frontend | Marcello, Gustavo | ✅ |
 | T23 | Middleware de autenticação e proteção de rotas | Vinicius, Gabriel | ✅ |
-| T24 | Página inicial / Painel de Módulos | Andrea, Henrique, Lucas | 🔲 |
+| T24 | Página inicial / Painel de Módulos | Andrea, Henrique, Lucas | ✅ |
 | T25 | Conectar frontend de login à API | Marcello, Vinicius | ✅ |
-| T26 | Teste de fluxo completo de login | Gustavo, Gabriel | 🔲 |
+| T26 | Teste de fluxo completo de login | Gustavo, Gabriel | ✅ |
 
 **Incremento esperado ao final da Sprint:**
 
@@ -71,7 +71,7 @@ xychart-beta
     x-axis ["13/04", "14/04", "15/04", "16/04", "17/04", "22/04", "23/04", "24/04", "27/04", "28/04", "29/04", "30/04"]
     y-axis "Pontos Restantes" 0 --> 75
     line [69, 63, 56, 50, 44, 38, 31, 25, 19, 13, 6, 0]
-    line [75, 75, 75, 73, 52, 52, 36, 36, 8, 8, 8, 8]
+    line [75, 75, 75, 73, 52, 52, 36, 36, 8, 0, 0, 0]
     
     %%{init: {'themeVariables': {'xyChart': {'plotColorPalette': '#10b981, #ef4444'}}, 'legend': {'visible': true}}}%%
 ```
@@ -91,7 +91,7 @@ xychart-beta
 | 23/04 | Quinta | 31 | 36 | — |
 | 24/04 | Sexta | 25 | 36 | Reunião não realizada |
 | 27/04 | Segunda | 19 | 8 | — |
-| 28/04 | Terça | 13 | 8 | — |
+| 28/04 | Terça | 13 | 0 | — |
 | 29/04 | Quarta | 6 | — | — |
 | 30/04 | Quinta | 0 | — | — |
 
