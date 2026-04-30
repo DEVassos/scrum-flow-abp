@@ -34,35 +34,37 @@ Validado ao final de cada história, antes da Sprint Review:
 
 | Critério | US01 — Cadastro | US02 — Login |
 |----------|:--------------:|:------------:|
-| Código implementado e funcional | ☐ | ☐ |
-| PR aprovado por ao menos 1 membro | ☐ | ☐ |
-| Sem conflitos com `develop` | ☐ | ☐ |
-| Testado (fluxo feliz e cenários de erro) | ☐ | ☐ |
-| Lógica de negócio validada no back-end | ☐ | ☐ |
-| Dados persistidos no PostgreSQL | ☐ | ☐ |
-| Sem exposição de dados sensíveis | ☐ | ☐ |
-| Critérios de aceite verificados pelo PO | ☐ | ☐ |
-| Branch de feature excluída após merge | ☐ | ☐ |
+| Código implementado e funcional | ✅ | ✅ |
+| PR aprovado por ao menos 1 membro | ✅ | ✅ |
+| Sem conflitos com `develop` | ✅ | ✅ |
+| Testado (fluxo feliz e cenários de erro) | ✅ | ✅ |
+| Lógica de negócio validada no back-end | ✅ | ✅ |
+| Dados persistidos no PostgreSQL | ✅ | ✅ |
+| Sem exposição de dados sensíveis | ✅ | ✅ |
+| Critérios de aceite verificados pelo PO | ✅ ⚠️ | ✅ |
+| Branch de feature excluída após merge | ✅ | ✅ |
+
+> ⚠️ **US01 — Responsividade:** PO aceitou a história com ressalva. Interface não se comporta adequadamente em dispositivos móveis. Ação registrada para Sprint 2/3.
 
 ### DOC — Documentação da Aplicação
 
 | Critério | DOC |
 |----------|:---:|
-| Todos os artefatos produzidos e disponíveis no repositório | ☐ |
-| Cada artefato revisado por ao menos 1 membro além do autor | ☐ |
-| PR aprovado e sem conflitos com `develop` | ☐ |
-| Modelos de BD (T5, T6) alinhados com o schema.sql implementado (T15) | ☐ |
-| Protótipo (T8) e identidade visual (T7) validados pelo PO | ☐ |
-| Critérios de aceite do backlog verificados pelo PO na Sprint Review | ☐ |
-| Branch de feature excluída após merge | ☐ |
+| Todos os artefatos produzidos e disponíveis no repositório | ✅ |
+| Cada artefato revisado por ao menos 1 membro além do autor | ✅ |
+| PR aprovado e sem conflitos com `develop` | ✅ |
+| Modelos de BD (T5, T6) alinhados com o schema.sql implementado (T15) | ✅ |
+| Protótipo (T8) e identidade visual (T7) validados pelo PO | ✅ |
+| Critérios de aceite do backlog verificados pelo PO na Sprint Review | ✅ |
+| Branch de feature excluída após merge | ✅ |
 
 ---
 
 ## Resultado da Sprint
 
-**Histórias entregues (DoD completo):** A preencher  
-**Histórias não entregues:** A preencher  
-**Observações:** A preencher
+**Histórias entregues (DoD completo):** DOC, US01 ⚠️, US02  
+**Histórias não entregues:** nenhuma  
+**Observações:** US01 aceita pelo PO com ressalva — responsividade em dispositivos móveis identificada como gap. Ação prevista para Sprint 2/3.
 
 ---
 
