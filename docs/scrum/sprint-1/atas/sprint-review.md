@@ -22,9 +22,9 @@
 
 | ID   | História                  | SP  | Status      | Observações                                               |
 | ---- | ------------------------- | --- | ----------- | --------------------------------------------------------- |
-| DOC  | Documentação da Aplicação | 25  | ✅ Entregue | UML, modelos BD, identidade visual e protótipo concluídos |
-| US01 | Cadastro de Usuário       | 25  | ✅ Entregue | Fluxo completo validado — hash de senha e CPF único       |
-| US02 | Login                     | 25  | ✅ Entregue | JWT no back-end, proteção de rotas implementada           |
+| DOC  | Documentação da Aplicação | 39  | ✅ Entregue | UML, modelos BD, identidade visual e protótipo concluídos |
+| US01 | Cadastro de Usuário       | 18  | ✅ Entregue | Fluxo completo validado — hash de senha e CPF único       |
+| US02 | Login                     | 18  | ✅ Entregue | JWT no back-end, proteção de rotas implementada           |
 
 **Pontos entregues:** 75 SP / **Pontos planejados:** 75 SP  
 **Aproveitamento:** 100%

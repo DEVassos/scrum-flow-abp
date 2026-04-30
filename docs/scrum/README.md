@@ -67,7 +67,7 @@ Cada sprint mantém o checklist específico em `sprint-N/dor-dod.md`.
 ## 🔗 Como Acompanhar o Andamento
 
 - 📊 [Kanban no GitHub Projects](https://github.com/orgs/DEVassos/projects/4)
-- 📅 [Sprint 1 (ativa)](./sprint-1/sprint-1.md)
+- 📅 [Sprint 1 (encerrada)](./sprint-1/sprint-1.md) · [Sprint 2 (próxima)](./sprint-2/)
 - 📋 [Product Backlog priorizado](./backlog/product-backlog.md)
 
 ---

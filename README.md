@@ -70,7 +70,7 @@ O projeto integra em uma única entrega os conteúdos do semestre: **HTML, CSS e
 
 ## 🚀 Status e Como Executar
 
-> **Status Atual: Em desenvolvimento — Sprint 1 em andamento.**
+> **Status Atual: Em desenvolvimento — Sprint 1 encerrada · Sprint 2 inicia em 04/05/2026.**
 
 Para rodar a aplicação localmente em 5 minutos, siga o [Quickstart](./docs/01-QUICKSTART.md).
 
@@ -90,7 +90,7 @@ Acesse: [http://localhost:3005](http://localhost:3005)
 | Etapa                  | Período              | Entregáveis                                  | Vídeo            |
 | ---------------------- | -------------------- | -------------------------------------------- | ---------------- |
 | **Kick-off**           | 09/04/2026           | Documentação inicial e scaffolding           | —                |
-| **Sprint 1**           | 13/04 — 30/04/2026   | Setup · Banco de Dados · Cadastro e Login    | A disponibilizar |
+| **Sprint 1**           | 13/04 — 30/04/2026   | Setup · Banco de Dados · Cadastro e Login    | [▶ Assistir](https://youtu.be/rQ7mEWP7sGU) |
 | **Sprint 2**           | 04/05 — 21/05/2026   | Avaliação · Sorteio de Questões · Tentativas | A disponibilizar |
 | **Sprint 3**           | 25/05 — 11/06/2026   | Resultado Final · Certificado · Histórico    | A disponibilizar |
 | **Apresentação Final** | Semana de 22/06/2026 | Entrega e demonstração ao parceiro           | A disponibilizar |

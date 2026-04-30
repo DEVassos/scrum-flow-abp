@@ -80,7 +80,7 @@ xychart-beta
 
 **Legenda:**
 - 🟢 Linha ideal (75 → 0 SP)
-- 🔴 Linha real (a preencher)
+- 🔴 Linha real
 
 | Data | Dia | Pontos Ideal | Pontos Real | Impedimentos |
 |:----:|-----|:------------:|:-----------:|--------------|
