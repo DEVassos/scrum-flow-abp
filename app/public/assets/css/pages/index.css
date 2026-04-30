@@ -1,0 +1,132 @@
+/* Importa as variáveis de cor, fonte e sombra definidas no global.css */
+@import url("../global.css");
+
+
+
+/* ================================
+   SEÇÃO DE APRESENTAÇÃO
+   ================================ */
+
+/* Primeira seção da página: título, subtítulo, botões e estatísticas */
+.apresentacao {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    
+    background-size:
+        100% 100%,
+        60px 60px,
+        60px 60px;
+    padding-top: 64px;
+    /* Desconto da navbar */
+}
+
+.apresentacao__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background-color: rgba(254, 243, 199, 0.1);
+    /* Amber 100 10% */
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    /* Amber 500 30% */
+    border-radius: 100px;
+    color: var(--amber-400);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.apresentacao__status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--amber-500);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite; /* Chama a animação abaixo em loop eterno */
+}
+
+/* @keyframes define os "frames" da animação — como um roteiro de movimento */
+/* A animação simula um pulso expandindo e sumindo, igual a um radar */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); /* Anel pequeno e visível */
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); /* Anel expandido e transparente */
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); /* Volta ao início para repetir */
+    }
+}
+
+.apresentacao__title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 1.06;
+    color: var(--white);
+    max-width: 800px;
+    margin: 0 auto 16px;
+}
+
+.apresentacao__title strong {
+    color: var(--amber-500);
+    font-weight: 800;
+}
+
+.apresentacao__subtitle {
+    color: var(--slate-400);
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.apresentacao__actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+/* Números que mostram o que a plataforma oferece (módulos, questões, etc.) */
+.apresentacao__stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-top: 1px solid var(--navy-600);
+    padding-top: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    color: var(--slate-400);
+    font-size: 13px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 48px;
+    background-color: var(--navy-600);
+}
+

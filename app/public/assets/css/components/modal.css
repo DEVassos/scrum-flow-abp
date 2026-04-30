@@ -1,0 +1,28 @@
+/* ================================
+   VIEWS DO MODAL
+   ================================ */
+
+/* Todas as views têm espaço inferior para scrollar e ver o conteúdo do fim */
+.modal-view {
+  padding-bottom: 48px;
+}
+
+/* Avançar: nova view sobe de baixo */
+@keyframes entrarDeBaixo {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Voltar: nova view desce de cima */
+@keyframes entrarDeCima {
+  from { opacity: 0; transform: translateY(-28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-view.animando-avancar {
+  animation: entrarDeBaixo 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-view.animando-voltar {
+  animation: entrarDeCima 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,3 +1,6 @@
+<!-- Template — copie para seu destino e ajuste o caminho do Índice -->
+← [Índice da Documentação](../../00-INDICE.md)
+
 # Sprint Retrospective — Sprint X
 
 **Data:** DD/MM/YYYY  
@@ -65,3 +68,4 @@ Refletir sobre o processo da sprint finalizada — o que funcionou, o que pode m
 ## Observações Finais
 
 _Registre aqui qualquer ponto adicional levantado durante a retrospectiva._
+

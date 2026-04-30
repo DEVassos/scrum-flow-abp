@@ -1,0 +1,26 @@
+/* Formas orgânicas decorativas fixas nos cantos — não interagem com o conteúdo */
+.blob-esquerda {
+    position: fixed;
+    top: -80px;
+    left: -80px;
+    width: 350px;
+    height: 400px;
+    background-color: var(--amber-500);
+    opacity: 0.12;
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob-direita {
+    position: fixed;
+    bottom: -60px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background-color: var(--amber-500);
+    opacity: 0.10;
+    border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+    z-index: 0;
+    pointer-events: none;
+}

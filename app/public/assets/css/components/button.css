@@ -1,0 +1,210 @@
+/* ================================
+   BOTÕES
+   ================================ */
+
+/* Base compartilhada — btn-primary e btn-ghost só definem cor e borda */
+.btn {
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--amber-500);
+  color: var(--navy-900);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: var(--amber-600);
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--navy-600);
+}
+
+.btn-ghost:hover {
+  background: var(--navy-700);
+}
+
+/* padding-left: 42px reserva espaço para o .campo-icone posicionado em left: 14px */
+.input {
+  background: var(--navy-800);
+  border: 1px solid var(--navy-600);
+  border-radius: 8px;
+  padding: 12px 12px 12px 42px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  color: var(--slate-400);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--amber-500);
+  box-shadow: var(--shadow-glow-accent);
+}
+/* ================================
+   MODAL LATERAL (SLIDE-IN)
+   ================================ */
+
+/* Fundo escurecido que aparece atrás do modal */
+/* opacity: 0 + pointer-events: none = invisível e não clicável quando fechado */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 22, 40, 0.8);
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Quando a classe .aberto é adicionada via JS, o overlay aparece */
+.modal-overlay.aberto {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Painel lateral que desliza da direita */
+.modal-lateral {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 480px;
+  height: 100%;
+  background-color: var(--navy-800);
+  border-left: 1px solid var(--navy-600);
+  z-index: 1200;
+  padding: 48px 40px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);    /* Começa fora da tela, à direita */
+  transition: transform 0.3s ease;
+}
+
+/* Desliza para dentro quando .aberto é adicionado */
+.modal-lateral.aberto {
+  transform: translateX(0);
+}
+
+/* Logo no topo do modal */
+.modal-lateral .logo {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* Título principal do modal */
+.modal-titulo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--white);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+/* Subtítulo abaixo do título */
+.modal-subtitulo {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--slate-400);
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+/* Grupo de campo: label + input juntos */
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+/* Label do campo de formulário */
+.campo-label {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--slate-400);
+}
+
+/* Wrapper do input com ícone dentro */
+/* position: relative permite posicionar o ícone absolutamente */
+.campo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Ícone à esquerda do input */
+.campo-icone {
+  position: absolute;
+  left: 14px;
+  color: var(--slate-400);
+  font-size: 16px;
+  pointer-events: none; /* Não interfere no clique do input */
+}
+
+/* Ícone à direita (ex: olho da senha) */
+.campo-icone-direita {
+  position: absolute;
+  right: 14px;
+  color: var(--slate-400);
+  cursor: pointer;
+}
+
+/* Linha com checkbox e link "Esqueceu a senha?" */
+.modal-opcoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* Link âmbar (Esqueceu a senha, Criar conta) */
+.link-amber {
+  color: var(--amber-500);
+  font-size: 13px;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.link-amber:hover {
+  color: var(--amber-600);
+}
+
+/* Texto de rodapé do modal (Não tem conta? Criar conta) */
+.modal-rodape {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--slate-400);
+}
+
+/* ================================
+   UTILITÁRIOS DE BOTÃO
+   ================================ */
+
+/* Faz o botão ocupar 100% da largura do container */
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-top: 8px;
+}

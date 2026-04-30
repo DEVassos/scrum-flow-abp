@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Jomhuria&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
+
+/* Componentes — importados aqui para que as pages precisem apenas do global.css */
+@import url('./components/blob.css');
+@import url('./components/button.css');
+@import url('./components/checkbox.css');
+@import url('./components/content.css');
+@import url('./components/modal.css');
+@import url('./components/navbar.css');
+@import url('./components/validacao.css');
+
+:root {
+  /* Cores Principais (Navy) */
+  --navy-900: #0A1628;
+  --navy-800: #0F2044;
+  --navy-700: #162B5C;
+  --navy-600: #1E3A7A;
+  --navy-400: #4A6FA5;
+  --navy-200: #A3B8D8;
+  --navy-50:  #EEF3FB;
+
+  /* Cor Complementar (Amber) */
+  --amber-600: #D97706;
+  --amber-500: #F59E0B;
+  --amber-400: #FBB824;
+  --amber-100: #FEF3C7;
+
+  /* Cores de Apoio */
+  --teal-500:  #0D9488;
+  --teal-100:  #CCFBF1;
+  --red-500:   #EF4444;
+  --red-100:   #FEE2E2;
+  --slate-400: #94A3B8;
+  --slate-600: #475569;
+  --white:     #FFFFFF;
+
+  /* Fontes */
+  --font-logo: 'Jomhuria', cursive;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(10, 22, 40, 0.4);
+  --shadow-md: 0 4px 16px rgba(10, 22, 40, 0.5);
+  --shadow-lg: 0 8px 32px rgba(10, 22, 40, 0.6);
+  --shadow-glow-accent: 0 0 24px rgba(245, 158, 11, 0.3);
+}
+
+body {
+    background-color: var(--navy-900);
+    color: var(--white);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Impede scroll lateral causado pelos blobs saindo da tela */
+}
