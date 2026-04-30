@@ -1,3 +1,5 @@
+← [Índice da Documentação](../../../00-INDICE.md) · [Sprint 1](../sprint-1.md)
+
 # Sprint Planning — Sprint 1
 
 **Data:** 14/04/2026  

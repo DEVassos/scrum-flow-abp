@@ -1,5 +1,7 @@
 # Product Backlog
 
+← [Índice da Documentação](../../00-INDICE.md)
+
 > Artefato mantido pelo **Product Owner**. Revisado e refinado ao início de cada sprint.  
 > Histórias seguem o formato: *"Como [persona], quero [ação] para [benefício]."*
 
@@ -20,9 +22,9 @@
 
 | ID | Como... | Quero... | Para... | Prioridade | Sprint | Status |
 |----|---------|----------|---------|------------|--------|--------|
-| DOC | time de desenvolvimento | documentar a aplicação (UML, modelagem de dados, identidade visual e protótipo) | alinhar o time e embasar o desenvolvimento nas sprints seguintes | 🔴 Alta | Sprint 1 | ⏳ Em elaboração |
-| US01 | usuário | me cadastrar com CPF, nome, e-mail e senha | criar um acesso com o sistema | 🔴 Alta | Sprint 1 | 🔲 Não iniciado |
-| US02 | usuário | fazer login com CPF e senha | acessar minha conta com segurança | 🔴 Alta | Sprint 1 | 🔲 Não iniciado |
+| DOC | time de desenvolvimento | documentar a aplicação (UML, modelagem de dados, identidade visual e protótipo) | alinhar o time e embasar o desenvolvimento nas sprints seguintes | 🔴 Alta | Sprint 1 | ✅ Concluído |
+| US01 | usuário | me cadastrar com CPF, nome, e-mail e senha | criar acesso com o sistema | 🔴 Alta | Sprint 1 | ✅ Concluído |
+| US02 | usuário | fazer login com CPF e senha | acessar minha conta com segurança | 🔴 Alta | Sprint 1 | ✅ Concluído |
 | US03 | usuário | realizar uma avaliação de nível com 10 questões sorteadas | ser avaliado no conteúdo do nível | 🔴 Alta | Sprint 2 | 🔲 Não iniciado |
 | US04 | usuário | ter até 2 tentativas por nível | melhorar meu desempenho se necessário | 🔴 Alta | Sprint 2 | 🔲 Não iniciado |
 | US05 | usuário | visualizar minha nota final por nível | acompanhar meu progresso individualmente | 🟡 Média | Sprint 3 | 🔲 Não iniciado |
@@ -173,3 +175,9 @@
 | Data | Alteração | Responsável |
 |------|-----------|-------------|
 | 14/04/2026 | Criação inicial do backlog | Gustavo Koiti (PO) |
+
+---
+
+<div align="center">
+  <a href="../../00-INDICE.md">← Voltar ao Índice</a>
+</div>

@@ -1,5 +1,7 @@
 # Modelos e Diagramas do Projeto
 
+← [Índice da Documentação](../00-INDICE.md)
+
 Este documento reúne a documentação visual e técnica do **Portal de Certificação em Metodologias Ágeis**. Os diagramas detalham como os requisitos do edital e do backlog da sprint serão contemplados e estruturados.
 
 ---
@@ -104,3 +106,9 @@ Em conformidade com a restrição **RP02**, o banco de dados foi modelado exclus
 *   **Regras Embutidas:** O vínculo das Chaves Estrangeiras (FKs) entre `respostas` e `questoes` permite registrar a alternativa marcada (`alternativa_marcada`) e verificar se está correta (`correta: BOOL`), atendendo à necessidade do back-end auditar o histórico e calcular as notas com segurança para evitar fraudes (RNF04, RP04).
 
 ![Modelo Lógico](bd/modelo-logico/modelo_logico.png)
+
+---
+
+<div align="center">
+  <a href="../00-INDICE.md">← Voltar ao Índice</a>
+</div>

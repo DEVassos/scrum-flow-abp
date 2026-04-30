@@ -1,3 +1,6 @@
+<!-- Template — copie para seu destino e ajuste o caminho do Índice -->
+← [Índice da Documentação](../../00-INDICE.md)
+
 # Sprint X
 
 > **Como usar:** copie este arquivo para `docs/scrum/sprint-N/sprint-N.md` e substitua todos os campos marcados com `X` ou `—`.
@@ -100,3 +103,4 @@ Checklists de entrada (DoR) e conclusão (DoD) das histórias desta sprint:
 > Registre desvios do burndown, bloqueios recorrentes, mudança de escopo ou qualquer fato relevante para a retrospectiva.
 
 _A preencher na Sprint Review / Retrospectiva._
+

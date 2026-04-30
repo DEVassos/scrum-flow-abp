@@ -1,5 +1,7 @@
 # Sprint 1
 
+← [Índice da Documentação](../../00-INDICE.md)
+
 **Período:** 13/04/2026 — 30/04/2026  
 **Sprint Goal:** Ao final desta sprint, qualquer usuário poderá se cadastrar e fazer login na plataforma, com dados validados no front-end, processados no back-end e persistidos no PostgreSQL. Paralelamente, toda a documentação técnica e de produto estará produzida e revisada.  
 **Histórias:** DOC, US01, US02  
@@ -102,8 +104,8 @@ xychart-beta
 | Cerimônia | Ata |
 |-----------|-----|
 | Sprint Planning | [atas/sprint-planning.md](atas/sprint-planning.md) |
-| Sprint Review | Será realizada ao final da Sprint |
-| Sprint Retrospective | Será realizada ao final da Sprint |
+| Sprint Review | [atas/sprint-review.md](atas/sprint-review.md) |
+| Sprint Retrospective | [atas/sprint-retrospectiva.md](atas/sprint-retrospectiva.md) |
 | Dailies | [atas/dailies/](atas/dailies/) |
 
 > As atas são criadas a partir dos templates em [`templates/`](../templates/).

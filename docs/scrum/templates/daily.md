@@ -1,3 +1,6 @@
+<!-- Template — copie para seu destino e ajuste o caminho do Índice -->
+← [Índice da Documentação](../../00-INDICE.md)
+
 # Daily Scrum — [DATA: DD/MM/YYYY]
 
 **Sprint:** Sprint X  
@@ -113,3 +116,4 @@ _Sim / Não — Se sim, descreva._
 ## Observações
 
 _Registre aqui qualquer ponto relevante que surja durante a cerimônia._
+

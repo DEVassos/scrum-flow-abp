@@ -1,3 +1,6 @@
+<!-- Template — copie para seu destino e ajuste o caminho do Índice -->
+← [Índice da Documentação](../../00-INDICE.md)
+
 # Checklist de DoR e DoD
 
 > **DoR (Definition of Ready):** critérios que um item do backlog deve atender **antes** de entrar em uma sprint.  
@@ -48,4 +51,5 @@ Acesse os registros específicos de cada sprint:
 | [Sprint 1](../sprint-1/dor-dod.md) | Critérios validados e marcados ao início/fim da sprint |
 | [Sprint 2](../sprint-2/dor-dod.md) | Critérios validados e marcados ao início/fim da sprint |
 | [Sprint 3](../sprint-3/dor-dod.md) | Critérios validados e marcados ao início/fim da sprint |
+
 

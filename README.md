@@ -59,38 +59,41 @@ O projeto integra em uma única entrega os conteúdos do semestre: **HTML, CSS e
 
 ## ⚙️ Tecnologias Utilizadas
 
-| Camada | Tecnologia | Restrição |
-|--------|-----------|-----------|
-| **Front-end** | HTML5 · CSS3 · JavaScript | Sem uso de frameworks — apenas código puro |
-| **Back-end** | Node.js | — |
-| **Banco de Dados** | PostgreSQL | Apenas DDL e DML explícitos; sem ORMs |
-| **Versionamento** | Git + GitHub (Git Flow) | — |
+| Camada             | Tecnologia                | Restrição                                  |
+| ------------------ | ------------------------- | ------------------------------------------ |
+| **Front-end**      | HTML5 · CSS3 · JavaScript | Sem uso de frameworks — apenas código puro |
+| **Back-end**       | Node.js                   | —                                          |
+| **Banco de Dados** | PostgreSQL                | Apenas DDL e DML explícitos; sem ORMs      |
+| **Versionamento**  | Git + GitHub (Git Flow)   | —                                          |
 
 ---
 
 ## 🚀 Status e Como Executar
 
-> **Status Atual: Em desenvolvimento**.
+> **Status Atual: Em desenvolvimento — Sprint 1 em andamento.**
 
-As instruções de instalação, configuração de ambiente e execução da aplicação serão definidas e publicadas a partir da **Sprint 1** (início em 13/04/2026), quando a arquitetura de software estiver estabelecida.
+Para rodar a aplicação localmente em 5 minutos, siga o [Quickstart](./docs/01-QUICKSTART.md).
 
 ```bash
-# Por enquanto, clone o repositório para acesso local à documentação
 git clone https://github.com/DEVassos/scrum-flow-abp.git
-cd scrum-flow-abp
+cd scrum-flow-abp/app
+cp .env.example .env   # preencha POSTGRES_PASSWORD e JWT_SECRET
+npm install && createdb abp && npm run db:init && npm run dev
 ```
+
+Acesse: [http://localhost:3005](http://localhost:3005)
 
 ---
 
 ## 📅 Sprints
 
-| Etapa | Período | Entregáveis | Vídeo |
-|-------|---------|-------------|-------|
-| **Kick-off** | 09/04/2026 | Documentação inicial e scaffolding | — |
-| **Sprint 1** | 13/04 — 30/04/2026 | Setup · Banco de Dados · Cadastro e Login | A disponibilizar |
-| **Sprint 2** | 04/05 — 21/05/2026 | Avaliação · Sorteio de Questões · Tentativas | A disponibilizar |
-| **Sprint 3** | 25/05 — 11/06/2026 | Resultado Final · Certificado · Histórico | A disponibilizar |
-| **Apresentação Final** | Semana de 22/06/2026 | Entrega e demonstração ao parceiro | A disponibilizar |
+| Etapa                  | Período              | Entregáveis                                  | Vídeo            |
+| ---------------------- | -------------------- | -------------------------------------------- | ---------------- |
+| **Kick-off**           | 09/04/2026           | Documentação inicial e scaffolding           | —                |
+| **Sprint 1**           | 13/04 — 30/04/2026   | Setup · Banco de Dados · Cadastro e Login    | A disponibilizar |
+| **Sprint 2**           | 04/05 — 21/05/2026   | Avaliação · Sorteio de Questões · Tentativas | A disponibilizar |
+| **Sprint 3**           | 25/05 — 11/06/2026   | Resultado Final · Certificado · Histórico    | A disponibilizar |
+| **Apresentação Final** | Semana de 22/06/2026 | Entrega e demonstração ao parceiro           | A disponibilizar |
 
 ---
 
@@ -165,7 +168,10 @@ cd scrum-flow-abp
 
 > Quer entender as regras de negócio, modelagem de dados, requisitos ou como o Scrum está sendo aplicado?
 
-### 📂 [Acesse a Documentação Completa em `docs/`](./docs/README.md)
+### 📂 [Acesse o Índice da Documentação em `docs/`](./docs/00-INDICE.md)
+
+> 🆕 **Primeira vez aqui?** → [Quickstart em 5 min](./docs/01-QUICKSTART.md)
+> 💻 **Vai desenvolver?** → [Guia do Desenvolvedor](./docs/03-DEVELOPER-GUIDE.md)
 
 Lá você encontrará o índice central com acesso a:
 
