@@ -112,6 +112,14 @@ xychart-beta
 
 ---
 
+## Documentos Complementares
+
+| Documento | Descrição |
+|-----------|-----------|
+| [relatorio-contribuicao-1.md](relatorio-contribuicao-1.md) | Relatório de contribuição da equipe: roadmap, análise individual, retrospectiva e métricas de participação nas dailies |
+
+---
+
 ## DoR e DoD
 
 Checklists de entrada (DoR) e conclusão (DoD) das histórias DOC, US01 e US02:
