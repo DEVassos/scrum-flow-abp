@@ -22,9 +22,9 @@
 
 | ID   | História                  | SP  | Status      | Observações                                               |
 | ---- | ------------------------- | --- | ----------- | --------------------------------------------------------- |
-| DOC  | Documentação da Aplicação | 25  | ✅ Entregue | UML, modelos BD, identidade visual e protótipo concluídos |
-| US01 | Cadastro de Usuário       | 25  | ✅ Entregue | Fluxo completo validado — hash de senha e CPF único       |
-| US02 | Login                     | 25  | ✅ Entregue | JWT no back-end, proteção de rotas implementada           |
+| DOC  | Documentação da Aplicação | 39  | ✅ Entregue | UML, modelos BD, identidade visual e protótipo concluídos |
+| US01 | Cadastro de Usuário       | 18  | ✅ Entregue | Fluxo completo validado — hash de senha e CPF único       |
+| US02 | Login                     | 18  | ✅ Entregue | JWT no back-end, proteção de rotas implementada           |
 
 **Pontos entregues:** 75 SP / **Pontos planejados:** 75 SP  
 **Aproveitamento:** 100%
@@ -39,7 +39,7 @@ Fluxo demonstrado (vídeo):
 2. **Login** — autenticação com CPF e senha, geração de JWT, redirecionamento ao Painel de Módulos.
 3. **Documentação** — navegação pelos artefatos no repositório: diagramas UML, modelos de BD, identidade visual e protótipo Figma.
 
-**Vídeo da demo:** _A disponibilizar pelo SM_  
+**Vídeo da demo:** [Assistir no YouTube](https://youtu.be/rQ7mEWP7sGU)  
 **Link da aplicação:** [ScrumFlow](https://scrum-flow-abp.onrender.com/)
 
 ---
@@ -48,42 +48,45 @@ Fluxo demonstrado (vídeo):
 
 ### DOC — Documentação da Aplicação
 
-- [ ] `README.md` estruturado com descrição do projeto, tecnologias e instruções de execução
-- [ ] Kanban do projeto configurado e refletindo o andamento das tarefas da sprint
-- [ ] Diagramas de Caso de Uso cobrindo os fluxos principais do sistema
-- [ ] Diagrama de Classes com entidades, atributos e relacionamentos
-- [ ] Diagramas de Sequência para os fluxos de cadastro, login e avaliação
-- [ ] Modelo Conceitual do BD produzido e revisado pelo time
-- [ ] Modelo Lógico do BD alinhado ao modelo conceitual e compatível com PostgreSQL
-- [ ] Identidade visual (paleta de cores, tipografia e logotipo) definida e registrada
-- [ ] Protótipo no Figma cobrindo as telas principais e navegável
+- [x] `README.md` estruturado com descrição do projeto, tecnologias e instruções de execução
+- [x] Kanban do projeto configurado e refletindo o andamento das tarefas da sprint
+- [x] Diagramas de Caso de Uso cobrindo os fluxos principais do sistema
+- [x] Diagrama de Classes com entidades, atributos e relacionamentos
+- [x] Diagramas de Sequência para os fluxos de cadastro, login e avaliação
+- [x] Modelo Conceitual do BD produzido e revisado pelo time
+- [x] Modelo Lógico do BD alinhado ao modelo conceitual e compatível com PostgreSQL
+- [x] Identidade visual (paleta de cores, tipografia e logotipo) definida e registrada
+- [x] Protótipo no Figma cobrindo as telas principais e navegável
 
 ### US01 — Cadastro de Usuário
 
-- [ ] CPF aceita apenas CPFs válidos no formato `XXX.XXX.XXX-XX`
-- [ ] CPF duplicado é rejeitado com mensagem clara ao usuário
-- [ ] Campos obrigatórios validados: CPF, nome completo, e-mail, senha (mín. 8 caracteres)
-- [ ] Senha armazenada com hash criptográfico — nunca em texto puro
-- [ ] Após cadastro bem-sucedido, usuário é redirecionado para a página de login
+- [x] CPF aceita apenas CPFs válidos no formato `XXX.XXX.XXX-XX`
+- [x] CPF duplicado é rejeitado com mensagem clara ao usuário
+- [x] Campos obrigatórios validados: CPF, nome completo, e-mail, senha (mín. 8 caracteres)
+- [x] Senha armazenada com hash criptográfico — nunca em texto puro
+- [x] Após cadastro bem-sucedido, usuário é redirecionado para a página de login
 - [ ] Interface responsiva — funciona em dispositivos móveis
 
 ### US02 — Login
 
-- [ ] Login aceita apenas CPF e senha (sem e-mail)
-- [ ] Após login bem-sucedido, redirecionamento ao painel de módulos
-- [ ] Credenciais inválidas retornam mensagem genérica (não especifica qual campo está errado)
-- [ ] Sessão/token gerenciada pelo back-end
+- [x] Login aceita apenas CPF e senha (sem e-mail)
+- [x] Após login bem-sucedido, redirecionamento ao painel de módulos
+- [x] Credenciais inválidas retornam mensagem genérica (não especifica qual campo está errado)
+- [x] Sessão/token gerenciada pelo back-end
 
-**PO:** _A preencher_  
-**Data de validação:** _A preencher_
+**PO:** Gustavo Koiti  
+**Data de validação:** 30/04/2026
 
 ---
 
 ## Feedback do Product Owner
 
-| Item | Feedback              | Ação Necessária |
-| ---- | --------------------- | --------------- |
-| —    | _A preencher pelo PO_ | —               |
+| Item | Feedback | Ação Necessária |
+|------|----------|-----------------|
+| DOC — Documentação geral | Todos os artefatos foram produzidos dentro do esperado. O README está claro e as instruções de execução são objetivas. Os diagramas cobrem os fluxos principais e a identidade visual está alinhada com a proposta do projeto. | Nenhuma — aprovado |
+| US01 — Cadastro | O fluxo de cadastro funciona conforme os critérios de aceite. A validação de CPF duplicado está clara para o usuário. **Ressalva:** a responsividade em dispositivos móveis não está satisfatória — a interface não se comporta adequadamente em telas pequenas. | Ajustar responsividade (CSS mobile-first) nas Sprints 2 ou 3 |
+| US02 — Login | O login funciona corretamente com CPF e senha. O redirecionamento para o painel de módulos ocorre sem erros e as mensagens de erro genéricas estão de acordo com o requisito de segurança. | Nenhuma — aprovado |
+| Entrega adicional | A equipe entregou, além do comprometido, a página de manifesto e a página "O que é Scrum" — iniciativa valorizada pelo PO como demonstração de comprometimento e cuidado com a experiência do usuário. | Nenhuma — destaque positivo |
 
 ---
 
@@ -95,7 +98,7 @@ Nenhum item ficou pendente nesta sprint. Todas as histórias comprometidas (DOC,
 
 ## Observações Finais
 
-_A preencher pelo SM com base no feedback coletado e na validação do PO._
+As histórias da Sprint 1 foram validadas e aceitas pelo PO. Ressalva registrada: a responsividade em dispositivos móveis não está satisfatória e será endereçada nas Sprints 2 ou 3. O incremento entregue — cadastro, login e documentação completa — está funcional e acessível em [scrum-flow-abp.onrender.com](https://scrum-flow-abp.onrender.com/). O burndown encerrou em 0 SP no dia 28/04, um dia antes do prazo, com entregas adicionais além do sprint backlog. A Sprint 2 inicia com a base técnica e documental estabelecida.
 
 ---
 

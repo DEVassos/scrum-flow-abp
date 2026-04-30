@@ -80,7 +80,7 @@ xychart-beta
 
 **Legenda:**
 - 🟢 Linha ideal (75 → 0 SP)
-- 🔴 Linha real (a preencher)
+- 🔴 Linha real
 
 | Data | Dia | Pontos Ideal | Pontos Real | Impedimentos |
 |:----:|-----|:------------:|:-----------:|--------------|
@@ -94,8 +94,8 @@ xychart-beta
 | 24/04 | Sexta | 25 | 36 | Reunião não realizada |
 | 27/04 | Segunda | 19 | 8 | — |
 | 28/04 | Terça | 13 | 0 | — |
-| 29/04 | Quarta | 6 | — | — |
-| 30/04 | Quinta | 0 | — | — |
+| 29/04 | Quarta | 6 | 0 | — |
+| 30/04 | Quinta | 0 | 0 | — |
 
 ---
 
@@ -122,18 +122,17 @@ Checklists de entrada (DoR) e conclusão (DoD) das histórias DOC, US01 e US02:
 
 ## Resultado da Sprint
 
-> A preencher ao final da Sprint Review.
-
 **Pontos planejados:** 75 SP  
-**Pontos entregues (DoD completo):** —  
-**Pontos não entregues:** —  
-**Velocidade da sprint:** — pontos  
+**Pontos entregues (DoD completo):** 75 SP  
+**Pontos não entregues:** 0  
+**Velocidade da sprint:** 75 pontos  
 
-**Histórias concluídas:** —  
-**Histórias não entregues (e motivo):** —  
+**Histórias concluídas:** DOC, US01 ⚠️, US02  
+**Histórias não entregues:** nenhuma  
 
 ### Observações sobre a execução
 
-> Registre desvios do burndown, bloqueios recorrentes, mudança de escopo ou qualquer fato relevante para a retrospectiva.
-
-_A preencher na Sprint Review / Retrospectiva._
+- Burndown zerado em 28/04, um dia antes do prazo — sprint entregue com antecedência.
+- US01 aceita com ressalva: responsividade em dispositivos móveis não está satisfatória. Ação registrada para Sprint 2/3.
+- Entregas adicionais além do sprint backlog: página de manifesto da equipe e página "O que é Scrum".
+- Impedimento registrado em 24/04 (reunião não realizada) não impactou o resultado final.
