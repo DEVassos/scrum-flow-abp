@@ -19,6 +19,25 @@
     linkDashboard.style.display = estaAutenticado() ? "" : "none";
   }
 
+    // ── Hamburguer ───────────────────────────────────────────────────────────
+  // Abre e fecha o menu vertical. Fecha também ao clicar em qualquer link.
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", function () {
+      hamburger.classList.toggle("aberto");
+      navMenu.classList.toggle("aberto");
+    });
+
+    navMenu.querySelectorAll(".nav-link").forEach(function (link) {
+      link.addEventListener("click", function () {
+        hamburger.classList.remove("aberto");
+        navMenu.classList.remove("aberto");
+      });
+    });
+  }
+
   // ── Estado da navbar (logado / deslogado) ────────────────────────────────
   const navDeslogado = document.getElementById("nav-deslogado");
   const navLogado    = document.getElementById("nav-logado");
