@@ -79,7 +79,7 @@ xychart-beta
 
 | Dia | Data | Dia da semana | Pontos Ideal | Pontos Real | Impedimentos |
 |:---:|:----:|:-------------:|:------------:|:-----------:|:-------------|
-| 1  | 04/05 | Segunda | 83 | — | — |
+| 1  | 04/05 | Segunda | 83 | 89 | — |
 | 2  | 05/05 | Terça   | 76 | — | — |
 | 3  | 06/05 | Quarta  | 70 | — | — |
 | 4  | 07/05 | Quinta  | 64 | — | — |
