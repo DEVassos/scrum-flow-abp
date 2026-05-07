@@ -1,23 +1,33 @@
 const { Router } = require("express");
 const authMiddleware = require("../middlewares/auth.middleware");
 const {
-  findQuestoesByExame,
+  findProximaQuestaoByUsuario,
 } = require("../repositories/questoes.repositories");
 
 const router = Router();
 
-router.get("/:idExame/questoes", authMiddleware, async function (req, res) {
+//rota protegida para recuperar a próxima questão a ser respondida pelo usuário logado
+router.get("/proxima-questao", authMiddleware, async function (req, res) {
   try {
-    const idExame = Number(req.params.idExame);
+    const questao = await findProximaQuestaoByUsuario(req.usuario.id_usuario);
 
-    const questoes = await findQuestoesByExame(idExame);
+    if (!questao) {
+      return res
+        .status(404)
+        .json({ message: "nenhuma questão pendente encontrada" });
+    }
 
-    return res.status(200).json(questoes);
+    return res.status(200).json({
+      ...questao,
+      imagem: questao.imagem ? `/imagens/questoes/${questao.imagem}` : null,
+    });
+
   } catch (e) {
     return res.status(500).json({
       message: "erro interno do servidor",
     });
   }
 });
+
 
 module.exports = router;
