@@ -1,3 +1,6 @@
+//arquivo de configuração do servidor
+
+//importa bibliotecas
 const dotenv = require("dotenv");
 const express = require('express');
 const path = require('path');
@@ -25,12 +28,20 @@ app.use(express.json());
 const publicPath = path.join(__dirname, "..", "public");
 const pagesPath = path.join(publicPath, "pages");
 const assetsPath = path.join(publicPath, "assets");
+const imagensQuestoesPath = path.join(
+    __dirname,
+    "infra",
+    "init",
+    "seed-data",
+    "imagens",
+);
 
 // Servir página inicial (HTML)
 app.use("/", express.static(pagesPath));
 
 // Servir assets (CSS, JS, imagens, etc)
 app.use("/assets", express.static(assetsPath));
+app.use("/imagens/questoes", express.static(imagensQuestoesPath));
 
 // ===== ROTAS DA API =====
 
