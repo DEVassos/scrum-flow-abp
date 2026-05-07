@@ -6,8 +6,9 @@ const router = Router();
 
 // ===== MAPEAMENTO DE ROTAS =====
 
-// Rotas de usuários
+// Rotas de usuários e questões
 router.use("/usuarios", usuarios);
+router.use("/questoes", questoes);
 
 // Rotas de autenticação
 router.use("/auth", auth);
