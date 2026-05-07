@@ -54,3 +54,26 @@ body {
     padding: 0;
     overflow-x: hidden; /* Impede scroll lateral causado pelos blobs saindo da tela */
 }
+
+/* ================================
+   SISTEMA DE BREAKPOINTS
+   Mobile-first: base = mobile,
+   sobrescreve para telas maiores.
+
+   480px  — mobile pequeno
+   768px  — tablet / mobile grande
+   1024px — desktop
+   ================================ */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 48px;
+    }
+}
