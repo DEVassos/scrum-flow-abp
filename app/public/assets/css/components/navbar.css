@@ -97,3 +97,38 @@
   font-size: 14px;
   color: var(--slate-400);
 }
+
+/* ================================
+   RESPONSIVIDADE
+   ================================ */
+
+/* Tablet — reduz padding e logo pra não estourar a linha */
+@media (max-width: 768px) {
+    .navbar__container {
+        padding: 0 16px;
+    }
+
+    .logo {
+        font-size: 40px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    /* Remove "Home" da lista — o próprio logo já leva pra página inicial */
+    .nav-links li:first-child {
+        display: none;
+    }
+}
+
+/* Mobile — esconde os links até o menu hamburguer ser implementado */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 34px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
