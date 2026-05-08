@@ -15,10 +15,10 @@
 
 | # | Tarefa | História | Responsável | Status |
 |:-:|--------|:--------:|-------------|:------:|
-| T01 | Endpoint GET /api/exames/:idExame/questoes | US03 | Marcello + Gustavo | 🔲 |
-| T02 | Endpoint POST /api/exames/:idExame/respostas | US03 | Marcello + Gustavo | 🔲 |
+| T01 | Endpoint GET /api/exames/:idExame/questoes | US03 | Marcello + Gustavo | ✅ |
+| T02 | Endpoint POST /api/exames/:idExame/respostas | US03 | Marcello + Gustavo | ✅ |
 | T03 | Revisar lógica de sortear questões | US03 | Vinicius + Gabriel | 🔲 |
-| T04 | Repository: exames.repositories.js | US03 | Marcello + Gabriel | 🔲 |
+| T04 | Repository: exames.repositories.js | US03 | Marcello + Gabriel | ✅ |
 | T05 | Página: avaliacao.html | US03 | Andrea + Henrique | 🔲 |
 | T06 | Fluxo de questões em avaliacao.js | US03 | Andrea + Lucas | 🔲 |
 | T07 | Tela de resultado imediato após submissão | US03 | Henrique + Lucas | 🔲 |
@@ -28,7 +28,7 @@
 | T11 | Repository: progresso.repositories.js | US04 | Gustavo + Vinicius | 🔲 |
 | T12 | Atualizar dashboard.html + dashboard.js | US04 | Andrea + Henrique + Lucas | 🔲 |
 | T13 | Fluxo de navegação: dashboard → avaliacao → resultado | US04 | Andrea + Lucas | 🔲 |
-| T14 | Revisar index.html / index.css — responsividade mobile *(ressalva S1)* | Correção | Henrique + Lucas | 🔲 |
+| T14 | Revisar index.html / index.css — responsividade mobile *(ressalva S1)* | Correção | Henrique + Lucas | ✅ |
 | T15 | Breakpoints consistentes em global.css (mobile-first) *(ressalva S1)* | Correção | Andrea + Henrique | 🔲 |
 | T16 | Endpoint POST /api/exames (iniciar avaliação + sortear questões) | Infra | Marcello + Gustavo | 🔲 |
 | T17 | Coluna pontuacao em exames + migration SQL | Infra | Vinicius + Gabriel | 🔲 |
@@ -71,7 +71,7 @@ xychart-beta
     x-axis ["04/05", "05/05", "06/05", "07/05", "08/05", "11/05", "12/05", "13/05", "14/05", "15/05", "18/05", "19/05", "20/05", "21/05"]
     y-axis "Pontos Restantes" 0 --> 90
     line [83, 76, 70, 64, 57, 51, 45, 38, 32, 25, 19, 13, 6, 0]
-    line [89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89]
+    line [89, 89, 89, 76, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89]
 ```
 
 > 🔵 **Linha 1 — Ideal:** queima linear esperada (não editar)
@@ -82,7 +82,7 @@ xychart-beta
 | 1  | 04/05 | Segunda | 83 | 89 | — |
 | 2  | 05/05 | Terça   | 76 | 89 | Sprint Planning (Sem Daily) |
 | 3  | 06/05 | Quarta  | 70 | 89 | — |
-| 4  | 07/05 | Quinta  | 64 | — | — |
+| 4  | 07/05 | Quinta  | 64 | 76 | — |
 | 5  | 08/05 | Sexta   | 57 | — | — |
 | 6  | 11/05 | Segunda | 51 | — | — |
 | 7  | 12/05 | Terça   | 45 | — | — |
