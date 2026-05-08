@@ -5,6 +5,7 @@ const {
   findQuestaoDoExameByUsuario,
   findRespostaByExameEQuestao,
   inserirRespostaQuestao,
+  usuarioConcluiuModuloAtual,
 } = require("../repositories/questoes.repositories");
 
 const router = Router();
@@ -70,5 +71,55 @@ router.post("/responder", authMiddleware, async function (req, res) {
     });
   }
 });
+
+//rota para criar a próxima tentativa
+/*
+curl -X PATCH http://localhost:3000/api/questoes/proxima-tentativa \
+  -H "Authorization: Bearer SEU_TOKEN"
+*/
+router.patch("/proxima-tentativa", authMiddleware, async function (req, res) {
+  try {
+    const concluido = await usuarioConcluiuModuloAtual(req.usuario.id_usuario);
+    if (!concluido) {
+      return res.status(409).json({
+        message: "você ainda não concluiu todas as questões do módulo atual",
+      });
+    }
+
+    const modulo = await findModuloAtualByUsuario(req.usuario.id_usuario);
+    if (!modulo) {
+      return res.status(404).json({
+        message: "módulo atual não encontrado",
+      });
+    }
+
+    if( modulo.tentativa >= 2 ){
+      return res.status(409).json({
+        message: "limite de 2 tentativas atingido",
+      });
+    }
+
+    const grupo = await findOutroGrupoAleatorio(req.usuario.id_usuario, modu-lo.id_modulo);
+    if( !grupo ){
+      return res.status(404).json({
+        message: "nenhum grupo alternativo disponível para este módulo",
+      });
+    }
+
+    const exame = await updateProximaTentati-va(modulo.id_exame,grupo,modulo.tentativa+1);
+    if (!exame) {
+      return res.status(404).json({
+        message: "exame não encontrado para atualização",
+      });
+    }
+
+    return res.status(200).json(exame);
+  } catch (e) {
+    return res.status(500).json({
+      message: "erro interno do servidor",
+    });
+  }
+});
+
 
 module.exports = router;
