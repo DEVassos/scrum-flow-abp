@@ -5,13 +5,14 @@ const {
   findQuestaoDoExameByUsuario,
   findRespostaByExameEQuestao,
   inserirRespostaQuestao,
-  usuarioConcluiuModuloAtual,
-  updateProximoModulo,
 } = require("../repositories/questoes.repositories");
-
 const router = Router();
 
-//rota protegida para recuperar a próxima questão a ser respondida pelo usuário logado
+/*
+curl -X GET http://localhost:3000/api/questoes/proxima-questao \
+  -H "Authorization: Bearer SEU_TOKEN"
+*/
+
 router.get("/proxima-questao", authMiddleware, async function (req, res) {
   try {
     const questao = await findProximaQuestaoByUsuario(req.usuario.id_usuario);
@@ -22,11 +23,7 @@ router.get("/proxima-questao", authMiddleware, async function (req, res) {
         .json({ message: "nenhuma questão pendente encontrada" });
     }
 
-    return res.status(200).json({
-      ...questao,
-      imagem: questao.imagem ? `/imagens/questoes/${questao.imagem}` : null,
-    });
-
+    return res.status(200).json(questao);
   } catch (e) {
     return res.status(500).json({
       message: "erro interno do servidor",
@@ -34,7 +31,6 @@ router.get("/proxima-questao", authMiddleware, async function (req, res) {
   }
 });
 
-//rota para inserir a resposta de uma questão na tabela de respostas
 router.post("/responder", authMiddleware, async function (req, res) {
   try {
     console.log("body", req.body);
@@ -63,58 +59,9 @@ router.post("/responder", authMiddleware, async function (req, res) {
 
     const nota = questao.alternativa_correta === respostaNormalizada ? 1 : 0;
 
-    const respostaInserida = await inserirRespostaQuestao(id_exame, id_questao, res-postaNormalizada,nota);
+    const respostaInserida = await inserirRespostaQuestao(id_exame, id_questao, respostaNormalizada,nota);
 
     return res.status(201).json(respostaInserida);
-  } catch (e) {
-    return res.status(500).json({
-      message: "erro interno do servidor",
-    });
-  }
-});
-
-//rota para criar a próxima tentativa
-/*
-curl -X PATCH http://localhost:3000/api/questoes/proxima-tentativa \
-  -H "Authorization: Bearer SEU_TOKEN"
-*/
-router.patch("/proxima-tentativa", authMiddleware, async function (req, res) {
-  try {
-    const concluido = await usuarioConcluiuModuloAtual(req.usuario.id_usuario);
-    if (!concluido) {
-      return res.status(409).json({
-        message: "você ainda não concluiu todas as questões do módulo atual",
-      });
-    }
-
-    const modulo = await findModuloAtualByUsuario(req.usuario.id_usuario);
-    if (!modulo) {
-      return res.status(404).json({
-        message: "módulo atual não encontrado",
-      });
-    }
-
-    if( modulo.tentativa >= 2 ){
-      return res.status(409).json({
-        message: "limite de 2 tentativas atingido",
-      });
-    }
-
-    const grupo = await findOutroGrupoAleatorio(req.usuario.id_usuario, modu-lo.id_modulo);
-    if( !grupo ){
-      return res.status(404).json({
-        message: "nenhum grupo alternativo disponível para este módulo",
-      });
-    }
-
-    const exame = await updateProximaTentati-va(modulo.id_exame,grupo,modulo.tentativa+1);
-    if (!exame) {
-      return res.status(404).json({
-        message: "exame não encontrado para atualização",
-      });
-    }
-
-    return res.status(200).json(exame);
   } catch (e) {
     return res.status(500).json({
       message: "erro interno do servidor",
