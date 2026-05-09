@@ -144,10 +144,34 @@ async function usuarioConcluiuModuloAtual(idUsuario) {
   return result.rows[0]?.concluido || false;
 };
 
+//atualizar para o próximo módulo
+async function updateProximoModulo(idExame, modulo, grupo, tentativa) {
+  const result = await pool.query(
+    `
+    UPDATE exames
+    SET
+      id_modulo = $1,
+      grupo = $2,
+      tentativa = $3
+    WHERE id_exame = $4
+    RETURNING
+      id_exame,
+      id_modulo,
+      id_usuario,
+      grupo,
+      tentativa
+    `,
+    [modulo, grupo, tentativa, idExame],
+  );
+
+  return result.rows[0] || null;
+};
+
 module.exports = {
   findProximaQuestaoByUsuario,
   findQuestaoDoExameByUsuario,
   findRespostaByExameEQuestao,
   inserirRespostaQuestao,
   usuarioConcluiuModuloAtual,
+  updateProximoModulo
 };
