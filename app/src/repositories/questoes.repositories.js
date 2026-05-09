@@ -214,6 +214,33 @@ async function updateProximaTentativa(idExame, grupo, tentativa) {
   return result.rows[0] || null;
 };
 
+//retornar o próximo módulo
+async function findProximoModuloByUsuario(idUsuario) {
+  const result = await pool.query(
+    `
+    WITH modulo_atual AS (
+      SELECT id_modulo
+      FROM exames
+      WHERE id_usuario = $1
+      ORDER BY id_exame DESC
+      LIMIT 1
+    )
+    SELECT
+      m.id_modulo,
+      m.titulo
+    FROM modulos m
+    INNER JOIN modulo_atual ma
+      ON m.id_modulo > ma.id_modulo
+    ORDER BY m.id_modulo ASC
+    LIMIT 1
+    `,
+    [idUsuario],
+  );
+
+  return result.rows[0]?.id_modulo || null;
+};
+
+
 module.exports = {
   findProximaQuestaoByUsuario,
   findQuestaoDoExameByUsuario,
