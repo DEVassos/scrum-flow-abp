@@ -1,13 +1,15 @@
 const { Router } = require('express');
 const usuarios = require('./usuarios.routes');
+const questoes = require("./questoes.routes");
 const auth = require('./auth.routes');
 
 const router = Router();
 
 // ===== MAPEAMENTO DE ROTAS =====
 
-// Rotas de usuários
+// Rotas de usuários e questões
 router.use("/usuarios", usuarios);
+router.use("/questoes", questoes);
 
 // Rotas de autenticação
 router.use("/auth", auth);
