@@ -16,7 +16,11 @@ const {
 //cria objeto
 const router = Router();
 
-//rota protegida para recuperar a próxima questão a ser respondida pelo usuário logado
+/*
+curl -X GET http://localhost:3000/api/questoes/proxima-questao \
+  -H "Authorization: Bearer SEU_TOKEN"
+*/
+
 router.get("/proxima-questao", authMiddleware, async function (req, res) {
   try {
     const questao = await findProximaQuestaoByUsuario(req.usuario.id_usuario);
@@ -27,11 +31,7 @@ router.get("/proxima-questao", authMiddleware, async function (req, res) {
         .json({ message: "nenhuma questão pendente encontrada" });
     }
 
-    return res.status(200).json({
-      ...questao,
-      imagem: questao.imagem ? `/imagens/questoes/${questao.imagem}` : null,
-    });
-
+    return res.status(200).json(questao);
   } catch (e) {
     return res.status(500).json({
       message: "erro interno do servidor",
@@ -39,7 +39,6 @@ router.get("/proxima-questao", authMiddleware, async function (req, res) {
   }
 });
 
-//rota para inserir a resposta de uma questão na tabela de respostas
 router.post("/responder", authMiddleware, async function (req, res) {
   try {
     console.log("body", req.body);
