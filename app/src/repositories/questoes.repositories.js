@@ -167,6 +167,30 @@ async function findModuloAtualByUsuario(idUsuario) {
   return result.rows[0] || null;
 };
 
+//obter um grupo de questões diferente do grupo atual para criar a próxima tentativa
+async function findOutroGrupoAleatorio(idUsuario, idModulo) {
+  const result = await pool.query(
+    `
+    SELECT q.grupo
+    FROM questoes q
+    WHERE q.id_modulo = $1
+      AND q.grupo IS NOT NULL
+      AND q.grupo NOT IN (
+        SELECT e.grupo
+        FROM exames e
+        WHERE e.id_usuario = $2
+          AND e.id_modulo = $1
+          AND e.grupo IS NOT NULL
+      )
+    GROUP BY q.grupo
+    ORDER BY RANDOM()
+    LIMIT 1
+    `,
+    [idModulo, idUsuario],
+  );
+
+  return result.rows[0]?.grupo || null;
+};
 
 module.exports = {
   findProximaQuestaoByUsuario,
