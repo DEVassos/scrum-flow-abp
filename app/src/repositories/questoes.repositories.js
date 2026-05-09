@@ -192,6 +192,28 @@ async function findOutroGrupoAleatorio(idUsuario, idModulo) {
   return result.rows[0]?.grupo || null;
 };
 
+//atualizar a próxima tentativa
+async function updateProximaTentativa(idExame, grupo, tentativa) {
+  const result = await pool.query(
+    `
+    UPDATE exames
+    SET
+      grupo = $1,
+      tentativa = $2
+    WHERE id_exame = $3
+    RETURNING
+      id_exame,
+      id_modulo,
+      id_usuario,
+      grupo,
+      tentativa
+    `,
+    [grupo, tentativa, idExame],
+  );
+
+  return result.rows[0] || null;
+};
+
 module.exports = {
   findProximaQuestaoByUsuario,
   findQuestaoDoExameByUsuario,
