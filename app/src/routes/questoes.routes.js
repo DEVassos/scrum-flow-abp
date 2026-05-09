@@ -6,6 +6,7 @@ const {
   findRespostaByExameEQuestao,
   inserirRespostaQuestao,
   usuarioConcluiuModuloAtual,
+  updateProximoModulo,
 } = require("../repositories/questoes.repositories");
 
 const router = Router();
