@@ -144,6 +144,30 @@ async function usuarioConcluiuModuloAtual(idUsuario) {
   return result.rows[0]?.concluido || false;
 };
 
+//obter o módulo que o usuário está respondendo
+async function findModuloAtualByUsuario(idUsuario) {
+  const result = await pool.query(
+    `
+    SELECT
+      e.id_exame,
+      e.id_modulo,
+      m.titulo,
+      e.grupo,
+      e.tentativa
+    FROM exames e
+    INNER JOIN modulos m
+      ON m.id_modulo = e.id_modulo
+    WHERE e.id_usuario = $1
+    ORDER BY e.id_exame DESC
+    LIMIT 1
+    `,
+    [idUsuario],
+  );
+
+  return result.rows[0] || null;
+};
+
+
 module.exports = {
   findProximaQuestaoByUsuario,
   findQuestaoDoExameByUsuario,
