@@ -1,12 +1,15 @@
-//arquivo de configuração do servidor
-
-//importa bibliotecas
+/**
+ * SCRUM FLOW - PONTO DE ENTRADA DO SERVIDOR
+ * Este arquivo configura e inicializa o servidor Express, define middlewares globais,
+ * gerencia arquivos estáticos e mapeia as rotas da API.
+ */
 const dotenv = require("dotenv");
 const express = require('express');
 const path = require('path');
 const router = require('./routes');
 
-// Carrega variáveis de ambiente do arquivo .env (configurações de banco de dados, JWT, etc)
+// Carrega as variáveis de ambiente (Configurações de Banco de Dados, Segredos JWT, Porta, etc.)
+// O arquivo .env deve estar localizado na raiz do projeto.
 dotenv.config({
     quiet: true,
     path: path.resolve(__dirname, '..', '.env'),
