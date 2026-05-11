@@ -3,15 +3,21 @@ const usuarios = require('./usuarios.routes');
 const questoes = require("./questoes.routes");
 const auth = require('./auth.routes');
 
+/**
+ * Roteador Central da API.
+ * Aqui são agregadas todas as rotas específicas da aplicação.
+ */
 const router = Router();
 
 // ===== MAPEAMENTO DE ROTAS =====
 
-// Rotas de usuários e questões
+// Agrupa as rotas relacionadas a usuários sob o prefixo /usuarios
 router.use("/usuarios", usuarios);
+
+// Agrupa as rotas relacionadas a questões e exames sob o prefixo /questoes
 router.use("/questoes", questoes);
 
-// Rotas de autenticação
+// Agrupa as rotas de autenticação (login) sob o prefixo /auth
 router.use("/auth", auth);
 
 // ===== TRATAMENTO DE ROTAS NÃO ENCONTRADAS =====

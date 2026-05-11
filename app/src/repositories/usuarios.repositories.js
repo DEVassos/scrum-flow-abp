@@ -3,14 +3,25 @@ const { randomBytes } = require('crypto');
 const { hashPassword, verifyPassword } = require('../utils/password');
 
 // Insere um novo usuário no banco de dados
+/**
+ * Realiza a inserção bruta do usuário na tabela.
+ * Gera um hash de certificado único e codifica a senha.
+ * 
+ * @async
+ * @param {Object} client - O cliente da transação do PostgreSQL.
+ * @param {string} nome - Nome do usuário.
+ * @param {string} email - Email do usuário.
+ * @param {string} cpf - CPF sanitizado.
+ * @param {string} senha - Senha em texto plano.
+ * @returns {Promise<Object>} Dados do usuário inserido.
+ */
 async function insertUsuario(client, nome, email, cpf, senha) {
-  // Gera hash único para certificação do usuário (24 bytes = 48 caracteres hex)
+  // Gera hash único para certificação do usuário (usado para validar certificados de conclusão)
   const certificado_hash = randomBytes(24).toString('hex');
 
-  // Codifica a senha com salt único usando scrypt
+  // Codifica a senha utilizando o utilitário de hash seguro
   const senhaCodificada = hashPassword(senha);
 
-  // Insere usuário e retorna dados inseridos
   const result = await client.query(
     `INSERT INTO usuarios (nome, email, cpf, senha, certificado_hash)
      VALUES ($1, $2, $3, $4, $5)
@@ -21,7 +32,13 @@ async function insertUsuario(client, nome, email, cpf, senha) {
   return result.rows[0] || null;
 }
 
-// Busca o ID do primeiro módulo disponível (por ordem de ID)
+/**
+ * Busca o ID do primeiro módulo da trilha de aprendizagem.
+ * 
+ * @async
+ * @param {Object} client - O cliente do PostgreSQL.
+ * @returns {Promise<Object>}
+ */
 async function findPrimeiroModuloId(client) {
   const result = await client.query(
     `SELECT id_modulo FROM modulos ORDER BY id_modulo ASC LIMIT 1`
@@ -29,7 +46,14 @@ async function findPrimeiroModuloId(client) {
   return result.rows[0] || null;
 }
 
-// Busca um grupo de questões aleatório de um módulo
+/**
+ * Sorteia um grupo de questões aleatório disponível para um determinado módulo.
+ * 
+ * @async
+ * @param {Object} client - O cliente do PostgreSQL.
+ * @param {number} idModulo - ID do módulo.
+ * @returns {Promise<Object>}
+ */
 async function findGrupoAleatorio(client, idModulo) {
   const result = await client.query(
     `SELECT grupo
@@ -44,7 +68,16 @@ async function findGrupoAleatorio(client, idModulo) {
   return result.rows[0] || null;
 }
 
-//Insere um novo exame para o usuário (prova inicial)
+/**
+ * Cria o registro de um novo exame vinculado ao usuário.
+ * 
+ * @async
+ * @param {Object} client - O cliente do PostgreSQL.
+ * @param {number} idModulo - ID do módulo inicial.
+ * @param {number} idUsuario - ID do usuário recém criado.
+ * @param {string} grupo - Grupo de questões sorteado.
+ * @param {number} tentativa - Contador de tentativas (inicia em 1).
+ */
 async function insertExame(client, idModulo, idUsuario, grupo, tentativa) {
   await client.query(
     `INSERT INTO exames (id_modulo, id_usuario, grupo, tentativa)
@@ -54,7 +87,21 @@ async function insertExame(client, idModulo, idUsuario, grupo, tentativa) {
   );
 }
 
-// Cria um novo usuário com configuração inicial (transação)
+/**
+ * Lógica complexa de criação de usuário (Cadastro Completo).
+ * Realiza as seguintes etapas dentro de uma única TRANSAÇÃO:
+ * 1. Insere o registro do usuário.
+ * 2. Identifica o módulo inicial.
+ * 3. Sorteia um grupo de questões.
+ * 4. Cria o exame inicial para permitir que o usuário comece a trilha imediatamente.
+ * 
+ * @async
+ * @param {string} nome - Nome.
+ * @param {string} email - Email.
+ * @param {string} cpf - CPF.
+ * @param {string} senha - Senha.
+ * @returns {Promise<Object>} Dados básicos do usuário criado.
+ */
 async function createUsuario(nome, email, cpf, senha) {
   // Obtém uma conexão do pool para usar na transação
   const client = await pool.connect();
@@ -68,6 +115,7 @@ async function createUsuario(nome, email, cpf, senha) {
 
     // 2. Busca o primeiro módulo disponível
     const modulo = await findPrimeiroModuloId(client);
+
     if (!modulo) {
       throw new Error("Nenhum módulo encontrado para inicializar exame do usuário");
     }
@@ -98,8 +146,8 @@ async function createUsuario(nome, email, cpf, senha) {
       cpf: usuario.cpf
     };
   } catch (e) {
-    // Em caso de erro, desfaz todas as operações (ROLLBACK)
-    client.query('ROLLBACK');
+    // Reverte todas as operações se qualquer uma falhar
+    await client.query('ROLLBACK');
     throw e;
   } finally {
     // Sempre libera a conexão de volta ao pool
@@ -107,7 +155,14 @@ async function createUsuario(nome, email, cpf, senha) {
   }
 }
 
-// Atualiza o CPF de um usuário
+/**
+ * Atualiza o CPF de um usuário existente.
+ * 
+ * @async
+ * @param {number} idUsuario - ID do usuário.
+ * @param {string} cpf - Novo CPF.
+ * @returns {Promise<Object|null>}
+ */
 async function updateUsuarioCpf(idUsuario, cpf) {
   const result = await pool.query(
     `UPDATE usuarios
@@ -119,7 +174,14 @@ async function updateUsuarioCpf(idUsuario, cpf) {
   return result.rows[0] || null;
 }
 
-// Atualiza o nome de um usuário
+/**
+ * Atualiza o nome de um usuário.
+ * 
+ * @async
+ * @param {number} idUsuario - ID do usuário.
+ * @param {string} nome - Novo nome.
+ * @returns {Promise<Object|null>}
+ */
 async function updateUsuarioNome(idUsuario, nome) {
   const result = await pool.query(
     `UPDATE usuarios
@@ -131,8 +193,14 @@ async function updateUsuarioNome(idUsuario, nome) {
   return result.rows[0] || null;
 }
 
-// Atualiza o email de um usuário
-
+/**
+ * Atualiza o endereço de e-mail de um usuário.
+ * 
+ * @async
+ * @param {number} idUsuario - ID do usuário.
+ * @param {string} email - Novo e-mail.
+ * @returns {Promise<Object|null>}
+ */
 async function updateUsuarioEmail(idUsuario, email) {
   const result = await pool.query(
     `UPDATE usuarios
@@ -144,7 +212,14 @@ async function updateUsuarioEmail(idUsuario, email) {
   return result.rows[0] || null;
 }
 
-// Atualiza a senha de um usuário (com hash)
+/**
+ * Atualiza a senha do usuário, gerando um novo hash seguro.
+ * 
+ * @async
+ * @param {number} idUsuario - ID do usuário.
+ * @param {string} senha - Nova senha em texto plano.
+ * @returns {Promise<Object|null>}
+ */
 async function updateUsuarioSenha(idUsuario, senha) {
   // Codifica a nova senha com scrypt
   const senhaCodificada = hashPassword(senha);
@@ -159,8 +234,13 @@ async function updateUsuarioSenha(idUsuario, senha) {
   return result.rows[0] || null;
 }
 
-// Busca um usuário por ID
-
+/**
+ * Recupera os dados básicos de um usuário pelo seu identificador único.
+ * 
+ * @async
+ * @param {number} idUsuario - ID do usuário.
+ * @returns {Promise<Object|null>}
+ */
 async function findUsuarioById(idUsuario) {
   const result = await pool.query(
     `SELECT id_usuario, nome, email, cpf
@@ -171,7 +251,16 @@ async function findUsuarioById(idUsuario) {
   return result.rows[0] || null;
 }
 
-// Autenticação: busca e valida usuário por CPF e senha
+/**
+ * Localiza um usuário pelo CPF e valida se a senha fornecida é correta.
+ * Usado no fluxo de LOGIN.
+ * 
+ * @async
+ * @param {string} cpf - CPF do usuário.
+ * @param {string} senha - Senha em texto plano.
+ * @throws {Error} Caso usuário não exista ou senha seja inválida.
+ * @returns {Promise<Object>} Dados do usuário autenticado.
+ */
 async function findUsuarioByCpfAndSenha(cpf, senha) {
   // Busca usuário pelo CPF (junto com hash de senha para validar)
   const result = await pool.query(

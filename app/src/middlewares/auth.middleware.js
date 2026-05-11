@@ -1,10 +1,24 @@
+/**
+ * Middleware de Autenticação JWT.
+ * Intercepta as requisições para verificar se o usuário possui um token válido
+ * e se está autorizado a acessar o recurso solicitado.
+ */
 const { verifyToken } = require("../utils/jwt");
 const { findUsuarioById } = require("../repositories/usuarios.repositories");
 
+/**
+ * Middleware que valida o Token Bearer enviado no cabeçalho Authorization.
+ * Se o token for válido, os dados do usuário são injetados no objeto 'req.usuario'.
+ * 
+ * @async
+ * @param {import('express').Request} req - Objeto de requisição do Express.
+ * @param {import('express').Response} res - Objeto de resposta do Express.
+ * @param {import('express').NextFunction} next - Função para passar o controle ao próximo middleware.
+ */
 async function authMiddleware(req, res, next) {
   const authorization = req.headers.authorization;
 
-  // Verifica se o header Authorization está presente
+  // Verifica se o cabeçalho Authorization foi fornecido na requisição
   if (!authorization) {
     return res.status(401).json({
       message: "token não informado",
@@ -12,11 +26,10 @@ async function authMiddleware(req, res, next) {
     });
   }
 
-  // Extrai tipo de autenticação e token
-  // Esperado formato: "Bearer {token}"
+  // Extrai o tipo (Bearer) e o token propriamente dito
   const [type, token] = authorization.split(" ");
 
-  // Valida formato do header Authorization
+  // Valida o formato padrão de autenticação Bearer
   if (type !== "Bearer" || !token) {
     return res.status(401).json({
       message: "token inválido",
@@ -25,13 +38,13 @@ async function authMiddleware(req, res, next) {
   }
 
   try {
-    // Verifica e decodifica o JWT
+    // Verifica a assinatura e validade (expiração) do JWT
     const payload = verifyToken(token);
 
-    // Busca dados do usuário no banco de dados
+    // Recupera os dados atualizados do usuário a partir do ID contido no payload
     const usuario = await findUsuarioById(payload.id_usuario);
 
-    // Valida se usuário ainda existe no banco
+    // Garante que o usuário ainda existe no sistema (não foi deletado)
     if (!usuario) {
       return res.status(401).json({
         message: "usuário não identificado",
@@ -39,13 +52,13 @@ async function authMiddleware(req, res, next) {
       });
     }
 
-    // Injeta dados do usuário na requisição para uso posterior
+    // Disponibiliza o objeto usuário para os controladores e middlewares seguintes
     req.usuario = usuario;
 
-    // Continua para o próximo middleware/rota
+    // Autoriza o prosseguimento da requisição
     return next();
   } catch (e) {
-    // Token expirado, inválido ou erro na verificação
+    // Captura erros de expiração, assinatura ou tokens malformados
     return res.status(401).json({
       message: "token inválido ou expirado",
       error: e.message
