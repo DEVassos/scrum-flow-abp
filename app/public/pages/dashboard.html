@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,140 +15,262 @@
     <div class="blob-direita"></div>
 
     <nav class="navbar">
-    <div class="navbar__container">
-        <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+        <div class="navbar__container">
+            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
 
-        <div class="nav-menu" id="nav-menu">
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
-                <li><a href="scrum.html" class="nav-link">Scrum</a></li>
-                <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-            </ul>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="#" class="nav-link">O que é Scrum</a></li>
+                    <li><a href="#" class="nav-link">Conceitos</a></li>
+                    <li><a href="#" class="nav-link">Cerimônias</a></li>
+                    <li id="nav-dashboard"><a href="dashboard.html" class="nav-link nav-link--ativo">Dashboard</a></li>
+                    <li><a href="#" class="nav-link">Atividades</a></li>
+                </ul>
 
-            <div class="navbar__actions">
-                <div id="nav-deslogado">
-                    <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
-                    <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
-                </div>
-                <div id="nav-logado" hidden>
-                    <span id="nav-saudacao" class="nav-saudacao"></span>
-                    <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+                <div class="navbar__actions">
+                    <div id="nav-deslogado">
+                        <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+                        <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
+                    </div>
+                    <div id="nav-logado" hidden>
+                        <span id="nav-saudacao" class="nav-saudacao"></span>
+                        <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+                    </div>
                 </div>
             </div>
+
+            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+    </nav>
 
-        <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link sidebar-link--ativo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/></svg>
+                    Níveis
+                </a>
+                <a href="#" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/></svg>
+                    Sprints
+                </a>
+                <a href="#" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.854-4.854 3 3a.5.5 0 0 1-.708.708L6.5 9.207V12.5a.5.5 0 0 1-1 0V9.207L2.854 11.854a.5.5 0 0 1-.708-.708l3-3a.5.5 0 0 1 .708 0z"/></svg>
+                    Provas
+                </a>
+                <a href="#" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z"/></svg>
+                    Progresso
+                </a>
+                <a href="#" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/></svg>
+                    Configurações
+                </a>
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="dashboard-main">
+
+            <div class="dashboard-header">
+                <p class="dashboard-subtitulo">Acompanhe seu progresso na jornada Scrum</p>
+            </div>
+
+            <div class="dashboard-layout">
+
+                <!-- COLUNA CENTRAL: NÍVEIS -->
+                <div class="dashboard-centro">
+                    <h2 class="secao-titulo">Seus Níveis</h2>
+
+                    <div class="niveis-lista">
+
+                        <!-- Nível 1: Concluído -->
+                        <div class="nivel-card nivel-concluido">
+                            <div class="nivel-indicador nivel-indicador--verde">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/></svg>
+                            </div>
+                            <div class="nivel-info">
+                                <div class="nivel-cabecalho">
+                                    <span class="nivel-nome">Nível 1 – Fundamentos</span>
+                                    <span class="nivel-badge nivel-badge--concluido">Concluído</span>
+                                </div>
+                                <div class="nivel-barra-wrapper">
+                                    <div class="nivel-barra">
+                                        <div class="nivel-barra-fill nivel-barra-fill--verde" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <div class="nivel-meta">
+                                    <span class="nivel-nota">Melhor Nota: <strong>8,5</strong></span>
+                                    <span class="nivel-status nivel-status--aprovado">✓ Aprovado</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nível 2: Em andamento -->
+                        <div class="nivel-card nivel-em-andamento">
+                            <div class="nivel-indicador nivel-indicador--amber">
+                                <span>2</span>
+                            </div>
+                            <div class="nivel-info">
+                                <div class="nivel-cabecalho">
+                                    <span class="nivel-nome">Nível 2 – Papéis e Responsabilidades</span>
+                                    <span class="nivel-badge nivel-badge--andamento">Em andamento</span>
+                                </div>
+                                <div class="nivel-barra-wrapper">
+                                    <div class="nivel-barra">
+                                        <div class="nivel-barra-fill nivel-barra-fill--amber" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <div class="nivel-meta">
+                                    <span class="nivel-nota">Melhor Nota: <strong>6,0</strong></span>
+                                    <span class="nivel-status nivel-status--tentativa">1 tentativa restante</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nível 3: Disponível -->
+                        <div class="nivel-card nivel-disponivel">
+                            <div class="nivel-indicador nivel-indicador--amber">
+                                <span>3</span>
+                            </div>
+                            <div class="nivel-info">
+                                <div class="nivel-cabecalho">
+                                    <span class="nivel-nome">Nível 3 – Eventos Scrum</span>
+                                </div>
+                                <div class="nivel-barra-wrapper">
+                                    <div class="nivel-barra">
+                                        <div class="nivel-barra-fill nivel-barra-fill--azul" style="width: 30%"></div>
+                                    </div>
+                                </div>
+                                <div class="nivel-meta">
+                                    <span class="nivel-nota">Melhor Nota: –</span>
+                                    <span class="nivel-status nivel-status--tentativa">3 tentativas disponíveis</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nível 4: Bloqueado -->
+                        <div class="nivel-card nivel-bloqueado">
+                            <div class="nivel-indicador nivel-indicador--lock">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/></svg>
+                            </div>
+                            <div class="nivel-info">
+                                <div class="nivel-cabecalho">
+                                    <span class="nivel-nome">Nível 4 – Artefatos do Scrum</span>
+                                    <span class="nivel-badge nivel-badge--bloqueado">Bloqueado</span>
+                                </div>
+                                <div class="nivel-barra-wrapper">
+                                    <div class="nivel-barra">
+                                        <div class="nivel-barra-fill" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="nivel-meta">
+                                    <span class="nivel-nota">Melhor Nota: –</span>
+                                    <a href="#" class="nivel-link-desbloqueio">Conclua o nível 3 →</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nível 5: Bloqueado -->
+                        <div class="nivel-card nivel-bloqueado">
+                            <div class="nivel-indicador nivel-indicador--lock">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/></svg>
+                            </div>
+                            <div class="nivel-info">
+                                <div class="nivel-cabecalho">
+                                    <span class="nivel-nome">Nível 5 – Escalando o Scrum</span>
+                                    <span class="nivel-badge nivel-badge--bloqueado">Bloqueado</span>
+                                </div>
+                                <div class="nivel-barra-wrapper">
+                                    <div class="nivel-barra">
+                                        <div class="nivel-barra-fill" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="nivel-meta">
+                                    <span class="nivel-nota">Melhor Nota: –</span>
+                                    <a href="#" class="nivel-link-desbloqueio">Conclua o nível 4 →</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- COLUNA DIREITA: HISTÓRICO + CERTIFICADO -->
+                <aside class="dashboard-lateral">
+
+                    <!-- Histórico de Tentativas -->
+                    <div class="lateral-card">
+                        <h3 class="lateral-titulo">Histórico de Tentativas</h3>
+                        <table class="historico-tabela">
+                            <thead>
+                                <tr>
+                                    <th>Nível</th>
+                                    <th>Data</th>
+                                    <th>Pontuação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nível 1</td>
+                                    <td>10/04/2026</td>
+                                    <td class="pontuacao pontuacao--verde">8,5</td>
+                                </tr>
+                                <tr>
+                                    <td>Nível 2</td>
+                                    <td>12/04/2026</td>
+                                    <td class="pontuacao pontuacao--vermelho">5,0</td>
+                                </tr>
+                                <tr>
+                                    <td>Nível 2</td>
+                                    <td>13/04/2026</td>
+                                    <td class="pontuacao pontuacao--amarelo">6,0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="#" class="historico-link">Ver histórico completo →</a>
+                    </div>
+
+                    <!-- Certificado -->
+                    <div class="lateral-card lateral-card--certificado">
+                        <h3 class="lateral-titulo">Seu Certificado</h3>
+                        <div class="certificado-icone">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48">
+                                <rect width="36" height="28" x="6" y="10" rx="4" fill="#1e3a5f" stroke="#2a5a9f" stroke-width="1.5"/>
+                                <rect width="36" height="28" x="8" y="12" rx="4" fill="#1a3352" stroke="#2a5a9f" stroke-width="1"/>
+                                <circle cx="20" cy="22" r="5" fill="#f5a623" opacity="0.9"/>
+                                <rect x="28" y="18" width="10" height="2" rx="1" fill="#4a7ab5" opacity="0.7"/>
+                                <rect x="28" y="22" width="8" height="2" rx="1" fill="#4a7ab5" opacity="0.5"/>
+                                <rect x="28" y="26" width="6" height="2" rx="1" fill="#4a7ab5" opacity="0.4"/>
+                                <circle cx="37" cy="34" r="6" fill="#1e3a5f" stroke="#f5a623" stroke-width="1.5"/>
+                                <path d="M34 34l2 2 4-4" stroke="#f5a623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="certificado-lock">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/></svg>
+                        </div>
+                        <p class="certificado-descricao">
+                            Complete todos os níveis com média ≥ 7,0 para desbloquear seu certificado.
+                        </p>
+                        <span class="certificado-progresso">Progresso atual: 1/5 níveis concluídos</span>
+                    </div>
+
+                </aside>
+
+            </div>
+        </main>
     </div>
-</nav>
 
-    <main class="dashboard-container">
-
-        <section class="dashboard-hero">
-            <div class="hero-content">
-                <span class="hero-tag">Bem-vindo de volta</span>
-                <h1 class="hero-titulo">
-                    Pronto para aprender, <span id="hero-nome" class="hero-nome-destaque">usuário</span>?
-                </h1>
-                <p class="hero-subtitulo">
-                    Continue sua jornada no Scrum Framework. Escolha um módulo abaixo para começar.
-                </p>
-            </div>
-
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <span class="stat-valor">0</span>
-                    <span class="stat-label">Módulos concluídos</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-valor">0</span>
-                    <span class="stat-label">Questões respondidas</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-valor">0%</span>
-                    <span class="stat-label">Progresso geral</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="secao-modulos">
-            <div class="secao-cabecalho">
-                <h2 class="secao-titulo">Módulos de estudo</h2>
-                <span class="secao-contador">3 módulos</span>
-            </div>
-
-            <div class="modulos-grid">
-
-                <div class="modulo-card modulo-em-breve">
-                    <div class="modulo-topo">
-                        <div class="modulo-icone-wrapper modulo-icone--azul">
-                            <span class="modulo-icone">&#9881;</span>
-                        </div>
-                        <span class="modulo-badge">Em breve</span>
-                    </div>
-                    <div class="modulo-corpo">
-                        <h3 class="modulo-nome">Fundamentos do Scrum</h3>
-                        <p class="modulo-descricao">Papéis, eventos, artefatos e regras do framework Scrum.</p>
-                    </div>
-                    <div class="modulo-rodape">
-                        <div class="modulo-progresso-barra">
-                            <div class="modulo-progresso-fill" style="width: 0%"></div>
-                        </div>
-                        <span class="modulo-progresso-label">0% concluído</span>
-                    </div>
-                </div>
-
-                <div class="modulo-card modulo-em-breve">
-                    <div class="modulo-topo">
-                        <div class="modulo-icone-wrapper modulo-icone--amber">
-                            <span class="modulo-icone">&#128200;</span>
-                        </div>
-                        <span class="modulo-badge">Em breve</span>
-                    </div>
-                    <div class="modulo-corpo">
-                        <h3 class="modulo-nome">Sprint Planning</h3>
-                        <p class="modulo-descricao">Como planejar e estimar uma sprint com eficácia.</p>
-                    </div>
-                    <div class="modulo-rodape">
-                        <div class="modulo-progresso-barra">
-                            <div class="modulo-progresso-fill" style="width: 0%"></div>
-                        </div>
-                        <span class="modulo-progresso-label">0% concluído</span>
-                    </div>
-                </div>
-
-                <div class="modulo-card modulo-em-breve">
-                    <div class="modulo-topo">
-                        <div class="modulo-icone-wrapper modulo-icone--teal">
-                            <span class="modulo-icone">&#128203;</span>
-                        </div>
-                        <span class="modulo-badge">Em breve</span>
-                    </div>
-                    <div class="modulo-corpo">
-                        <h3 class="modulo-nome">Retrospectiva</h3>
-                        <p class="modulo-descricao">Inspecionar e adaptar o processo de trabalho da equipe.</p>
-                    </div>
-                    <div class="modulo-rodape">
-                        <div class="modulo-progresso-barra">
-                            <div class="modulo-progresso-fill" style="width: 0%"></div>
-                        </div>
-                        <span class="modulo-progresso-label">0% concluído</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-    <!-- auth.js primeiro: define estaAutenticado, obterNome, limparSessao -->
-   <script src="../assets/js/auth.js"></script>
-<script src="../assets/js/navbar.js"></script>
-<script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
 
 </body>
-
 </html>
