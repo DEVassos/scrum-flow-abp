@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/pages/resultado.css">
+    <title>ScrumFlow | Resultado</title>
+</head>
+
+<body>
+
+    <!-- Formas decorativas de fundo -->
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
+
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
+                    <li><a href="scrum.html" class="nav-link">Scrum</a></li>
+                    <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                </ul>
+
+                <div class="navbar__actions">
+                    <div id="nav-deslogado">
+                        <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+                        <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
+                    </div>
+                    <div id="nav-logado" hidden>
+                        <span id="nav-saudacao" class="nav-saudacao"></span>
+                        <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="resultado-container">
+
+        <!-- Hero -->
+        <section class="resultado-hero">
+            <span class="hero-tag">Teste concluído</span>
+            <h1 class="hero-titulo">
+                Parabéns, <span id="nome-usuario" class="hero-nome-destaque">usuário</span>!
+            </h1>
+            <p class="hero-subtitulo">Confira seu desempenho abaixo.</p>
+        </section>
+
+        <!-- Pontuação -->
+        <section class="resultado-score-section">
+
+            <div class="resultado-score-card">
+                <div id="score-ring" class="score-ring" style="--score-percent: 0%">
+                    <div class="score-inner">
+                        <span id="pontuacao" class="score-number">—</span>
+                        <span class="score-unidade">pontos</span>
+                    </div>
+                </div>
+                <span id="status-badge" class="status-badge status-badge--aprovado">Aprovado</span>
+            </div>
+
+            <div class="resultado-stats">
+                <div class="stat-card">
+                    <span class="stat-label">Acertos</span>
+                    <span class="stat-valor">
+                        <span id="acertos">—</span>/<span id="total-questoes">—</span>
+                    </span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Módulo</span>
+                    <span id="nome-modulo" class="stat-valor" style="font-size: 15px; text-align: right;">—</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Data</span>
+                    <span id="data-conclusao" class="stat-valor" style="font-size: 15px;">—</span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Desempenho -->
+        <div class="resultado-detalhes">
+            <p class="detalhes-titulo">Desempenho</p>
+            <div class="detalhes-progresso">
+                <div class="modulo-progresso-barra">
+                    <div id="progresso-fill" class="modulo-progresso-fill" style="width: 0%"></div>
+                </div>
+                <span class="detalhes-progresso-label">
+                    <span id="percentual">—</span>% de aproveitamento
+                </span>
+            </div>
+        </div>
+
+        <!-- Ações -->
+        <div class="resultado-actions">
+            <a href="dashboard.html" class="btn btn-primary">Voltar ao Dashboard</a>
+        </div>
+
+    </main>
+
+    <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/resultado.js"></script>
+</body>
+
+</html>
