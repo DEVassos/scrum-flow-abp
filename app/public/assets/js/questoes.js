@@ -19,27 +19,21 @@ let aoConfirmar = null;
 // ================================
 //   INICIALIZAÇÃO
 // ================================
+// verifica se esta logado
+if (!estaAutenticado()) {
+    window.location.href = '../index.html';
+} 
 
 document.addEventListener('DOMContentLoaded', () => {
-    verificarAutenticacao();
-    configurarEventos();
-    carregarProximaQuestao();
-});
-
-// Redireciona para o login se o usuário não estiver autenticado,
-// e exibe o nome de boas-vindas no navbar.
-function verificarAutenticacao() {
-    if (!estaAutenticado()) {
-        window.location.href = '../index.html';
-        return;
-    }
-
     const nome = obterNome();
     const saudacao = document.getElementById('saudacao');
     if (saudacao && nome) {
         saudacao.textContent = `Bem-vindo, ${nome.split(' ')[0]}`;
     }
-}
+
+    configurarEventos();
+    carregarProximaQuestao();
+});
 
 // Conecta cada botão da página à sua função correspondente
 function configurarEventos() {
