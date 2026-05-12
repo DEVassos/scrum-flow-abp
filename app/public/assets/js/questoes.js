@@ -1,394 +1,284 @@
 // ================================
-// GERENCIADOR DE QUESTÕES
+//   QUESTOES.JS
+//   Controla o fluxo de perguntas do exame:
+//   carregar, exibir, selecionar, confirmar e avançar.
 // ================================
 
-class GerenciadorQuestoes {
-    constructor() {
-        this.questaoAtual = null;
-        this.idExame = null;
-        this.idModulo = null;
-        this.totalQuestoes = 0;
-        this.tentativaAtual = 1;
-        this.selecionada = null;
+// Estado da sessão de exame — guardam os dados da questão atual e do progresso
+let questaoAtual = null;
+let idExame      = null;
+let idModulo     = null;
+let tentativaAtual = 1;
+let opcaoSelecionada = null;
+let acertos = 0;
+let totalRespondidas = 0;
 
-        this.inicializar();
+// Guarda a função a executar quando o usuário confirmar o modal
+let aoConfirmar = null;
+
+// ================================
+//   INICIALIZAÇÃO
+// ================================
+// verifica se esta logado
+if (!estaAutenticado()) {
+    window.location.href = '../index.html';
+} 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const nome = obterNome();
+    const saudacao = document.getElementById('saudacao');
+    if (saudacao && nome) {
+        saudacao.textContent = `Bem-vindo, ${nome.split(' ')[0]}`;
     }
 
-    inicializar() {
-        this.verificarAutenticacao();
-        this.carregarParametros();
-        this.carregarQuestoes();
-        this.configurarEventos();
-        this.renderizarQuestao();
-    }
+    configurarEventos();
+    carregarProximaQuestao();
+});
 
-    verificarAutenticacao() {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            window.location.href = 'index.html';
-        }
+// Conecta cada botão da página à sua função correspondente
+function configurarEventos() {
+    document.getElementById('btn-voltar')?.addEventListener('click', voltarAoMaterial);
+    document.getElementById('btn-proxima')?.addEventListener('click', proximaQuestao);
+    document.getElementById('btn-cancelar-modal')?.addEventListener('click', fecharModalConfirmacao);
+    document.getElementById('btn-confirmar-modal')?.addEventListener('click', executarConfirmacao);
+    document.getElementById('btn-continuar-modal')?.addEventListener('click', proximaQuestao);
+    document.getElementById('btn-sair')?.addEventListener('click', sair);
+}
 
-        const usuario = localStorage.getItem('usuario');
-        if (usuario) {
-            const saudacao = document.getElementById('saudacao');
-            if (saudacao) {
-                const nome = JSON.parse(usuario).nome || 'Usuário';
-                saudacao.textContent = `Bem-vindo, ${nome.split(' ')[0]}`;
-            }
-        }
-    }
+// ================================
+//   CARREGAMENTO E EXIBIÇÃO
+// ================================
 
-    carregarParametros() {
-        // Os parâmetros são obtidos do banco de dados, não da URL
-        const params = new URLSearchParams(window.location.search);
-        this.tentativaAtual = params.get('tentativa') || 1;
-    }
-
-    async carregarQuestoes() {
-        try {
-            const token = localStorage.getItem('token');
-            
-            // Buscar próxima questão da API
-            const response = await fetch('/api/questoes/proxima-questao', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (!response.ok) {
-                if (response.status === 404) {
-                    // Nenhuma questão pendente
-                    this.totalQuestoes = 0;
-                    this.questoes = [];
-                    this.respostas = [];
-                    console.log('Nenhuma questão pendente encontrada');
-                    return;
-                }
-                throw new Error('Erro ao buscar questão');
-            }
-
-            const primeiraQuestao = await response.json();
-            
-            // Armazenar informações do exame
-            this.idExame = primeiraQuestao.id_exame;
-            this.idModulo = primeiraQuestao.id_modulo;
-            
-            // Criar objeto de questão formatado
-            this.questaoAtual = {
-                id_questao: primeiraQuestao.id_questao,
-                numero: primeiraQuestao.numero,
-                enunciado: primeiraQuestao.enunciado,
-                imagem: primeiraQuestao.imagem,
-                alternativaA: primeiraQuestao.alternativa_a,
-                alternativaB: primeiraQuestao.alternativa_b,
-                alternativaC: primeiraQuestao.alternativa_c,
-                alternativaD: primeiraQuestao.alternativa_d,
-                alternativaCorreta: primeiraQuestao.alternativa_correta
-            };
-
-            this.totalQuestoes = 1; // Será atualizado conforme navegar
-            this.respostas = [];
-
-            console.log('Questão carregada com sucesso:', this.questaoAtual);
-        } catch (error) {
-            console.error('Erro ao carregar questão:', error);
-            alert('Erro ao carregar questão. Tente novamente.');
-        }
-    }
-
-    configurarEventos() {
-        // Botões de navegação
-        document.getElementById('btn-anterior')?.addEventListener('click', () => this.questaoAnterior());
-        document.getElementById('btn-proxima')?.addEventListener('click', () => this.proximaQuestao());
-        document.getElementById('btn-voltar')?.addEventListener('click', () => this.voltarAoMaterial());
-
-        // Opções de resposta
-        document.querySelectorAll('.opcao-item').forEach(opcao => {
-            opcao.addEventListener('click', (e) => this.selecionarOpcao(e));
+// Busca a próxima questão do servidor e chama a renderização
+async function carregarProximaQuestao() {
+    try {
+        const response = await fetch('/api/questoes/proxima-questao', {
+            headers: { 'Authorization': `Bearer ${obterToken()}` }
         });
 
-        // Modal de confirmação
-        document.getElementById('btn-cancelar-modal')?.addEventListener('click', () => this.fecharModal());
-        document.getElementById('btn-confirmar-modal')?.addEventListener('click', () => this.confirmarResposta());
-
-        // Modal de resultado
-        document.getElementById('btn-continuar-modal')?.addEventListener('click', () => this.proximaQuestao());
-
-        // Botão sair
-        document.getElementById('btn-sair')?.addEventListener('click', () => this.sair());
-    }
-
-    renderizarQuestao() {
-        if (!this.questaoAtual) {
-            console.error('Nenhuma questão para renderizar');
-            alert('Nenhuma questão disponível. Você pode ter concluído o módulo!');
-            window.location.href = 'dashboard.html';
+        // 404 significa que não há mais questões — o módulo acabou
+        if (response.status === 404) {
+            finalizarModulo();
             return;
         }
 
-        const questao = this.questaoAtual;
-
-        // Atualizar header
-        const nivelInfo = this.obterNivelInfo(this.idModulo);
-        document.getElementById('nivel-info').textContent = nivelInfo;
-        document.getElementById('tentativa-info').textContent = `Tentativa ${this.tentativaAtual}/3`;
-
-        // Atualizar número da questão
-        document.getElementById('questao-numero').textContent = 
-            `Questão ${questao.numero || 1}`;
-
-        // Atualizar conteúdo da questão
-        document.getElementById('questao-titulo').textContent = questao.enunciado || 'Questão sem enunciado';
-        document.getElementById('questao-descricao').textContent = 'Escolha a alternativa correta:';
-
-        // Renderizar opções (A, B, C, D)
-        const containerOpcoes = document.querySelector('.questao-opcoes');
-        containerOpcoes.innerHTML = '';
-
-        const opcoes = [
-            { letra: 'A', texto: questao.alternativaA },
-            { letra: 'B', texto: questao.alternativaB },
-            { letra: 'C', texto: questao.alternativaC },
-            { letra: 'D', texto: questao.alternativaD }
-        ];
-
-        opcoes.forEach((opcao, index) => {
-            const div = document.createElement('div');
-            div.className = 'opcao-item';
-            div.setAttribute('data-opcao', opcao.letra);
-            div.setAttribute('data-index', index);
-
-            // Verificar se essa opção já foi selecionada
-            if (this.selecionada === opcao.letra) {
-                div.classList.add('selecionada');
-            }
-
-            div.innerHTML = `
-                <div class="opcao-header">
-                    <span class="opcao-letra">${opcao.letra}</span>
-                    <span class="opcao-id">#${100 + index + 1}</span>
-                </div>
-                <p class="opcao-texto">${opcao.texto || 'Alternativa sem texto'}</p>
-            `;
-
-            div.addEventListener('click', (e) => this.selecionarOpcao(e));
-            containerOpcoes.appendChild(div);
-        });
-
-        // Atualizar botões de navegação
-        const btnAnterior = document.getElementById('btn-anterior');
-        const btnProxima = document.getElementById('btn-proxima');
-
-        btnAnterior.disabled = true; // Desabilitar por enquanto
-        btnProxima.textContent = 'Próxima →';
-
-        // Atualizar indicador de progresso
-        this.renderizarProgresso();
-    }
-
-    renderizarProgresso() {
-        const container = document.getElementById('progresso-dots');
-        container.innerHTML = '';
-
-        // Mostrar apenas 1 dot pela questão atual
-        const dot = document.createElement('div');
-        dot.className = 'progresso-dot ativo';
-        container.appendChild(dot);
-    }
-
-    selecionarOpcao(e) {
-        const opcaoItem = e.currentTarget.closest('.opcao-item');
-        if (!opcaoItem) return;
-
-        // Remover seleção anterior
-        document.querySelectorAll('.opcao-item.selecionada').forEach(item => {
-            item.classList.remove('selecionada');
-        });
-
-        // Selecionar nova opção
-        opcaoItem.classList.add('selecionada');
-        this.selecionada = opcaoItem.getAttribute('data-opcao');
-
-        // Mostrar modal de confirmação
-        this.mostrarModalConfirmacao();
-    }
-
-    mostrarModalConfirmacao() {
-        const modal = document.getElementById('modal-confirmacao');
-        const mensagem = document.getElementById('modal-mensagem');
-        mensagem.textContent = `Você selecionou a alternativa ${this.selecionada}. Tem certeza que deseja confirmar?`;
-        modal.style.display = 'flex';
-    }
-
-    fecharModal() {
-        document.getElementById('modal-confirmacao').style.display = 'none';
-        document.querySelectorAll('.opcao-item.selecionada').forEach(item => {
-            item.classList.remove('selecionada');
-        });
-        this.selecionada = null;
-    }
-
-    confirmarResposta() {
-        if (!this.selecionada) return;
-
-        this.enviarResposta(this.selecionada);
-    }
-
-    async enviarResposta(respostaLetra) {
-        try {
-            const token = localStorage.getItem('token');
-
-            // Enviar resposta para a API
-            const response = await fetch('/api/questoes/responder', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id_exame: this.idExame,
-                    id_questao: this.questaoAtual.id_questao,
-                    resposta: respostaLetra.toLowerCase()
-                })
-            });
-
-            if (!response.ok) {
-                if (response.status === 409) {
-                    alert('Questão já respondida!');
-                } else {
-                    throw new Error('Erro ao enviar resposta');
-                }
-                document.getElementById('modal-confirmacao').style.display = 'none';
-                return;
-            }
-
-            const respostaGravada = await response.json();
-            
-            // Fechar modal de confirmação
-            document.getElementById('modal-confirmacao').style.display = 'none';
-
-            // Verificar se está correta
-            const estaCorreta = respostaGravada.nota === 1;
-
-            // Mostrar resultado
-            this.mostrarResultado(estaCorreta);
-        } catch (error) {
-            console.error('Erro ao enviar resposta:', error);
-            alert('Erro ao enviar resposta. Tente novamente.');
-            document.getElementById('modal-confirmacao').style.display = 'none';
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
         }
-    }
 
-    mostrarResultado(estaCorreta) {
-        const modal = document.getElementById('modal-resultado');
-        const icon = document.getElementById('resultado-icon');
-        const titulo = document.getElementById('resultado-titulo');
-        const mensagem = document.getElementById('resultado-mensagem');
+        const questao = await response.json();
 
-        icon.className = 'resultado-icon ' + (estaCorreta ? 'acerto' : 'erro');
-        titulo.textContent = estaCorreta ? 'Parabéns! 🎉' : 'Resposta Incorreta';
-        mensagem.textContent = estaCorreta 
-            ? 'Você acertou! Continue assim!' 
-            : 'Essa não era a resposta correta. Tente novamente na próxima!';
+        // Atualiza o estado com os dados da questão recebida
+        idExame          = questao.id_exame;
+        idModulo         = questao.id_modulo;
+        tentativaAtual   = questao.tentativa || 1;
+        opcaoSelecionada = null;
 
-        modal.style.display = 'flex';
-    }
-
-    fecharModalResultado() {
-        document.getElementById('modal-resultado').style.display = 'none';
-    }
-
-    async proximaQuestao() {
-        try {
-            const token = localStorage.getItem('token');
-
-            // Buscar próxima questão da API
-            const response = await fetch('/api/questoes/proxima-questao', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (!response.ok) {
-                if (response.status === 404) {
-                    // Nenhuma questão pendente - exame concluído
-                    this.finalizarAvaliacao();
-                    return;
-                }
-                throw new Error('Erro ao buscar próxima questão');
-            }
-
-            const proximaQuestao = await response.json();
-
-            // Atualizar questão atual
-            this.questaoAtual = {
-                id_questao: proximaQuestao.id_questao,
-                numero: proximaQuestao.numero,
-                enunciado: proximaQuestao.enunciado,
-                imagem: proximaQuestao.imagem,
-                alternativaA: proximaQuestao.alternativa_a,
-                alternativaB: proximaQuestao.alternativa_b,
-                alternativaC: proximaQuestao.alternativa_c,
-                alternativaD: proximaQuestao.alternativa_d,
-                alternativaCorreta: proximaQuestao.alternativa_correta
-            };
-
-            this.selecionada = null;
-
-            // Fechar modal de resultado
-            this.fecharModalResultado();
-
-            // Renderizar nova questão
-            this.renderizarQuestao();
-        } catch (error) {
-            console.error('Erro ao carregar próxima questão:', error);
-            alert('Erro ao carregar próxima questão. Tente novamente.');
-        }
-    }
-
-    questaoAnterior() {
-        alert('Não é possível voltar para a questão anterior.');
-    }
-
-    irParaQuestao(index) {
-        alert('Não é possível pular questões.');
-    }
-
-    obterNivelInfo(idModulo) {
-        // Este será mapeado conforme seus módulos
-        const niveis = {
-            1: 'Nível 1 - Introdução ao Scrum',
-            2: 'Nível 2 - Papéis e Responsabilidades',
-            3: 'Nível 3 - Cerimônias',
-            4: 'Nível 4 - Prácticas Avançadas'
+        questaoAtual = {
+            id_questao:   questao.id_questao,
+            numero:       questao.numero,
+            enunciado:    questao.enunciado,
+            imagem:       questao.imagem,
+            alternativaA: questao.alternativa_a,
+            alternativaB: questao.alternativa_b,
+            alternativaC: questao.alternativa_c,
+            alternativaD: questao.alternativa_d
         };
-        return niveis[idModulo] || `Módulo ${idModulo}`;
-    }
 
-    finalizarAvaliacao() {
-        // Redirecionar para dashboard indicando conclusão
-        alert('Parabéns! Você completou todas as questões do módulo!');
-        window.location.href = 'dashboard.html';
-    }
-
-    voltarAoMaterial() {
-        if (confirm('Tem certeza que deseja sair da avaliação? O progresso não será salvo.')) {
-            window.location.href = 'dashboard.html';
-        }
-    }
-
-    sair() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('usuario');
-        window.location.href = 'index.html';
+        renderizarQuestao();
+    } catch (error) {
+        console.error('Erro ao carregar questão:', error);
+        alert('Erro ao carregar questão. Tente novamente.');
     }
 }
 
-// Inicializar quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-    new GerenciadorQuestoes();
-});
+// Preenche o card de questão com os dados recebidos do servidor
+function renderizarQuestao() {
+    if (!questaoAtual) return;
+
+    document.getElementById('nivel-info').textContent    = obterNivelInfo(idModulo);
+    document.getElementById('tentativa-info').textContent = `Tentativa ${tentativaAtual}/2`;
+    document.getElementById('questao-numero').textContent = `Questão ${questaoAtual.numero || 1}`;
+    document.getElementById('questao-titulo').textContent = questaoAtual.enunciado || '';
+    document.getElementById('questao-descricao').textContent = 'Escolha a alternativa correta:';
+
+    // Limpa as opções anteriores antes de montar as novas
+    const container = document.querySelector('.questao-opcoes');
+    container.innerHTML = '';
+
+    const opcoes = [
+        { letra: 'A', texto: questaoAtual.alternativaA },
+        { letra: 'B', texto: questaoAtual.alternativaB },
+        { letra: 'C', texto: questaoAtual.alternativaC },
+        { letra: 'D', texto: questaoAtual.alternativaD }
+    ];
+
+    opcoes.forEach((opcao, index) => {
+        const div = document.createElement('div');
+        div.className = 'opcao-item';
+        div.dataset.opcao = opcao.letra;
+        div.innerHTML = `
+            <div class="opcao-header">
+                <span class="opcao-letra">${opcao.letra}</span>
+                <span class="opcao-id">#${100 + index + 1}</span>
+            </div>
+            <p class="opcao-texto">${opcao.texto || ''}</p>
+        `;
+        div.addEventListener('click', () => selecionarOpcao(opcao.letra));
+        container.appendChild(div);
+    });
+}
+
+// ================================
+//   SELEÇÃO E CONFIRMAÇÃO
+// ================================
+
+// Marca visualmente a opção clicada e abre o modal para confirmar
+function selecionarOpcao(letra) {
+    opcaoSelecionada = letra;
+
+    document.querySelectorAll('.opcao-item').forEach(item => {
+        item.classList.toggle('selecionada', item.dataset.opcao === letra);
+    });
+
+    abrirModalConfirmacao(
+        'Confirmar Resposta',
+        `Você selecionou a alternativa ${letra}. Confirma?`,
+        () => enviarResposta(letra)
+    );
+}
+
+// Abre o modal de confirmação com título, mensagem e ação personalizados.
+// A função 'callback' será executada quando o usuário clicar em Confirmar.
+function abrirModalConfirmacao(titulo, mensagem, callback) {
+    document.getElementById('modal-titulo').textContent   = titulo;
+    document.getElementById('modal-mensagem').textContent = mensagem;
+    aoConfirmar = callback;
+    document.getElementById('modal-confirmacao').style.display = 'flex';
+}
+
+// Fecha o modal e limpa a seleção caso o usuário cancele
+function fecharModalConfirmacao() {
+    aoConfirmar = null;
+    document.getElementById('modal-confirmacao').style.display = 'none';
+    document.querySelectorAll('.opcao-item').forEach(item => item.classList.remove('selecionada'));
+    opcaoSelecionada = null;
+}
+
+// Executa a ação guardada em aoConfirmar (resposta ou navegação)
+function executarConfirmacao() {
+    document.getElementById('modal-confirmacao').style.display = 'none';
+    if (aoConfirmar) {
+        aoConfirmar();
+        aoConfirmar = null;
+    }
+}
+
+// ================================
+//   ENVIO E RESULTADO
+// ================================
+
+// Envia a resposta escolhida para o servidor e exibe o resultado
+async function enviarResposta(letra) {
+    try {
+        const response = await fetch('/api/questoes/responder', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${obterToken()}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id_exame:   idExame,
+                id_questao: questaoAtual.id_questao,
+                resposta:   letra.toLowerCase()
+            })
+        });
+
+        // 409 significa que essa questão já foi respondida — avança direto
+        if (response.status === 409) {
+            await carregarProximaQuestao();
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const resultado = await response.json();
+        const estaCorreta = resultado.nota === 1;
+
+        totalRespondidas++;
+        if (estaCorreta) acertos++;
+
+        mostrarResultado(estaCorreta);
+    } catch (error) {
+        console.error('Erro ao enviar resposta:', error);
+        alert('Erro ao enviar resposta. Tente novamente.');
+    }
+}
+
+// Exibe o modal de resultado com ícone e mensagem de acerto ou erro
+function mostrarResultado(estaCorreta) {
+    document.getElementById('resultado-icon').className = 'resultado-icon ' + (estaCorreta ? 'acerto' : 'erro');
+    document.getElementById('resultado-titulo').textContent  = estaCorreta ? 'Parabéns!' : 'Resposta Incorreta';
+    document.getElementById('resultado-mensagem').textContent = estaCorreta
+        ? 'Você acertou! Continue assim!'
+        : 'Essa não era a resposta correta.';
+
+    document.getElementById('modal-resultado').style.display = 'flex';
+}
+
+// Fecha o modal de resultado e carrega a próxima questão
+async function proximaQuestao() {
+    document.getElementById('modal-resultado').style.display = 'none';
+    await carregarProximaQuestao();
+}
+
+// ================================
+//   FINALIZAÇÃO
+// ================================
+
+// Salva o resultado do módulo no sessionStorage e redireciona para a tela de resultado
+function finalizarModulo() {
+    const percentual = totalRespondidas > 0
+        ? Math.round((acertos / totalRespondidas) * 100)
+        : 0;
+
+    sessionStorage.setItem('resultado_exame', JSON.stringify({
+        acertos,
+        total:     totalRespondidas,
+        percentual,
+        modulo:    obterNivelInfo(idModulo),
+        data:      new Date().toLocaleDateString('pt-BR'),
+        status:    percentual >= 60 ? 'aprovado' : 'reprovado'
+    }));
+
+    window.location.href = 'resultado.html';
+}
+
+// Retorna o nome do nível com base no id do módulo recebido da API
+function obterNivelInfo(idModulo) {
+    const niveis = {
+        1: 'Nível 1 – Fundamentos',
+        2: 'Nível 2 – Papéis e Responsabilidades',
+        3: 'Nível 3 – Eventos Scrum',
+        4: 'Nível 4 – Artefatos do Scrum',
+        5: 'Nível 5 – Escalando o Scrum'
+    };
+    return niveis[idModulo] || `Módulo ${idModulo}`;
+}
+
+// Abre o modal pedindo confirmação antes de sair do exame
+function voltarAoMaterial() {
+    abrirModalConfirmacao(
+        'Sair do exame?',
+        'Tem certeza que deseja sair? O progresso das questões já respondidas será mantido.',
+        () => { window.location.href = '../dashboard.html'; }
+    );
+}
+
+// Encerra a sessão do usuário e volta para a tela de login
+function sair() {
+    limparSessao();
+    window.location.href = '../index.html';
+}
