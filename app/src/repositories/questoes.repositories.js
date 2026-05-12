@@ -19,7 +19,7 @@ async function findProximaQuestaoByUsuario(idUsuario) {
   const result = await pool.query(
     `
     WITH exame_atual AS (
-      SELECT id_exame, id_modulo, grupo
+      SELECT id_exame, id_modulo, grupo, tentativa
       FROM exames
       WHERE id_usuario = $1
       ORDER BY id_exame DESC
@@ -27,6 +27,7 @@ async function findProximaQuestaoByUsuario(idUsuario) {
     )
     SELECT
       e.id_exame,
+      e.tentativa,
       q.id_questao,
       q.id_modulo,
       q.grupo,
