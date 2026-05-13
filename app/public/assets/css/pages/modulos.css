@@ -420,4 +420,66 @@
         flex-direction: column;
     }
 
+
+}
+
+/* ================================
+   ESTADOS DOS MÓDULOS
+================================ */
+
+.modulo-item:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.modulo-item:disabled:hover {
+    border-color: var(--navy-600);
+    transform: none;
+}
+
+.modulo-item--concluido {
+    border-color: var(--teal-500);
+}
+
+.modulo-item--concluido .modulo-item-status {
+    color: var(--teal-500);
+}
+
+.modulo-item--bloqueado .modulo-item-status {
+    color: var(--navy-400);
+}
+
+.modulo-item--andamento {
+    border-color: var(--amber-500);
+}
+
+.modulo-item--andamento .modulo-item-status {
+    color: var(--amber-500);
+}
+
+/* Badge do painel */
+
+.painel-badge--disponivel {
+    background-color: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.25);
+    color: var(--amber-500);
+}
+
+.painel-badge--andamento {
+    background-color: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.25);
+    color: var(--amber-500);
+}
+
+.painel-badge--concluido {
+    background-color: rgba(13, 148, 136, 0.12);
+    border-color: rgba(13, 148, 136, 0.3);
+    color: var(--teal-500);
+}
+
+.painel-badge--bloqueado {
+    background-color: var(--navy-900);
+    border-color: var(--navy-600);
+    color: var(--navy-400);
 }
