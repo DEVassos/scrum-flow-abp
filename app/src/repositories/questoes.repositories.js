@@ -6,15 +6,6 @@ questões do mesmo id_modulo e grupo, exclui as
 que já têm registro em respostas para aquele exame 
 e retorna a próxima por ordem de numero e id_questao
 */
-/**
- * Busca a próxima questão pendente para o usuário.
- * Filtra as questões do módulo e grupo atual do exame mais recente do usuário,
- * excluindo aquelas que ele já respondeu com sucesso.
- * 
- * @async
- * @param {number} idUsuario - ID do usuário autenticado.
- * @returns {Promise<Object|null>} A questão encontrada ou null.
- */
 async function findProximaQuestaoByUsuario(idUsuario) {
   const result = await pool.query(
     `
@@ -56,16 +47,7 @@ async function findProximaQuestaoByUsuario(idUsuario) {
   return result.rows[0] || null;
 };
 
-/**
- * Valida se uma questão específica pertence ao exame ativo do usuário.
- * Retorna a alternativa correta para fins de conferência no backend.
- * 
- * @async
- * @param {number} idUsuario - ID do usuário.
- * @param {number} idExame - ID do exame.
- * @param {number} idQuestao - ID da questão.
- * @returns {Promise<Object|null>}
- */
+//validar se a questão pertence ao usuário logado
 async function findQuestaoDoExameByUsuario(idUsuario, idExame, idQuestao) {
   const result = await pool.query(
     `
@@ -88,14 +70,7 @@ async function findQuestaoDoExameByUsuario(idUsuario, idExame, idQuestao) {
   return result.rows[0] || null;
 };
 
-/**
- * Verifica se já existe um registro de resposta para uma questão em um exame.
- * 
- * @async
- * @param {number} idExame - ID do exame.
- * @param {number} idQuestao - ID da questão.
- * @returns {Promise<Object|null>}
- */
+//verificar se uma questão já foi respondida
 async function findRespostaByExameEQuestao(idExame, idQuestao) {
   const result = await pool.query(
     `
@@ -117,16 +92,7 @@ async function findRespostaByExameEQuestao(idExame, idQuestao) {
   return result.rows[0] || null;
 };
 
-/**
- * Insere a resposta do usuário e a respectiva nota no banco de dados.
- * 
- * @async
- * @param {number} id_exame - ID do exame.
- * @param {number} id_questao - ID da questão.
- * @param {string} resposta - Texto da alternativa escolhida.
- * @param {number} nota - Nota obtida (0 ou 1).
- * @returns {Promise<Object|null>} A resposta inserida.
- */
+//inserir uma resposta
 async function inserirRespostaQuestao(id_exame, id_questao, resposta, nota) {
   const result = await pool.query(
     `
@@ -144,13 +110,7 @@ async function inserirRespostaQuestao(id_exame, id_questao, resposta, nota) {
   return result.rows[0] || null;
 };
 
-/**
- * Verifica se o usuário concluiu todas as questões do módulo atual do seu exame ativo.
- * 
- * @async
- * @param {number} idUsuario - ID do usuário.
- * @returns {Promise<boolean>}
- */
+//verificar se o usuário concluiu todas as questões do módulo atual
 async function usuarioConcluiuModuloAtual(idUsuario) {
   const result = await pool.query(
     `
@@ -184,13 +144,7 @@ async function usuarioConcluiuModuloAtual(idUsuario) {
   return result.rows[0]?.concluido || false;
 };
 
-/**
- * Obtém os detalhes do módulo atual que o usuário está respondendo.
- * 
- * @async
- * @param {number} idUsuario - ID do usuário.
- * @returns {Promise<Object|null>}
- */
+//obter o módulo que o usuário está respondendo
 async function findModuloAtualByUsuario(idUsuario) {
   const result = await pool.query(
     `
@@ -213,15 +167,7 @@ async function findModuloAtualByUsuario(idUsuario) {
   return result.rows[0] || null;
 };
 
-/**
- * Sorteia um grupo de questões aleatório para o módulo, 
- * garantindo que seja diferente dos grupos já respondidos pelo usuário no mesmo módulo.
- * 
- * @async
- * @param {number} idUsuario - ID do usuário.
- * @param {number} idModulo - ID do módulo.
- * @returns {Promise<string|null>} O nome do grupo sorteado.
- */
+//obter um grupo de questões diferente do grupo atual para criar a próxima tentativa
 async function findOutroGrupoAleatorio(idUsuario, idModulo) {
   const result = await pool.query(
     `
@@ -246,15 +192,7 @@ async function findOutroGrupoAleatorio(idUsuario, idModulo) {
   return result.rows[0]?.grupo || null;
 };
 
-/**
- * Atualiza o exame atual incrementando o número da tentativa e trocando o grupo de questões.
- * 
- * @async
- * @param {number} idExame - ID do exame.
- * @param {string} grupo - Novo grupo de questões.
- * @param {number} tentativa - Número da nova tentativa.
- * @returns {Promise<Object|null>}
- */
+//atualizar a próxima tentativa
 async function updateProximaTentativa(idExame, grupo, tentativa) {
   const result = await pool.query(
     `
@@ -276,13 +214,7 @@ async function updateProximaTentativa(idExame, grupo, tentativa) {
   return result.rows[0] || null;
 };
 
-/**
- * Identifica qual o próximo módulo na sequência de aprendizado para o usuário.
- * 
- * @async
- * @param {number} idUsuario - ID do usuário.
- * @returns {Promise<number|null>} O ID do próximo módulo.
- */
+//retornar o próximo módulo
 async function findProximoModuloByUsuario(idUsuario) {
   const result = await pool.query(
     `
@@ -308,16 +240,7 @@ async function findProximoModuloByUsuario(idUsuario) {
   return result.rows[0]?.id_modulo || null;
 };
 
-/**
- * Atualiza o registro do exame para apontar para um novo módulo e grupo.
- * 
- * @async
- * @param {number} idExame - ID do exame.
- * @param {number} modulo - ID do novo módulo.
- * @param {string} grupo - Grupo de questões sorteado para o novo módulo.
- * @param {number} tentativa - Reinicia o contador de tentativas (normalmente 1).
- * @returns {Promise<Object|null>}
- */
+//atualizar para o próximo módulo
 async function updateProximoModulo(idExame, modulo, grupo, tentativa) {
   const result = await pool.query(
     `
@@ -340,13 +263,7 @@ async function updateProximoModulo(idExame, modulo, grupo, tentativa) {
   return result.rows[0] || null;
 };
 
-/**
- * Gera estatísticas de desempenho do usuário agrupadas por módulo e tentativa.
- * 
- * @async
- * @param {number} idUsuario - ID do usuário.
- * @returns {Promise<Array>} Lista de módulos respondidos com datas e notas.
- */
+//estatísticas das respostas por tentativa
 async function findModulosRespondidosByUsuario(idUsuario) {
   const result = await pool.query(
     `
