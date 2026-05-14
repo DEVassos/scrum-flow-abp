@@ -90,8 +90,8 @@ Acesse: [http://localhost:3005](http://localhost:3005)
 | Etapa                  | Período              | Entregáveis                                  | Vídeo            |
 | ---------------------- | -------------------- | -------------------------------------------- | ---------------- |
 | **Kick-off**           | 09/04/2026           | Documentação inicial e scaffolding           | —                |
-| **Sprint 1**           | 13/04 — 30/04/2026   | Setup · Banco de Dados · Cadastro e Login    | [▶ Assistir](https://youtu.be/rQ7mEWP7sGU) |
-| **Sprint 2**           | 04/05 — 21/05/2026   | Avaliação · Sorteio de Questões · Tentativas | A disponibilizar |
+| [**Sprint 1**](./docs/scrum/sprint-1/sprint-1.md) | 13/04 — 30/04/2026   | Setup · Banco de Dados · Cadastro e Login    | [▶ Assistir](https://youtu.be/rQ7mEWP7sGU) |
+| [**Sprint 2**](./docs/scrum/sprint-2/sprint-2.md) | 04/05 — 21/05/2026   | Avaliação · Sorteio de Questões · Tentativas | A disponibilizar |
 | **Sprint 3**           | 25/05 — 11/06/2026   | Resultado Final · Certificado · Histórico    | A disponibilizar |
 | **Apresentação Final** | Semana de 22/06/2026 | Entrega e demonstração ao parceiro           | A disponibilizar |
 
