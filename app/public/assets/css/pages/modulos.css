@@ -424,6 +424,143 @@
 }
 
 /* ================================
+   CONTEÚDO DE ESTUDO
+================================ */
+
+.painel-conteudo {
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo-secao {
+    border-top: 1px solid var(--navy-600);
+    padding: 28px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.conteudo-secao:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.painel-conteudo h3 {
+    margin: 0;
+
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+
+    color: var(--white);
+}
+
+.painel-conteudo h4 {
+    margin: 0;
+
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--amber-400);
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.painel-conteudo p {
+    margin: 0;
+
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+
+    color: var(--slate-300);
+}
+
+.painel-conteudo ul,
+.painel-conteudo ol {
+    margin: 0;
+    padding-left: 22px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: var(--slate-300);
+}
+
+.painel-conteudo strong {
+    font-weight: 600;
+    color: var(--white);
+}
+
+.painel-conteudo em {
+    font-style: normal;
+    color: var(--amber-400);
+}
+
+.conteudo-callout {
+    padding: 14px 18px;
+
+    background-color: rgba(245, 158, 11, 0.07);
+
+    border-left: 3px solid var(--amber-500);
+    border-radius: 0 10px 10px 0;
+
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.75;
+
+    color: var(--slate-300);
+}
+
+.conteudo-callout strong {
+    color: var(--amber-400);
+}
+
+.conteudo-tabela {
+    width: 100%;
+    border-collapse: collapse;
+
+    font-family: var(--font-body);
+    font-size: 14px;
+}
+
+.conteudo-tabela th {
+    padding: 11px 16px;
+
+    background-color: var(--navy-900);
+
+    border: 1px solid var(--navy-600);
+
+    font-family: var(--font-heading);
+    font-weight: 600;
+
+    color: var(--white);
+
+    text-align: left;
+}
+
+.conteudo-tabela td {
+    padding: 10px 16px;
+
+    border: 1px solid var(--navy-600);
+
+    color: var(--slate-300);
+    line-height: 1.5;
+}
+
+.conteudo-tabela tr:nth-child(even) td {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* ================================
    ESTADOS DOS MÓDULOS
 ================================ */
 
