@@ -11,7 +11,8 @@ const {
   updateProximaTentativa,
   findProximoModuloByUsuario,
   updateProximoModulo,
-  findModulosRespondidosByUsuario
+  findModulosRespondidosByUsuario,
+  findProgressoModulosByUsuario
 } = require("../repositories/questoes.repositories")
 //cria objeto
 /**
@@ -214,6 +215,24 @@ router.get("/modulos-respondidos", authMiddleware, async function (req, res) {
     return res.status(200).json(modulos);
   } catch (e) {
     console.error("Erro ao buscar módulos respondidos:", e);
+    return res.status(500).json({
+      message: "erro interno do servidor",
+    });
+  }
+});
+
+/**
+ * ROTA: GET /modulos
+ * DESCRIÇÃO: Lista todos os módulos com o progresso real do usuário autenticado.
+ * ACESSO: Privado (Requer Token JWT).
+ */
+router.get("/modulos", authMiddleware, async function (req, res) {
+  try {
+    const modulos = await findProgressoModulosByUsuario(req.usuario.id_usuario);
+
+    return res.status(200).json(modulos);
+  } catch (e) {
+    console.error("Erro ao buscar progresso dos módulos:", e);
     return res.status(500).json({
       message: "erro interno do servidor",
     });

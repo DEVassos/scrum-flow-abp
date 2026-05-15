@@ -318,6 +318,94 @@ async function findModulosRespondidosByUsuario(idUsuario) {
   return result.rows;
 };
 
+//lista os modulos com progresso consolidado para a tela de modulos
+async function findProgressoModulosByUsuario(idUsuario) {
+  const result = await pool.query(
+    `
+    WITH exame_atual AS (
+      SELECT
+        id_modulo,
+        tentativa
+      FROM exames
+      WHERE id_usuario = $1
+      ORDER BY id_exame DESC
+      LIMIT 1
+    ),
+    grupos AS (
+      SELECT
+        id_modulo,
+        COUNT(*)::INTEGER AS questoes
+      FROM questoes
+      GROUP BY
+        id_modulo,
+        grupo
+    ),
+    meta_modulo AS (
+      SELECT
+        id_modulo,
+        MAX(questoes)::INTEGER AS questoes
+      FROM grupos
+      GROUP BY id_modulo
+    )
+    SELECT
+      m.id_modulo,
+      m.titulo,
+      COALESCE(mm.questoes, 0)::INTEGER AS questoes,
+      ea.id_modulo AS id_modulo_atual,
+      COALESCE(ea.tentativa, 1)::INTEGER AS tentativa_atual
+    FROM modulos m
+    LEFT JOIN exame_atual ea
+      ON TRUE
+    LEFT JOIN meta_modulo mm
+      ON mm.id_modulo = m.id_modulo
+    ORDER BY
+      m.id_modulo ASC
+    `,
+    [idUsuario],
+  );
+
+  const tentativas = await findModulosRespondidosByUsuario(idUsuario);
+  const tentativasByModulo = tentativas.reduce((groups, tentativa) => {
+    const idModulo = Number(tentativa.id_modulo);
+
+    if (!groups.has(idModulo)) {
+      groups.set(idModulo, []);
+    }
+
+    groups.get(idModulo).push(tentativa);
+    return groups;
+  }, new Map());
+
+  return result.rows.map((modulo) => {
+    const idModulo = Number(modulo.id_modulo);
+    const tentativasDoModulo = tentativasByModulo.get(idModulo) || [];
+    const tentativaAtual = Number(modulo.tentativa_atual) || 1;
+    const tentativaEmAndamento = tentativasDoModulo.find(
+      (tentativa) => Number(tentativa.tentativa) === tentativaAtual,
+    );
+
+    const aprovado = tentativasDoModulo.some((tentativa) => {
+      const questoes = Number(tentativa.questoes) || 0;
+      const respondidas = Number(tentativa.questoes_respondidas) || 0;
+      const nota = Number(tentativa.nota) || 0;
+
+      return respondidas >= questoes && nota >= Math.ceil(questoes * 0.6);
+    });
+
+    return {
+      ...modulo,
+      tentativas_usadas: tentativasDoModulo.length,
+      melhor_nota: tentativasDoModulo.reduce(
+        (maiorNota, tentativa) => Math.max(maiorNota, Number(tentativa.nota) || 0),
+        0,
+      ),
+      questoes_respondidas_atual:
+        Number(tentativaEmAndamento?.questoes_respondidas) || 0,
+      aprovado,
+    };
+  });
+};
+
 module.exports = {
   findProximaQuestaoByUsuario,
   findQuestaoDoExameByUsuario,
@@ -329,5 +417,6 @@ module.exports = {
   updateProximaTentativa,
   findProximoModuloByUsuario,
   updateProximoModulo,
-  findModulosRespondidosByUsuario
+  findModulosRespondidosByUsuario,
+  findProgressoModulosByUsuario
 };
