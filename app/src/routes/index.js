@@ -2,6 +2,7 @@ const { Router } = require('express');
 const usuarios = require('./usuarios.routes');
 const questoes = require("./questoes.routes");
 const auth = require('./auth.routes');
+const certificados = require("./certificados.routes");
 
 /**
  * Roteador Central da API.
@@ -19,6 +20,9 @@ router.use("/questoes", questoes);
 
 // Agrupa as rotas de autenticação (login) sob o prefixo /auth
 router.use("/auth", auth);
+
+// Agrupa as rotas relacionadas aos certificados
+router.use("/certificados", certificados);
 
 // ===== TRATAMENTO DE ROTAS NÃO ENCONTRADAS =====
 
