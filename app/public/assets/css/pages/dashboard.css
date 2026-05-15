@@ -1,0 +1,517 @@
+@import url("../global.css");
+
+/* ================================
+   FIX: content.css define svg { width: 200px; height: 200px; }
+   que afeta os ícones da sidebar e dos cards.
+   Aqui sobrescrevemos esse reset para os SVGs do dashboard.
+   ================================ */
+
+.sidebar-link svg,
+.nivel-indicador svg,
+.certificado-lock svg {
+    width: unset;
+    height: unset;
+}
+
+/* Garante que os blobs fiquem atrás do layout */
+.blob-esquerda,
+.blob-direita {
+    z-index: 0;
+}
+
+/* ================================
+   WRAPPER GERAL (sidebar + main)
+   ================================ */
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 64px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ================================
+   SIDEBAR
+   ================================ */
+
+.sidebar {
+    width: 160px;
+    flex-shrink: 0;
+    background-color: var(--navy-800);
+    border-right: 1px solid var(--navy-700);
+    padding: 24px 0;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 12px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--slate-400);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link svg {
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+.sidebar-link:hover {
+    background-color: var(--navy-700);
+    color: var(--white);
+}
+
+.sidebar-link--ativo {
+    color: var(--white);
+    background-color: var(--navy-700);
+}
+
+.sidebar-link--ativo svg {
+    opacity: 1;
+    color: var(--amber-500);
+}
+
+/* ================================
+   CONTEÚDO PRINCIPAL
+   ================================ */
+
+.dashboard-main {
+    margin-left: 160px;
+    flex: 1;
+    padding: 28px 32px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+}
+
+.dashboard-header {
+    border-bottom: 1px solid var(--navy-700);
+    padding-bottom: 16px;
+}
+
+.dashboard-subtitulo {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--slate-400);
+    margin: 0;
+}
+
+/* ================================
+   LAYOUT DE DUAS COLUNAS
+   ================================ */
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 24px;
+    align-items: start;
+}
+
+.dashboard-centro {
+    min-width: 0;
+}
+
+/* ================================
+   SEÇÃO DE TÍTULO
+   ================================ */
+
+.secao-titulo {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0 0 20px 0;
+}
+
+/* ================================
+   LISTA DE NÍVEIS
+   ================================ */
+
+.niveis-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nivel-card {
+    background-color: var(--navy-800);
+    border: 1px solid var(--navy-700);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.nivel-card:not(.nivel-bloqueado):hover {
+    border-color: var(--navy-400);
+}
+
+.nivel-bloqueado {
+    opacity: 0.6;
+}
+
+.nivel-indicador {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 1px;
+}
+
+.nivel-indicador--verde {
+    background-color: rgba(13, 148, 136, 0.15);
+    border: 1px solid rgba(13, 148, 136, 0.4);
+    color: var(--teal-500);
+}
+
+.nivel-indicador--amber {
+    background-color: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    color: var(--amber-500);
+}
+
+.nivel-indicador--lock {
+    background-color: rgba(71, 85, 105, 0.2);
+    border: 1px solid rgba(71, 85, 105, 0.35);
+    color: var(--slate-600);
+}
+
+.nivel-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nivel-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nivel-nome {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.nivel-badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nivel-badge--concluido {
+    background-color: rgba(13, 148, 136, 0.15);
+    color: var(--teal-500);
+    border: 1px solid rgba(13, 148, 136, 0.3);
+}
+
+.nivel-badge--andamento {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: var(--amber-500);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.nivel-badge--bloqueado {
+    background-color: rgba(71, 85, 105, 0.15);
+    color: var(--slate-400);
+    border: 1px solid rgba(71, 85, 105, 0.25);
+}
+
+.nivel-barra {
+    width: 100%;
+    height: 4px;
+    background-color: var(--navy-700);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.nivel-barra-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+}
+
+.nivel-barra-fill--verde {
+    background: linear-gradient(90deg, var(--teal-500), #2dd4bf);
+}
+
+.nivel-barra-fill--amber {
+    background: linear-gradient(90deg, var(--amber-500), var(--amber-400));
+}
+
+.nivel-barra-fill--azul {
+    background: linear-gradient(90deg, var(--navy-400), var(--navy-200));
+}
+
+.nivel-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.nivel-nota {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--slate-400);
+}
+
+.nivel-nota strong {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.nivel-status {
+    font-family: var(--font-body);
+    font-size: 12px;
+}
+
+.nivel-status--aprovado {
+    color: var(--teal-500);
+}
+
+.nivel-status--tentativa {
+    color: var(--amber-500);
+}
+
+.nivel-link-desbloqueio {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--amber-500);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.nivel-link-desbloqueio:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+/* ================================
+   COLUNA LATERAL
+   ================================ */
+
+.dashboard-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: calc(64px + 36px);
+}
+
+.lateral-card {
+    background-color: var(--navy-800);
+    border: 1px solid var(--navy-700);
+    border-radius: 14px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.lateral-titulo {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+.historico-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 12px;
+}
+
+.historico-tabela th {
+    color: var(--slate-400);
+    font-weight: 600;
+    text-align: left;
+    padding: 4px 6px 8px;
+    border-bottom: 1px solid var(--navy-700);
+}
+
+.historico-tabela td {
+    color: var(--navy-200);
+    padding: 8px 6px;
+    border-bottom: 1px solid rgba(22, 43, 92, 0.6);
+}
+
+.historico-tabela tr:last-child td {
+    border-bottom: none;
+}
+
+.pontuacao {
+    font-weight: 700;
+}
+
+.pontuacao--verde   { color: var(--teal-500); }
+.pontuacao--vermelho { color: var(--red-500); }
+.pontuacao--amarelo  { color: var(--amber-500); }
+
+.historico-link {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--amber-500);
+    text-decoration: none;
+    transition: opacity 0.2s;
+    align-self: flex-start;
+}
+
+.historico-link:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+.lateral-card--certificado {
+    align-items: center;
+    text-align: center;
+}
+
+.certificado-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background-color: var(--navy-700);
+    border: 1px solid var(--navy-600);
+    border-radius: 16px;
+    margin: 0 auto;
+}
+
+.certificado-lock {
+    color: var(--slate-600);
+    display: flex;
+    justify-content: center;
+}
+
+.certificado-descricao {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--slate-400);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.certificado-progresso {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--slate-600);
+}
+
+/* ================================
+   NAV LINK ATIVO
+   ================================ */
+
+.nav-link--ativo {
+    color: var(--amber-500) !important;
+}
+
+/* ================================
+   RESPONSIVO
+   ================================ */
+
+@media (max-width: 1024px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-lateral {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .lateral-card {
+        flex: 1;
+        min-width: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .dashboard-main {
+        margin-left: 0;
+        padding: 24px 20px 48px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nivel-cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .nivel-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-lateral {
+        flex-direction: column;
+    }
+}
+/* ================================
+   NAVBAR: saudação + sair em linha
+   ================================ */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 32px;
+}
+
+#nav-logado {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}
