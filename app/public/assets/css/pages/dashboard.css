@@ -502,11 +502,11 @@
    NAVBAR: saudação + sair em linha
    ================================ */
 
-.nav-menu {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 32px;
+@media (min-width: 481px) {
+    .nav-menu {
+        flex-direction: row;
+        gap: 32px;
+    }
 }
 
 #nav-logado {
