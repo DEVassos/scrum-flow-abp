@@ -219,12 +219,60 @@ function gerarLinhaHistorico(tentativa) {
 //   CERTIFICADO
 // ================================
 
-// Atualiza o contador "X/Y níveis concluídos" no card de certificado.
-// A aprovação por módulo já vem calculada pela API (campo aprovado).
+// Atualiza o card de certificado: progresso ou botão de acesso quando todos aprovados.
 function atualizarCertificado(modulos) {
-  const el = document.getElementById("cert-progresso");
-  if (!el) return;
+  const card = document.querySelector(".lateral-card--certificado");
+  if (!card) return;
 
   const concluidos = modulos.filter((m) => m.aprovado).length;
-  el.textContent = `Progresso atual: ${concluidos}/${modulos.length} níveis concluídos`;
+  const todosAprovados = modulos.length > 0 && concluidos === modulos.length;
+
+  const progressoEl = document.getElementById("cert-progresso");
+  const lockEl = card.querySelector(".certificado-lock");
+  const descricaoEl = card.querySelector(".certificado-descricao");
+
+  if (todosAprovados) {
+    card.classList.add("lateral-card--certificado-liberado");
+    if (lockEl) lockEl.hidden = true;
+    if (descricaoEl) descricaoEl.hidden = true;
+    if (progressoEl) progressoEl.hidden = true;
+
+    if (!card.querySelector(".cert-liberado-badge")) {
+      const badge = document.createElement("div");
+      badge.className = "cert-liberado-badge";
+      badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/> </svg> Certificado disponível!`;
+      const ref = lockEl || descricaoEl || progressoEl;
+      ref ? card.insertBefore(badge, ref) : card.appendChild(badge);
+    }
+
+    if (!card.querySelector("#btn-ver-certificado")) {
+      const btn = document.createElement("button");
+      btn.id = "btn-ver-certificado";
+      btn.className = "btn btn-primary";
+      btn.textContent = "Ver Certificado";
+      btn.style.marginTop = "12px";
+      btn.addEventListener("click", async () => {
+        btn.disabled = true;
+        btn.textContent = "Aguarde…";
+        try {
+          const res = await fetch("/api/certificados", {
+            method: "POST",
+            headers: { Authorization: `Bearer ${obterToken()}` },
+          });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const { hash } = await res.json();
+          window.location.href = `certificado.html?hash=${encodeURIComponent(hash)}`;
+        } catch {
+          btn.disabled = false;
+          btn.textContent = "Ver Certificado";
+          alert("Erro ao gerar certificado. Tente novamente.");
+        }
+      });
+      card.appendChild(btn);
+    }
+  } else {
+    if (progressoEl) {
+      progressoEl.textContent = `Progresso atual: ${concluidos}/${modulos.length} níveis concluídos`;
+    }
+  }
 }

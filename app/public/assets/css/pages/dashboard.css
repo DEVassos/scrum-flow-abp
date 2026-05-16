@@ -1,5 +1,10 @@
 @import url("../global.css");
 
+/* content.css tem svg { width:200px; height:200px }.
+   [hidden] precisa de !important para não ser sobrescrito
+   por regras de display das classes (ex: display:flex em .certificado-lock). */
+[hidden] { display: none !important; }
+
 /* ================================
    FIX: content.css define svg { width: 200px; height: 200px; }
    que afeta os ícones da sidebar e dos cards.
@@ -8,7 +13,8 @@
 
 .sidebar-link svg,
 .nivel-indicador svg,
-.certificado-lock svg {
+.certificado-lock svg,
+.cert-liberado-badge svg {
     width: unset;
     height: unset;
 }
@@ -440,6 +446,27 @@
     font-family: var(--font-body);
     font-size: 11px;
     color: var(--slate-600);
+}
+
+.lateral-card--certificado-liberado {
+    border-color: rgba(245, 158, 11, 0.45);
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.1);
+}
+
+.cert-liberado-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--amber-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* ================================
