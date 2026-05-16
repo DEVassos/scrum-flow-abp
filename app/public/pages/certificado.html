@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/pages/certificado.css">
+    <title>ScrumFlow | Certificado</title>
+</head>
+
+<body>
+
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
+
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
+                    <li><a href="modulo-2/scrum.html" class="nav-link">Scrum</a></li>
+                    <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                </ul>
+
+                <div class="navbar__actions">
+                    <div id="nav-deslogado">
+                        <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+                        <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
+                    </div>
+                    <div id="nav-logado" hidden>
+                        <span id="nav-saudacao" class="nav-saudacao"></span>
+                        <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="cert-page">
+
+        <!-- Estado de carregamento -->
+        <div id="loading" class="cert-feedback">
+            <div class="cert-spinner"></div>
+            <p>Carregando certificado…</p>
+        </div>
+
+        <!-- Estado de erro -->
+        <div id="erro" class="cert-feedback" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48" class="cert-icone-erro">
+                <circle cx="24" cy="24" r="22" stroke="var(--red-500)" stroke-width="2"/>
+                <path d="M24 14v12M24 32v2" stroke="var(--red-500)" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            <p id="erro-msg" class="cert-erro-msg">Certificado não encontrado.</p>
+            <a href="dashboard.html" class="btn btn-primary">Voltar ao Dashboard</a>
+        </div>
+
+        <!-- Ações — ocultas na impressão -->
+        <div id="cert-actions" class="cert-actions no-print" hidden>
+            <button id="btn-imprimir" class="btn btn-primary cert-btn-imprimir">
+                Imprimir / Exportar PDF
+            </button>
+            <a href="dashboard.html" class="btn btn-ghost">Voltar ao Dashboard</a>
+        </div>
+
+        <!-- Certificado -->
+        <div id="certificado" class="certificado-wrapper" hidden>
+            <div class="certificado">
+
+                <!-- Cabeçalho: logo + plataforma -->
+                <div class="cert-header">
+                    <div>
+                        <div class="cert-marca">Scrum<span>Flow</span></div>
+                        <div class="cert-tagline">Portal de Certificação</div>
+                    </div>
+                </div>
+
+                <div class="cert-divisor"><div class="cert-losango"></div></div>
+
+                <h1 class="cert-titulo">Certificado</h1>
+                <p class="cert-subtitulo">Metodologias Ágeis &middot; ScrumFlow &middot; DSM 2026-1</p>
+
+                <p class="cert-label">Certificamos que</p>
+
+                <h2 id="aluno-nome" class="cert-nome">—</h2>
+                <p class="cert-cpf">CPF: <span id="aluno-cpf">—</span></p>
+
+                <p class="cert-texto">
+                    concluiu com êxito todos os módulos do curso <strong>ScrumFlow</strong>,
+                    trilha de aprendizagem em metodologia ágil Scrum,
+                    no período de <span id="periodo-inicio">—</span> a <span id="periodo-fim">—</span>.
+                </p>
+
+                <div class="cert-divisor" style="margin-top:1.8rem"><div class="cert-losango"></div></div>
+
+                <!-- Média final -->
+                <p class="cert-media-label">Média Final</p>
+                <p class="cert-media-valor"><span id="media-final">—</span></p>
+
+                <!-- Tabela de módulos -->
+                <table class="cert-tabela">
+                    <thead>
+                        <tr>
+                            <th>Módulo</th>
+                            <th>Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modulos-corpo"></tbody>
+                </table>
+
+                <div class="cert-divisor" style="margin-top:1.8rem"><div class="cert-losango"></div></div>
+
+                <!-- Hash de verificação -->
+                <div class="cert-hash-container">
+                    <span class="cert-hash-label">Código de Verificação</span>
+                    <span id="codigo-validacao" class="cert-hash-code">—</span>
+                </div>
+
+                <!-- Assinaturas -->
+                <div class="cert-assinaturas">
+                    <div class="cert-assinatura-item">
+                        <div class="cert-linha-assinatura"></div>
+                        <div class="cert-assinatura-nome">Diretor Acadêmico</div>
+                        <div class="cert-assinatura-cargo">FATEC Jacareí</div>
+                    </div>
+                    <div class="cert-assinatura-item">
+                        <div class="cert-linha-assinatura"></div>
+                        <div class="cert-assinatura-nome">Coordenador do Projeto</div>
+                        <div class="cert-assinatura-cargo">ScrumFlow – DSM 2026/1</div>
+                    </div>
+                </div>
+
+                <p class="cert-emissao">
+                    Emitido em <span id="emitido-em">—</span>
+                </p>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/certificado.js"></script>
+
+</body>
+</html>
