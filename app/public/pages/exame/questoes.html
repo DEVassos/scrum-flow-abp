@@ -17,19 +17,26 @@
           >Scrum<span class="flow">Flow</span></a
         >
 
-        <ul class="nav-links">
-          <li><a href="../index.html" class="nav-link">Home</a></li>
-          <li>
-            <a href="../modulo-1/manifesto.html" class="nav-link">Manifesto</a>
-          </li>
-          <li><a href="../modulo-2/scrum.html" class="nav-link">Scrum</a></li>
-          <li><a href="../dashboard.html" class="nav-link">Dashboard</a></li>
-        </ul>
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-links">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="../modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
+            <li><a href="../modulo-2/scrum.html" class="nav-link">Scrum</a></li>
+            <li><a href="../dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="../modulos.html" class="nav-link">Módulos</a></li>
+          </ul>
 
-        <div class="navbar__actions">
-          <span id="saudacao" class="nav-saudacao"></span>
-          <button id="btn-sair" class="btn btn-ghost">Sair</button>
+          <div class="navbar__actions">
+            <span id="saudacao" class="nav-saudacao"></span>
+            <button id="btn-sair" class="btn btn-ghost">Sair</button>
+          </div>
         </div>
+
+        <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
 
@@ -99,6 +106,7 @@
     </div>
 
     <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
     <script src="../assets/js/questoes.js"></script>
   </body>
 </html>

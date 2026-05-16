@@ -47,6 +47,12 @@
   --shadow-glow-accent: 0 0 24px rgba(245, 158, 11, 0.3);
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--navy-900);
     color: var(--white);

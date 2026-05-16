@@ -233,6 +233,11 @@
    PAINEL PRINCIPAL
 ================================ */
 
+.modulos-sidebar,
+.modulo-painel {
+    min-width: 0;
+}
+
 .modulo-painel {
     background-color: var(--navy-800);
 
@@ -405,21 +410,34 @@
 @media (max-width: 640px) {
 
     .modulos-container {
-        padding: 88px 20px 48px;
+        padding: 88px 16px 48px;
+        gap: 28px;
     }
 
     .hero-titulo {
         font-size: 32px;
     }
 
+    .modulo-painel {
+        padding: 20px;
+    }
+
     .painel-topo {
         flex-direction: column;
+        gap: 12px;
+    }
+
+    .painel-titulo {
+        font-size: 22px;
+    }
+
+    .painel-tentativas {
+        align-items: flex-start;
     }
 
     .painel-acoes {
         flex-direction: column;
     }
-
 
 }
 
@@ -525,6 +543,10 @@
 }
 
 .conteudo-tabela {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
     width: 100%;
     border-collapse: collapse;
 
