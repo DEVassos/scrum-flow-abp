@@ -1,10 +1,30 @@
 //rota para obter os dados do certificado
 const { Router } = require("express");
+const authMiddleware = require("../middlewares/auth.middleware");
 const {
+  findHashByUsuario,
   findCertificadoByHash,
 } = require("../repositories/certificados.repositories");
 
 const router = Router();
+
+/*
+curl -X POST http://localhost:3000/api/certificados \
+  -H "Authorization: Bearer TOKEN"
+*/
+router.post("/", authMiddleware, async function (req, res) {
+  try {
+    const hash = await findHashByUsuario(req.usuario.id_usuario);
+
+    if (!hash) {
+      return res.status(404).json({ message: "usuário não encontrado" });
+    }
+
+    return res.status(200).json({ hash });
+  } catch (e) {
+    return res.status(500).json({ message: "erro interno do servidor" });
+  }
+});
 
 /*
 curl -X GET http://localhost:3000/api/certificados/hash/HASH_DO_CERTIFICADO
