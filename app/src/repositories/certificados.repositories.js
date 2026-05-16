@@ -4,6 +4,14 @@ const {
   findModulosRespondidosByUsuario,
 } = require("./questoes.repositories");
 
+async function findHashByUsuario(idUsuario) {
+  const result = await pool.query(
+    `SELECT certificado_hash FROM usuarios WHERE id_usuario = $1 LIMIT 1`,
+    [idUsuario],
+  );
+  return result.rows[0]?.certificado_hash || null;
+}
+
 async function findUsuarioByCertificadoHash(certificadoHash) {
   const result = await pool.query(
     `
@@ -145,6 +153,7 @@ async function findCertificadoByHash(certificadoHash) {
 }
 
 module.exports = {
+  findHashByUsuario,
   findCertificadoByHash,
 };
 

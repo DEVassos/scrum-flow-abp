@@ -1,0 +1,542 @@
+@import url("../global.css");
+
+/* content.css tem svg { width:200px; height:200px } global.
+   [hidden] também precisa de !important para não ser sobrescrito
+   por regras de display das classes (ex: display:flex em .cert-feedback). */
+[hidden] { display: none !important; }
+
+.cert-page svg {
+    width: unset;
+    height: unset;
+}
+
+/* ================================
+   PÁGINA
+   ================================ */
+
+.cert-page {
+    min-height: 100vh;
+    padding: 96px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* ================================
+   FEEDBACK: LOADING E ERRO
+   ================================ */
+
+.cert-feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: var(--navy-200);
+    font-size: 15px;
+    padding-top: 80px;
+}
+
+.cert-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--navy-600);
+    border-top-color: var(--amber-500);
+    border-radius: 50%;
+    animation: cert-spin 0.8s linear infinite;
+}
+
+@keyframes cert-spin {
+    to { transform: rotate(360deg); }
+}
+
+.cert-icone-erro { opacity: 0.85; }
+
+.cert-erro-msg {
+    color: var(--navy-200);
+    text-align: center;
+    max-width: 380px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ================================
+   AÇÕES (some na impressão)
+   ================================ */
+
+.cert-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cert-btn-imprimir {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ================================
+   WRAPPER DO CERTIFICADO
+   ================================ */
+
+.certificado-wrapper {
+    width: 100%;
+    max-width: 860px;
+}
+
+/* ================================
+   O CERTIFICADO — DARK DESIGN
+   ================================ */
+
+.certificado {
+    position: relative;
+    background: var(--navy-800);
+    border: 1px solid var(--navy-600);
+    border-top: 3px solid var(--amber-500);
+    border-bottom: 3px solid var(--amber-500);
+    padding: 3rem 3.5rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(10, 22, 40, 0.8), 0 0 40px rgba(245, 158, 11, 0.12);
+    /* Ornamentos de canto em amber */
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath d='M4 4 L4 20 M4 4 L20 4' stroke='%23F59E0B' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='4' cy='4' r='2.5' fill='%23F59E0B'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath d='M48 4 L48 20 M48 4 L32 4' stroke='%23F59E0B' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='48' cy='4' r='2.5' fill='%23F59E0B'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath d='M4 48 L4 32 M4 48 L20 48' stroke='%23F59E0B' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='4' cy='48' r='2.5' fill='%23F59E0B'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath d='M48 48 L48 32 M48 48 L32 48' stroke='%23F59E0B' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='48' cy='48' r='2.5' fill='%23F59E0B'/%3E%3C/svg%3E");
+    background-position:
+        top 10px left 10px,
+        top 10px right 10px,
+        bottom 10px left 10px,
+        bottom 10px right 10px;
+    background-repeat: no-repeat;
+    background-size: 52px 52px;
+}
+
+/* Moldura interna fina */
+.certificado::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid var(--navy-600);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* ================================
+   CABEÇALHO: LOGO + MARCA
+   ================================ */
+
+.cert-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.4rem;
+}
+
+.cert-marca {
+    font-family: var(--font-logo);
+    font-size: 4rem;
+    color: var(--white);
+    letter-spacing: 3px;
+    line-height: 1;
+}
+
+.cert-marca span {
+    color: var(--amber-500);
+}
+
+.cert-tagline {
+    font-size: 0.65rem;
+    color: var(--navy-400);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 2px;
+    font-family: var(--font-body);
+}
+
+/* ================================
+   DIVISOR ORNAMENTAL
+   ================================ */
+
+.cert-divisor {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 1.2rem auto;
+    width: 65%;
+}
+
+.cert-divisor::before,
+.cert-divisor::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--amber-500), transparent);
+}
+
+.cert-losango {
+    width: 7px;
+    height: 7px;
+    background: var(--amber-500);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+
+/* ================================
+   TÍTULO
+   ================================ */
+
+.cert-titulo {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    line-height: 1.1;
+    margin: 0 0 0.2rem;
+}
+
+.cert-subtitulo {
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: var(--navy-400);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+}
+
+/* ================================
+   ALUNO
+   ================================ */
+
+.cert-label {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--navy-200);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 1.8rem 0 0.5rem;
+    font-family: var(--font-body);
+}
+
+.cert-nome {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--amber-400);
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+    margin: 0;
+}
+
+.cert-nome::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--amber-500), transparent);
+}
+
+.cert-cpf {
+    font-size: 0.82rem;
+    color: var(--navy-200);
+    margin: 0.5rem 0 0;
+    font-family: var(--font-body);
+}
+
+.cert-texto {
+    font-size: 0.92rem;
+    color: var(--navy-200);
+    line-height: 1.8;
+    margin: 1.2rem auto 0;
+    max-width: 560px;
+    font-family: var(--font-body);
+}
+
+.cert-texto strong {
+    color: var(--white);
+}
+
+/* ================================
+   MÉDIA FINAL
+   ================================ */
+
+.cert-media-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--navy-400);
+    margin: 1.4rem 0 0.2rem;
+    font-family: var(--font-body);
+}
+
+.cert-media-valor {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--teal-500);
+    margin: 0;
+}
+
+/* ================================
+   TABELA DE MÓDULOS
+   ================================ */
+
+.cert-tabela {
+    width: 100%;
+    max-width: 480px;
+    margin: 1.2rem auto 0;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+}
+
+.cert-tabela thead th {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--navy-400);
+    font-weight: 600;
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--navy-600);
+    text-align: left;
+}
+
+.cert-tabela thead th:last-child {
+    text-align: right;
+}
+
+.cert-tabela tbody tr {
+    border-bottom: 1px solid rgba(74, 111, 165, 0.2);
+}
+
+.cert-tabela tbody tr:last-child {
+    border-bottom: none;
+}
+
+.cert-tabela tbody td {
+    padding: 8px 12px;
+    color: var(--navy-200);
+}
+
+.cert-tabela tbody td:last-child {
+    text-align: right;
+    font-weight: 600;
+    color: var(--amber-400);
+}
+
+/* ================================
+   HASH DE VERIFICAÇÃO
+   ================================ */
+
+.cert-hash-container {
+    display: inline-block;
+    margin: 0 auto;
+    background: rgba(10, 22, 40, 0.6);
+    border: 1px solid var(--navy-600);
+    border-radius: 6px;
+    padding: 0.7rem 1.2rem;
+    max-width: 100%;
+}
+
+.cert-hash-label {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--amber-500);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-body);
+}
+
+.cert-hash-code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    color: var(--navy-200);
+    word-break: break-all;
+}
+
+/* ================================
+   ASSINATURAS
+   ================================ */
+
+.cert-assinaturas {
+    margin-top: 2.4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.cert-assinatura-item {
+    text-align: center;
+}
+
+.cert-linha-assinatura {
+    width: 160px;
+    border-bottom: 1px solid var(--navy-600);
+    margin: 0 auto 0.5rem;
+}
+
+.cert-assinatura-nome {
+    font-size: 0.73rem;
+    font-weight: 500;
+    color: var(--navy-200);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-family: var(--font-body);
+}
+
+.cert-assinatura-cargo {
+    font-size: 0.67rem;
+    color: var(--amber-600);
+    margin-top: 2px;
+    font-family: var(--font-body);
+}
+
+/* ================================
+   DATA DE EMISSÃO
+   ================================ */
+
+.cert-emissao {
+    margin-top: 1.6rem;
+    font-size: 0.78rem;
+    color: var(--navy-400);
+    font-family: var(--font-body);
+}
+
+/* ================================
+   RESPONSIVIDADE
+   ================================ */
+
+@media (max-width: 768px) {
+    .cert-page {
+        padding: 88px 16px 60px;
+    }
+
+    .certificado {
+        padding: 2rem 1.4rem;
+    }
+
+    .cert-titulo {
+        font-size: 1.7rem;
+        letter-spacing: 4px;
+    }
+
+    .cert-nome {
+        font-size: 1.7rem;
+    }
+
+    .cert-divisor {
+        width: 90%;
+    }
+
+    .cert-assinaturas {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ================================
+   IMPRESSÃO / PDF
+   ================================ */
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        background: var(--navy-900) !important;
+    }
+
+    .no-print,
+    .blob-esquerda,
+    .blob-direita,
+    .navbar {
+        display: none !important;
+    }
+
+    .cert-page {
+        padding: 0 !important;
+        min-height: unset;
+        justify-content: center;
+    }
+
+    .certificado-wrapper {
+        max-width: 100%;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin: 0.8cm;
+    }
+
+    .certificado {
+        padding: 1.4rem 2rem;
+        box-shadow: none;
+    }
+
+    .cert-divisor {
+        margin-top: 0.7rem !important;
+        margin-bottom: 0.7rem !important;
+    }
+
+    .cert-label {
+        margin-top: 0.9rem;
+    }
+
+    .cert-nome {
+        font-size: 1.9rem;
+    }
+
+    .cert-titulo {
+        font-size: 1.9rem;
+    }
+
+    .cert-texto {
+        margin-top: 0.6rem;
+        font-size: 0.84rem;
+    }
+
+    .cert-media-label {
+        margin-top: 0.7rem;
+    }
+
+    .cert-media-valor {
+        font-size: 1.6rem;
+    }
+
+    .cert-tabela {
+        margin-top: 0.6rem;
+    }
+
+    .cert-tabela thead th,
+    .cert-tabela tbody td {
+        padding: 5px 12px;
+    }
+
+    .cert-hash-container {
+        margin-top: 0;
+    }
+
+    .cert-assinaturas {
+        margin-top: 1.2rem;
+    }
+
+    .cert-emissao {
+        margin-top: 0.8rem;
+    }
+}
