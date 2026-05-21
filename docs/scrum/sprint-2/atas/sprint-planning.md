@@ -31,7 +31,7 @@ Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliaçã
 | — | Infra / Suporte | 10 | Gabriel, Gustavo, Marcello, Vinicius |
 | — | Documentação | 12 | Gabriel, Gustavo, Marcello, Vinicius |
 
-**Total de pontos comprometidos:** 89 SP
+**Total de pontos comprometidos:** 96 SP (89 iniciais + 7 ressalvas de escopo)
 
 ---
 
@@ -89,6 +89,12 @@ Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliaçã
 - [ ] T27 — Atualizar modelos BD (conceitual + lógico) — novas tabelas — Responsável: Gabriel + Vinicius *(3 SP)*
 - [ ] T28 — Atualizar README.md — status Sprint 2, novas rotas e telas — Responsável: Gabriel + Gustavo *(2 SP)*
 - [ ] T29 — Revisar e atualizar Product Backlog — status das USs — Responsável: Gustavo *(2 SP)*
+
+### Mudanças de Escopo (Ressalvas durante a Sprint) *(7 SP)*
+
+- [ ] T30 — Criar estrutura visual da página de módulos — Responsável: Andrea + Henrique *(2 SP)*
+- [ ] T31 — Implementar lógica dinâmica e progressão dos módulos — Responsável: Andrea + Lucas *(3 SP)*
+- [ ] T32 — Inserir conteúdos oficiais dos módulos ScrumFlow — Responsável: Gustavo + Gabriel *(2 SP)*
 
 ---
 
