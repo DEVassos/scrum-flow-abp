@@ -1,0 +1,27 @@
+@startuml RF10_Class
+package Domain {
+  class Exame {
+    +id_exame: Integer
+    +id_modulo: Integer
+    +id_usuario: Integer
+    +grupo: Integer
+    +tentativa: Integer
+
+    +listarHistorico(): List<Resposta>
+  }
+  class Resposta {
+    +id_resposta: Integer
+    +id_exame: Integer
+    +id_questao: Integer
+    +resposta: String
+    +nota: Integer
+    +respondido_em: Timestamp
+
+    +obterDetalhes(): String
+  }
+}
+note left
+  Histórico de tentativas e respostas é exibido ao usuário
+end note
+Exame "1" -- "*" Resposta : contém >
+@enduml

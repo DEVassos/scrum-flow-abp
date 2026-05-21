@@ -1,0 +1,32 @@
+@startuml RF01_Class
+package Domain {
+  class Usuario {
+    +id_usuario: Integer
+    +nome: String
+    +email: String
+    +cpf: String
+    +certificado_hash: String
+
+    +registrar(nome:String,email:String,cpf:String,senha:String): Usuario
+    +atualizarPerfil(nome:String,email:String): Boolean
+  }
+  class Modulo {
+    +id_modulo: Integer
+    +titulo: String
+
+    +listarQuestoes(): List<Questao>
+  }
+  class Exame {
+    +id_exame: Integer
+    +id_modulo: Integer
+    +id_usuario: Integer
+    +grupo: Integer
+    +tentativa: Integer
+
+    +iniciar(): Exame
+    +avancarTentativa(): Exame
+  }
+}
+Usuario "1" -- "*" Exame : inicia >
+Modulo "1" -- "*" Exame : contém >
+@enduml

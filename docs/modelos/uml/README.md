@@ -41,6 +41,10 @@ Visão holística das interações entre Usuário e Sistema.
 
 Arquivo fonte: [scrum-flow-uml-astah.asta](./scrum-flow-uml-astah.asta) (Astah Community).
 
+Modelo atual atualizado em: [`puml/scrum-flow-uml.puml`](./puml/scrum-flow-uml.puml).
+
+> Nota: a geração automática de um novo `.asta` não foi possível neste ambiente, pois o arquivo Astah é armazenado como uma entidade Java serializada dentro de um arquivo ZIP binário. O arquivo PlantUML oferece uma base portátil para atualizar os diagramas e reimportar em ferramentas compatíveis.
+
 ---
 
 <div align="center">

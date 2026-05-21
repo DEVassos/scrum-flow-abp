@@ -1,0 +1,9 @@
+@startuml RF08_Sequence
+actor Usuario
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Repo: GET /api/questoes/modulos
+Repo -> Database: SELECT modulos + progressos
+Database --> Repo: dados agregados
+Repo --> Usuario: progresso com melhor_nota e aprovado
+@enduml

@@ -1,0 +1,11 @@
+@startuml RF10_Sequence
+actor Usuario
+participant "QuestoesRoute" as Route
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Route: GET /api/questoes/modulos-respondidos
+Route -> Repo: findModulosRespondidosByUsuario(id_usuario)
+Repo -> Database: SELECT respostas JOIN exames
+Repo --> Route: lista de tentativas
+Route -> Usuario: 200 OK
+@enduml

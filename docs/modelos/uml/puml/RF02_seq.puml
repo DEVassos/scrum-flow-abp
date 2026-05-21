@@ -1,0 +1,16 @@
+@startuml RF02_Sequence
+actor Usuario
+participant "AuthRoute" as Route
+participant "UsuariosRepository" as Repo
+participant "PasswordUtil" as Password
+participant "JwtUtil" as Jwt
+participant Database
+Usuario -> Route: POST /api/auth/login(cpf, senha)
+Route -> Repo: findUsuarioByCpfAndSenha(cpf)
+Repo -> Database: SELECT usuario
+Repo -> Password: verifyPassword(senha, senhaHash)
+Password --> Repo: resultado
+Repo -> Jwt: createToken(payload)
+Jwt --> Route: token
+Route -> Usuario: 200 OK + JWT
+@enduml

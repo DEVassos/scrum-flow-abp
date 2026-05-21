@@ -1,0 +1,15 @@
+@startuml RF03_Sequence
+actor Usuario
+participant "QuestoesRoute" as Route
+participant "AuthMiddleware" as Auth
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Route: GET /api/questoes/proxima-questao
+Route -> Auth: validar token
+Auth -> Repo: findUsuarioById(payload.id_usuario)
+Route -> Repo: findProximaQuestaoByUsuario(id_usuario)
+Repo -> Database: SELECT exame atual
+Repo -> Database: SELECT próxima questão não respondida
+Repo --> Route: questão
+Route -> Usuario: 200 OK + questão
+@enduml

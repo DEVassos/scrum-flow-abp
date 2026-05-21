@@ -1,0 +1,33 @@
+@startuml RF07_Class
+package Domain {
+  class Resposta {
+    +id_resposta: Integer
+    +id_exame: Integer
+    +id_questao: Integer
+    +resposta: Char(1)
+    +nota: Integer
+    +respondido_em: Timestamp
+
+    +responder(alternativa:String): Resposta
+    +calcularNota(alternativaCorreta:String): Integer
+  }
+
+  class Exame {
+    +id_exame: Integer
+    +id_modulo: Integer
+    +id_usuario: Integer
+    +grupo: Integer
+    +tentativa: Integer
+
+    +registrarResposta(resposta:Resposta): Boolean
+    +calcularMelhorNota(): Integer
+  }
+}
+
+note right of Resposta
+  melhor_nota é derivada da agregação
+  das respostas por exame/módulo.
+end note
+
+Resposta "*" -- "1" Exame : pertence a
+@enduml

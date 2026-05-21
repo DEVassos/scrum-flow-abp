@@ -1,0 +1,20 @@
+@startuml RF09_Class
+package Domain {
+  class Certificado {
+    +certificadoHash: String
+    +emitidoEm: Timestamp
+    +inicioEm: Timestamp
+    +fimEm: Timestamp
+
+    +emitirPara(usuario: Usuario): Certificado
+    +validarHash(hash:String): Boolean
+  }
+  class Usuario {
+    +nome: String
+    +cpf: String
+
+    +obterCertificado(): Certificado
+  }
+}
+Certificado --> Usuario : referente a >
+@enduml

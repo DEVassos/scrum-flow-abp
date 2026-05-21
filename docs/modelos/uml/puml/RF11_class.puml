@@ -1,0 +1,20 @@
+@startuml RF11_Class
+package Domain {
+  class Modulo {
+    +id_modulo: Integer
+    +titulo: String
+
+    +obterProgresso(): Progresso
+    +avancar(): Boolean
+  }
+  class Progresso {
+    +questoes: Integer
+    +tentativas_usadas: Integer
+    +melhor_nota: Integer
+
+    +calcularMelhorNota(): Integer
+    +resumir(): String
+  }
+}
+Modulo --> Progresso
+@enduml

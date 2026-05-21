@@ -1,0 +1,11 @@
+@startuml RF11_Sequence
+actor Usuario
+participant "QuestoesRoute" as Route
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Route: GET /api/questoes/modulos
+Route -> Repo: findProgressoModulosByUsuario(id_usuario)
+Repo -> Database: SELECT modulos + tentativas
+Repo --> Route: progresso consolidado
+Route -> Usuario: 200 OK
+@enduml

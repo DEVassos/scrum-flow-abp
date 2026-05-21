@@ -1,0 +1,25 @@
+@startuml RF02_Class
+package Domain {
+  class Usuario {
+    +id_usuario: Integer
+    +cpf: String
+    +senha: String (hash)
+    +nome: String
+
+    +login(cpf:String,senha:String): String
+    +validarCredenciais(cpf:String,senha:String): Boolean
+  }
+}
+package Infra {
+  class JwtUtil {
+    +createToken(payload:Object): String
+    +verifyToken(token:String): Object
+  }
+  class PasswordUtil {
+    +hash(password:String): String
+    +verify(password:String, hash:String): Boolean
+  }
+}
+Usuario --> PasswordUtil : valida senha
+JwtUtil ..> Usuario : gera token
+@enduml

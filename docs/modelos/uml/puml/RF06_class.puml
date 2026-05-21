@@ -1,0 +1,21 @@
+@startuml RF06_Class
+package Domain {
+  class Exame {
+    +tentativa: Integer
+    +grupo: Integer
+
+    +podeReiniciar(): Boolean
+    +novaTentativa(grupo:Integer): Exame
+  }
+  class Resposta {
+    +id_resposta: Integer
+    +nota: Integer
+
+    +registrar(): Resposta
+  }
+}
+note right
+  `Exame.tentativa` limita a 2 tentativas por módulo
+end note
+Exame "1" -- "*" Resposta : contém >
+@enduml

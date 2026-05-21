@@ -1,0 +1,14 @@
+@startuml RF08_Class
+package Domain {
+  class Progresso {
+    +melhor_nota: Integer
+    +aprovado: Boolean
+
+    +calcularMedia(): Float
+    +verificarAprovacao(): Boolean
+  }
+}
+note right
+  Média final e aprovação são derivadas das tentativas e notas
+end note
+@enduml

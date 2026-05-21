@@ -1,0 +1,34 @@
+@startuml RF03_Class
+package Domain {
+  class Exame {
+    +id_exame: Integer
+    +id_modulo: Integer
+    +id_usuario: Integer
+    +grupo: Integer
+    +tentativa: Integer
+
+    +criar(id_modulo:Integer,id_usuario:Integer,grupo:Integer): Exame
+    +obterHistorico(): List<Resposta>
+  }
+  class Questao {
+    +id_questao: Integer
+    +id_modulo: Integer
+    +grupo: Integer
+    +numero: Integer
+    +dificuldade: String
+
+    +selecionarPorExame(exame:Exame): Questao
+  }
+  class Resposta {
+    +id_resposta: Integer
+    +id_exame: Integer
+    +id_questao: Integer
+    +nota: Integer
+
+    +registrar(id_exame:Integer,id_questao:Integer,resposta:String): Resposta
+    +calcularNota(alternativaCorreta:String,resposta:String): Integer
+  }
+}
+Exame "1" -- "*" Questao : seleciona >
+Exame "1" -- "*" Resposta : registra >
+@enduml

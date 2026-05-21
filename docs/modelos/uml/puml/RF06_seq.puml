@@ -1,0 +1,15 @@
+@startuml RF06_Sequence
+actor Usuario
+participant "QuestoesRoute" as Route
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Route: PATCH /api/questoes/proxima-tentativa
+Route -> Repo: usuarioConcluiuModuloAtual(id_usuario)
+Repo -> Database: SELECT questoes pendentes
+Route <- Repo: concluido?
+Route -> Repo: findModuloAtualByUsuario(id_usuario)
+Route -> Repo: findOutroGrupoAleatorio(...)
+Route -> Repo: updateProximaTentativa(...)
+Repo -> Database: UPDATE exames (tentativa++)
+Route -> Usuario: 200 OK
+@enduml

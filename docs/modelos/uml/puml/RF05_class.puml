@@ -1,0 +1,23 @@
+@startuml RF05_Class
+package Domain {
+  class Modulo {
+    +id_modulo: Integer
+    +titulo: String
+
+    +obterComposicao(): Map<Integer,Integer>
+    +listarQuestoes(): List<Questao>
+  }
+  class Questao {
+    +id_questao: Integer
+    +grupo: Integer
+    +numero: Integer
+
+    +pertenceAoModulo(id_modulo:Integer): Boolean
+  }
+}
+note left
+  A composição da prova (ex.: 3+4+3) é definida pelo conjunto de
+  `Questao` presentes por `grupo` em cada `Modulo`.
+end note
+Modulo "1" -- "*" Questao : possui >
+@enduml

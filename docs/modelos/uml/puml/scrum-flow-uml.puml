@@ -1,0 +1,148 @@
+@startuml ScrumFlowClassDiagram
+package "Domain" {
+  class Usuario {
+    +id_usuario: Integer
+    +nome: String
+    +email: String
+    +cpf: String
+    +senha: String
+    +certificado_hash: String
+  }
+  class Modulo {
+    +id_modulo: Integer
+    +titulo: String
+  }
+  class Questao {
+    +id_questao: Integer
+    +id_modulo: Integer
+    +grupo: Integer
+    +numero: Integer
+    +dificuldade: String
+    +enunciado: Text
+    +alternativa_a: Text
+    +alternativa_b: Text
+    +alternativa_c: Text
+    +alternativa_d: Text
+    +alternativa_correta: Char
+    +imagem: String
+  }
+  class Exame {
+    +id_exame: Integer
+    +id_modulo: Integer
+    +id_usuario: Integer
+    +grupo: Integer
+    +tentativa: Integer
+  }
+  class Resposta {
+    +id_resposta: Integer
+    +id_exame: Integer
+    +id_questao: Integer
+    +resposta: Char
+    +nota: Integer
+    +respondido_em: Timestamp
+  }
+}
+
+package "Infra / Serviços" {
+  class UsuariosRepository
+  class QuestoesRepository
+  class CertificadosRepository
+  class AuthMiddleware
+  class JwtUtil
+  class PasswordUtil
+}
+
+Usuario "1" -- "*" Exame : realiza >
+Modulo "1" -- "*" Questao : contém >
+Exame "1" -- "*" Resposta : registra >
+Questao "1" -- "*" Resposta : responde >
+Exame "*" -- "1" Modulo : pertence a >
+Exame "*" -- "1" Usuario : pertence a >
+CertificadosRepository ..> Usuario : consulta >
+CertificadosRepository ..> Modulo : consulta >
+CertificadosRepository ..> Resposta : agrega >
+AuthMiddleware ..> JwtUtil : valida token >
+AuthMiddleware ..> UsuariosRepository : carrega usuário >
+
+@enduml
+
+@startuml RF01_Cadastro
+actor Usuario
+participant "UsuariosRoute" as Route
+participant "UsuariosRepository" as Repo
+participant Database
+Usuario -> Route: POST /api/usuarios
+Route -> Repo: createUsuario(nome, email, cpf, senha)
+Repo -> Database: INSERT usuarios
+Repo -> Database: SELECT modulos
+Repo -> Database: SELECT grupo aleatório
+Repo -> Database: INSERT exames
+Repo -> Route: return usuario criado
+Route -> Usuario: 201 Created
+@enduml
+
+@startuml RF02_Login
+actor Usuario
+participant "AuthRoute" as Route
+participant "UsuariosRepository" as Repo
+participant "PasswordUtil" as Password
+participant "JwtUtil" as Jwt
+Route -> Repo: findUsuarioByCpfAndSenha(cpf, senha)
+Repo -> Database: SELECT usuario by cpf
+Repo -> Password: verifyPassword(senha, senhaHash)
+Password --> Repo: resultado
+Repo -> Jwt: createToken(payload)
+Jwt --> Route: token
+Route -> Usuario: 200 OK + JWT
+@enduml
+
+@startuml RF03_ProximaQuestao
+actor Usuario
+participant "QuestoesRoute" as Route
+participant "AuthMiddleware" as Auth
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Route: GET /api/questoes/proxima-questao
+Route -> Auth: validar token
+Auth -> Repo: findUsuarioById(payload.id_usuario)
+Auth -> Route: req.usuario
+Route -> Repo: findProximaQuestaoByUsuario(id_usuario)
+Repo -> Database: SELECT exame atual
+Repo -> Database: SELECT proxima questao
+Repo --> Route: questao
+Route -> Usuario: 200 OK
+@enduml
+
+@startuml RF06_ProximaTentativa
+actor Usuario
+participant "QuestoesRoute" as Route
+participant "AuthMiddleware" as Auth
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Route: PATCH /api/questoes/proxima-tentativa
+Route -> Auth: validar token
+Route -> Repo: usuarioConcluiuModuloAtual(id_usuario)
+Repo -> Database: SELECT questões não respondidas
+Route <-- Repo: concluido
+Route -> Repo: findModuloAtualByUsuario(id_usuario)
+Repo -> Database: SELECT exame atual
+Route -> Repo: findOutroGrupoAleatorio(id_usuario, id_modulo)
+Repo -> Database: SELECT grupo alternativo
+Route -> Repo: updateProximaTentativa(id_exame, grupo, tentativa + 1)
+Repo -> Database: UPDATE exames
+Route -> Usuario: 200 OK
+@enduml
+
+@startuml RF09_Certificado
+actor Usuario
+participant "CertificadosRoute" as Route
+participant "AuthMiddleware" as Auth
+participant "CertificadosRepository" as Repo
+participant Database
+Usuario -> Route: POST /api/certificados
+Route -> Auth: validar token
+Route -> Repo: findHashByUsuario(id_usuario)
+Repo -> Database: SELECT certificado_hash
+Route -> Usuario: 200 OK
+
+@enduml

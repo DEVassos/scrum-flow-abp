@@ -1,0 +1,6 @@
+@startuml RF12_Sequence
+note
+  RF12: fluxo administrativo não implementado no backend.
+  Sequência a definir quando rotas/repositórios existirem.
+end note
+@enduml

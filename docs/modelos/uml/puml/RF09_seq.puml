@@ -1,0 +1,18 @@
+@startuml RF09_Sequence
+actor Usuario
+participant "CertificadosRoute" as Route
+participant "CertificadosRepository" as Repo
+participant Database
+Usuario -> Route: POST /api/certificados
+Route -> Repo: findHashByUsuario(id_usuario)
+Repo -> Database: SELECT certificado_hash
+Route --> Usuario: 200 OK { hash }
+
+== validação por hash ==
+actor Cliente
+Cliente -> Route: GET /api/certificados/hash/:hash
+Route -> Repo: findCertificadoByHash(hash)
+Repo -> Database: SELECT usuario, modulos, respostas
+Repo --> Route: certificado montado ou indisponivel
+Route -> Cliente: 200 OK / 409 Indisponível
+@enduml

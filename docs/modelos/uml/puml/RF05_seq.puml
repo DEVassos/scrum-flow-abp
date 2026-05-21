@@ -1,0 +1,8 @@
+@startuml RF05_Sequence
+actor Usuario
+participant "QuestoesRepository" as Repo
+participant Database
+Repo -> Database: SELECT questoes WHERE id_modulo = X AND grupo = Y
+Database --> Repo: lista de questões
+note right: A composição (3+4+3) é propriedade do conjunto de questões
+@enduml

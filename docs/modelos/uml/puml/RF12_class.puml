@@ -1,0 +1,13 @@
+@startuml RF12_Class
+package Domain {
+  class Administracao {
+    +gerenciarUsuarios(): List<Usuario>
+    +emitirRelatorios(): String
+    +configurarPermissoes(): Boolean
+  }
+}
+note right
+  RF12: área administrativa - sem implementação backend atual
+  manter como pendente/planejada
+end note
+@enduml

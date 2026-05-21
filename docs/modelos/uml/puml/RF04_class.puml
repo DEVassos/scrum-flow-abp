@@ -1,0 +1,15 @@
+@startuml RF04_Class
+package Domain {
+  class Questao {
+    +id_questao: Integer
+    +dificuldade: String
+    +grupo: Integer
+
+    +avaliarDificuldade(): String
+    +classificar(): Integer
+  }
+}
+note right of Questao
+  Atributo `dificuldade` usado para classificação
+end note
+@enduml

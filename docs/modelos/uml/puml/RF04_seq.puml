@@ -1,0 +1,11 @@
+@startuml RF04_Sequence
+actor Usuario
+participant "QuestoesRoute" as Route
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Route: request (client may sort/filter by dificuldade)
+Route -> Repo: findProximaQuestaoByUsuario(id_usuario)
+Repo -> Database: SELECT questoes (dificuldade)
+Repo --> Route: questão with dificuldade
+Route -> Usuario: 200 OK
+@enduml

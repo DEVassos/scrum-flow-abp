@@ -1,0 +1,14 @@
+@startuml RF01_Sequence
+actor Usuario
+participant "UsuariosRoute" as Route
+participant "UsuariosRepository" as Repo
+participant Database
+Usuario -> Route: POST /api/usuarios(nome,email,cpf,senha)
+Route -> Repo: createUsuario(...)
+Repo -> Database: INSERT usuarios
+Repo -> Database: SELECT id_modulo (primeiro)
+Repo -> Database: SELECT grupo aleatório
+Repo -> Database: INSERT exames (tentativa=1)
+Repo --> Route: usuario criado
+Route -> Usuario: 201 Created
+@enduml

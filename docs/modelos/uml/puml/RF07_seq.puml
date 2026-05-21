@@ -1,0 +1,9 @@
+@startuml RF07_Sequence
+actor Usuario
+participant "QuestoesRepository" as Repo
+participant Database
+Usuario -> Repo: GET /api/questoes/modulos-respondidos
+Repo -> Database: SELECT respostas JOIN exames JOIN questoes
+Database --> Repo: tentativas agregadas
+Repo --> Usuario: lista de tentativas (melhor_nota calculada)
+@enduml
