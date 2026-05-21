@@ -17,125 +17,122 @@
         <div class="navbar__container">
             <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
 
-            <!-- A classe "active" marca o link da página atual -->
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
-                <li><a href="scrum.html" class="nav-link">Scrum</a></li>
-                
-               <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-            </ul>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
+                    <li><a href="modulo-2/scrum.html" class="nav-link">Scrum</a></li>
+                    <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="modulos.html" class="nav-link">Módulos</a></li>
+                    <li><a href="exame/questoes.html" class="nav-link">Provas</a></li>
+                </ul>
 
-            <div class="navbar__actions">
-                <span id="saudacao" class="nav-saudacao"></span>
-                <button id="btn-sair" class="btn btn-ghost">Sair</button>
+                <div class="navbar__actions">
+                    <!-- nav-deslogado e nav-logado são alternados pelo navbar.js -->
+                    <div id="nav-deslogado">
+                        <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+                        <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
+                    </div>
+                    <div id="nav-logado" hidden>
+                        <span id="nav-saudacao" class="nav-saudacao"></span>
+                        <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+                    </div>
+                </div>
             </div>
+
+            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <main class="dashboard-container">
+    <div class="dashboard-wrapper">
 
-        <section class="dashboard-hero">
-            <div class="hero-content">
-                <span class="hero-tag">Bem-vindo de volta</span>
-                <h1 class="hero-titulo">
-                    Pronto para aprender, <span id="hero-nome" class="hero-nome-destaque">usuário</span>?
-                </h1>
-                <p class="hero-subtitulo">
-                    Continue sua jornada no Scrum Framework. Escolha um módulo abaixo para começar.
-                </p>
+        <!-- SIDEBAR: apenas links que têm página de destino real -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="modulos.html" class="sidebar-link sidebar-link--ativo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/></svg>
+                    Módulos
+                </a>
+                <a href="exame/questoes.html" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.854-4.854 3 3a.5.5 0 0 1-.708.708L6.5 9.207V12.5a.5.5 0 0 1-1 0V9.207L2.854 11.854a.5.5 0 0 1-.708-.708l3-3a.5.5 0 0 1 .708 0z"/></svg>
+                    Provas
+                </a>
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="dashboard-main">
+
+            <div class="dashboard-header">
+                <p class="dashboard-subtitulo">Acompanhe seu progresso na jornada Scrum</p>
             </div>
 
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <span class="stat-valor">0</span>
-                    <span class="stat-label">Módulos concluídos</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-valor">0</span>
-                    <span class="stat-label">Questões respondidas</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-valor">0%</span>
-                    <span class="stat-label">Progresso geral</span>
-                </div>
-            </div>
-        </section>
+            <div class="dashboard-layout">
 
-        <section class="secao-modulos">
-            <div class="secao-cabecalho">
-                <h2 class="secao-titulo">Módulos de estudo</h2>
-                <span class="secao-contador">3 módulos</span>
-            </div>
-
-            <div class="modulos-grid">
-
-                <div class="modulo-card modulo-em-breve">
-                    <div class="modulo-topo">
-                        <div class="modulo-icone-wrapper modulo-icone--azul">
-                            <span class="modulo-icone">&#9881;</span>
-                        </div>
-                        <span class="modulo-badge">Em breve</span>
-                    </div>
-                    <div class="modulo-corpo">
-                        <h3 class="modulo-nome">Fundamentos do Scrum</h3>
-                        <p class="modulo-descricao">Papéis, eventos, artefatos e regras do framework Scrum.</p>
-                    </div>
-                    <div class="modulo-rodape">
-                        <div class="modulo-progresso-barra">
-                            <div class="modulo-progresso-fill" style="width: 0%"></div>
-                        </div>
-                        <span class="modulo-progresso-label">0% concluído</span>
-                    </div>
+                <!-- COLUNA CENTRAL: cards de nível gerados pelo dashboard.js -->
+                <div class="dashboard-centro">
+                    <h2 class="secao-titulo">Seus Níveis</h2>
+                    <!-- #niveis-lista é preenchido dinamicamente via GET /api/questoes/modulos -->
+                    <div class="niveis-lista" id="niveis-lista"></div>
                 </div>
 
-                <div class="modulo-card modulo-em-breve">
-                    <div class="modulo-topo">
-                        <div class="modulo-icone-wrapper modulo-icone--amber">
-                            <span class="modulo-icone">&#128200;</span>
-                        </div>
-                        <span class="modulo-badge">Em breve</span>
-                    </div>
-                    <div class="modulo-corpo">
-                        <h3 class="modulo-nome">Sprint Planning</h3>
-                        <p class="modulo-descricao">Como planejar e estimar uma sprint com eficácia.</p>
-                    </div>
-                    <div class="modulo-rodape">
-                        <div class="modulo-progresso-barra">
-                            <div class="modulo-progresso-fill" style="width: 0%"></div>
-                        </div>
-                        <span class="modulo-progresso-label">0% concluído</span>
-                    </div>
-                </div>
+                <!-- COLUNA LATERAL: histórico + certificado -->
+                <aside class="dashboard-lateral">
 
-                <div class="modulo-card modulo-em-breve">
-                    <div class="modulo-topo">
-                        <div class="modulo-icone-wrapper modulo-icone--teal">
-                            <span class="modulo-icone">&#128203;</span>
+                    <!-- Histórico de Tentativas -->
+                    <div class="lateral-card">
+                        <h3 class="lateral-titulo">Histórico de Tentativas</h3>
+                        <table class="historico-tabela">
+                            <thead>
+                                <tr>
+                                    <th>Nível</th>
+                                    <th>Data</th>
+                                    <th>Pontuação</th>
+                                </tr>
+                            </thead>
+                            <!-- #historico-corpo é preenchido via GET /api/questoes/modulos-respondidos -->
+                            <tbody id="historico-corpo"></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Certificado: cadeado e progresso atualizados pelo dashboard.js -->
+                    <div class="lateral-card lateral-card--certificado">
+                        <h3 class="lateral-titulo">Seu Certificado</h3>
+                        <div class="certificado-icone">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48">
+                                <rect width="36" height="28" x="6" y="10" rx="4" fill="#1e3a5f" stroke="#2a5a9f" stroke-width="1.5"/>
+                                <rect width="36" height="28" x="8" y="12" rx="4" fill="#1a3352" stroke="#2a5a9f" stroke-width="1"/>
+                                <circle cx="20" cy="22" r="5" fill="#f5a623" opacity="0.9"/>
+                                <rect x="28" y="18" width="10" height="2" rx="1" fill="#4a7ab5" opacity="0.7"/>
+                                <rect x="28" y="22" width="8" height="2" rx="1" fill="#4a7ab5" opacity="0.5"/>
+                                <rect x="28" y="26" width="6" height="2" rx="1" fill="#4a7ab5" opacity="0.4"/>
+                                <circle cx="37" cy="34" r="6" fill="#1e3a5f" stroke="#f5a623" stroke-width="1.5"/>
+                                <path d="M34 34l2 2 4-4" stroke="#f5a623" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </div>
-                        <span class="modulo-badge">Em breve</span>
-                    </div>
-                    <div class="modulo-corpo">
-                        <h3 class="modulo-nome">Retrospectiva</h3>
-                        <p class="modulo-descricao">Inspecionar e adaptar o processo de trabalho da equipe.</p>
-                    </div>
-                    <div class="modulo-rodape">
-                        <div class="modulo-progresso-barra">
-                            <div class="modulo-progresso-fill" style="width: 0%"></div>
+                        <div class="certificado-lock">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/></svg>
                         </div>
-                        <span class="modulo-progresso-label">0% concluído</span>
+                        <p class="certificado-descricao">
+                            Complete todos os níveis com média ≥ 7,0 para desbloquear seu certificado.
+                        </p>
+                        <!-- #cert-progresso é atualizado após carregar /api/questoes/modulos -->
+                        <span class="certificado-progresso" id="cert-progresso"></span>
                     </div>
-                </div>
+
+                </aside>
 
             </div>
-        </section>
+        </main>
+    </div>
 
-    </main>
-    <!-- auth.js primeiro: define estaAutenticado, obterNome, limparSessao -->
-   <script src="../assets/js/auth.js"></script>
-<script src="../assets/js/navbar.js"></script>
-<script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
 
 </body>
-
 </html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../assets/css/pages/modulos.css">
+
+    <title>ScrumFlow | Módulos</title>
+</head>
+
+<body>
+
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
+
+    <nav class="navbar">
+        <div class="navbar__container">
+
+            <a href="index.html" class="logo">
+                Scrum<span class="flow">Flow</span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
+                    <li><a href="modulo-2/scrum.html" class="nav-link">Scrum</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="modulos.html" class="nav-link nav-link--ativo">Módulos</a></li>
+                </ul>
+
+                <div class="navbar__actions">
+                    <div id="nav-logado">
+                        <span id="nav-saudacao" class="nav-saudacao"></span>
+                        <button id="btn-sair" class="btn btn-ghost">Sair</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+    </nav>
+
+    <main class="modulos-container">
+
+        <section class="modulos-hero">
+
+            <div class="hero-content">
+
+                <span class="hero-tag">
+                    Certificação ScrumFlow
+                </span>
+
+                <h1 class="hero-titulo">
+                    Evolua sua jornada em
+                    <span class="hero-destaque">metodologias ágeis</span>
+                </h1>
+
+                <p class="hero-subtitulo">
+                    Complete os módulos, realize avaliações e acompanhe sua progressão
+                    dentro da plataforma ScrumFlow.
+                </p>
+
+            </div>
+
+            <div class="hero-status-card">
+
+                <span class="status-label">
+                    Progresso Geral
+                </span>
+
+                <span class="status-valor">
+                    0%
+                </span>
+
+                <div class="status-barra">
+                    <div class="status-barra-fill"></div>
+                </div>
+
+                <span class="status-texto">
+                    Nenhum módulo concluído
+                </span>
+
+            </div>
+
+        </section>
+
+        <section class="modulos-layout">
+
+            <aside class="modulos-sidebar">
+
+                <div class="sidebar-topo">
+                    <h2 class="sidebar-titulo">Módulos</h2>
+                </div>
+
+                <div class="sidebar-modulos">
+                    <button class="modulo-item modulo-item--ativo">
+                        <div class="modulo-item-info">
+                            <span class="modulo-item-titulo">Módulo 1</span>
+                            <span class="modulo-item-status">Disponível</span>
+                        </div>
+                    </button>
+                </div>
+
+            </aside>
+
+            <section class="modulo-painel">
+
+                <div class="painel-topo">
+
+                    <div>
+
+                        <span class="painel-badge">
+                            Disponível
+                        </span>
+
+                        <h2 class="painel-titulo">
+                            Fundamentos das Metodologias Ágeis
+                        </h2>
+
+                    </div>
+
+                    <div class="painel-tentativas">
+                        <span>Tentativas</span>
+                        <strong>0 / 2</strong>
+                    </div>
+
+                </div>
+
+                <p class="painel-descricao">
+                    Estude o conteúdo deste módulo e realize a avaliação correspondente.
+                    O módulo só será considerado concluído após aprovação na avaliação.
+                </p>
+
+                <div class="painel-conteudo"></div>
+
+                <div class="painel-acoes">
+
+                    <button class="btn btn-primary">
+                        Iniciar módulo
+                    </button>
+
+                    <button class="btn btn-ghost">
+                        Ver progresso
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/modulos.js"></script>
+
+</body>
+
+</html>

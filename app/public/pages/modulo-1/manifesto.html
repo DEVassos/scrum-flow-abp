@@ -13,14 +13,15 @@
     <div class="blob-direita"></div>
 
     <nav class="navbar">
-        <div class="navbar__container">
-            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+    <div class="navbar__container">
+        <a href="../index.html" class="logo">Scrum<span class="flow">Flow</span></a>
 
+        <div class="nav-menu" id="nav-menu">
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Home</a></li>
                 <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
-                <li><a href="scrum.html" class="nav-link">Scrum</a></li>
-                <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="../modulo-2/scrum.html" class="nav-link">Scrum</a></li>
+                <li id="nav-dashboard"><a href="../dashboard.html" class="nav-link">Dashboard</a></li>
             </ul>
 
             <div class="navbar__actions">
@@ -30,11 +31,18 @@
                 </div>
                 <div id="nav-logado" hidden>
                     <span id="nav-saudacao" class="nav-saudacao"></span>
-                    <button id="btn-sair" class="btn btn-ghost">Sair</button>
+                    <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
                 </div>
             </div>
         </div>
-    </nav>
+
+        <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
 
     <!-- Hero -->
     <section class="manifesto-hero">

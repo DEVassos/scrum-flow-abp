@@ -23,14 +23,14 @@
 
 ## 📋 Sumário
 
-- [Visão Geral](#-visão-geral)
-- [Principais Funcionalidades](#-principais-funcionalidades)
-- [Tecnologias Utilizadas](#%EF%B8%8F-tecnologias-utilizadas)
-- [Status e Como Executar](#-status-e-como-executar)
-- [Sprints](#-sprints)
-- [Equipe](#-equipe)
-- [Documentação Técnica](#-documentação-técnica)
-- [Licença](#-licença)
+- [Visão Geral](#visão-geral)
+- [Principais Funcionalidades](#principais-funcionalidades)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Status e Como Executar](#status-e-como-executar)
+- [Sprints](#sprints)
+- [Equipe](#equipe)
+- [Documentação Técnica](#documentação-técnica)
+- [Licença](#licença)
 
 ---
 
@@ -90,9 +90,9 @@ Acesse: [http://localhost:3005](http://localhost:3005)
 | Etapa                  | Período              | Entregáveis                                  | Vídeo            |
 | ---------------------- | -------------------- | -------------------------------------------- | ---------------- |
 | **Kick-off**           | 09/04/2026           | Documentação inicial e scaffolding           | —                |
-| **Sprint 1**           | 13/04 — 30/04/2026   | Setup · Banco de Dados · Cadastro e Login    | [▶ Assistir](https://youtu.be/rQ7mEWP7sGU) |
-| **Sprint 2**           | 04/05 — 21/05/2026   | Avaliação · Sorteio de Questões · Tentativas | A disponibilizar |
-| **Sprint 3**           | 25/05 — 11/06/2026   | Resultado Final · Certificado · Histórico    | A disponibilizar |
+| [**Sprint 1**](./docs/scrum/sprint-1/sprint-1.md) | 13/04 — 30/04/2026   | Setup · Banco de Dados · Cadastro e Login    | [▶ Assistir](https://youtu.be/rQ7mEWP7sGU) |
+| [**Sprint 2**](./docs/scrum/sprint-2/sprint-2.md) | 04/05 — 21/05/2026   | Avaliação · Sorteio de Questões · Tentativas · Resultado Final · Certificado · Histórico| [▶ Assistir](https://youtu.be/YXv9-3iwp9A?si=H825GGN9ZulsM6Ch) |
+| **Sprint 3**           | 25/05 — 11/06/2026   | Página Administrativa e Refinos de UX    | A disponibilizar |
 | **Apresentação Final** | Semana de 22/06/2026 | Entrega e demonstração ao parceiro           | A disponibilizar |
 
 ---
@@ -113,49 +113,49 @@ Acesse: [http://localhost:3005](http://localhost:3005)
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/261997502" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Gustavo Koiti</td>
-      <td>Product Owner</td>
+      <td>Product Owner<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=gustavokoitiyoshimura"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=gustavokoitiyoshimura&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
       <td><a href="https://github.com/gustavokoitiyoshimura">@gustavokoitiyoshimura</a></td>
       <td><a href="https://linkedin.com/in/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/55038859" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Gabriel Travensolli</td>
-      <td>Scrum Master</td>
+      <td>Scrum Master<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=travensolli"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=travensolli&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
       <td><a href="https://github.com/travensolli">@travensolli</a></td>
       <td><a href="https://www.linkedin.com/in/gabrieltravensolli/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/139165742" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Andrea Turíbio</td>
-      <td>Desenvolvedora</td>
+      <td>Desenvolvedora<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=DeaTuribio"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=DeaTuribio&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
       <td><a href="https://github.com/DeaTuribio">@DeaTuribio</a></td>
       <td><a href="https://www.linkedin.com/in/andrea-turibio-41507467/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/233653222" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Henrique Camargo</td>
-      <td>Desenvolvedor</td>
+      <td>Desenvolvedor<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=henriqueptbd-cell"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=henriqueptbd-cell&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
       <td><a href="https://github.com/henriqueptbd-cell">@henriqueptbd-cell</a></td>
       <td><a href="https://www.linkedin.com/in/henrique-camargo-6275a6394/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/177771290" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Lucas Amorim</td>
-      <td>Desenvolvedor</td>
+      <td>Desenvolvedor<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=LUCASAMR23"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=LUCASAMR23&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
       <td><a href="https://github.com/LUCASAMR23">@LUCASAMR23</a></td>
       <td><a href="https://www.linkedin.com/in/lucas-amorim-4b3312362/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/242081514" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Marcello Campbell</td>
-      <td>Desenvolvedor</td>
+      <td>Desenvolvedor<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=mparise28-dev"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=mparise28-dev&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
       <td><a href="https://github.com/mparise28-dev">@mparise28-dev</a></td>
       <td><a href="https://www.linkedin.com/in/marcello-parise-campbell-fonseca-147965194/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/261281418" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Vinicius Augusto</td>
-      <td>Desenvolvedor</td>
+      <td>Desenvolvedor<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=viniciusaugusto1997"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=viniciusaugusto1997&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
       <td><a href="https://github.com/viniciusaugusto1997">@viniciusaugusto1997</a></td>
       <td><a href="https://linkedin.com/in/">LinkedIn</a></td>
     </tr>

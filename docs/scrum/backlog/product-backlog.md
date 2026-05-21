@@ -25,13 +25,13 @@
 | DOC | time de desenvolvimento | documentar a aplicação (UML, modelagem de dados, identidade visual e protótipo) | alinhar o time e embasar o desenvolvimento nas sprints seguintes | 🔴 Alta | Sprint 1 | ✅ Concluído |
 | US01 | usuário | me cadastrar com CPF, nome, e-mail e senha | criar acesso com o sistema | 🔴 Alta | Sprint 1 | ✅ Concluído |
 | US02 | usuário | fazer login com CPF e senha | acessar minha conta com segurança | 🔴 Alta | Sprint 1 | ✅ Concluído |
-| US03 | usuário | realizar uma avaliação de nível com 10 questões sorteadas | ser avaliado no conteúdo do nível | 🔴 Alta | Sprint 2 | 🔲 Não iniciado |
-| US04 | usuário | ter até 2 tentativas por nível | melhorar meu desempenho se necessário | 🔴 Alta | Sprint 2 | 🔲 Não iniciado |
-| US05 | usuário | visualizar minha nota final por nível | acompanhar meu progresso individualmente | 🟡 Média | Sprint 3 | 🔲 Não iniciado |
-| US06 | usuário | ver minha média final calculada automaticamente | saber meu resultado geral ao concluir todos os níveis | 🟡 Média | Sprint 3 | 🔲 Não iniciado |
-| US07 | usuário | receber um certificado com meus dados e notas | comprovar minha conclusão do ciclo de avaliação | 🟡 Média | Sprint 3 | 🔲 Não iniciado |
+| US03 | usuário | realizar uma avaliação de nível com 10 questões sorteadas | ser avaliado no conteúdo do nível | 🔴 Alta | Sprint 2 | ✅ Concluído |
+| US04 | usuário | ter até 2 tentativas por nível | melhorar meu desempenho se necessário | 🔴 Alta | Sprint 2 | ✅ Concluído |
+| US05 | usuário | visualizar minha nota final por nível | acompanhar meu progresso individualmente | 🟡 Média | Sprint 2 | ✅ Concluído |
+| US06 | usuário | ver minha média final calculada automaticamente | saber meu resultado geral ao concluir todos os níveis | 🟡 Média | Sprint 2 | ✅ Concluído |
+| US07 | usuário | receber um certificado com meus dados e notas | comprovar minha conclusão do ciclo de avaliação | 🟡 Média | Sprint 2 | ✅ Concluído |
 | US08 | usuário | consultar meu histórico de tentativas | revisar meu desempenho e as questões sorteadas | 🟢 Baixa | Sprint 3 | 🔲 Não iniciado |
-| US09 | administrador | cadastrar e gerenciar questões e níveis via área administrativa | manter o banco de questões atualizado sem alterar o código | 🟢 Baixa | Sprint 3 *(se cabível)* | 🔲 Opcional |
+| US09 | administrador | cadastrar e gerenciar questões e níveis via área administrativa | manter o banco de questões atualizado sem alterar o código | 🟢 Baixa | Sprint 3 | 🔲 Não iniciado |
 
 ---
 
@@ -61,7 +61,7 @@
 - [ ] CPF deve ser o identificador único — tentativas de cadastro com CPF já existente devem ser rejeitadas com mensagem clara
 - [ ] Campos obrigatórios: CPF, nome completo, e-mail, senha
 - [ ] A senha deve ter no mínimo 8 caracteres
-- [ ] Senha deve ser armazenada com hash (nunca em texto puro)
+- [ ] Senha deve ser armazenada em hash (nunca em texto puro)
 - [ ] Após cadastro bem-sucedido, o usuário é redirecionado para a página de login
 - [ ] A interface deve ser responsiva e funcionar em dispositivos móveis
 
@@ -73,7 +73,7 @@
 > **Como** usuário cadastrado, **quero** fazer login usando meu CPF e senha, **para** acessar minha área personalizada na plataforma.
 
 - [ ] O login aceita apenas CPF e senha (sem e-mail)
-- [ ] Redirecionar para o painel de progresso após login bem-sucedido
+- [ ] Redirecionar para o Dashboard após login bem-sucedido
 - [ ] Em caso de credenciais inválidas, a mensagem de erro não especifica qual campo está errado (prevenção de enumeração)
 - [ ] Usuário inativo ou inexistente recebe a mesma mensagem genérica de erro
 - [ ] A sessão/token é gerenciada pelo back-end
@@ -86,7 +86,7 @@
 > **Como** usuário autenticado, **quero** iniciar uma avaliação de um nível, **para** ser avaliado com 10 questões do banco de questões daquele nível.
 
 - [ ] Ao iniciar, o sistema sorteia aleatoriamente: 3 questões fáceis, 4 médias e 3 difíceis
-- [ ] As questões são selecionadas a partir de um banco de 30 por nível
+- [ ] As questões são selecionadas a partir de um banco de 30 questões por nível
 - [ ] As alternativas de cada questão são exibidas embaralhadas
 - [ ] As questões sorteadas são registradas no banco **antes** de serem exibidas (para auditoria)
 - [ ] O usuário não pode avançar sem selecionar uma alternativa
@@ -101,8 +101,9 @@
 
 - [ ] O sistema informa ao usuário quantas tentativas restam antes de iniciar a avaliação
 - [ ] Após a 2ª tentativa, o botão de iniciar avaliação é bloqueado para aquele nível
-- [ ] O controle de tentativas é validar no back-end — não pode ser burlado pelo front-end
+- [ ] O controle de tentativas é validado no back-end — não pode ser burlado pelo front-end
 - [ ] A nota considerada para o resultado final é sempre a maior entre as tentativas realizadas
+- [ ] O usuário poderá realizar novas tentativas apenas depois de revisar o material do módulo
 
 **RF relacionado:** RF06, RF07 | **Aceito por:** Product Owner (validar na Sprint Review)
 
@@ -125,7 +126,7 @@
 
 - [ ] A média final é a média aritmética das melhores notas obtidas em cada nível
 - [ ] O cálculo é realizado exclusivamente no back-end
-- [ ] A média é exibida com duas casas decimais
+- [ ] A média é exibida com uma casa decimal
 - [ ] A média só é exibida quando todos os níveis tiverem sido tentados ao menos uma vez
 
 **RF relacionado:** RF08 | **Aceito por:** Product Owner (validar na Sprint Review)
@@ -137,7 +138,7 @@
 
 - [ ] O certificado só é disponibilizado após o usuário realizar ao menos uma tentativa em todos os níveis
 - [ ] O certificado contém: nome completo, CPF, e-mail, data de emissão e média final
-- [ ] Notas por nível discriminadas no certificado (desejável)
+- [ ] Notas por nível discriminadas no certificado 
 - [ ] O certificado pode ser visualizado no navegador e/ou exportado
 - [ ] Gerado e armazenado no banco — ao acessar novamente, exibe o mesmo certificado sem reelaborá-lo
 
@@ -175,6 +176,8 @@
 | Data | Alteração | Responsável |
 |------|-----------|-------------|
 | 14/04/2026 | Criação inicial do backlog | Gustavo Koiti (PO) |
+| 15/05/2026 | Atualização de informações requisitadas pelo cliente | Gustavo Koiti (PO) |
+| 21/05/2026 | Adição de tarefas de escopo extra (T30, T31, T32) à Sprint 2 | Gustavo Koiti (PO) |
 
 ---
 

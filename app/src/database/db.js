@@ -1,13 +1,21 @@
+/**
+ * Configuração de Conexão com o Banco de Dados PostgreSQL.
+ * Este módulo utiliza o pacote 'pg' para criar um pool de conexões gerenciado.
+ */
 const dotenv = require("dotenv");
 const path = require("path");
 
-// Carrega variáveis de ambiente do arquivo .env (3 níveis acima)
+// Carrega variáveis de ambiente do arquivo .env (localizado 2 níveis acima do diretório atual)
 dotenv.config({
   quiet: true,
   path: path.resolve(__dirname, "..", "..", ".env"),
 });
 
 const { Pool } = require("pg");
+
+/**
+ * Objeto de configuração da conexão obtido das variáveis de ambiente.
+ */
 
 const config = {
   host: process.env.POSTGRES_HOST,

@@ -1,9 +1,15 @@
+/**
+ * SCRUM FLOW - PONTO DE ENTRADA DO SERVIDOR
+ * Este arquivo configura e inicializa o servidor Express, define middlewares globais,
+ * gerencia arquivos estáticos e mapeia as rotas da API.
+ */
 const dotenv = require("dotenv");
 const express = require('express');
 const path = require('path');
 const router = require('./routes');
 
-// Carrega variáveis de ambiente do arquivo .env (configurações de banco de dados, JWT, etc)
+// Carrega as variáveis de ambiente (Configurações de Banco de Dados, Segredos JWT, Porta, etc.)
+// O arquivo .env deve estar localizado na raiz do projeto.
 dotenv.config({
     quiet: true,
     path: path.resolve(__dirname, '..', '.env'),
@@ -25,12 +31,20 @@ app.use(express.json());
 const publicPath = path.join(__dirname, "..", "public");
 const pagesPath = path.join(publicPath, "pages");
 const assetsPath = path.join(publicPath, "assets");
+const imagensQuestoesPath = path.join(
+    __dirname,
+    "infra",
+    "init",
+    "seed-data",
+    "imagens",
+);
 
 // Servir página inicial (HTML)
 app.use("/", express.static(pagesPath));
 
 // Servir assets (CSS, JS, imagens, etc)
 app.use("/assets", express.static(assetsPath));
+app.use("/imagens/questoes", express.static(imagensQuestoesPath));
 
 // ===== ROTAS DA API =====
 

@@ -46,7 +46,7 @@ Visão geral de como o time aplica Scrum no projeto.
 | Sprint | Período | Foco |
 |--------|---------|------|
 | [Sprint 1](./sprint-1/sprint-1.md) | 13/04 — 30/04/2026 | Documentação · Cadastro · Login |
-| [Sprint 2](./sprint-2/) | 04/05 — 21/05/2026 | Avaliação · Sorteio · Tentativas |
+| [Sprint 2](./sprint-2/sprint-2.md) | 04/05 — 21/05/2026 | Avaliação · Sorteio · Tentativas |
 | [Sprint 3](./sprint-3/) | 25/05 — 11/06/2026 | Resultado · Certificado · Histórico |
 
 ---
@@ -67,8 +67,8 @@ Cada sprint mantém o checklist específico em `sprint-N/dor-dod.md`.
 ## 🔗 Como Acompanhar o Andamento
 
 - 📊 [Kanban no GitHub Projects](https://github.com/orgs/DEVassos/projects/4)
-- 📅 [Sprint 1 (encerrada)](./sprint-1/sprint-1.md) · [Sprint 2 (próxima)](./sprint-2/)
-- 📋 [Product Backlog priorizado](./backlog/product-backlog.md)
+- 📅 [Sprint 1 (encerrada)](./sprint-1/sprint-1.md) · [Sprint 2 (em andamento)](./sprint-2/sprint-2.md)
+- 📋 [Product Backlog](./backlog/product-backlog.md)
 
 ---
 

@@ -1,16 +1,28 @@
 const { Router } = require('express');
 const usuarios = require('./usuarios.routes');
+const questoes = require("./questoes.routes");
 const auth = require('./auth.routes');
+const certificados = require("./certificados.routes");
 
+/**
+ * Roteador Central da API.
+ * Aqui são agregadas todas as rotas específicas da aplicação.
+ */
 const router = Router();
 
 // ===== MAPEAMENTO DE ROTAS =====
 
-// Rotas de usuários
+// Agrupa as rotas relacionadas a usuários sob o prefixo /usuarios
 router.use("/usuarios", usuarios);
 
-// Rotas de autenticação
+// Agrupa as rotas relacionadas a questões e exames sob o prefixo /questoes
+router.use("/questoes", questoes);
+
+// Agrupa as rotas de autenticação (login) sob o prefixo /auth
 router.use("/auth", auth);
+
+// Agrupa as rotas relacionadas aos certificados
+router.use("/certificados", certificados);
 
 // ===== TRATAMENTO DE ROTAS NÃO ENCONTRADAS =====
 

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/pages/questoes.css" />
+    <title>ScrumFlow | Questões</title>
+  </head>
+
+  <body>
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
+
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="../index.html" class="logo"
+          >Scrum<span class="flow">Flow</span></a
+        >
+
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-links">
+            <li><a href="../index.html" class="nav-link">Home</a></li>
+            <li><a href="../modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
+            <li><a href="../modulo-2/scrum.html" class="nav-link">Scrum</a></li>
+            <li><a href="../dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="../modulos.html" class="nav-link">Módulos</a></li>
+          </ul>
+
+          <div class="navbar__actions">
+            <span id="saudacao" class="nav-saudacao"></span>
+            <button id="btn-sair" class="btn btn-ghost">Sair</button>
+          </div>
+        </div>
+
+        <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main class="questoes-container">
+      <header class="questoes-header">
+        <div class="header-content">
+          <button class="btn-voltar" id="btn-voltar">
+            ← Voltar ao Material
+          </button>
+          <div class="header-info">
+            <span class="nivel-info" id="nivel-info"
+              >Nível 1 - Introdução ao Scrum</span
+            >
+            <span class="tentativa-info" id="tentativa-info"
+              >Tentativa 1/2</span
+            >
+          </div>
+        </div>
+      </header>
+
+      <section class="questoes-section">
+        <div class="questao-card">
+          <div class="questao-numero">
+            <span id="questao-numero">Questão 1</span>
+          </div>
+
+          <div class="questao-conteudo">
+            <h2 class="questao-titulo" id="questao-titulo"></h2>
+            <p class="questao-descricao" id="questao-descricao">
+              Escolha a alternativa correta:
+            </p>
+          </div>
+
+          <div class="questao-opcoes"></div>
+        </div>
+
+        <div class="progresso-container">
+          <div class="progresso-dots" id="progresso-dots"></div>
+        </div>
+
+        <div class="navegacao-controls">
+          <button class="btn btn-ghost" id="btn-anterior" disabled>
+            ← Anterior
+          </button>
+
+          <button class="btn btn-primary" id="btn-proxima" disabled>
+            Próxima →
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal de confirmação: usado para finalizar prova e para sair -->
+    <div class="modal-overlay" id="modal-confirmacao" style="display: none">
+      <div class="modal-content">
+        <h3 id="modal-titulo">Confirmar</h3>
+        <p id="modal-mensagem"></p>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" id="btn-cancelar-modal">
+            Cancelar
+          </button>
+          <button class="btn btn-primary" id="btn-confirmar-modal">
+            Confirmar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/questoes.js"></script>
+  </body>
+</html>

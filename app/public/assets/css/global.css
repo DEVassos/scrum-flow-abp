@@ -8,6 +8,7 @@
 @import url('./components/modal.css');
 @import url('./components/navbar.css');
 @import url('./components/validacao.css');
+@import url('./components/footer.css');
 
 :root {
   /* Cores Principais (Navy) */
@@ -46,6 +47,12 @@
   --shadow-glow-accent: 0 0 24px rgba(245, 158, 11, 0.3);
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--navy-900);
     color: var(--white);
@@ -53,4 +60,27 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Impede scroll lateral causado pelos blobs saindo da tela */
+}
+
+/* ================================
+   SISTEMA DE BREAKPOINTS
+   Mobile-first: base = mobile,
+   sobrescreve para telas maiores.
+
+   480px  — mobile pequeno
+   768px  — tablet / mobile grande
+   1024px — desktop
+   ================================ */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 48px;
+    }
 }

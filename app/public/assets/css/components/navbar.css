@@ -95,5 +95,141 @@
 .nav-saudacao {
   font-family: var(--font-heading);
   font-size: 14px;
-  color: var(--slate-400);
+  color: var(--amber-100)
+}
+
+/* ================================
+   RESPONSIVIDADE
+   ================================ */
+
+/* Tablet — reduz padding e logo pra não estourar a linha */
+@media (max-width: 768px) {
+    .navbar__container {
+        padding: 0 16px;
+    }
+
+    .logo {
+        font-size: 40px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    /* Remove "Home" da lista — o próprio logo já leva pra página inicial */
+    .nav-links li:first-child {
+        display: none;
+    }
+}
+
+/* ================================
+   HAMBURGUER
+   ================================ */
+
+/* Agrupa links e botões lado a lado no desktop */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Escondido no desktop — só aparece no mobile */
+.navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* Cada traço do ícone */
+.navbar__hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Traços viram X quando o menu está aberto */
+.navbar__hamburger.aberto span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__hamburger.aberto span:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar__hamburger.aberto span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 480px) {
+        .logo {
+        font-size: 34px;
+    }
+    .navbar__hamburger {
+        display: flex;
+    }
+
+    /* No mobile o nav-menu vira dropdown que desce da navbar */
+    .nav-menu {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background-color: var(--navy-800);
+        border-bottom: 1px solid var(--navy-600);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        gap: 0;
+        transform: translateY(-110%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.2s ease;
+        z-index: 999;
+    }
+
+    /* Menu aberto — desce pra tela */
+    .nav-menu.aberto {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /* Links em coluna com separador entre cada item */
+    .nav-links {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 14px 8px;
+        border-bottom: 1px solid var(--navy-700);
+        display: block;
+        font-size: 15px;
+    }
+
+    /* Dentro do menu aberto, mostra todos os links incluindo Home */
+    .nav-menu.aberto .nav-links li:first-child {
+        display: list-item;
+    }
+
+    /* Entrar e Criar conta em coluna no fim da lista */
+    .navbar__actions {
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 16px;
+    }
+
+    .navbar__actions .btn {
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
 }
