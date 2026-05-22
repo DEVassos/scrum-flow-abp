@@ -27,11 +27,11 @@
 | US05 | Nota Final por Nível | 2 | ✅ Entregue | Ao realizar novas tentativas dos exames de cada módulo, o sistema computa automaticamente a melhor nota e a disponibiliza no histórico do usuário |
 | US06 | Média Final | 5 | ✅ Entregue | O desempenho final do usuário é automaticamente calculado assim que é aprovado no último exame |
 | US07 | Certificado Digital | 13 | ✅ Entregue | Assim que o usuário conclui a realização do curso, o certificado é imediatamente disponibilizado para download e/ou impressão |
-| — | Correção Responsividade *(ressalva Sprint 1)* | 4 | ⚠️ Entregue parcialmente | Time com expectativa de melhoras ainda mais a responsividade da aplicação em diferentes dispositivos |
+| — | Ressalvas de escopo | 11 | ⚠️ Entregue parcialmente | Responsividade CSS: time com expectativa de melhoras ainda mais a responsividade da aplicação em diferentes dispositivos |
 | — | Infra / Suporte | 10 | ✅ Entregue | Todos os testes de funcionamento e desempenho realizados e aprovados |
 | — | Documentação | 12 | ✅ Entregue | Revisada e atualizada conforme endpoints estabelecidos |
 
-**Pontos entregues:** 89 SP / **Pontos planejados:** 89 SP  
+**Pontos entregues:** 96 SP / **Pontos planejados:** 96 SP  
 **Aproveitamento:** 100%
 
 ---
@@ -63,7 +63,7 @@ Fluxo demonstrado (vídeo):
 - [x] Documentação atualizada conforme necessidade:
   - [x] Rotas da API atualizadas (com novos endpoints)
   - [x] Modelo de dados atualizado no diagrama de classes e sequência
-  - ⌛ Instruções de execução revisadas no README (aguardando apresentação do MVP)
+  - [x] Instruções de execução revisadas no README (aguardando apresentação do MVP)
 - [x] Pull Request mergeado em `develop` e branch de feature excluída
 - [x] Aceito pelo Product Owner ao final da Sprint Review
 
@@ -91,7 +91,7 @@ Nenhum item ficou pendente nesta sprint. Todas as histórias comprometidas foram
 
 ## Observações Finais
 
-As histórias da Sprint 2 foram validadas e aceitas pelo PO. Ressalva registrada: a responsividade em dispositivos móveis ainda não está satisfatória e será endereçada na Sprint 3. O incremento entregue está funcional e acessível em [scrum-flow-abp.onrender.com](https://scrum-flow-abp.onrender.com/). O burndown encerrou em 0 SP no dia 21/05, com entregas adicionais além do sprint backlog. A Sprint 3 inicia com a base técnica e documental estabelecida, objetivando o aprimoramento estético da aplicação e a implementação da área administrativa.
+As histórias da Sprint 2 foram validadas e aceitas pelo PO. Ressalvas registradas: a responsividade em dispositivos móveis ainda não está satisfatória e será endereçada na Sprint 3; as imagens de algumas questões não estão renderizando; equalização no volume de commits por membro. O incremento entregue está funcional e acessível em [scrum-flow-abp.onrender.com](https://scrum-flow-abp.onrender.com/). O burndown encerrou em 0 SP no dia 21/05, com entregas adicionais além do sprint backlog. A Sprint 3 inicia com a base técnica e documental estabelecida, objetivando o aprimoramento estético da aplicação e a implementação da área administrativa.
 
 ---
 
