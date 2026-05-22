@@ -177,6 +177,7 @@
 |------|-----------|-------------|
 | 14/04/2026 | Criação inicial do backlog | Gustavo Koiti (PO) |
 | 15/05/2026 | Atualização de informações requisitadas pelo cliente | Gustavo Koiti (PO) |
+| 21/05/2026 | Adição de tarefas de escopo extra (T30, T31, T32) à Sprint 2 | Gustavo Koiti (PO) |
 
 ---
 
