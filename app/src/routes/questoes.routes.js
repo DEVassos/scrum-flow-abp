@@ -12,7 +12,8 @@ const {
   findProximoModuloByUsuario,
   updateProximoModulo,
   findModulosRespondidosByUsuario,
-  findProgressoModulosByUsuario
+  findProgressoModulosByUsuario,
+  findHistoricoQuestoesByModulo,
 } = require("../repositories/questoes.repositories")
 //cria objeto
 /**
@@ -233,6 +234,34 @@ router.get("/modulos", authMiddleware, async function (req, res) {
     return res.status(200).json(modulos);
   } catch (e) {
     console.error("Erro ao buscar progresso dos módulos:", e);
+    return res.status(500).json({
+      message: "erro interno do servidor",
+    });
+  }
+});
+
+/**
+ * ROTA: GET /historico/:idModulo
+ * DESCRIÇÃO: Retorna as questões e respostas do usuário para a última tentativa de um módulo específico.
+ * ACESSO: Privado (Requer Token JWT).
+ */
+router.get("/historico/:idModulo", authMiddleware, async function (req, res) {
+  try {
+    const idModulo = Number(req.params.idModulo);
+
+    if (!idModulo || idModulo < 1) {
+      return res.status(400).json({ message: "id de módulo inválido" });
+    }
+
+    const questoes = await findHistoricoQuestoesByModulo(req.usuario.id_usuario, idModulo);
+
+    if (!questoes.length) {
+      return res.status(404).json({ message: "nenhuma resposta encontrada para este módulo" });
+    }
+
+    return res.status(200).json(questoes);
+  } catch (e) {
+    console.error("Erro ao buscar histórico do módulo:", e);
     return res.status(500).json({
       message: "erro interno do servidor",
     });

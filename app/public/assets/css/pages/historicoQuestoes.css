@@ -1,0 +1,309 @@
+@import url("../global.css");
+
+/* content.css tem svg { width:200px; height:200px }.
+   [hidden] precisa de !important para não ser sobrescrito
+   por regras de display das classes (ex: display:flex em .certificado-lock). */
+[hidden] { display: none !important; }
+
+/* ================================
+   FIX: content.css define svg { width: 200px; height: 200px; }
+   que afeta os ícones da sidebar e dos cards.
+   Aqui sobrescrevemos esse reset para os SVGs do dashboard.
+   ================================ */
+
+.sidebar-link svg,
+.nivel-indicador svg,
+.certificado-lock svg,
+.cert-liberado-badge svg {
+    width: unset;
+    height: unset;
+}
+
+/* Garante que os blobs fiquem atrás do layout */
+.blob-esquerda,
+.blob-direita {
+    z-index: 0;
+}
+
+/* ================================
+   WRAPPER GERAL (sidebar + main)
+   ================================ */
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    padding-top: 64px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ================================
+   SIDEBAR
+   ================================ */
+
+.sidebar {
+    width: 160px;
+    flex-shrink: 0;
+    background-color: var(--navy-800);
+    border-right: 1px solid var(--navy-700);
+    padding: 24px 0;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 12px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--slate-400);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link svg {
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+.sidebar-link:hover {
+    background-color: var(--navy-700);
+    color: var(--white);
+}
+
+.sidebar-link--ativo {
+    color: var(--white);
+    background-color: var(--navy-700);
+}
+
+.sidebar-link--ativo svg {
+    opacity: 1;
+    color: var(--amber-500);
+}
+
+/* ================================
+   LATERAL
+   ================================ */
+   
+.dashboard-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: calc(64px + 36px);
+}
+
+.lateral-card {
+    background-color: var(--navy-800);
+    border: 1px solid var(--navy-700);
+    border-radius: 14px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.lateral-titulo {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+.historico-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 12px;
+}
+
+.historico-tabela th {
+    color: var(--slate-400);
+    font-weight: 600;
+    text-align: left;
+    padding: 4px 6px 8px;
+    border-bottom: 1px solid var(--navy-700);
+}
+
+.historico-tabela td {
+    color: var(--navy-200);
+    padding: 8px 6px;
+    border-bottom: 1px solid rgba(22, 43, 92, 0.6);
+}
+
+.historico-tabela tr:last-child td {
+    border-bottom: none;
+}
+
+.pontuacao {
+    font-weight: 700;
+}
+
+.pontuacao--verde   { color: var(--teal-500); }
+.pontuacao--vermelho { color: var(--red-500); }
+.pontuacao--amarelo  { color: var(--amber-500); }
+
+.historico-link {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--amber-500);
+    text-decoration: none;
+    transition: opacity 0.2s;
+    align-self: flex-start;
+}
+
+.historico-link:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+.lateral-card--certificado {
+    align-items: center;
+    text-align: center;
+}
+
+.certificado-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background-color: var(--navy-700);
+    border: 1px solid var(--navy-600);
+    border-radius: 16px;
+    margin: 0 auto;
+}
+
+.certificado-lock {
+    color: var(--slate-600);
+    display: flex;
+    justify-content: center;
+}
+
+.certificado-descricao {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--slate-400);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.certificado-progresso {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: var(--slate-600);
+}
+
+.lateral-card--certificado-liberado {
+    border-color: rgba(245, 158, 11, 0.45);
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.1);
+}
+
+.cert-liberado-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--amber-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ================================
+   NAV LINK ATIVO
+   ================================ */
+
+.nav-link--ativo {
+    color: var(--amber-500) !important;
+}
+
+/* ================================
+   RESPONSIVO
+   ================================ */
+
+@media (max-width: 1024px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-lateral {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .lateral-card {
+        flex: 1;
+        min-width: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .dashboard-main {
+        margin-left: 0;
+        padding: 24px 20px 48px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nivel-cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .nivel-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-lateral {
+        flex-direction: column;
+    }
+}
+/* ================================
+   NAVBAR: saudação + sair em linha
+   ================================ */
+
+@media (min-width: 481px) {
+    .nav-menu {
+        flex-direction: row;
+        gap: 32px;
+    }
+}
+
+#nav-logado {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}

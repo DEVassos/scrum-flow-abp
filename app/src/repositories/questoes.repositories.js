@@ -406,6 +406,54 @@ async function findProgressoModulosByUsuario(idUsuario) {
   });
 };
 
+// retorna as questões com respostas do usuário para a última tentativa de um módulo
+async function findHistoricoQuestoesByModulo(idUsuario, idModulo) {
+  const result = await pool.query(
+    `
+    WITH exame_usuario AS (
+      SELECT id_exame
+      FROM exames
+      WHERE id_usuario = $1
+      ORDER BY id_exame DESC
+      LIMIT 1
+    ),
+    ultima_tentativa AS (
+      SELECT q.grupo
+      FROM respostas r
+      INNER JOIN exame_usuario eu ON eu.id_exame = r.id_exame
+      INNER JOIN questoes q ON q.id_questao = r.id_questao
+      WHERE q.id_modulo = $2
+      GROUP BY q.grupo
+      ORDER BY MAX(r.respondido_em) DESC
+      LIMIT 1
+    )
+    SELECT
+      q.id_questao,
+      q.numero,
+      q.enunciado,
+      q.alternativa_a,
+      q.alternativa_b,
+      q.alternativa_c,
+      q.alternativa_d,
+      q.alternativa_correta,
+      r.resposta AS resposta_usuario,
+      r.nota::INTEGER AS nota
+    FROM ultima_tentativa ut
+    INNER JOIN questoes q
+      ON q.id_modulo = $2
+     AND q.grupo IS NOT DISTINCT FROM ut.grupo
+    INNER JOIN exame_usuario eu ON TRUE
+    INNER JOIN respostas r
+      ON r.id_exame = eu.id_exame
+     AND r.id_questao = q.id_questao
+    ORDER BY q.numero ASC NULLS LAST, q.id_questao ASC
+    `,
+    [idUsuario, idModulo],
+  );
+
+  return result.rows;
+}
+
 module.exports = {
   findProximaQuestaoByUsuario,
   findQuestaoDoExameByUsuario,
@@ -418,5 +466,6 @@ module.exports = {
   findProximoModuloByUsuario,
   updateProximoModulo,
   findModulosRespondidosByUsuario,
-  findProgressoModulosByUsuario
+  findProgressoModulosByUsuario,
+  findHistoricoQuestoesByModulo,
 };
