@@ -18,7 +18,7 @@
 .questoes-header {
   background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
   border-bottom: 2px solid var(--amber-500);
-  padding: 24px 0;
+  padding: 18px 0;
   margin-bottom: 40px;
   /* sem sticky: o header sobe com o scroll normalmente */
 }
@@ -27,33 +27,56 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) minmax(260px, 2fr) minmax(120px, 1fr);
   align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .btn-voltar {
-  background: none;
-  border: none;
+  justify-self: start;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.24);
+  border-radius: 8px;
   color: var(--amber-500);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  padding: 8px 0;
-  transition: color 0.3s ease;
+  padding: 10px 14px;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
   white-space: nowrap;
 }
 
 .btn-voltar:hover {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: rgba(245, 158, 11, 0.4);
   color: var(--amber-400);
 }
 
 .header-info {
-  display: flex;
-  gap: 24px;
-  flex: 1;
-  flex-wrap: wrap;
+  display: contents;
+}
+
+.nivel-info {
+  justify-self: center;
+  min-width: 0;
+  text-align: center;
+}
+
+.tentativa-info {
+  justify-self: end;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.24);
+  border-radius: 999px;
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+
+.nivel-info,
+.tentativa-info {
   align-items: center;
 }
 
@@ -62,7 +85,6 @@
   font-size: 14px;
   color: var(--navy-200);
   display: flex;
-  align-items: center;
 }
 
 .tentativa-info {
@@ -77,18 +99,28 @@
   }
 
   .header-content {
-    flex-direction: column;
-    gap: 8px;
+    grid-template-columns: 1fr auto;
+    gap: 10px 12px;
     text-align: center;
   }
 
   .header-info {
-    flex-direction: column;
-    gap: 4px;
+    display: contents;
   }
 
   .btn-voltar {
-    align-self: flex-start;
+    justify-self: start;
+  }
+
+  .nivel-info {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .tentativa-info {
+    justify-self: end;
   }
 
   .questoes-section {
