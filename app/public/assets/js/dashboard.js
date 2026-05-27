@@ -178,7 +178,20 @@ async function carregarHistorico() {
       return;
     }
 
-    corpo.innerHTML = tentativas.map(gerarLinhaHistorico).join("");
+    // mantém apenas a melhor nota por módulo
+    var melhores = new Map();
+    tentativas.forEach(function(t) {
+      var id = Number(t.id_modulo);
+      var existente = melhores.get(id);
+      if (!existente || Number(t.nota) > Number(existente.nota)) {
+        melhores.set(id, t);
+      }
+    });
+
+    var melhoresList = Array.from(melhores.values())
+      .sort(function(a, b) { return Number(a.id_modulo) - Number(b.id_modulo); });
+
+    corpo.innerHTML = melhoresList.map(gerarLinhaHistorico).join("");
   } catch (error) {
     console.error("Erro ao carregar histórico:", error);
     corpo.innerHTML = `<tr><td colspan="3" style="color:var(--slate-400);text-align:center;padding:8px 0">Erro ao carregar.</td></tr>`;

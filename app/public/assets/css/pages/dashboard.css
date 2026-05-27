@@ -356,12 +356,42 @@
     gap: 16px;
 }
 
+.lateral-card-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
 .lateral-titulo {
     font-family: var(--font-heading);
     font-size: 14px;
     font-weight: 700;
     color: var(--white);
     margin: 0;
+}
+
+.lateral-titulo--link {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.lateral-titulo--link:hover {
+    color: var(--amber-500);
+}
+
+.historico-ver-todas {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--amber-500);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+.historico-ver-todas:hover {
+    opacity: 0.75;
+    text-decoration: underline;
 }
 
 .historico-tabela {

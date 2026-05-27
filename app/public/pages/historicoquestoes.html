@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/pages/historicoquestoes.css">
+    <link rel="stylesheet" href="../assets/css/pages/historicoQuestoes.css">
     <title>ScrumFlow | Histórico de Questões</title>
 </head>
 
@@ -15,9 +15,13 @@
 
     <nav class="navbar">
         <div class="navbar__container">
-            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+            <a href="index.html" class="logo">
+                Scrum<span class="flow">Flow</span>
+            </a>
 
             <div class="nav-menu" id="nav-menu">
+
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
@@ -27,16 +31,12 @@
                 </ul>
 
                 <div class="navbar__actions">
-                    <!-- nav-deslogado e nav-logado são alternados pelo navbar.js -->
-                    <div id="nav-deslogado">
-                        <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
-                        <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
-                    </div>
-                    <div id="nav-logado" hidden>
+                    <div id="nav-logado">
                         <span id="nav-saudacao" class="nav-saudacao"></span>
-                        <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+                        <button id="btn-sair" class="btn btn-ghost">Sair</button>
                     </div>
                 </div>
+
             </div>
 
             <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
@@ -44,39 +44,59 @@
                 <span></span>
                 <span></span>
             </button>
+
         </div>
     </nav>
 
     <div class="dashboard-wrapper">
 
-        <!-- SIDEBAR: apenas links que têm página de destino real -->
         <aside class="sidebar">
             <nav class="sidebar-nav">
-                <a href="modulos.html" class="sidebar-link sidebar-link--ativo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                <a href="modulos.html" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
                     </svg>
                     Módulos
                 </a>
                 <a href="historicoquestoes.html" class="sidebar-link sidebar-link--ativo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.854-4.854 3 3a.5.5 0 0 1-.708.708L6.5 9.207V12.5a.5.5 0 0 1-1 0V9.207L2.854 11.854a.5.5 0 0 1-.708-.708l3-3a.5.5 0 0 1 .708 0z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.854-4.854 3 3a.5.5 0 0 1-.708.708L6.5 9.207V12.5a.5.5 0 0 1-1 0V9.207L2.854 11.854a.5.5 0 0 1-.708-.708l3-3a.5.5 0 0 1 .708 0z"/>
                     </svg>
-                    Histórico de Questões
+                    Histórico
                 </a>
             </nav>
         </aside>
 
+        <main class="historico-main">
+            <div class="historico-container">
 
+                <div class="historico-header">
+                    <h1 class="historico-titulo">Histórico de <span class="historico-destaque">Questões</span></h1>
+                    <p class="historico-subtitulo">Revise as provas realizadas e veja seu desempenho questão a questão.</p>
+                </div>
+
+                <div class="historico-layout">
+
+                    <aside class="historico-sidebar">
+                        <div class="historico-sidebar-topo">
+                            <h2 class="historico-sidebar-titulo">Módulos</h2>
+                        </div>
+                        <div class="historico-sidebar-lista" id="sidebar-lista"></div>
+                    </aside>
+
+                    <section class="historico-painel" id="historico-painel"></section>
+
+                </div>
+
+            </div>
         </main>
+
     </div>
 
     <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/api.js"></script>
     <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/historicoQuestoes.js"></script>
 
 </body>
 
