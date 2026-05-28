@@ -47,6 +47,23 @@
     </nav>
 
     <header class="apresentacao">
+
+        <!-- Astronauta -->
+        <img
+            src="../assets/img/astronauta.png"
+            alt="Astronauta flutuando"
+            class="deco-img deco-img--astronauta"
+            aria-hidden="true"
+        >
+
+        <!-- Lua-->
+        <img
+            src="../assets/img/moon.png"
+            alt="Lua"
+            class="deco-img deco-img--moon"
+            aria-hidden="true"
+        >
+
         <div class="container">
             <div class="apresentacao__badge">
                 <span class="apresentacao__status-dot"></span>
@@ -254,6 +271,9 @@
 
         </div>
     </footer>
+
+    <!-- Animação de estrelas: carregada primeiro para criar o canvas de fundo -->
+    <script src="../assets/js/stars.js"></script>
 
     <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. usados pelo index.js -->
     <script src="../assets/js/auth.js"></script>
