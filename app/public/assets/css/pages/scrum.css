@@ -1,0 +1,201 @@
+/* Importa o sistema global primeiro */
+@import url("../global.css");
+
+/* ============================================
+   PÁGINA: SCRUM (scrum.html)
+   Estilos específicos para a página do curso
+   ============================================ */
+
+/* Container principal do conteúdo scrum */
+.scrum-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+/* Título principal */
+.scrum-content h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--white) 0%, var(--amber-400) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* Seções */
+.scrum-section {
+  margin-bottom: 3rem;
+}
+
+.scrum-section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--amber-400);
+  margin: 2rem 0 1rem;
+  border-left: 4px solid var(--amber-500);
+  padding-left: 1rem;
+}
+
+/* Parágrafos */
+.scrum-section p {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--navy-200);
+  margin-bottom: 1.25rem;
+}
+
+/* Lista ordenada (os 4 passos) */
+.scrum-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+}
+
+.scrum-list li {
+  background: rgba(30, 58, 122, 0.3);
+  border-left: 3px solid var(--amber-500);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0 12px 12px 0;
+  font-weight: 500;
+  color: var(--white);
+  transition: all 0.2s ease;
+}
+
+.scrum-list li:hover {
+  background: rgba(30, 58, 122, 0.5);
+  transform: translateX(4px);
+}
+
+/* Destaque "Scrum é simples" */
+.scrum-highlight {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.scrum-highlight strong {
+  font-size: 1.75rem;
+  font-family: var(--font-heading);
+  background: linear-gradient(120deg, var(--amber-400), var(--amber-600));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border-radius: 40px;
+  letter-spacing: -0.01em;
+}
+
+/* Índice do curso */
+.indice-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.indice-list li {
+  background: rgba(245, 158, 11, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 40px;
+  font-weight: 600;
+  color: var(--amber-400);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.indice-list li:hover {
+  background: rgba(245, 158, 11, 0.3);
+  transform: translateY(-2px);
+  border-color: var(--amber-500);
+}
+
+/* Footer customizado para a página scrum (além do componente global) */
+.footer {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(163, 184, 216, 0.15);
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.footer__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--amber-400);
+  margin-bottom: 0.5rem;
+}
+
+.footer__ref a {
+  color: var(--navy-200);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s;
+}
+
+.footer__ref a:hover {
+  color: var(--amber-400);
+  text-decoration: underline;
+}
+
+.footer__copyright {
+  color: var(--slate-400);
+  font-size: 0.875rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .scrum-content {
+    padding: 1rem 0 3rem;
+  }
+
+  .scrum-content h1 {
+    font-size: 2rem;
+  }
+
+  .scrum-highlight strong {
+    font-size: 1.5rem;
+  }
+
+  .indice-list li {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .footer__content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scrum-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .scrum-section p {
+    font-size: 1rem;
+  }
+
+  .scrum-list li {
+    padding: 0.75rem 1rem;
+  }
+}
