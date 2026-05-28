@@ -192,4 +192,76 @@
     color: var(--amber-500);
 }
 
+/* ================================
+   RESPONSIVIDADE
+   ================================ */
+
+@media (max-width: 768px) {
+    .manifesto-hero {
+        padding: 100px 24px 40px;
+        gap: 12px;
+    }
+
+    .manifesto-hero__titulo {
+        font-size: 36px;
+    }
+
+    .manifesto-hero__subtitulo {
+        font-size: 15px;
+    }
+
+    .principios-nav {
+        padding: 0 24px 36px;
+    }
+
+    .principios-lista {
+        padding: 0 24px 48px;
+    }
+
+    .principio-card {
+        padding: 22px 24px;
+    }
+
+    .manifesto-footer {
+        padding: 24px;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .manifesto-hero {
+        padding: 88px 16px 32px;
+    }
+
+    .manifesto-hero__titulo {
+        font-size: 28px;
+    }
+
+    .manifesto-hero__subtitulo {
+        font-size: 14px;
+    }
+
+    .principios-nav {
+        padding: 0 16px 24px;
+    }
+
+    .principios-lista {
+        padding: 0 16px 32px;
+    }
+
+    .principio-card {
+        padding: 18px 16px;
+        gap: 16px;
+    }
+
+    .principio-numero {
+        font-size: 22px;
+        min-width: 28px;
+    }
+
+    .principio-texto {
+        font-size: 14px;
+    }
+}
 

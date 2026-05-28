@@ -555,17 +555,6 @@
         flex-direction: column;
     }
 }
-/* ================================
-   NAVBAR: saudação + sair em linha
-   ================================ */
-
-@media (min-width: 481px) {
-    .nav-menu {
-        flex-direction: row;
-        gap: 32px;
-    }
-}
-
 #nav-logado {
     display: flex;
     align-items: center;
