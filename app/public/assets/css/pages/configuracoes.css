@@ -1,0 +1,432 @@
+@import url("../global.css");
+@import url("./dashboard.css");
+
+/* Garante que [hidden] não seja sobrescrito por display:flex das classes */
+[hidden] { display: none !important; }
+
+/* FIX: content.css define svg { width: 200px } — reseta para ícones do layout */
+.sidebar-link svg,
+.config-card-icon svg,
+.admin-badge svg {
+    width: unset;
+    height: unset;
+}
+
+/* ================================
+   SEÇÕES
+   ================================ */
+
+.config-secao {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Cabeçalho da seção de admin com badge ao lado do título */
+.config-admin-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background-color: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: 20px;
+    color: var(--amber-500);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ================================
+   GRID DE CARDS
+   ================================ */
+
+/* Dois cards lado a lado no desktop, um por linha em telas menores */
+.config-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* ================================
+   CARD BASE
+   ================================ */
+
+.config-card {
+    background-color: var(--navy-800);
+    border: 1px solid var(--navy-700);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Card que ocupa toda a largura (tabelas de admin) */
+.config-card--full {
+    grid-column: 1 / -1;
+}
+
+/* Topo do card: ícone + título/subtítulo + botão opcional */
+.config-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Caixa do ícone — amber por padrão */
+.config-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    color: var(--amber-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Variação teal para a seção de níveis */
+.config-card-icon--teal {
+    background-color: rgba(13, 148, 136, 0.1);
+    border-color: rgba(13, 148, 136, 0.25);
+    color: var(--teal-500);
+}
+
+.config-card-titulo {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0 0 2px;
+}
+
+.config-card-subtitulo {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--slate-400);
+    margin: 0;
+}
+
+/* Botão "Nova questão / Novo nível" — empurrado para a direita */
+.config-btn-nova {
+    margin-left: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* ================================
+   FORMULÁRIOS
+   ================================ */
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout em duas colunas para o formulário de nova questão */
+.config-form--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+/* Elemento que ocupa as duas colunas do grid */
+.campo-full {
+    grid-column: 1 / -1;
+}
+
+/* Ações do formulário (botões Cancelar / Salvar) */
+.config-form-acoes {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+/* Formulário expandível que aparece ao clicar "+ Nova questão" */
+.config-form-expansivel {
+    border-top: 1px solid var(--navy-600);
+    padding-top: 20px;
+}
+
+/* ================================
+   INPUTS
+   ================================ */
+
+.campo-input {
+    width: 100%;
+    background-color: var(--navy-900);
+    border: 1px solid var(--navy-600);
+    border-radius: 8px;
+    padding: 11px 14px;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.campo-input:focus {
+    border-color: var(--amber-500);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.12);
+}
+
+.campo-input::placeholder {
+    color: var(--slate-600);
+}
+
+.campo-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.campo-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394A3B8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+/* ================================
+   ALTERNATIVAS (formulário de questão)
+   ================================ */
+
+.config-alternativas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alternativa-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alternativa-item input[type="radio"] {
+    accent-color: var(--amber-500);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.alternativa-letra {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: var(--amber-500);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.label-obs {
+    color: var(--slate-400);
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* ================================
+   TABELAS DE ADMIN
+   ================================ */
+
+.config-tabela-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.config-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 13px;
+    min-width: 480px;
+}
+
+.config-tabela th {
+    text-align: left;
+    padding: 10px 12px;
+    color: var(--slate-400);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--navy-700);
+    white-space: nowrap;
+}
+
+.config-tabela td {
+    padding: 12px;
+    color: var(--navy-200);
+    border-bottom: 1px solid rgba(22, 43, 92, 0.5);
+    vertical-align: middle;
+}
+
+.config-tabela tr:last-child td {
+    border-bottom: none;
+}
+
+.config-tabela-acoes {
+    display: flex;
+    gap: 8px;
+}
+
+/* Botões menores dentro das tabelas */
+.btn-tabela {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-tabela--editar {
+    background-color: rgba(74, 111, 165, 0.12);
+    border-color: rgba(74, 111, 165, 0.3);
+    color: var(--navy-200);
+}
+
+.btn-tabela--editar:hover {
+    background-color: rgba(74, 111, 165, 0.24);
+    color: var(--white);
+}
+
+.btn-tabela--excluir {
+    background-color: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.25);
+    color: var(--red-500);
+}
+
+.btn-tabela--excluir:hover {
+    background-color: rgba(239, 68, 68, 0.18);
+}
+
+/* Estado vazio das tabelas */
+.config-vazio {
+    text-align: center;
+    padding: 32px 16px;
+    color: var(--slate-400);
+    font-family: var(--font-body);
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ================================
+   TOAST DE FEEDBACK
+   ================================ */
+
+.config-toast {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background-color: var(--navy-700);
+    border: 1px solid var(--navy-600);
+    border-left: 3px solid var(--amber-500);
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--white);
+    z-index: 2000;
+    box-shadow: var(--shadow-lg);
+    max-width: 320px;
+    animation: toastEntrar 0.3s ease;
+}
+
+.config-toast--sucesso {
+    border-left-color: var(--teal-500);
+}
+
+.config-toast--erro {
+    border-left-color: var(--red-500);
+}
+
+@keyframes toastEntrar {
+    from { transform: translateY(12px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ================================
+   RESPONSIVO
+   ================================ */
+
+@media (max-width: 1024px) {
+    /* Formulário de nova questão vira coluna única */
+    .config-form--grid {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-full {
+        grid-column: unset;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .dashboard-main {
+        margin-left: 0;
+        padding: 24px 20px 48px;
+    }
+
+    /* Botão "Nova questão" vai para linha separada no header */
+    .config-card-header {
+        flex-wrap: wrap;
+    }
+
+    .config-btn-nova {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Toast ocupa largura da tela no celular */
+    .config-toast {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: unset;
+    }
+
+    /* Botões de ação em coluna */
+    .config-form-acoes {
+        flex-direction: column;
+    }
+
+    .config-form-acoes .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

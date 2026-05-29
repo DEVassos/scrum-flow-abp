@@ -26,6 +26,7 @@
   align-items: center;
   width: 100%;
   padding: 0 48px;
+  position: relative; /* ancora o nav-links centralizado por position:absolute */
 }
 
 .logo {
@@ -42,7 +43,7 @@
 }
 
 /* Remove os marcadores de lista (bolinhas) e o espaçamento padrão do <ul> */
-/* display: flex coloca os itens em linha com espaçamento entre eles */
+/* position:absolute + left/top 50% + translate centraliza os links no container */
 .nav-links {
   display: flex;
   align-items: center;
@@ -50,6 +51,11 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 /* Estilo padrão de cada link de navegação */
@@ -91,11 +97,19 @@
   display: none !important;
 }
 
-/* Saudação ao usuário logado exibida na navbar */
+/* Saudação ao usuário logado — chip amber consistente com os badges da aplicação */
 .nav-saudacao {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-heading);
-  font-size: 14px;
-  color: var(--amber-100)
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--amber-400);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 20px;
+  padding: 5px 12px;
+  white-space: nowrap;
 }
 
 /* ================================
@@ -112,12 +126,23 @@
         font-size: 44px;
     }
 
+    /* Volta para fluxo normal: no hamburger os links ficam dentro do dropdown */
     .nav-links {
-        gap: 20px;
+        position: static;
+        transform: none;
+        top: auto;
+        white-space: normal;
+        gap: 16px;
     }
 
     .nav-menu {
-        gap: 24px;
+        flex: unset;
+        justify-content: unset;
+    }
+
+    /* Remove "Home" da lista — o próprio logo já leva pra página inicial */
+    .nav-links li:first-child {
+        display: none;
     }
 }
 
@@ -125,11 +150,14 @@
    HAMBURGUER
    ================================ */
 
-/* Agrupa links e botões lado a lado no desktop */
+/* nav-menu ocupa todo o espaço restante; empurra os botões pro final (direita) */
+/* nav-links saiu do fluxo (position:absolute), então justify-content afeta só os botões */
 .nav-menu {
     display: flex;
     align-items: center;
     gap: 40px;
+    flex: 1;
+    justify-content: flex-end;
 }
 
 /* Escondido no desktop — só aparece no mobile */
