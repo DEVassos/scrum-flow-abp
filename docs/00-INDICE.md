@@ -53,7 +53,9 @@
 |-----------|-----------|
 | [scrum/README.md](./scrum/README.md) | Papéis, cerimônias e fluxo Scrum |
 | [scrum/backlog/product-backlog.md](./scrum/backlog/product-backlog.md) | Histórias priorizadas |
-| [scrum/sprint-1/sprint-1.md](./scrum/sprint-1/sprint-1.md) | Sprint 1 (ativa) |
+| [scrum/sprint-1/sprint-1.md](./scrum/sprint-1/sprint-1.md) | Sprint 1 (concluída) |
+| [scrum/sprint-2/sprint-2.md](./scrum/sprint-2/sprint-2.md) | Sprint 2 (concluída) |
+| [scrum/sprint-3/sprint-3.md](./scrum/sprint-3/sprint-3.md) | Sprint 3 (ativa) |
 | [scrum/templates/](./scrum/templates/) | Templates de atas e cerimônias |
 
 ### 👥 Usuário Final

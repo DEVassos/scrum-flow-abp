@@ -111,7 +111,7 @@ As Sprints documentadas (Sprints 1 a 3) seguem a estrutura de diretórios abaixo
 | `atas/sprint-retrospective.md` | Ata da Sprint Retrospective |
 | `atas/dailies/` | Atas das Daily Scrums |
 
-> **Status:** A Sprint 1 está em andamento — `sprint-1.md`, `dor-dod.md` e atas já disponíveis. As pastas de Sprint 2 e 3 serão preenchidas nas respectivas sprints.
+> **Status:** A Sprint 3 está em andamento — `sprint-3.md`, `dor-dod.md` e atas já disponíveis. As Sprints 1 e 2 foram concluídas.
 
 ### 🗄️ Banco de Dados (`bd/`)
 
