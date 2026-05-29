@@ -57,19 +57,18 @@ async function insertExame(client, id_modulo, id_usuario, grupo, tentativa) {
         `,
     [id_modulo, id_usuario, grupo, tentativa],
   );
+
+  return result.rows[0] || null;
 }
 
 //cria usuário
 async function createUsuario(nome, email, cpf, senha) {
-  //inicializa entrada no banco
   const client = await pool.connect();
   await client.query("BEGIN");
 
   try {
-    //testa se info de usuário é válido
     const usuario = await insertUsuario(client, nome, email, cpf, senha);
 
-    //testa se módulo foi inicializado
     const modulo = await findPrimeiroModuloId(client);
     if (!modulo) {
       throw new Error(
@@ -77,7 +76,6 @@ async function createUsuario(nome, email, cpf, senha) {
       );
     }
 
-    //testa se grupo de questões foi alocado
     const grupo = await findGrupoAleatorio(client, modulo.id_modulo);
     if (!grupo) {
       throw new Error(
@@ -85,8 +83,7 @@ async function createUsuario(nome, email, cpf, senha) {
       );
     }
 
-    //testa se exame foi criado
-    const exame = await insertExame(
+    await insertExame(
       client,
       modulo.id_modulo,
       usuario.id_usuario,
@@ -94,7 +91,6 @@ async function createUsuario(nome, email, cpf, senha) {
       1,
     );
 
-    //após validação, finaliza criação do usuário
     await client.query("COMMIT");
     return {
       id_usuario: usuario.id_usuario,
@@ -190,12 +186,15 @@ async function findUsuarioByCpfAndSenha(cpf, senha) {
         `,
     [cpf],
   );
+
   const usuario = result.rows[0];
+
   if (!usuario) {
     throw new Error("Usuário inexistente");
   }
 
   const senhaValida = verifyPassword(senha, usuario.senha);
+
   if (!senhaValida) {
     throw new Error("Dados de login incorretos");
   }
@@ -208,105 +207,106 @@ async function findUsuarioByCpfAndSenha(cpf, senha) {
   };
 }
 
-// ========== Recriação automática de exame inicial ==========
-
-/**
- * Verifica se o usuário tem pelo menos um exame registrado
- * @param {number} id_usuario
- * @returns {Promise<boolean>}
- */
+//verifica se o usuário possui algum exame registrado
 async function usuarioTemExame(id_usuario) {
   const result = await pool.query(
-    `SELECT COUNT(*) as total FROM exames WHERE id_usuario = $1`,
+    `
+    SELECT id_exame
+    FROM exames
+    WHERE id_usuario = $1
+    LIMIT 1
+    `,
     [id_usuario],
   );
-  return parseInt(result.rows[0].total) > 0;
+
+  return result.rows.length > 0;
 }
 
-/**
- * Recria o exame inicial para um usuário que está sem nenhum exame
- * (caso de remoção manual do banco ou inconsistência)
- * @param {number} id_usuario
- * @returns {Promise<{id_modulo: number, grupo: number, tentativa: number}>}
- */
+//recria o exame inicial somente quando o usuário não possui nenhum exame
 async function recriarExameInicial(id_usuario) {
   const client = await pool.connect();
+  await client.query("BEGIN");
 
   try {
-    await client.query("BEGIN");
+    const usuarioResult = await client.query(
+      `
+      SELECT id_usuario
+      FROM usuarios
+      WHERE id_usuario = $1
+      LIMIT 1
+      `,
+      [id_usuario],
+    );
 
-    // 1. Verifica se o usuário existe
-    const usuario = await findUsuarioById(id_usuario);
-    if (!usuario) {
+    if (!usuarioResult.rows.length) {
       throw new Error(`Usuário ${id_usuario} não encontrado`);
     }
 
-    // 2. Busca o primeiro módulo (id_modulo mais baixo)
-    const modulo = await findPrimeiroModuloId(client);
-    if (!modulo) {
-      throw new Error("Nenhum módulo cadastrado no sistema");
+    const exameExistente = await client.query(
+      `
+      SELECT id_exame
+      FROM exames
+      WHERE id_usuario = $1
+      LIMIT 1
+      `,
+      [id_usuario],
+    );
+
+    if (exameExistente.rows.length > 0) {
+      await client.query("COMMIT");
+      return exameExistente.rows[0];
     }
 
-    // 3. Sorteia um grupo de questões para o módulo
+    const modulo = await findPrimeiroModuloId(client);
+
+    if (!modulo) {
+      throw new Error("Nenhum módulo cadastrado para recriar exame do usuário");
+    }
+
     const grupo = await findGrupoAleatorio(client, modulo.id_modulo);
+
     if (!grupo) {
       throw new Error(
-        `Nenhum grupo de questões encontrado para o módulo ${modulo.id_modulo}`,
+        "Nenhum grupo de questões cadastrado para recriar exame do usuário",
       );
     }
 
-    // 4. Verifica quantas tentativas o usuário já teve para este módulo
-    const tentativaResult = await client.query(
-      `SELECT COALESCE(MAX(tentativa), 0) + 1 as proxima_tentativa
-             FROM exames 
-             WHERE id_usuario = $1 AND id_modulo = $2`,
-      [id_usuario, modulo.id_modulo],
-    );
-    const tentativa = parseInt(tentativaResult.rows[0].proxima_tentativa);
-
-    // 5. Cria o novo exame
-    const exameResult = await client.query(
-      `INSERT INTO exames (id_modulo, id_usuario, grupo, tentativa)
-             VALUES ($1, $2, $3, $4)
-             RETURNING id_exame, id_modulo, grupo, tentativa`,
-      [modulo.id_modulo, id_usuario, grupo.grupo, tentativa],
+    const exame = await insertExame(
+      client,
+      modulo.id_modulo,
+      id_usuario,
+      grupo.grupo,
+      1,
     );
 
     await client.query("COMMIT");
 
-    console.log(
-      `[T05] Exame recriado para usuário ${id_usuario}:`,
-      exameResult.rows[0],
-    );
-    return exameResult.rows[0];
-  } catch (error) {
+    return exame;
+  } catch (e) {
     await client.query("ROLLBACK");
-    console.error(
-      `[T05] Erro ao recriar exame para usuário ${id_usuario}:`,
-      error.message,
-    );
-    throw error;
+    throw e;
   } finally {
     client.release();
   }
 }
 
-/**
- * Garante que o usuário tenha um exame inicial (verifica e recria se necessário)
- * Função principal a ser chamada antes de qualquer operação que precise do exame
- * @param {number} id_usuario
- * @returns {Promise<{recriou: boolean, exame: object | null}>}
- */
+//garante integridade após reset manual do usuário
 async function ensureExameInicial(id_usuario) {
   const temExame = await usuarioTemExame(id_usuario);
 
-  if (!temExame) {
-    console.log(`[T05] Usuário ${id_usuario} sem exames. Recriando...`);
-    const novoExame = await recriarExameInicial(id_usuario);
-    return { recriou: true, exame: novoExame };
+  if (temExame) {
+    return {
+      recriou: false,
+      exame: null,
+    };
   }
 
-  return { recriou: false, exame: null };
+  const exame = await recriarExameInicial(id_usuario);
+
+  return {
+    recriou: true,
+    exame,
+  };
 }
 
 module.exports = {
