@@ -30,8 +30,8 @@
 | US05 | usuário | visualizar minha nota final por nível | acompanhar meu progresso individualmente | 🟡 Média | Sprint 2 | ✅ Concluído |
 | US06 | usuário | ver minha média final calculada automaticamente | saber meu resultado geral ao concluir todos os níveis | 🟡 Média | Sprint 2 | ✅ Concluído |
 | US07 | usuário | receber um certificado com meus dados e notas | comprovar minha conclusão do ciclo de avaliação | 🟡 Média | Sprint 2 | ✅ Concluído |
-| US08 | usuário | consultar meu histórico de tentativas | revisar meu desempenho e as questões sorteadas | 🟢 Baixa | Sprint 3 | 🔲 Não iniciado |
-| US09 | administrador | cadastrar e gerenciar questões e níveis via área administrativa | manter o banco de questões atualizado sem alterar o código | 🟢 Baixa | Sprint 3 | 🔲 Não iniciado |
+| US08 | usuário | consultar meu histórico de tentativas | revisar meu desempenho e as questões sorteadas | 🔴 Alta | Sprint 3 | 🔄 Em andamento |
+| US09 | administrador | cadastrar e gerenciar questões e níveis via área administrativa | manter o banco de questões atualizado sem alterar o código | 🔴 Alta | Sprint 3 | 🔄 Em andamento |
 
 ---
 
