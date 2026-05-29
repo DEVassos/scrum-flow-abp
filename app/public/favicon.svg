@@ -1,0 +1,41 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .icon-stroke { fill: none; stroke: #1e3a5f; stroke-width: 24; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-fill { fill: #1e3a5f; }
+    </style>
+  </defs>
+  
+  <!-- Arrow top right -->
+  <path class="icon-stroke" d="M370 40 L470 40 L470 140"/>
+  
+  <!-- Arrow bottom left -->
+  <path class="icon-stroke" d="M40 340 L40 440 L140 440"/>
+  
+  <!-- Arrow bottom right -->
+  <path class="icon-stroke" d="M470 340 L470 440"/>
+  
+  <!-- Left arrow -->
+  <path class="icon-stroke" d="M40 220 Q40 120 140 120 L300 120"/>
+  
+  <!-- Top arrow -->
+  <path class="icon-stroke" d="M220 40 Q320 40 320 140 L320 220"/>
+  
+  <!-- Right arrow -->
+  <path class="icon-stroke" d="M340 300 L470 300"/>
+  
+  <!-- Bottom line -->
+  <line class="icon-stroke" x1="40" y1="420" x2="340" y2="420"/>
+  
+  <!-- Center gear -->
+  <circle class="icon-stroke" cx="260" cy="260" r="45"/>
+  <g class="icon-fill">
+    <circle cx="260" cy="260" r="20"/>
+    <rect x="245" y="200" width="30" height="20" rx="5"/>
+    <rect x="245" y="340" width="30" height="20" rx="5"/>
+    <rect x="340" y="245" width="20" height="30" rx="5"/>
+    <rect x="152" y="245" width="20" height="30" rx="5"/>
+    <rect x="305" y="215" width="20" height="20" rx="5" transform="rotate(45 315 225)"/>
+    <rect x="187" y="335" width="20" height="20" rx="5" transform="rotate(45 197 345)"/>
+  </g>
+</svg>
