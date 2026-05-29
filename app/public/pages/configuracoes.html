@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/pages/configuracoes.css">
+    <title>ScrumFlow | Configurações</title>
+</head>
+
+<body>
+
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
+
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
+                    <li><a href="modulo-2/scrum.html" class="nav-link">Scrum</a></li>
+                    <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                </ul>
+
+                <div class="navbar__actions">
+                    <div id="nav-logado">
+                        <span id="nav-saudacao" class="nav-saudacao"></span>
+                        <button id="btn-sair" class="btn btn-ghost">Sair</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-wrapper">
+
+        <!-- SIDEBAR DE NAVEGAÇÃO -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="modulos.html" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                    </svg>
+                    Módulos
+                </a>
+                <a href="historicoquestoes.html" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                    </svg>
+                    Histórico
+                </a>
+                <a href="configuracoes.html" class="sidebar-link sidebar-link--ativo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.892 3.433-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                    </svg>
+                    Config.
+                </a>
+            </nav>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="dashboard-main">
+
+            <div class="dashboard-header">
+                <p class="dashboard-subtitulo">Gerencie sua conta e preferências do sistema</p>
+            </div>
+
+            <!-- ══════════════════════════════════════
+                 SEÇÃO: DADOS DA CONTA
+            ══════════════════════════════════════ -->
+            <section class="config-secao">
+                <h2 class="secao-titulo">Dados da Conta</h2>
+
+                <div class="config-cards">
+
+                    <!-- Card: Dados Pessoais -->
+                    <div class="config-card">
+                        <div class="config-card-header">
+                            <div class="config-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.029 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="config-card-titulo">Dados Pessoais</h3>
+                                <p class="config-card-subtitulo">Atualize seu nome, e-mail e CPF</p>
+                            </div>
+                        </div>
+
+                        <form id="form-dados" class="config-form">
+                            <div class="campo-grupo">
+                                <label class="campo-label" for="input-nome">Nome completo</label>
+                                <input class="campo-input" type="text" id="input-nome" placeholder="Seu nome completo" autocomplete="name">
+                            </div>
+                            <div class="campo-grupo">
+                                <label class="campo-label" for="input-email">E-mail</label>
+                                <input class="campo-input" type="email" id="input-email" placeholder="seu@email.com" autocomplete="email">
+                            </div>
+                            <div class="campo-grupo">
+                                <label class="campo-label" for="input-cpf">CPF</label>
+                                <input class="campo-input" type="text" id="input-cpf" placeholder="000.000.000-00" maxlength="14" autocomplete="off">
+                            </div>
+                            <div class="config-form-acoes">
+                                <button type="submit" class="btn btn-primary">Salvar alterações</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Card: Segurança -->
+                    <div class="config-card">
+                        <div class="config-card-header">
+                            <div class="config-card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="config-card-titulo">Segurança</h3>
+                                <p class="config-card-subtitulo">Altere sua senha de acesso</p>
+                            </div>
+                        </div>
+
+                        <form id="form-senha" class="config-form">
+                            <div class="campo-grupo">
+                                <label class="campo-label" for="input-nova-senha">Nova senha</label>
+                                <input class="campo-input" type="password" id="input-nova-senha" placeholder="Mínimo 8 caracteres" autocomplete="new-password">
+                            </div>
+                            <div class="campo-grupo">
+                                <label class="campo-label" for="input-confirmar-senha">Confirmar nova senha</label>
+                                <input class="campo-input" type="password" id="input-confirmar-senha" placeholder="Repita a nova senha" autocomplete="new-password">
+                            </div>
+                            <div class="config-form-acoes">
+                                <button type="submit" class="btn btn-primary">Alterar senha</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ══════════════════════════════════════
+                 SEÇÃO: ADMINISTRAÇÃO (apenas admin)
+                 Visível somente quando perfil === 'admin' (T15)
+            ══════════════════════════════════════ -->
+            <section class="config-secao" id="secao-admin" hidden>
+
+                <div class="config-admin-header">
+                    <h2 class="secao-titulo">Administração</h2>
+                    <span class="admin-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"/>
+                        </svg>
+                        Admin
+                    </span>
+                </div>
+
+                <!-- Card: Gerenciar Questões -->
+                <div class="config-card config-card--full">
+                    <div class="config-card-header">
+                        <div class="config-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.854-4.854 3 3a.5.5 0 0 1-.708.708L6.5 9.207V12.5a.5.5 0 0 1-1 0V9.207L2.854 11.854a.5.5 0 0 1-.708-.708l3-3a.5.5 0 0 1 .708 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="config-card-titulo">Questões</h3>
+                            <p class="config-card-subtitulo">Crie, edite ou remova questões do banco de dados</p>
+                        </div>
+                        <button class="btn btn-primary config-btn-nova" id="btn-nova-questao">+ Nova questão</button>
+                    </div>
+
+                    <!-- Formulário de nova questão (expandível) -->
+                    <div class="config-form-expansivel" id="form-nova-questao-wrapper" hidden>
+                        <form id="form-nova-questao" class="config-form config-form--grid">
+
+                            <div class="campo-grupo campo-full">
+                                <label class="campo-label" for="q-enunciado">Enunciado da questão</label>
+                                <textarea class="campo-input campo-textarea" id="q-enunciado" rows="3" placeholder="Digite o enunciado completo da questão..."></textarea>
+                            </div>
+
+                            <div class="campo-grupo">
+                                <label class="campo-label" for="q-modulo">Módulo</label>
+                                <select class="campo-input campo-select" id="q-modulo">
+                                    <option value="">Selecione o módulo</option>
+                                    <option value="1">Módulo 1 — Manifesto Ágil</option>
+                                    <option value="2">Módulo 2 — Framework Scrum</option>
+                                </select>
+                            </div>
+
+                            <div class="campo-grupo">
+                                <label class="campo-label" for="q-grupo">Grupo de questões</label>
+                                <input class="campo-input" type="text" id="q-grupo" placeholder="Ex: A, B, C..." maxlength="2">
+                            </div>
+
+                            <div class="config-alternativas campo-full">
+                                <p class="campo-label">Alternativas <span class="label-obs">(selecione a correta)</span></p>
+                                <div class="alternativa-item">
+                                    <input type="radio" name="correta" value="a" id="r-a">
+                                    <label for="r-a" class="alternativa-letra">A</label>
+                                    <input class="campo-input" type="text" id="q-alt-a" placeholder="Alternativa A">
+                                </div>
+                                <div class="alternativa-item">
+                                    <input type="radio" name="correta" value="b" id="r-b">
+                                    <label for="r-b" class="alternativa-letra">B</label>
+                                    <input class="campo-input" type="text" id="q-alt-b" placeholder="Alternativa B">
+                                </div>
+                                <div class="alternativa-item">
+                                    <input type="radio" name="correta" value="c" id="r-c">
+                                    <label for="r-c" class="alternativa-letra">C</label>
+                                    <input class="campo-input" type="text" id="q-alt-c" placeholder="Alternativa C">
+                                </div>
+                                <div class="alternativa-item">
+                                    <input type="radio" name="correta" value="d" id="r-d">
+                                    <label for="r-d" class="alternativa-letra">D</label>
+                                    <input class="campo-input" type="text" id="q-alt-d" placeholder="Alternativa D">
+                                </div>
+                            </div>
+
+                            <div class="config-form-acoes campo-full">
+                                <button type="button" class="btn btn-ghost" id="btn-cancelar-questao">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar questão</button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!-- Tabela de questões -->
+                    <div class="config-tabela-wrapper">
+                        <table class="config-tabela">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Enunciado</th>
+                                    <th>Módulo</th>
+                                    <th>Grupo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="questoes-tbody"></tbody>
+                        </table>
+                        <p class="config-vazio" id="questoes-vazio" hidden>Nenhuma questão cadastrada.</p>
+                    </div>
+                </div>
+
+                <!-- Card: Gerenciar Níveis -->
+                <div class="config-card config-card--full">
+                    <div class="config-card-header">
+                        <div class="config-card-icon config-card-icon--teal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0zM8 9.433 1.562 6 8 2.567 14.438 6z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="config-card-titulo">Níveis</h3>
+                            <p class="config-card-subtitulo">Gerencie os módulos e níveis do sistema</p>
+                        </div>
+                        <button class="btn btn-primary config-btn-nova" id="btn-novo-nivel">+ Novo nível</button>
+                    </div>
+
+                    <!-- Tabela de níveis -->
+                    <div class="config-tabela-wrapper">
+                        <table class="config-tabela">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nome do nível</th>
+                                    <th>Ordem</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="niveis-tbody"></tbody>
+                        </table>
+                        <p class="config-vazio" id="niveis-vazio" hidden>Nenhum nível cadastrado.</p>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Toast de feedback (sucesso / erro) -->
+    <div class="config-toast" id="config-toast" hidden>
+        <span id="config-toast-msg"></span>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/configuracoes.js"></script>
+
+</body>
+</html>
