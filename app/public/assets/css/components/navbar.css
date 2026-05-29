@@ -116,14 +116,14 @@
    RESPONSIVIDADE
    ================================ */
 
-/* Tablet — reduz padding e logo pra não estourar a linha */
-@media (max-width: 768px) {
+/* Desktop compacto — previne overflow em telas até 1024px */
+@media (max-width: 1024px) {
     .navbar__container {
-        padding: 0 16px;
+        padding: 0 32px;
     }
 
     .logo {
-        font-size: 40px;
+        font-size: 44px;
     }
 
     /* Volta para fluxo normal: no hamburger os links ficam dentro do dropdown */
@@ -194,15 +194,21 @@
     transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (max-width: 480px) {
-        .logo {
-        font-size: 34px;
+/* Tablet/mobile — colapsa o menu em hamburger a partir de 768px */
+@media (max-width: 768px) {
+    .navbar__container {
+        padding: 0 16px;
     }
+
+    .logo {
+        font-size: 40px;
+    }
+
     .navbar__hamburger {
         display: flex;
     }
 
-    /* No mobile o nav-menu vira dropdown que desce da navbar */
+    /* No tablet/mobile o nav-menu vira dropdown que desce da navbar */
     .nav-menu {
         position: fixed;
         top: 64px;
