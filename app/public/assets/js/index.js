@@ -184,6 +184,56 @@ if (new URLSearchParams(window.location.search).get("abrir") === "cadastro") {
 //   Em caso de CPF/e-mail duplicado (409), exibe erro inline no campo CPF.
 // ================================
 
+// ================================
+//   VALIDAÇÃO EM TEMPO REAL — CADASTRO
+//   Limpa o erro de cada campo assim que o valor ficar vazio ou válido,
+//   sem esperar o submit.
+// ================================
+
+(function configurarValidacaoTempoReal() {
+  const nome      = document.getElementById("cad-nome");
+  const cpf       = document.getElementById("cad-cpf");
+  const email     = document.getElementById("cad-email");
+  const senha     = document.getElementById("cad-senha");
+  const confirmar = document.getElementById("cad-confirmar");
+
+  const erros = {
+    nome:      document.getElementById("erro-nome"),
+    cpf:       document.getElementById("erro-cpf"),
+    email:     document.getElementById("erro-email"),
+    senha:     document.getElementById("erro-senha"),
+    confirmar: document.getElementById("erro-confirmar"),
+  };
+
+  nome.addEventListener("input", function () {
+    if (!this.value.trim() || this.value.trim().length > 0)
+      limparErro(this, erros.nome);
+  });
+
+  cpf.addEventListener("input", function () {
+    if (!this.value.trim() || validarCPF(this.value))
+      limparErro(this, erros.cpf);
+  });
+
+  email.addEventListener("input", function () {
+    if (!this.value.trim() || validarEmail(this.value.trim()))
+      limparErro(this, erros.email);
+  });
+
+  senha.addEventListener("input", function () {
+    if (!this.value || this.value.length >= 8)
+      limparErro(this, erros.senha);
+    // reavalia "confirmar" quando senha muda
+    if (!confirmar.value || confirmar.value === this.value)
+      limparErro(confirmar, erros.confirmar);
+  });
+
+  confirmar.addEventListener("input", function () {
+    if (!this.value || this.value === senha.value)
+      limparErro(this, erros.confirmar);
+  });
+})();
+
 document.getElementById("form-cadastro").addEventListener("submit", async function (e) {
   e.preventDefault();
 
