@@ -30,6 +30,7 @@ function popularResultado(dados) {
 
   const badge  = document.getElementById('status-badge');
   const status = dados.status === 'aprovado' ? 'aprovado' : 'reprovado';
+  atualizarHeroResultado(status);
   badge.textContent = status === 'aprovado' ? 'Aprovado' : 'Reprovado';
   badge.classList.remove('status-badge--aprovado', 'status-badge--reprovado');
   badge.classList.add(`status-badge--${status}`);
@@ -37,6 +38,61 @@ function popularResultado(dados) {
   const pct = (dados.percentual ?? 0) + '%';
   document.getElementById('score-ring').style.setProperty('--score-percent', pct);
   document.getElementById('progresso-fill').style.width = pct;
+  atualizarMensagemResultado(dados, status);
+}
+
+function atualizarHeroResultado(status) {
+  const titulo = document.getElementById('resultado-hero-titulo');
+  const subtitulo = document.getElementById('resultado-hero-subtitulo');
+
+  if (!titulo || !subtitulo) return;
+
+  if (status === 'aprovado') {
+    titulo.textContent = 'Parabéns';
+    subtitulo.textContent = 'Confira seu desempenho abaixo.';
+    return;
+  }
+
+  titulo.textContent = 'Hmm, não foi dessa vez';
+  subtitulo.textContent = 'Confira seu desempenho e veja uma sugestão para a próxima tentativa.';
+}
+
+function atualizarMensagemResultado(dados, status) {
+  const card = document.getElementById('resultado-motivacional');
+  const tagEl = document.getElementById('resultado-motivacional-tag');
+  const tituloEl = document.getElementById('resultado-motivacional-titulo');
+  const textoEl = document.getElementById('resultado-motivacional-texto');
+
+  if (!card || !tagEl || !tituloEl || !textoEl) return;
+
+  const percentual = Number(dados.percentual) || 0;
+  let estado = status;
+  let tag = 'Próximo passo';
+  let titulo = 'Continue sua jornada Scrum';
+  let texto = 'Volte ao dashboard para acompanhar seu próximo passo e manter o progresso ativo.';
+
+  if (status === 'aprovado' && percentual >= 90) {
+    estado = 'excelente';
+    titulo = 'Excelente domínio do conteúdo';
+    texto = 'Seu resultado mostra segurança neste módulo. Avance para o próximo nível e mantenha o mesmo cuidado nas revisões.';
+  } else if (status === 'aprovado') {
+    titulo = 'Módulo concluído';
+    texto = 'Você atingiu a média necessária e desbloqueou o próximo passo. Revise os pontos em que teve dúvida antes de seguir.';
+  } else if (percentual >= 40) {
+    tag = 'Mensagem de apoio';
+    titulo = 'Você está perto da aprovação';
+    texto = 'Faltou pouco. Esse resultado já mostra que você construiu parte da base. Revise os pontos em que errou e tente novamente com foco nas dúvidas.';
+  } else {
+    estado = 'revisao';
+    tag = 'Mensagem de apoio';
+    titulo = 'Uma tentativa ruim não define seu aprendizado';
+    texto = 'Use essa prova como diagnóstico, não como derrota. Volte ao conteúdo do módulo, anote os conceitos que confundiram e faça a próxima tentativa com calma.';
+  }
+
+  card.dataset.estado = estado;
+  tagEl.textContent = tag;
+  tituloEl.textContent = titulo;
+  textoEl.textContent = texto;
 }
 
 // ================================

@@ -194,6 +194,16 @@
     font-weight: 500;
 }
 
+.resultado-motivacional {
+    background:
+        linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(30, 58, 122, 0.2)),
+        var(--navy-800);
+    border: 1px solid rgba(245, 158, 11, 0.34);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 .resultado-revisao {
     display: flex;
     flex-direction: column;
@@ -218,6 +228,52 @@
     overflow: hidden;
 }
 
+.resultado-motivacional::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--amber-500), transparent);
+}
+
+.resultado-motivacional[data-estado="excelente"],
+.resultado-motivacional[data-estado="aprovado"] {
+    border-color: rgba(13, 148, 136, 0.38);
+    background:
+        linear-gradient(135deg, rgba(13, 148, 136, 0.14), rgba(245, 158, 11, 0.08)),
+        var(--navy-800);
+}
+
+.resultado-motivacional[data-estado="reprovado"],
+.resultado-motivacional[data-estado="revisao"] {
+    border-color: rgba(245, 158, 11, 0.34);
+}
+
+.resultado-motivacional-tag {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--amber-400);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.resultado-motivacional h2 {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    line-height: 1.25;
+    color: var(--white);
+    margin: 0;
+}
+
+.resultado-motivacional p {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--navy-200);
+    margin: 0;
 .revisao-card::before {
     content: '';
     position: absolute;
