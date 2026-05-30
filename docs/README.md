@@ -1,6 +1,6 @@
 ← [Voltar ao README principal](../README.md) · [📚 Índice da Documentação](./00-INDICE.md)
 
-# 📚 Documentação Técnica — Sistema de Avaliação por Níveis com Certificação
+# 📚 Documentação Técnica — Sistema de Avaliação por Módulos com Certificação
 
 **ABP 1DSM 2026/1 · FATEC Jacareí · Equipe DEVassos**
 

@@ -79,7 +79,7 @@ createdb abp
 ### Schemas (ordem de criação)
 Os arquivos em `app/src/infra/init/` são executados pelo `npm run db:init` na ordem numérica:
 
-1. `01_schema_modulos.sql` — Tabela de módulos (níveis 1–5)
+1. `01_schema_modulos.sql` — Tabela de módulos (1–5)
 2. `02_schema_questoes.sql` — Banco de questões com classificação (fácil/médio/difícil)
 3. `03_schema_usuarios.sql` — Cadastro de usuários (CPF único)
 4. `04_schema_exames.sql` — Tentativas de avaliação

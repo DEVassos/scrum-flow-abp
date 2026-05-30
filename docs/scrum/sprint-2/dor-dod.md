@@ -45,9 +45,9 @@ Um item é considerado **Pronto (Done)** quando atende a **todos** os critérios
 
 | História | DoR | Observação |
 |----------|:---:|------------|
-| US03 — Realizar Avaliação de Nível | ✅ | Critérios validados na Sprint Planning |
+| US03 — Realizar Avaliação de Módulo | ✅ | Critérios validados na Sprint Planning |
 | US04 — Controle de Tentativas | ✅ | Critérios validados na Sprint Planning |
-| US05 — Nota Final por Nível | ✅ | Dados provenientes do endpoint de progresso |
+| US05 — Nota Final por Módulo | ✅ | Dados provenientes do endpoint de progresso |
 | US06 — Média Final | ✅ | Critérios validados na Sprint Planning |
 | US07 — Certificado Digital | ✅ | Critérios validados na Sprint Planning |
 
