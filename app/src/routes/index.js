@@ -25,7 +25,7 @@ router.use("/auth", auth);
 // Agrupa as rotas relacionadas aos certificados
 router.use("/certificados", certificados);
 
-// Agrupa as rotas administrativas sob o prefixo /admin
+// Rotas Administrativas (ex: reset de senha) sob o prefixo /admin
 router.use("/admin", admin);
 
 // ===== TRATAMENTO DE ROTAS NÃO ENCONTRADAS =====
