@@ -1,8 +1,9 @@
-const { Router } = require('express');
-const usuarios = require('./usuarios.routes');
+const { Router } = require("express");
+const usuarios = require("./usuarios.routes");
 const questoes = require("./questoes.routes");
-const auth = require('./auth.routes');
+const auth = require("./auth.routes");
 const certificados = require("./certificados.routes");
+const admin = require("./admin.routes");
 
 /**
  * Roteador Central da API.
@@ -24,18 +25,21 @@ router.use("/auth", auth);
 // Agrupa as rotas relacionadas aos certificados
 router.use("/certificados", certificados);
 
+// Rotas Administrativas (ex: reset de senha) sob o prefixo /admin
+router.use("/admin", admin);
+
 // ===== TRATAMENTO DE ROTAS NÃO ENCONTRADAS =====
 
 /**
  * Middleware para rotas não definidas
  * Retorna erro 404 em formato JSON
  */
-router.use(function(_req, res) {
-    res.status(404).json({
-        error: "Endpoint não encontrado",
-        message: "A rota solicitada não existe. Verifique a URL.",
-        timestamp: new Date().toISOString()
-    });
+router.use(function (_req, res) {
+  res.status(404).json({
+    error: "Endpoint não encontrado",
+    message: "A rota solicitada não existe. Verifique a URL.",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 module.exports = router;
