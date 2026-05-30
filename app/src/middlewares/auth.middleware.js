@@ -48,6 +48,11 @@ async function authMiddleware(req, res, next) {
 
   // Verifica se o cabeçalho Authorization foi fornecido na requisição
   if (!authorization) {
+    // S3_T26: Log de tentativa de acesso sem token
+    console.log(
+      `[AUTH] Acesso negado - sem token: ${req.method} ${req.originalUrl} - IP: ${req.ip}`,
+    );
+
     return res.status(401).json({
       message: "token não informado",
       error: "Authorization header é obrigatório",
@@ -59,6 +64,11 @@ async function authMiddleware(req, res, next) {
 
   // Valida o formato padrão de autenticação Bearer
   if (type !== "Bearer" || !token) {
+    // S3_T26: Log de formato de token inválido
+    console.log(
+      `[AUTH] Acesso negado - formato inválido: ${req.method} ${req.originalUrl} - IP: ${req.ip}`,
+    );
+
     return res.status(401).json({
       message: "token inválido",
       error: "Use o formato: Authorization: Bearer {token}",
@@ -74,6 +84,11 @@ async function authMiddleware(req, res, next) {
 
     // Garante que o usuário ainda existe no sistema (não foi deletado)
     if (!usuario) {
+      // S3_T26: Log de usuário não encontrado
+      console.log(
+        `[AUTH] Acesso negado - usuário não encontrado: ID ${payload.id_usuario} - ${req.method} ${req.originalUrl}`,
+      );
+
       return res.status(401).json({
         message: "usuário não identificado",
         error: "O usuário associado ao token não foi encontrado",
@@ -83,9 +98,17 @@ async function authMiddleware(req, res, next) {
     // Disponibiliza o objeto usuário para os controladores e middlewares seguintes
     req.usuario = usuario;
 
+    // S3_T26: Log de acesso autorizado (opcional - descomentar se quiser)
+    // console.log(`[AUTH] Acesso autorizado: ${usuario.nome} - ${req.method} ${req.originalUrl}`);
+
     // Autoriza o prosseguimento da requisição
     return next();
   } catch (e) {
+    // S3_T26: Log de token inválido ou expirado
+    console.log(
+      `[AUTH] Acesso negado - token inválido/expirado: ${req.method} ${req.originalUrl} - IP: ${req.ip} - Erro: ${e.message}`,
+    );
+
     // Captura erros de expiração, assinatura ou tokens malformados
     return res.status(401).json({
       message: "token inválido ou expirado",
