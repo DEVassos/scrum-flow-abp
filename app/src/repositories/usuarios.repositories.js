@@ -309,6 +309,20 @@ async function ensureExameInicial(id_usuario) {
   };
 }
 
+// Atualiza SENHA do usuário por ID (sem precisar da senha original)
+async function updateUsuarioSenhaById(id_usuario, senhaHash) {
+  const result = await pool.query(
+    `
+    UPDATE usuarios
+    SET senha = $1
+    WHERE id_usuario = $2
+    RETURNING id_usuario
+    `,
+    [senhaHash, id_usuario],
+  );
+  return result.rows[0] || null;
+}
+
 module.exports = {
   createUsuario,
   updateUsuarioCpf,
@@ -320,4 +334,5 @@ module.exports = {
   usuarioTemExame,
   recriarExameInicial,
   ensureExameInicial,
+  updateUsuarioSenhaById,
 };

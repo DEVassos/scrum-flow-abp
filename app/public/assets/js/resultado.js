@@ -125,6 +125,65 @@ async function avancarProgresso(status) {
 }
 
 // ================================
+//   REVISÃO DE ERROS
+// ================================
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+async function carregarRevisao(idModulo) {
+  try {
+    const resp = await fetch(`/api/questoes/historico/${idModulo}`, {
+      headers: { 'Authorization': `Bearer ${obterToken()}` }
+    });
+    if (!resp.ok) return;
+
+    const questoes = await resp.json();
+    const erradas = questoes.filter(q => q.nota === 0);
+    if (!erradas.length) return;
+
+    const lista = document.getElementById('lista-erros');
+    const letras = ['a', 'b', 'c', 'd'];
+
+    erradas.forEach(q => {
+      const alternativas = letras.map(l => {
+        const texto = q[`alternativa_${l}`];
+        if (!texto) return '';
+        const isCorreta  = l === q.alternativa_correta;
+        const isEscolhida = l === q.resposta_usuario;
+        let cls = 'revisao-alt';
+        if (isCorreta)        cls += ' revisao-alt--correta';
+        else if (isEscolhida) cls += ' revisao-alt--errada';
+
+        const tagCorreta  = isCorreta   ? '<span class="revisao-alt-tag revisao-alt-tag--correta">Correta</span>'      : '';
+        const tagEscolhida = (isEscolhida && !isCorreta) ? '<span class="revisao-alt-tag revisao-alt-tag--errada">Sua resposta</span>' : '';
+
+        return `<div class="${cls}">
+          <span class="revisao-alt-letra">${l.toUpperCase()}</span>
+          <span class="revisao-alt-texto">${escapeHtml(texto)}</span>
+          ${tagCorreta}${tagEscolhida}
+        </div>`;
+      }).join('');
+
+      const card = document.createElement('div');
+      card.className = 'revisao-card';
+      card.innerHTML = `
+        <p class="revisao-enunciado"><strong>Q${q.numero}.</strong> ${escapeHtml(q.enunciado)}</p>
+        <div class="revisao-alternativas">${alternativas}</div>
+      `;
+      lista.appendChild(card);
+    });
+
+    document.getElementById('secao-erros').hidden = false;
+  } catch (_) {}
+}
+
+// ================================
 //   LER DADOS DO sessionStorage
 // ================================
 
@@ -138,6 +197,8 @@ if (raw) {
     // Avisa o servidor em paralelo enquanto o usuário lê o resultado.
     // Quando ele clicar em "Voltar ao Dashboard", o banco já estará atualizado.
     avancarProgresso(dados.status);
+
+    if (dados.idModulo) carregarRevisao(dados.idModulo);
   } catch (_) {}
 
   // Remove do sessionStorage para não reexibir o mesmo resultado se o usuário recarregar

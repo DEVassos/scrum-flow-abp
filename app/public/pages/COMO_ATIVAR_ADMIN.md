@@ -5,7 +5,7 @@
 A página `configuracoes.html` tem duas seções:
 
 1. **Dados da Conta** — visível para qualquer usuário logado (alterar nome, e-mail, CPF e senha)
-2. **Administração** — visível somente para usuários com perfil `admin` (gerenciar questões e níveis)
+2. **Administração** — visível somente para usuários com perfil `admin` (gerenciar questões e módulos)
 
 ---
 
@@ -65,18 +65,18 @@ No frontend (`configuracoes.js`), substituir os dados de exemplo (`carregarQuest
 
 ---
 
-### T17 — CRUD de níveis (Vinicius + Gabriel)
+### T17 — CRUD de módulos (Vinicius + Gabriel)
 
 Criar as rotas protegidas por `adminMiddleware`:
 
 | Método | Rota | Descrição |
 |--------|------|-----------|
-| `GET` | `/api/admin/niveis` | Lista todos os níveis/módulos |
-| `POST` | `/api/admin/niveis` | Cria novo nível |
-| `PUT` | `/api/admin/niveis/:id` | Edita nível |
-| `DELETE` | `/api/admin/niveis/:id` | Remove nível |
+| `GET` | `/api/admin/modulos` | Lista todos os módulos |
+| `POST` | `/api/admin/modulos` | Cria novo módulo |
+| `PUT` | `/api/admin/modulos/:id` | Edita módulo |
+| `DELETE` | `/api/admin/modulos/:id` | Remove módulo |
 
-No frontend, substituir `carregarNiveis()` por chamadas reais e implementar o formulário do botão "Novo nível" (hoje ele só exibe um toast de aviso).
+No frontend, substituir `carregarNiveis()` por chamadas reais e implementar o formulário do botão "Novo módulo" (hoje ele só exibe um toast de aviso).
 
 ---
 

@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ================================
-//   MÓDULOS — cards de nível
+//   MÓDULOS — cards de módulo
 // ================================
 
 async function carregarModulos() {
@@ -50,7 +50,7 @@ async function carregarModulos() {
     atualizarCertificado(modulos);
   } catch (error) {
     console.error("Erro ao carregar módulos:", error);
-    container.innerHTML = `<p style="color:var(--slate-400);font-size:13px">Erro ao carregar os níveis. Tente recarregar a página.</p>`;
+    container.innerHTML = `<p style="color:var(--slate-400);font-size:13px">Erro ao carregar os módulos. Tente recarregar a página.</p>`;
   }
 }
 
@@ -72,7 +72,7 @@ function classificarModulo(modulo) {
   return "andamento";
 }
 
-// Gera o HTML completo de um card de nível.
+// Gera o HTML completo de um card de módulo.
 // melhor_nota vem da API como inteiro (qtd. de acertos); convertemos para escala de 0–10.
 function gerarCardNivel(modulo) {
   const id = Number(modulo.id_modulo);
@@ -142,7 +142,7 @@ function gerarCardNivel(modulo) {
       </div>
       <div class="nivel-info">
         <div class="nivel-cabecalho">
-          <span class="nivel-nome">Nível ${id} – ${modulo.titulo}</span>
+          <span class="nivel-nome">Módulo ${id} – ${modulo.titulo}</span>
           ${cfg.badgeHtml}
         </div>
         <div class="nivel-barra-wrapper">
@@ -221,7 +221,7 @@ function gerarLinhaHistorico(tentativa) {
 
   return `
     <tr>
-      <td>Nível ${id}</td>
+      <td>Módulo ${id}</td>
       <td>${data}</td>
       <td class="pontuacao ${corClass}">${notaFormatada}</td>
     </tr>
@@ -285,7 +285,7 @@ function atualizarCertificado(modulos) {
     }
   } else {
     if (progressoEl) {
-      progressoEl.textContent = `Progresso atual: ${concluidos}/${modulos.length} níveis concluídos`;
+      progressoEl.textContent = `Progresso atual: ${concluidos}/${modulos.length} módulos concluídos`;
     }
   }
 }
