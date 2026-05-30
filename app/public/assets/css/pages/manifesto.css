@@ -131,6 +131,11 @@
     box-shadow: var(--shadow-md);
 }
 
+.principio-card:target {
+    border-color: var(--amber-500);
+    box-shadow: 0 0 0 1px var(--amber-500), var(--shadow-glow-accent);
+}
+
 .principio-numero {
     font-family: var(--font-heading);
     font-size: 28px;
