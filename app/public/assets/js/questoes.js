@@ -361,7 +361,7 @@ function irParaResultado() {
       modulo: obterNivelInfo(idModulo),
       idModulo,
       data: new Date().toLocaleDateString("pt-BR"),
-      status: percentual >= 60 ? "aprovado" : "reprovado",
+      status: percentual >= 70 ? "aprovado" : "reprovado",
     }),
   );
 
