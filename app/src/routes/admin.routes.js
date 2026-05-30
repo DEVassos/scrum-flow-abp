@@ -16,6 +16,14 @@ const {
   removerQuestao,
 } = require("../repositories/adminQuestoes.repositories");
 
+const {
+  listarModulos,
+  buscarModuloPorId,
+  criarModulo,
+  atualizarModulo,
+  removerModulo,
+} = require("../repositories/adminModulos.repositories");
+
 const router = Router();
 
 router.use(authMiddleware, adminMiddleware);
@@ -90,7 +98,11 @@ function validarDadosQuestao(dados) {
   ];
 
   for (const campo of camposObrigatorios) {
-    if (dados[campo] === undefined || dados[campo] === null || dados[campo] === "") {
+    if (
+      dados[campo] === undefined ||
+      dados[campo] === null ||
+      dados[campo] === ""
+    ) {
       return `Campo obrigatório ausente: ${campo}`;
     }
   }
@@ -203,6 +215,125 @@ router.delete("/questoes/:id", async function (req, res) {
     });
   } catch (e) {
     console.error("Erro ao remover questão:", e);
+    return res.status(500).json({ message: "erro interno do servidor" });
+  }
+});
+
+// ================================
+//   NÍVEIS
+// ================================
+
+router.get("/niveis", async function (req, res) {
+  try {
+    const niveis = await listarModulos();
+    return res.status(200).json(niveis);
+  } catch (e) {
+    console.error("Erro ao listar níveis:", e);
+    return res.status(500).json({ message: "erro interno do servidor" });
+  }
+});
+
+router.get("/niveis/:id", async function (req, res) {
+  try {
+    const idModulo = Number(req.params.id);
+
+    if (!idModulo || idModulo < 1) {
+      return res.status(400).json({ message: "id de nível inválido" });
+    }
+
+    const nivel = await buscarModuloPorId(idModulo);
+
+    if (!nivel) {
+      return res.status(404).json({ message: "nível não encontrado" });
+    }
+
+    return res.status(200).json(nivel);
+  } catch (e) {
+    console.error("Erro ao buscar nível:", e);
+    return res.status(500).json({ message: "erro interno do servidor" });
+  }
+});
+
+router.post("/niveis", async function (req, res) {
+  try {
+    const { titulo } = req.body;
+
+    if (!titulo || titulo.trim() === "") {
+      return res.status(400).json({
+        message: "o título do nível é obrigatório",
+      });
+    }
+
+    const nivel = await criarModulo(titulo.trim());
+
+    return res.status(201).json(nivel);
+  } catch (e) {
+    console.error("Erro ao criar nível:", e);
+    return res.status(500).json({ message: "erro interno do servidor" });
+  }
+});
+
+router.put("/niveis/:id", async function (req, res) {
+  try {
+    const idModulo = Number(req.params.id);
+    const { titulo } = req.body;
+
+    if (!idModulo || idModulo < 1) {
+      return res.status(400).json({ message: "id de nível inválido" });
+    }
+
+    if (!titulo || titulo.trim() === "") {
+      return res.status(400).json({
+        message: "o título do nível é obrigatório",
+      });
+    }
+
+    const nivel = await atualizarModulo(idModulo, titulo.trim());
+
+    if (!nivel) {
+      return res.status(404).json({
+        message: "nível não encontrado",
+      });
+    }
+
+    return res.status(200).json(nivel);
+  } catch (e) {
+    console.error("Erro ao atualizar nível:", e);
+    return res.status(500).json({ message: "erro interno do servidor" });
+  }
+});
+
+router.delete("/niveis/:id", async function (req, res) {
+  try {
+    const idModulo = Number(req.params.id);
+
+    if (!idModulo || idModulo < 1) {
+      return res.status(400).json({
+        message: "id de nível inválido",
+      });
+    }
+
+    const resultado = await removerModulo(idModulo);
+
+    if (!resultado.removido) {
+      if (resultado.motivo === "MODULO_COM_QUESTOES") {
+        return res.status(400).json({
+          message:
+            "Não é possível remover um nível que possui questões vinculadas",
+        });
+      }
+
+      return res.status(404).json({
+        message: "nível não encontrado",
+      });
+    }
+
+    return res.status(200).json({
+      message: "nível removido com sucesso",
+      modulo: resultado.modulo,
+    });
+  } catch (e) {
+    console.error("Erro ao remover nível:", e);
     return res.status(500).json({ message: "erro interno do servidor" });
   }
 });
