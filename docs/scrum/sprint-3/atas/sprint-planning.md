@@ -14,7 +14,7 @@
 
 > "Entregar o histórico de tentativas (US08) e a área administrativa (US09), corrigir bugs remanescentes, melhorar a experiência visual da aplicação e preparar a apresentação final do projeto."
 
-Ao final desta sprint, o usuário autenticado conseguirá consultar o histórico detalhado de suas tentativas por módulo, com questões sorteadas e gabarito. O administrador terá acesso a uma área exclusiva para gerenciar questões, alternativas, níveis e resetar senhas de usuários. Bugs críticos de exames, validação e rotas serão corrigidos. A interface receberá melhorias visuais significativas (responsividade, gamificação, terminologia "Módulo") e a documentação será atualizada para a apresentação final.
+Ao final desta sprint, o usuário autenticado conseguirá consultar o histórico detalhado de suas tentativas por módulo, com questões sorteadas e gabarito. O administrador terá acesso a uma área exclusiva para gerenciar questões, alternativas, módulos e resetar senhas de usuários. Bugs críticos de exames, validação e rotas serão corrigidos. A interface receberá melhorias visuais significativas (responsividade, gamificação, terminologia "Módulo") e a documentação será atualizada para a apresentação final.
 
 ---
 
@@ -51,7 +51,7 @@ Ao final desta sprint, o usuário autenticado conseguirá consultar o histórico
 
 - [ ] S3_T18 — Auth admin — middleware de perfil — Responsável: Marcello + Gustavo *(3 SP)*
 - [ ] S3_T19 — CRUD de questões e alternativas (backend) — Responsável: Marcello + Vinicius + Gustavo *(5 SP)*
-- [ ] S3_T20 — CRUD de níveis (backend) — Responsável: Vinicius + Gabriel *(3 SP)*
+- [ ] S3_T20 — CRUD de módulos (backend) — Responsável: Vinicius + Gabriel *(3 SP)*
 - [ ] S3_T21 — Interface administrativa (frontend) — Responsável: Andrea + Henrique + Lucas *(5 SP)*
 - [ ] S3_T22 — Reset de senha via admin — Responsável: Marcello + Gustavo *(3 SP)*
 
@@ -142,7 +142,7 @@ Ao final desta sprint, o usuário autenticado conseguirá consultar o histórico
 ## Critérios de Aceite Revisados
 
 - **US08:** Critérios confirmados conforme backlog — histórico exibe tentativas por módulo com data/hora, pontuação, questões sorteadas, resposta escolhida vs. correta; ordenação cronológica; dados recuperados do banco
-- **US09:** Critérios confirmados — acesso restrito a perfil admin; CRUD completo de questões, alternativas e níveis; exatamente uma alternativa correta por questão; reset de senha pelo admin; interface responsiva
+- **US09:** Critérios confirmados — acesso restrito a perfil admin; CRUD completo de questões, alternativas e módulos; exatamente uma alternativa correta por questão; reset de senha pelo admin; interface responsiva
 
 ---
 

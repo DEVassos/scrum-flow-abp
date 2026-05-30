@@ -3,7 +3,7 @@
 # Sprint 2
 
 **Período:** 04/05/2026 — 21/05/2026
-**Sprint Goal:** _Entregar o fluxo completo de avaliação — sorteio de questões, controle de tentativas, notas por nível, média final e certificado digital._
+**Sprint Goal:** _Entregar o fluxo completo de avaliação — sorteio de questões, controle de tentativas, notas por módulo, média final e certificado digital._
 **Histórias:** US03, US04, US05, US06, US07
 **Total de pontos comprometidos:** 96 SP (89 iniciais + 7 ressalvas)
 **Scrum Master:** Gabriel Travensolli
@@ -33,7 +33,7 @@
 | T16 | Endpoint POST /api/exames (iniciar avaliação + sortear questões) | Infra | Marcello + Gustavo | ✅ |
 | T17 | Coluna pontuacao em exames + migration SQL | Infra | Vinicius + Gabriel | ✅ |
 | T18 | Testes manuais + roteiro de documentação do fluxo | Infra | Vinicius + Gabriel | ✅ |
-| T19 | Exibir nota final por nível no dashboard | US05 | Andrea + Gustavo | ✅ |
+| T19 | Exibir nota final por módulo no dashboard | US05 | Andrea + Gustavo | ✅ |
 | T20 | Endpoint/lógica backend para calcular média final | US06 | Vinicius + Gabriel | ✅ |
 | T21 | Exibir média final no dashboard (condicional) | US06 | Andrea + Lucas | ✅ |
 | T22 | Endpoint POST /api/certificados (gerar + persistir) | US07 | Marcello + Gustavo | ✅ |
@@ -50,10 +50,10 @@
 
 **Incremento esperado ao final da Sprint:**
 
-- Usuário consegue iniciar e completar uma avaliação com 10 questões sorteadas por nível
+- Usuário consegue iniciar e completar uma avaliação com 10 questões sorteadas por módulo
 - Sistema controla e bloqueia após 2 tentativas, considerando sempre a maior nota
-- Notas por nível e média final exibidas no dashboard
-- Certificado digital gerado e persistido após conclusão de todos os níveis
+- Notas por módulo e média final exibidas no dashboard
+- Certificado digital gerado e persistido após conclusão de todos os módulos
 - Todas as páginas com responsividade mobile corrigida
 - Diagramas UML e modelos de BD atualizados com as novas entidades
 

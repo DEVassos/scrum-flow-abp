@@ -167,10 +167,10 @@ async function updateUsuarioSenha(id_usuario, senha) {
 async function findUsuarioById(id_usuario) {
   const result = await pool.query(
     `
-        SELECT id_usuario, nome, email, cpf
-        FROM usuarios
-        WHERE id_usuario = $1
-        `,
+    SELECT id_usuario, nome, email, cpf, is_admin
+    FROM usuarios
+    WHERE id_usuario = $1
+    `,
     [id_usuario],
   );
   return result.rows[0] || null;
@@ -180,13 +180,12 @@ async function findUsuarioById(id_usuario) {
 async function findUsuarioByCpfAndSenha(cpf, senha) {
   const result = await pool.query(
     `
-        SELECT id_usuario, nome, email, cpf, senha
-        FROM usuarios
-        WHERE cpf = $1
-        `,
+    SELECT id_usuario, nome, email, cpf, senha, is_admin
+    FROM usuarios
+    WHERE cpf = $1
+    `,
     [cpf],
   );
-
   const usuario = result.rows[0];
 
   if (!usuario) {
@@ -204,6 +203,7 @@ async function findUsuarioByCpfAndSenha(cpf, senha) {
     nome: usuario.nome,
     email: usuario.email,
     cpf: usuario.cpf,
+    is_admin: usuario.is_admin,
   };
 }
 

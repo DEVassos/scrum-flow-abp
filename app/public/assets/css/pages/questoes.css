@@ -14,6 +14,14 @@
   padding-bottom: 40px;
 }
 
+.questao-imagem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 /* CABEÇALHO DA AVALIAÇÃO */
 .questoes-header {
   background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);

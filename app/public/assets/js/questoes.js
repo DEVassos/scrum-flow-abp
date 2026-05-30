@@ -138,6 +138,8 @@ function renderizarQuestao() {
     `Questão ${questao.numero || indiceAtual + 1}`;
   document.getElementById("questao-titulo").textContent =
     questao.enunciado || "";
+  document.getElementById("questao-imagem").src =
+    questao.imagem ? `/imagens/questoes/${questao.imagem}` : "";
   document.getElementById("questao-descricao").textContent = modoLeitura
     ? "Questão já respondida — somente leitura."
     : "Escolha a alternativa correta:";
@@ -357,6 +359,7 @@ function irParaResultado() {
       total: totalRespondidas,
       percentual,
       modulo: obterNivelInfo(idModulo),
+      idModulo,
       data: new Date().toLocaleDateString("pt-BR"),
       status: percentual >= 60 ? "aprovado" : "reprovado",
     }),
