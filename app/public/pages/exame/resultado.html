@@ -52,9 +52,9 @@
         <section class="resultado-hero">
             <span class="hero-tag">Teste concluído</span>
             <h1 class="hero-titulo">
-                Parabéns, <span id="nome-usuario" class="hero-nome-destaque">usuário</span>!
+                <span id="resultado-hero-titulo">Parabéns</span>, <span id="nome-usuario" class="hero-nome-destaque">usuário</span>!
             </h1>
-            <p class="hero-subtitulo">Confira seu desempenho abaixo.</p>
+            <p id="resultado-hero-subtitulo" class="hero-subtitulo">Confira seu desempenho abaixo.</p>
         </section>
 
         <!-- Pontuação -->
@@ -85,6 +85,11 @@
                     <span class="stat-label">Data</span>
                     <span id="data-conclusao" class="stat-valor" style="font-size: 15px;">—</span>
                 </div>
+                <section class="resultado-motivacional" id="resultado-motivacional" aria-live="polite">
+                    <span class="resultado-motivacional-tag" id="resultado-motivacional-tag">Próximo passo</span>
+                    <h2 id="resultado-motivacional-titulo">Analisando seu desempenho...</h2>
+                    <p id="resultado-motivacional-texto">Vamos indicar o melhor caminho para continuar sua jornada.</p>
+                </section>
             </div>
 
         </section>
@@ -102,7 +107,6 @@
             </div>
         </div>
 
-        <!-- Ações -->
         <div class="resultado-actions">
             <a href="../dashboard.html" class="btn btn-primary">Voltar ao Dashboard</a>
         </div>
