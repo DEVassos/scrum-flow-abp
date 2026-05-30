@@ -194,6 +194,119 @@
     font-weight: 500;
 }
 
+.resultado-revisao {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.revisao-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.revisao-card {
+    background-color: var(--navy-800);
+    border: 1px solid var(--navy-600);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.revisao-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red-500) 0%, transparent 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+.revisao-enunciado {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--white);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.revisao-alternativas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.revisao-alt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--navy-600);
+    background-color: var(--navy-700);
+}
+
+.revisao-alt--correta {
+    border-color: rgba(13, 148, 136, 0.4);
+    background-color: rgba(13, 148, 136, 0.08);
+}
+
+.revisao-alt--errada {
+    border-color: rgba(239, 68, 68, 0.4);
+    background-color: rgba(239, 68, 68, 0.08);
+}
+
+.revisao-alt-letra {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--slate-400);
+    min-width: 20px;
+}
+
+.revisao-alt--correta .revisao-alt-letra { color: var(--teal-500); }
+.revisao-alt--errada  .revisao-alt-letra { color: var(--red-500);  }
+
+.revisao-alt-texto {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--slate-400);
+    flex: 1;
+    line-height: 1.5;
+}
+
+.revisao-alt--correta .revisao-alt-texto { color: var(--white); }
+.revisao-alt--errada  .revisao-alt-texto { color: var(--white); }
+
+.revisao-alt-tag {
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    border: 1px solid;
+}
+
+.revisao-alt-tag--correta {
+    color: var(--teal-500);
+    background-color: rgba(13, 148, 136, 0.12);
+    border-color: rgba(13, 148, 136, 0.35);
+}
+
+.revisao-alt-tag--errada {
+    color: var(--red-500);
+    background-color: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.35);
+}
+
 .resultado-actions {
     display: flex;
     justify-content: center;

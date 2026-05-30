@@ -1,6 +1,6 @@
 # 📚 Índice da Documentação
 
-**Sistema de Avaliação por Níveis com Certificação · ABP 1DSM 2026/1**
+**Sistema de Avaliação por Módulos com Certificação · ABP 1DSM 2026/1**
 
 > Esta é a porta de entrada da documentação. Use os atalhos abaixo conforme seu objetivo.
 

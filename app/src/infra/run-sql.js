@@ -24,8 +24,8 @@ const sqlFiles = [
   "05_schema_respostas.sql", // Estrutura de Respostas do usuário
   "06_seed_modulos.sql",     // Dados iniciais de Módulos
   "07_seed_questoes.sql",    // Dados iniciais de Questões
+  "08_seed_schema_admin.sql", // Estrutura e seed de administrador
 ];
-
 /**
  * Lê e executa todos os arquivos SQL definidos no array sqlFiles.
  * Realiza o encerramento do pool de conexões após a conclusão.
