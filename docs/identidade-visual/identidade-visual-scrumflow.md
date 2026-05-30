@@ -323,10 +323,10 @@ Esta seção define como os componentes visuais se comportam em cada estado. Tod
 
 | Status | Background | Texto | Uso |
 |--------|-----------|-------|-----|
-| Em andamento | Amber 100 | Amber 600 | Nível em progresso |
-| Concluído | Teal 100 | Teal 500 | Nível aprovado |
+| Em andamento | Amber 100 | Amber 600 | Módulo em progresso |
+| Concluído | Teal 100 | Teal 500 | Módulo aprovado |
 | Falhou | Red 100 | Red 500 | Tentativa reprovada |
-| Bloqueado | Navy 800 | Navy 400 | Nível não liberado |
+| Bloqueado | Navy 800 | Navy 400 | Módulo não liberado |
 
 ---
 
@@ -352,10 +352,10 @@ O ScrumFlow utiliza exclusivamente ícones da biblioteca **[Lucide Icons](https:
 |-------------|-----------------|
 | `trophy` | Certificado, conquista |
 | `layers` | Níveis de certificação |
-| `check-circle` | Questão correta, nível aprovado |
+| `check-circle` | Questão correta, módulo aprovado |
 | `x-circle` | Questão errada, tentativa falhou |
-| `lock` | Nível bloqueado |
-| `unlock` | Nível liberado |
+| `lock` | Módulo bloqueado |
+| `unlock` | Módulo liberado |
 | `clock` | Tempo restante de exame |
 | `user` | Perfil do usuário |
 | `log-out` | Sair do sistema |

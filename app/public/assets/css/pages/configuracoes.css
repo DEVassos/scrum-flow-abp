@@ -96,7 +96,7 @@
     flex-shrink: 0;
 }
 
-/* Variação teal para a seção de níveis */
+/* Variação teal para a seção de módulos */
 .config-card-icon--teal {
     background-color: rgba(13, 148, 136, 0.1);
     border-color: rgba(13, 148, 136, 0.25);
@@ -118,7 +118,7 @@
     margin: 0;
 }
 
-/* Botão "Nova questão / Novo nível" — empurrado para a direita */
+/* Botão "Nova questão / Novo módulo" — empurrado para a direita */
 .config-btn-nova {
     margin-left: auto;
     flex-shrink: 0;

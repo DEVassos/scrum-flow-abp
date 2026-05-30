@@ -1,6 +1,6 @@
 <div align="center">
 
-# Sistema de Avaliação por Níveis com Certificação
+# Sistema de Avaliação por Módulos com Certificação
 
 **Projeto ABP — 1º Semestre de Desenvolvimento de Software Multiplataforma · FATEC Jacareí · 2026/1**
 
@@ -38,7 +38,7 @@
 
 O aprendizado de metodologias ágeis é fundamental na formação do desenvolvedor de software — mas sem um mecanismo estruturado de avaliação, é difícil para o estudante saber o que já domina e o que ainda precisa consolidar.
 
-Este projeto propõe a criação de um **portal web de certificação interna em metodologias ágeis**: o usuário se cadastra, realiza avaliações progressivas divididas em **5 níveis de dificuldade** (do básico ao avançado), com questões sorteadas aleatoriamente de um banco de questões, e ao concluir todos os níveis recebe um **certificado digital** baseado no seu desempenho.
+Este projeto propõe a criação de um **portal web de certificação interna em metodologias ágeis**: o usuário se cadastra, realiza avaliações progressivas divididas em **5 módulos de dificuldade** (do básico ao avançado), com questões sorteadas aleatoriamente de um banco de questões, e ao concluir todos os módulos recebe um **certificado digital** baseado no seu desempenho.
 
 O projeto integra em uma única entrega os conteúdos do semestre: **HTML, CSS e JavaScript puro**, **PostgreSQL** e a metodologia **Scrum** — desenvolvido ao longo de três sprints durante o 1º semestre de 2026.
 

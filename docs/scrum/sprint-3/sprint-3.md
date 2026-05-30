@@ -34,7 +34,7 @@
 | S3_T17 | Exibir questões erradas na tela de resultado | US08 | Henrique + Lucas | 3 | 🔲 |
 | S3_T18 | Auth admin — middleware de perfil | US09 | Marcello + Gustavo | 3 | 🔲 |
 | S3_T19 | CRUD de questões e alternativas (backend) | US09 | Marcello + Vinicius + Gustavo | 5 | 🔲 |
-| S3_T20 | CRUD de níveis (backend) | US09 | Vinicius + Gabriel | 3 | 🔲 |
+| S3_T20 | CRUD de módulos (backend) | US09 | Vinicius + Gabriel | 3 | 🔲 |
 | S3_T21 | Interface administrativa (frontend) | US09 | Andrea + Henrique + Lucas | 5 | 🔲 |
 | S3_T22 | Reset de senha via admin | US09 | Marcello + Gustavo | 3 | 🔲 |
 | S3_T23 | Reorganizar estrutura do repositório | Infra | Gabriel + Vinicius | 2 | 🔲 |
@@ -74,7 +74,7 @@
 
 - Usuário consegue consultar o histórico detalhado de suas tentativas por módulo
 - Detalhes de cada tentativa: questões sorteadas, resposta escolhida vs. correta
-- Administrador consegue gerenciar questões, alternativas e níveis via interface web
+- Administrador consegue gerenciar questões, alternativas e módulos via interface web
 - Administrador pode resetar a senha de qualquer usuário
 - Bugs de exames, validação, rotas e navbar corrigidos
 - Melhorias visuais: favicon, responsividade, página "Sobre", certificado para impressão

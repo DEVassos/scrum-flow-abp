@@ -5,7 +5,7 @@
 //   — exibe seção admin quando perfil === 'admin' (campo adicionado em T15)
 //   — pré-preenche campos com dados da sessão
 //   — valida e envia formulários (stubs — rotas wired em T15/T16/T17)
-//   — tabelas de questões e níveis com dados de exemplo
+//   — tabelas de questões e módulos com dados de exemplo
 // ================================
 
 (function () {
@@ -137,11 +137,11 @@
         });
     }
 
-    // ── Stub: botão "Novo nível" ──────────────────────────────────────
+    // ── Stub: botão "Novo módulo" ──────────────────────────────────────
     const btnNovoNivel = document.getElementById('btn-novo-nivel');
     if (btnNovoNivel) {
         btnNovoNivel.addEventListener('click', function () {
-            mostrarToast('Formulário de nível: em desenvolvimento (T17)', 'erro');
+            mostrarToast('Formulário de módulo: em desenvolvimento (T17)', 'erro');
         });
     }
 
@@ -186,7 +186,7 @@
         }).join('');
     }
 
-    // ── Stub: popula tabela de níveis com dados de exemplo ────────────
+    // ── Stub: popula tabela de módulos com dados de exemplo ────────────
     function carregarNiveis() {
         const tbody = document.getElementById('niveis-tbody');
         const vazio = document.getElementById('niveis-vazio');
@@ -225,8 +225,8 @@
     // ── Ações das tabelas (expostas no escopo global pelo onclick) ────
     window.editarQuestao  = function () { mostrarToast('Edição de questão: em desenvolvimento (T16)', 'erro'); };
     window.excluirQuestao = function () { mostrarToast('Exclusão de questão: em desenvolvimento (T16)', 'erro'); };
-    window.editarNivel    = function () { mostrarToast('Edição de nível: em desenvolvimento (T17)', 'erro'); };
-    window.excluirNivel   = function () { mostrarToast('Exclusão de nível: em desenvolvimento (T17)', 'erro'); };
+    window.editarNivel    = function () { mostrarToast('Edição de módulo: em desenvolvimento (T17)', 'erro'); };
+    window.excluirNivel   = function () { mostrarToast('Exclusão de módulo: em desenvolvimento (T17)', 'erro'); };
 
     // ── Toast de feedback ─────────────────────────────────────────────
     function mostrarToast(mensagem, tipo) {

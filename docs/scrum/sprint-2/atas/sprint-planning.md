@@ -12,9 +12,9 @@
 
 ## Meta da Sprint
 
-> "Entregar o fluxo completo de avaliação — sorteio de questões, controle de tentativas, notas por nível, média final e certificado digital."
+> "Entregar o fluxo completo de avaliação — sorteio de questões, controle de tentativas, notas por módulo, média final e certificado digital."
 
-Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliação de nível com 10 questões sorteadas, ter até 2 tentativas por nível com a maior nota preservada, visualizar suas notas e média final no dashboard, e receber seu certificado digital ao concluir todos os níveis.
+Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliação de módulo com 10 questões sorteadas, ter até 2 tentativas por módulo com a maior nota preservada, visualizar suas notas e média final no dashboard, e receber seu certificado digital ao concluir todos os módulos.
 
 ---
 
@@ -22,9 +22,9 @@ Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliaçã
 
 | ID | História de Usuário | Estimativa (SP) | Responsáveis |
 |----|---------------------|:---------------:|--------------|
-| US03 | Realizar Avaliação de Nível | 27 | Andrea, Gabriel, Gustavo, Henrique, Lucas, Marcello |
-| US04 | Controle de Tentativas por Nível | 16 | Andrea, Gabriel, Gustavo, Henrique, Lucas, Marcello, Vinicius |
-| US05 | Nota Final por Nível | 2 | Andrea, Gustavo |
+| US03 | Realizar Avaliação de Módulo | 27 | Andrea, Gabriel, Gustavo, Henrique, Lucas, Marcello |
+| US04 | Controle de Tentativas por Módulo | 16 | Andrea, Gabriel, Gustavo, Henrique, Lucas, Marcello, Vinicius |
+| US05 | Nota Final por Módulo | 2 | Andrea, Gustavo |
 | US06 | Média Final | 5 | Andrea, Gabriel, Lucas, Vinicius |
 | US07 | Certificado Digital | 13 | Andrea, Henrique, Lucas, Marcello, Vinicius |
 | — | Correção Responsividade *(ressalva Sprint 1)* | 4 | Andrea, Henrique, Lucas |
@@ -37,7 +37,7 @@ Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliaçã
 
 ## Decomposição em Tarefas
 
-### US03 — Realizar Avaliação de Nível *(27 SP)*
+### US03 — Realizar Avaliação de Módulo *(27 SP)*
 
 - [ ] T01 — Endpoint GET /api/exames/:idExame/questoes — Responsável: Marcello + Gustavo *(3 SP)*
 - [ ] T02 — Endpoint POST /api/exames/:idExame/respostas — Responsável: Marcello + Gustavo *(5 SP)*
@@ -48,7 +48,7 @@ Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliaçã
 - [ ] T07 — Tela de resultado imediato após submissão — Responsável: Henrique + Lucas *(3 SP)*
 - [ ] T08 — CSS: pages/avaliacao.css — Responsável: Andrea + Henrique + Lucas *(2 SP)*
 
-### US04 — Controle de Tentativas por Nível *(16 SP)*
+### US04 — Controle de Tentativas por Módulo *(16 SP)*
 
 - [ ] T09 — Endpoint GET /api/usuarios/progresso (com melhor_nota) — Responsável: Marcello + Gustavo *(5 SP)*
 - [ ] T10 — Validação server-side em POST /api/exames (limite 2 tentativas) — Responsável: Vinicius + Gabriel *(3 SP)*
@@ -56,14 +56,14 @@ Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliaçã
 - [ ] T12 — Atualizar dashboard.html + dashboard.js — Responsável: Andrea + Henrique + Lucas *(3 SP)*
 - [ ] T13 — Fluxo de navegação: dashboard → avaliacao → resultado — Responsável: Andrea + Lucas *(2 SP)*
 
-### US05 — Nota Final por Nível *(2 SP)*
+### US05 — Nota Final por Módulo *(2 SP)*
 
-- [ ] T19 — Exibir nota final por nível no dashboard (dados do T09) — Responsável: Andrea + Gustavo *(2 SP)*
+- [ ] T19 — Exibir nota final por módulo no dashboard (dados do T09) — Responsável: Andrea + Gustavo *(2 SP)*
 
 ### US06 — Média Final *(5 SP)*
 
 - [ ] T20 — Endpoint/lógica backend para calcular média final — Responsável: Vinicius + Gabriel *(3 SP)*
-- [ ] T21 — Exibir média final no dashboard (condicional: todos os níveis tentados) — Responsável: Andrea + Lucas *(2 SP)*
+- [ ] T21 — Exibir média final no dashboard (condicional: todos os módulos tentados) — Responsável: Andrea + Lucas *(2 SP)*
 
 ### US07 — Certificado Digital *(13 SP)*
 
@@ -117,8 +117,8 @@ Ao final desta sprint, o usuário autenticado conseguirá iniciar uma avaliaçã
 - **US03:** Critérios confirmados conforme backlog — sorteio 3 fáceis + 4 médias + 3 difíceis; questões registradas antes de exibidas; pontuação calculada no back-end
 - **US04:** Critérios confirmados — máximo 2 tentativas validadas server-side; maior nota preservada; dashboard exibe status e tentativas restantes
 - **US05:** Critérios confirmados — nota exibida é a maior entre as tentativas; dados provenientes do endpoint de progresso (T09)
-- **US06:** Critérios confirmados — média aritmética das melhores notas; exibida com 2 casas decimais; condicional à conclusão de todos os níveis
-- **US07:** Critérios confirmados — certificado gerado e persistido após ao menos 1 tentativa em todos os níveis; contém nome, CPF, e-mail, data de emissão e média final
+- **US06:** Critérios confirmados — média aritmética das melhores notas; exibida com 2 casas decimais; condicional à conclusão de todos os módulos
+- **US07:** Critérios confirmados — certificado gerado e persistido após ao menos 1 tentativa em todos os módulos; contém nome, CPF, e-mail, data de emissão e média final
 
 ---
 
