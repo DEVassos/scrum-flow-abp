@@ -173,6 +173,10 @@
     transition: border-color 0.2s ease;
 }
 
+.nivel-card:not(.nivel-bloqueado) {
+    cursor: pointer;
+}
+
 .nivel-card:not(.nivel-bloqueado):hover {
     border-color: var(--navy-400);
 }

@@ -414,8 +414,12 @@ async function carregarModulos() {
     const dados = await response.json();
     modulos = dados.map(mapearModulo);
 
+    const paramId = new URLSearchParams(location.search).get("modulo");
+    const moduloParam = paramId ? modulos.find((m) => m.id === Number(paramId)) : null;
     moduloSelecionado =
-      modulos.find((modulo) => modulo.status !== "bloqueado") || modulos[0];
+      (moduloParam && moduloParam.status !== "bloqueado" ? moduloParam : null) ||
+      modulos.find((modulo) => modulo.status !== "bloqueado") ||
+      modulos[0];
 
     renderizarSidebar();
     atualizarTela(moduloSelecionado);
