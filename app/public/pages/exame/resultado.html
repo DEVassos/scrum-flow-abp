@@ -83,13 +83,17 @@
         <section class="resultado-score-section">
 
             <div class="resultado-score-card">
+                <div class="resultado-score-card__topo">
+                    <span class="resultado-score-label">Sua pontuação</span>
+                    <span id="status-badge" class="status-badge status-badge--aprovado">Aprovado</span>
+                </div>
                 <div id="score-ring" class="score-ring" style="--score-percent: 0%">
                     <div class="score-inner">
                         <span id="pontuacao" class="score-number">—</span>
                         <span class="score-unidade">pontos</span>
                     </div>
                 </div>
-                <span id="status-badge" class="status-badge status-badge--aprovado">Aprovado</span>
+                <p id="resultado-score-texto" class="resultado-score-texto">Resultado da sua tentativa</p>
             </div>
 
             <div class="resultado-stats">
@@ -101,11 +105,11 @@
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Módulo</span>
-                    <span id="nome-modulo" class="stat-valor" style="font-size: 15px; text-align: right;">—</span>
+                    <span id="nome-modulo" class="stat-valor stat-valor--texto">—</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Data</span>
-                    <span id="data-conclusao" class="stat-valor" style="font-size: 15px;">—</span>
+                    <span id="data-conclusao" class="stat-valor stat-valor--texto">—</span>
                 </div>
                 <section class="resultado-motivacional" id="resultado-motivacional" aria-live="polite">
                     <span class="resultado-motivacional-tag" id="resultado-motivacional-tag">Próximo passo</span>

@@ -30,11 +30,13 @@ function popularResultado(dados) {
 
   const badge  = document.getElementById('status-badge');
   const status = dados.status === 'aprovado' ? 'aprovado' : 'reprovado';
+  document.body.dataset.resultadoStatus = status;
   atualizarHeroResultado(status);
   if (status === 'aprovado') iniciarAnimacaoConclusao();
   badge.textContent = status === 'aprovado' ? 'Aprovado' : 'Reprovado';
   badge.classList.remove('status-badge--aprovado', 'status-badge--reprovado');
   badge.classList.add(`status-badge--${status}`);
+  atualizarTextoPontuacao(dados, status);
 
   const pct = (dados.percentual ?? 0) + '%';
   document.getElementById('score-ring').style.setProperty('--score-percent', pct);
@@ -57,6 +59,27 @@ function iniciarAnimacaoConclusao() {
     overlay.hidden = true;
     overlay.classList.remove('conclusao-modulo--ativo', 'conclusao-modulo--saindo');
   }, 2400);
+}
+
+function atualizarTextoPontuacao(dados, status) {
+  const texto = document.getElementById('resultado-score-texto');
+  if (!texto) return;
+
+  const percentual = Number(dados.percentual) || 0;
+
+  if (status === 'aprovado' && percentual >= 90) {
+    texto.textContent = 'Aproveitamento excelente neste módulo';
+  } else if (status === 'aprovado') {
+    texto.textContent = 'Você atingiu a média para avançar';
+  } else if (percentual >= 40) {
+    texto.textContent = 'Você ficou perto, revise e tente novamente';
+  } else {
+    texto.textContent = 'Revise o módulo antes da próxima tentativa';
+  }
+}
+
+function mostrarResultadoPronto() {
+  requestAnimationFrame(() => document.body.classList.add('resultado-pronto'));
 }
 
 function atualizarHeroResultado(status) {
@@ -222,3 +245,5 @@ if (raw) {
   // Remove do sessionStorage para não reexibir o mesmo resultado se o usuário recarregar
   sessionStorage.removeItem('resultado_exame');
 }
+
+mostrarResultadoPronto();

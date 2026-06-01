@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "",
+  "description": "**Sprint 1 · ABP 1DSM 2026/1 · FATEC Jacareí**",
   "main": "./src/server.js",
   "scripts": {
     "start": "node ./src/server",
