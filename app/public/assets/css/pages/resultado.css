@@ -595,7 +595,7 @@ body[data-resultado-status="reprovado"] .score-number {
 }
 
 /* ================================
-   REVISÃO DE ERROS
+   REVISAO DE ERROS
    ================================ */
 
 .resultado-revisao {
@@ -631,12 +631,56 @@ body[data-resultado-status="reprovado"] .score-number {
     border-radius: 16px 16px 0 0;
 }
 
+.revisao-card--acerto::before {
+    background: linear-gradient(90deg, var(--teal-500) 0%, transparent 100%);
+}
+
+.revisao-card--erro::before {
+    background: linear-gradient(90deg, var(--red-500) 0%, transparent 100%);
+}
+
+.revisao-card-topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
 .revisao-enunciado {
     font-family: var(--font-body);
     font-size: 14px;
     color: var(--white);
     line-height: 1.6;
     margin: 0;
+    flex: 1;
+}
+
+.revisao-resultado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: 78px;
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.revisao-resultado--acerto {
+    color: var(--teal-500);
+    background-color: rgba(13, 148, 136, 0.12);
+    border-color: rgba(13, 148, 136, 0.35);
+}
+
+.revisao-resultado--erro {
+    color: var(--red-500);
+    background-color: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.35);
 }
 
 .revisao-alternativas {
@@ -711,8 +755,14 @@ body[data-resultado-status="reprovado"] .score-number {
     border-color: rgba(239, 68, 68, 0.35);
 }
 
+.revisao-alt-tag--resposta {
+    color: var(--amber-400);
+    background-color: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.35);
+}
+
 /* ================================
-   AÇÕES
+   ACOES
    ================================ */
 
 .resultado-actions {
@@ -799,6 +849,13 @@ body[data-resultado-status="reprovado"] .score-number {
         flex-wrap: wrap;
     }
 
+
+    .revisao-card-topo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+ 
     .revisao-alt-tag {
         margin-left: 32px;
     }

@@ -456,16 +456,30 @@
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
+        color: var(--navy-800) !important;
     }
 
     body {
-        background: var(--navy-900) !important;
+        background: #fff !important;
+    }
+
+    .certificado {
+        background: #fff !important;
+        border-color: #d1d5db !important;
+        box-shadow: none !important;
+        color: #111 !important;
+        
+    }
+
+    .certificado::before {
+        border-color: rgba(55, 65, 81, 0.2) !important;
     }
 
     .no-print,
     .blob-esquerda,
     .blob-direita,
-    .navbar {
+    .navbar,
+    .footer {
         display: none !important;
     }
 
@@ -509,6 +523,7 @@
     .cert-texto {
         margin-top: 0.6rem;
         font-size: 0.84rem;
+        
     }
 
     .cert-media-label {
@@ -529,7 +544,12 @@
     }
 
     .cert-hash-container {
-        margin-top: 0;
+        background: #fff !important;
+        border-color: #cbd5e1 !important;
+    }
+
+    .cert-hash-code {
+        color: #0f172a !important;
     }
 
     .cert-assinaturas {
