@@ -146,21 +146,17 @@ function atualizarMensagemResultado(dados, status) {
 async function avancarProgresso(status) {
   try {
     if (status === 'aprovado') {
-      // Usuário atingiu 60% ou mais: avança para o próximo módulo da trilha
       await fetch('/api/questoes/proximo-modulo', {
         method: 'PATCH',
         headers: { 'Authorization': `Bearer ${obterToken()}` }
       });
     } else {
-      // Usuário ficou abaixo de 60%: prepara nova tentativa com grupo diferente de questões.
-      // O servidor rejeita automaticamente se o limite de 2 tentativas já foi atingido.
       await fetch('/api/questoes/proxima-tentativa', {
         method: 'PATCH',
         headers: { 'Authorization': `Bearer ${obterToken()}` }
       });
     }
   } catch (erro) {
-    // Erro silencioso: não interrompe a exibição do resultado para o usuário
     console.error('Erro ao avançar progresso:', erro);
   }
 }
