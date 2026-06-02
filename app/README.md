@@ -310,6 +310,7 @@ O middleware verifica o JWT, busca o usuário no banco e injeta `req.usuario` na
 |---------|--------|-----------|
 | `index.html` | ScrumFlow \| Home | Landing page com modal de login/cadastro |
 | `dashboard.html` | ScrumFlow \| Dashboard | Painel de módulos (requer autenticação) |
+| `sobre.html` | ScrumFlow \| Sobre | Página institucional do projeto ABP e da equipe |
 | `scrum.html` | SF \| Scrum \| Índice | Conteúdo estático sobre Scrum |
 | `manifesto.html` | SF \| Manifesto Ágil | Os 12 princípios com navegação por âncoras |
 | `hello.html` | ScrumFlow \| Olá | Página de boas-vindas (em elaboração) |
