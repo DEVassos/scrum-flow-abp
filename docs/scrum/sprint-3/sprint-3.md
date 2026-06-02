@@ -15,43 +15,43 @@
 
 | # | Tarefa | Grupo | Responsável | SP | Status |
 |:-:|--------|:-----:|-------------|:--:|:------:|
-| S3_T01 | Recriação automática de exame inicial | Bug Fix | Marcello + Gustavo | 3 | 🔲 |
-| S3_T02 | Integridade após reset de usuário | Bug Fix | Vinicius + Gabriel | 2 | 🔲 |
-| S3_T03 | Corrigir carregamento de imagens das questões | Bug Fix | Marcello + Gustavo | 3 | 🔲 |
-| S3_T04 | Corrigir mensagens de validação no cadastro | Bug Fix | Henrique + Lucas | 2 | 🔲 |
-| S3_T05 | Corrigir animação inicial (2ª linha) | Bug Fix | Andrea + Lucas | 2 | 🔲 |
-| S3_T06 | Corrigir exibição da escrita/texto na prova | Bug Fix | Henrique + Lucas | 1 | 🔲 |
-| S3_T07 | Corrigir navbar inconsistente após login | Bug Fix | Henrique + Lucas | 3 | 🔲 |
-| S3_T08 | Corrigir links do footer | Bug Fix | Andrea + Lucas | 1 | 🔲 |
+| S3_T01 | Recriação automática de exame inicial | Bug Fix | Marcello + Gustavo | 3 | ✅ |
+| S3_T02 | Integridade após reset de usuário | Bug Fix | Vinicius + Gabriel | 2 | ✅ |
+| S3_T03 | Corrigir carregamento de imagens das questões | Bug Fix | Marcello + Gustavo | 3 | ✅ |
+| S3_T04 | Corrigir mensagens de validação no cadastro | Bug Fix | Henrique + Lucas | 2 | ✅ |
+| S3_T05 | Corrigir animação inicial (2ª linha) | Bug Fix | Andrea + Lucas | 2 | ✅ |
+| S3_T06 | Corrigir exibição da escrita/texto na prova | Bug Fix | Henrique + Lucas | 1 | ✅ |
+| S3_T07 | Corrigir navbar inconsistente após login | Bug Fix | Henrique + Lucas | 3 | ✅ |
+| S3_T08 | Corrigir links do footer | Bug Fix | Andrea + Lucas | 1 | ✅ |
 | S3_T09 | Corrigir rota manifesto pré-login | Bug Fix | Vinicius + Gabriel | 2 | 🔲 |
 | S3_T10 | Corrigir rota scrum pré-login | Bug Fix | Vinicius + Gabriel | 2 | 🔲 |
-| S3_T11 | Corrigir animação invertida hover footer | Bug Fix | Andrea | 1 | 🔲 |
+| S3_T11 | Corrigir animação invertida hover footer | Bug Fix | Andrea | 1 | ✅ |
 | S3_T12 | Verificar/corrigir comportamento após fim das tentativas | Bug Fix | Vinicius + Gabriel | 2 | 🔲 |
-| S3_T13 | Repository: historico.repositories.js | US08 | Marcello + Vinicius | 2 | 🔲 |
-| S3_T14 | Endpoint GET /api/historico/:idUsuario | US08 | Marcello + Gustavo | 3 | 🔲 |
-| S3_T15 | Página historico.html + historico.js | US08 | Henrique + Lucas | 3 | 🔲 |
-| S3_T16 | CSS: pages/historico.css | US08 | Andrea + Henrique | 2 | 🔲 |
-| S3_T17 | Exibir questões erradas na tela de resultado | US08 | Henrique + Lucas | 3 | 🔲 |
-| S3_T18 | Auth admin — middleware de perfil | US09 | Marcello + Gustavo | 3 | 🔲 |
-| S3_T19 | CRUD de questões e alternativas (backend) | US09 | Marcello + Vinicius + Gustavo | 5 | 🔲 |
-| S3_T20 | CRUD de módulos (backend) | US09 | Vinicius + Gabriel | 3 | 🔲 |
-| S3_T21 | Interface administrativa (frontend) | US09 | Andrea + Henrique + Lucas | 5 | 🔲 |
-| S3_T22 | Reset de senha via admin | US09 | Marcello + Gustavo | 3 | 🔲 |
+| S3_T13 | Repository: historico.repositories.js | US08 | Marcello + Vinicius | 2 | ✅ |
+| S3_T14 | Endpoint GET /api/historico/:idUsuario | US08 | Marcello + Gustavo | 3 | ✅ |
+| S3_T15 | Página historico.html + historico.js | US08 | Henrique + Lucas | 3 | ✅ |
+| S3_T16 | CSS: pages/historico.css | US08 | Andrea + Henrique | 2 | ✅ |
+| S3_T17 | Exibir questões erradas na tela de resultado | US08 | Henrique + Lucas | 3 | ✅ |
+| S3_T18 | Auth admin — middleware de perfil | US09 | Marcello + Gustavo | 3 | ✅ |
+| S3_T19 | CRUD de questões e alternativas (backend) | US09 | Marcello + Vinicius + Gustavo | 5 | ✅ |
+| S3_T20 | CRUD de módulos (backend) | US09 | Vinicius + Gabriel | 3 | ✅ |
+| S3_T21 | Interface administrativa (frontend) | US09 | Andrea + Henrique + Lucas | 5 | ✅ |
+| S3_T22 | Reset de senha via admin | US09 | Marcello + Gustavo | 3 | ✅ |
 | S3_T23 | Reorganizar estrutura do repositório | Infra | Gabriel + Vinicius | 2 | 🔲 |
 | S3_T24 | Aumentar tempo de sessão JWT | Auth | Marcello + Vinicius | 2 | 🔲 |
 | S3_T25 | Excluir checkbox "Lembrar de mim" | Auth | Andrea | 1 | 🔲 |
 | S3_T26 | Proteger rotas privadas | Auth | Vinicius + Marcello | 3 | 🔲 |
 | S3_T27 | Ajustar botão 'Sair' na navbar | UX/UI | Andrea + Lucas | 1 | 🔲 |
-| S3_T28 | Adicionar favicon do ScrumFlow | UX/UI | Andrea + Henrique | 1 | 🔲 |
+| S3_T28 | Adicionar favicon do ScrumFlow | UX/UI | Andrea + Henrique | 1 | ✅ |
 | S3_T29 | Criar página 'Sobre' | UX/UI | Lucas + Gabriel | 2 | 🔲 |
-| S3_T30 | Melhorar responsividade geral | UX/UI | Andrea + Henrique + Lucas | 3 | 🔲 |
+| S3_T30 | Melhorar responsividade geral | UX/UI | Andrea + Henrique + Lucas | 3 | ✅ |
 | S3_T31 | Refatorar página 'O que é Scrum' | UX/UI | Andrea + Lucas | 2 | 🔲 |
 | S3_T32 | Corrigir redundância do nome no Dashboard | UX/UI | Andrea | 1 | 🔲 |
 | S3_T33 | Melhorar frase contraste Dashboard | UX/UI | Andrea | 1 | 🔲 |
 | S3_T34 | Melhorar layout da seção de provas | UX/UI | Henrique + Lucas | 3 | 🔲 |
 | S3_T35 | Alterar mensagem pós-prova | UX/UI | Lucas + Henrique | 2 | 🔲 |
 | S3_T36 | Exibir nota para certificado por módulo | UX/UI | Marcello + Henrique | 2 | 🔲 |
-| S3_T37 | Trocar "Nível" por "Módulo" na UI | UX/UI | Andrea + Henrique | 3 | 🔲 |
+| S3_T37 | Trocar "Nível" por "Módulo" na UI | UX/UI | Andrea + Henrique | 3 | ✅ |
 | S3_T38 | Certificado branco para impressão | UX/UI | Andrea + Henrique | 2 | 🔲 |
 | S3_T39 | Centralizar links na navbar | UX/UI | Andrea + Lucas | 1 | 🔲 |
 | S3_T40 | Melhorar nome do usuário na navbar | UX/UI | Andrea + Henrique | 2 | 🔲 |
@@ -63,10 +63,10 @@
 | S3_T46 | Criar manual de uso do aluno | Doc | Gabriel + Andrea | 2 | 🔲 |
 | S3_T47 | Animação de conclusão de módulo | Gamif. | Henrique + Lucas | 2 | 🔲 |
 | S3_T48 | Animação de geração de certificado | Gamif. | Andrea + Henrique | 2 | 🔲 |
-| S3_T49 | Mensagens motivacionais | Gamif. | Andrea + Lucas | 1 | 🔲 |
+| S3_T49 | Mensagens motivacionais | Gamif. | Andrea + Lucas | 1 | ✅ |
 | S3_T50 | Atualizar deploy no Render | Infra | Marcello + Gustavo | 1 | 🔲 |
 | S3_T51 | Padronizar navbar em todas as páginas | Refactor | Andrea + Henrique + Lucas | 3 | 🔲 |
-| S3_T52 | Incluir footer em todas as páginas | Refactor | Andrea + Henrique | 2 | 🔲 |
+| S3_T52 | Incluir footer em todas as páginas | Refactor | Andrea + Henrique | 2 | ✅ |
 | S3_T53 | Criar roteiro da apresentação final | Apresentação | Gustavo + Gabriel | 2 | 🔲 |
 | S3_T54 | Realizar ensaio técnico | Apresentação | Time completo | 1 | 🔲 |
 
@@ -101,7 +101,7 @@ xychart-beta
     x-axis ["25/05", "26/05", "27/05", "28/05", "29/05", "01/06", "02/06", "03/06", "05/06", "08/06", "09/06", "10/06", "11/06"]
     y-axis "Pontos Restantes" 0 --> 120
     line [115, 106, 97, 88, 80, 71, 62, 53, 44, 35, 27, 18, 0]
-    line [115, 115, 115, 115, 115, 115, 115, 115, 115, 115, 115, 115, 115]
+    line [102, 89, 76, 73, 55, 115, 115, 115, 115, 115, 115, 115, 115]
 ```
 
 > 🔵 **Linha 1 — Ideal:** queima linear esperada (~8.85 SP/dia — não editar)
@@ -109,11 +109,11 @@ xychart-beta
 
 | Dia | Data | Dia da semana | Pontos Ideal | Pontos Real | Impedimentos |
 |:---:|:----:|:-------------:|:------------:|:-----------:|:-------------|
-| 1  | 25/05 | Segunda | 115 | — | — |
-| 2  | 26/05 | Terça   | 106 | — | — |
-| 3  | 27/05 | Quarta  | 97  | — | — |
-| 4  | 28/05 | Quinta  | 88  | — | — |
-| 5  | 29/05 | Sexta   | 80  | — | — |
+| 1  | 25/05 | Segunda | 115 | 102 | — |
+| 2  | 26/05 | Terça   | 106 | 89  | — |
+| 3  | 27/05 | Quarta  | 97  | 76  | — |
+| 4  | 28/05 | Quinta  | 88  | 73  | — |
+| 5  | 29/05 | Sexta   | 80  | 55  | — |
 | 6  | 01/06 | Segunda | 71  | — | — |
 | 7  | 02/06 | Terça   | 62  | — | — |
 | 8  | 03/06 | Quarta  | 53  | — | — |
