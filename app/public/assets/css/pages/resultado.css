@@ -849,11 +849,13 @@ body[data-resultado-status="reprovado"] .score-number {
         flex-wrap: wrap;
     }
 
+
     .revisao-card-topo {
         flex-direction: column;
         gap: 10px;
     }
 
+ 
     .revisao-alt-tag {
         margin-left: 32px;
     }
