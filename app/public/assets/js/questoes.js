@@ -138,8 +138,22 @@ function renderizarQuestao() {
     `Questão ${questao.numero || indiceAtual + 1}`;
   document.getElementById("questao-titulo").textContent =
     questao.enunciado || "";
-  document.getElementById("questao-imagem").src =
-    questao.imagem ? `/imagens/questoes/${questao.imagem}` : "";
+  const imagemElemento = document.getElementById("questao-imagem");
+  // Esconde por padrão e exibe apenas quando existir imagem válida
+  imagemElemento.style.display = "none";
+  imagemElemento.onerror = () => {
+    imagemElemento.src = "";
+    imagemElemento.style.display = "none";
+  };
+
+  if (questao.imagem) {
+    imagemElemento.src = `/imagens/questoes/${questao.imagem}`;
+    imagemElemento.style.display = "block";
+  } else {
+    imagemElemento.src = "";
+    imagemElemento.style.display = "none";
+  }
+
   document.getElementById("questao-descricao").textContent = modoLeitura
     ? "Questão já respondida — somente leitura."
     : "Escolha a alternativa correta:";
