@@ -4,30 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../assets/img/scrum_icon.png">
-    <link rel="stylesheet" href="assets/css/pages/index.css">
-    <title>ScrumFlow | 404
-
-    </title>
+    <link rel="icon" type="image/png" href="../../assets/img/scrum_icon.png">
+    <link rel="stylesheet" href="../assets/css/pages/manifesto.css">
+    <title>ScrumFlow | Manifesto Ágil</title>
 </head>
 
 <body>
-
-    <!-- Formas decorativas de fundo -->
     <div class="blob-esquerda"></div>
     <div class="blob-direita"></div>
 
     <nav class="navbar">
         <div class="navbar__container">
-            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+            <a href="../index.html" class="logo">Scrum<span class="flow">Flow</span></a>
 
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="../sobre.html" class="nav-link">Sobre</a></li>
                     <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
-                    <li><a href="scrum.html" class="nav-link">Scrum</a></li>
-                    <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="../scrum.html" class="nav-link">Scrum</a></li>
+                    <li id="nav-dashboard"><a href="../dashboard.html" class="nav-link">Dashboard</a></li>
                 </ul>
 
                 <div class="navbar__actions">
@@ -50,25 +46,114 @@
         </div>
     </nav>
 
-    <main class="error404">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-            <path d="M480 491.4C538.5 447.4 576 379.8 576 304C576 171.5 461.4 64 320 
-                64C178.6 64 64 171.5 64 304C64 379.8 101.5 447.4 160 491.4L160 528C160 
-                554.5 181.5 576 208 576L240 576L240 536C240 522.7 250.7 512 264 512C277.3 
-                512 288 522.7 288 536L288 576L352 576L352 536C352 522.7 362.7 512 376 
-                512C389.3 512 400 522.7 400 536L400 576L432 576C458.5 576 480 554.5 480 
-                528L480 491.4zM160 320C160 284.7 188.7 256 224 256C259.3 256 288 284.7 288 
-                320C288 355.3 259.3 384 224 384C188.7 384 160 355.3 160 320zM416 256C451.3 
-                256 480 284.7 480 320C480 355.3 451.3 384 416 384C380.7 384 352 355.3 352 
-                320C352 284.7 380.7 256 416 256z" stroke="white" stroke-width="5" fill="white" />
-            <animateTransform attributeName="transform" begin="0s" dur="5s" type="rotate" from="0 0 0" to="360 0 0"
-                repeatCount="indefinite" />
-
-        </svg>
-        <div>
-            Página não encontrada
+    <!-- Hero -->
+    <section class="manifesto-hero">
+        <div class="manifesto-hero__badge">
+            <span class="apresentacao__status-dot"></span>
+            Fundamentos do Desenvolvimento Ágil
         </div>
-    </main>
+        <h1 class="manifesto-hero__titulo">Princípios do <span class="manifesto-hero__destaque">Manifesto Ágil</span>
+        </h1>
+        <p class="manifesto-hero__subtitulo">12 princípios que guiam equipes ágeis na entrega contínua de valor e na
+            adaptação a mudanças.</p>
+    </section>
+
+    <!-- Nav de atalho para cada princípio -->
+    <nav class="principios-nav" aria-label="Ir para o princípio">
+        <a class="principio-chip" href="#principio-1">1</a>
+        <a class="principio-chip" href="#principio-2">2</a>
+        <a class="principio-chip" href="#principio-3">3</a>
+        <a class="principio-chip" href="#principio-4">4</a>
+        <a class="principio-chip" href="#principio-5">5</a>
+        <a class="principio-chip" href="#principio-6">6</a>
+        <a class="principio-chip" href="#principio-7">7</a>
+        <a class="principio-chip" href="#principio-8">8</a>
+        <a class="principio-chip" href="#principio-9">9</a>
+        <a class="principio-chip" href="#principio-10">10</a>
+        <a class="principio-chip" href="#principio-11">11</a>
+        <a class="principio-chip" href="#principio-12">12</a>
+    </nav>
+
+    <!-- Cards dos 12 princípios -->
+    <section class="principios-lista">
+        <div class="principio-card" id="principio-1">
+            <span class="principio-numero">01</span>
+            <p class="principio-texto">Nossa maior prioridade é satisfazer o cliente através da entrega contínua e
+                adiantada de software com valor agregado.</p>
+        </div>
+
+        <div class="principio-card" id="principio-2">
+            <span class="principio-numero">02</span>
+            <p class="principio-texto">Mudanças nos requisitos são bem-vindas, mesmo tardiamente no desenvolvimento.
+                Processos ágeis tiram vantagem das mudanças visando vantagem competitiva para o cliente.</p>
+        </div>
+
+        <div class="principio-card" id="principio-3">
+            <span class="principio-numero">03</span>
+            <p class="principio-texto">Entregar frequentemente software funcionando, de poucas semanas a poucos meses,
+                com preferência à menor escala de tempo.</p>
+        </div>
+
+        <div class="principio-card" id="principio-4">
+            <span class="principio-numero">04</span>
+            <p class="principio-texto">Pessoas de negócio e desenvolvedores devem trabalhar diariamente em conjunto por
+                todo o projeto.</p>
+        </div>
+
+        <div class="principio-card" id="principio-5">
+            <span class="principio-numero">05</span>
+            <p class="principio-texto">Construa projetos em torno de indivíduos motivados. Dê a eles o ambiente e o
+                suporte necessário e confie neles para fazer o trabalho.</p>
+        </div>
+
+        <div class="principio-card" id="principio-6">
+            <span class="principio-numero">06</span>
+            <p class="principio-texto">O método mais eficiente e eficaz de transmitir informações para e entre uma
+                equipe de desenvolvimento é através de conversa face a face.</p>
+        </div>
+
+        <div class="principio-card" id="principio-7">
+            <span class="principio-numero">07</span>
+            <p class="principio-texto">Software funcionando é a medida primária de progresso.</p>
+        </div>
+
+        <div class="principio-card" id="principio-8">
+            <span class="principio-numero">08</span>
+            <p class="principio-texto">Os processos ágeis promovem desenvolvimento sustentável. Os patrocinadores,
+                desenvolvedores e usuários devem ser capazes de manter um ritmo constante indefinidamente.</p>
+        </div>
+
+        <div class="principio-card" id="principio-9">
+            <span class="principio-numero">09</span>
+            <p class="principio-texto">Contínua atenção à excelência técnica e bom design aumenta a agilidade.</p>
+        </div>
+
+        <div class="principio-card" id="principio-10">
+            <span class="principio-numero">10</span>
+            <p class="principio-texto">Simplicidade — a arte de maximizar a quantidade de trabalho não realizado — é
+                essencial.</p>
+        </div>
+
+        <div class="principio-card" id="principio-11">
+            <span class="principio-numero">11</span>
+            <p class="principio-texto">As melhores arquiteturas, requisitos e designs emergem de equipes
+                auto-organizáveis.</p>
+        </div>
+
+        <div class="principio-card" id="principio-12">
+            <span class="principio-numero">12</span>
+            <p class="principio-texto">Em intervalos regulares, a equipe reflete sobre como se tornar mais eficaz e
+                então refina e ajusta seu comportamento de acordo.</p>
+        </div>
+    </section>
+
+    <a href="#" class="btn-topo">↑ Voltar ao topo</a>
+
+    <footer class="manifesto-footer">
+        <span>Referência: <a href="https://agilemanifesto.org/iso/ptbr/principles.html" target="_blank"
+                rel="noopener">agilemanifesto.org</a></span>
+        <span>DEVassos — 2026</span>
+    </footer>
 
     <!-- Overlay escuro atrás do modal -->
     <div id="modal-overlay" class="modal-overlay"></div>
@@ -103,7 +188,6 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary btn-full">Entrar no Sprint &rarr;</button>
-
                 <div class="modal-rodape">
                     Não tem uma conta? <a href="#" id="link-ir-cadastro" class="link-amber">Criar conta</a>
                 </div>
@@ -171,21 +255,6 @@
         </div>
     </div>
 
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <hr class="footer__divider">
-            <div class="footer__bottom">
-                <p class="footer__copy">
-                    &copy; 2026 <strong>ScrumFlow</strong> &mdash; DEVassos. Todos os direitos reservados.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../assets/js/stars.js"></script>
-    <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. usados pelo index.js -->
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/navbar.js"></script>
     <script src="../assets/js/index.js"></script>

@@ -133,7 +133,7 @@ function renderizarQuestao() {
 
   document.getElementById("nivel-info").textContent = obterNivelInfo(idModulo);
   document.getElementById("tentativa-info").textContent =
-    `Tentativa ${tentativaAtual}/2`;
+    tentativaAtual <= 2 ? `Tentativa ${tentativaAtual}/2` : "Revisão de conteúdo";
   document.getElementById("questao-numero").textContent =
     `Questão ${questao.numero || indiceAtual + 1}`;
   document.getElementById("questao-titulo").textContent =

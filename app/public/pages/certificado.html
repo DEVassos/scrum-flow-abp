@@ -22,8 +22,8 @@
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="sobre.html" class="nav-link">Sobre</a></li>
-                    <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
-                    <li><a href="modulo-2/scrum.html" class="nav-link">Scrum</a></li>
+                    <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
+                    <li><a href="scrum.html" class="nav-link">Scrum</a></li>
                     <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
                 </ul>
 
@@ -57,9 +57,10 @@
 
         <!-- Estado de erro -->
         <div id="erro" class="cert-feedback" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48" class="cert-icone-erro">
-                <circle cx="24" cy="24" r="22" stroke="var(--red-500)" stroke-width="2"/>
-                <path d="M24 14v12M24 32v2" stroke="var(--red-500)" stroke-width="2.5" stroke-linecap="round"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 48 48"
+                class="cert-icone-erro">
+                <circle cx="24" cy="24" r="22" stroke="var(--red-500)" stroke-width="2" />
+                <path d="M24 14v12M24 32v2" stroke="var(--red-500)" stroke-width="2.5" stroke-linecap="round" />
             </svg>
             <p id="erro-msg" class="cert-erro-msg">Certificado não encontrado.</p>
             <a href="dashboard.html" class="btn btn-primary">Voltar ao Dashboard</a>
@@ -85,7 +86,9 @@
                     </div>
                 </div>
 
-                <div class="cert-divisor"><div class="cert-losango"></div></div>
+                <div class="cert-divisor">
+                    <div class="cert-losango"></div>
+                </div>
 
                 <h1 class="cert-titulo">Certificado</h1>
                 <p class="cert-subtitulo">Metodologias Ágeis &middot; ScrumFlow &middot; DSM 2026-1</p>
@@ -101,7 +104,9 @@
                     no período de <span id="periodo-inicio">—</span> a <span id="periodo-fim">—</span>.
                 </p>
 
-                <div class="cert-divisor" style="margin-top:1.8rem"><div class="cert-losango"></div></div>
+                <div class="cert-divisor" style="margin-top:1.8rem">
+                    <div class="cert-losango"></div>
+                </div>
 
                 <!-- Média final -->
                 <p class="cert-media-label">Média Final</p>
@@ -118,7 +123,9 @@
                     <tbody id="modulos-corpo"></tbody>
                 </table>
 
-                <div class="cert-divisor" style="margin-top:1.8rem"><div class="cert-losango"></div></div>
+                <div class="cert-divisor" style="margin-top:1.8rem">
+                    <div class="cert-losango"></div>
+                </div>
 
                 <!-- Hash de verificação -->
                 <div class="cert-hash-container">
@@ -167,4 +174,5 @@
     <script src="../assets/js/certificado.js"></script>
 
 </body>
+
 </html>

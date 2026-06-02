@@ -498,7 +498,8 @@ function atualizarTela(modulo) {
   painelBadge.textContent = formatarStatus(modulo.status);
   painelTitulo.textContent = modulo.nome;
   painelDescricao.textContent = gerarDescricao(modulo);
-  painelTentativas.textContent = `${modulo.tentativasUsadas} / ${modulo.tentativasMaximas}`;
+  const tentativasExibidas = Math.min(modulo.tentativasUsadas, modulo.tentativasMaximas);
+  painelTentativas.textContent = `${tentativasExibidas} / ${modulo.tentativasMaximas}`;
 
   renderizarConteudo(modulo);
   atualizarSidebarAtiva();
@@ -529,6 +530,16 @@ function atualizarBotoes(modulo) {
   if (modulo.status === "bloqueado") {
     botoesAcao.innerHTML = `
       <button class="btn btn-ghost" disabled>Conclua o módulo anterior</button>
+    `;
+    return;
+  }
+
+  if (modulo.status !== "concluido" && modulo.tentativasUsadas >= modulo.tentativasMaximas) {
+    botoesAcao.innerHTML = `
+      <p class="tentativas-esgotadas-msg">
+        Você atingiu o limite de tentativas para este módulo.
+        Entre em contato com o administrador do curso para continuar.
+      </p>
     `;
     return;
   }
