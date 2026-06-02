@@ -35,6 +35,7 @@ router.post("/login", async function (req, res) {
     return res.status(200).json({
       token,
       nome: usuario.nome,
+      is_admin: usuario.is_admin,
     });
   } catch (e) {
     return res.status(401).json({
