@@ -5,7 +5,7 @@
 **Período:** 25/05/2026 — 11/06/2026
 **Sprint Goal:** _Entregar o histórico de tentativas (US08) e a área administrativa (US09), corrigir bugs remanescentes, melhorar a experiência visual e preparar a apresentação final do projeto._
 **Histórias:** US08, US09
-**Total de pontos comprometidos:** 115 SP (54 tasks)
+**Total de pontos comprometidos:** 128 SP (61 tasks)
 **Scrum Master:** Gabriel Travensolli
 **Product Owner:** Gustavo Koiti
 
@@ -69,6 +69,13 @@
 | S3_T52 | Incluir footer em todas as páginas | Refactor | Andrea + Henrique | 2 | ✅ |
 | S3_T53 | Criar roteiro da apresentação final | Apresentação | Gustavo + Gabriel | 2 | 🔲 |
 | S3_T54 | Realizar ensaio técnico | Apresentação | Time completo | 1 | 🔲 |
+| S3_T55 | Exibir acesso administrativo após login de usuário admin | US09 | Vinicius + Marcello | 2 | ✅ |
+| S3_T56 | Integrar área administrativa aos endpoints de questões e níveis | US09 | Vinicius + Gabriel | 3 | 🔲 |
+| S3_T57 | Integrar edição e exclusão de questões e níveis na área administrativa | US09 | Vinicius + Gabriel | 2 | 🔲 |
+| S3_T58 | Adequar formulário administrativo ao modelo de questões do backend | US09 | Vinicius + Gabriel | 1 | 🔲 |
+| S3_T59 | Corrigir carregamento de imagens no questionário | Bug Fix | Gustavo | 1 | 🔲 |
+| S3_T60 | Corrigir página Scrum | Bug Fix | Gustavo | 1 | 🔲 |
+| S3_T61 | Recriar banco de dados em nuvem | Infra | Gustavo | 3 | 🔲 |
 
 **Incremento esperado ao final da Sprint:**
 
@@ -99,31 +106,31 @@
 xychart-beta
     title "Burndown — Sprint 3 (25/05 a 11/06/2026)"
     x-axis ["25/05", "26/05", "27/05", "28/05", "29/05", "01/06", "02/06", "03/06", "05/06", "08/06", "09/06", "10/06", "11/06"]
-    y-axis "Pontos Restantes" 0 --> 120
-    line [115, 106, 97, 88, 80, 71, 62, 53, 44, 35, 27, 18, 0]
-    line [102, 89, 76, 73, 55, 40, 40, 40, 40, 40, 40, 40, 40]
+    y-axis "Pontos Restantes" 0 --> 130
+    line [128, 117, 107, 96, 85, 75, 64, 53, 43, 32, 21, 11, 0]
+    line [102, 89, 76, 73, 55, 51, 51, 51, 51, 51, 51, 51, 51]
 ```
 
-> 🔵 **Linha 1 — Ideal:** queima linear esperada (~8.85 SP/dia — não editar)
-> 🟠 **Linha 2 — Real:** substituir os `115` pelos pontos efetivamente restantes a cada dia
+> 🔵 **Linha 1 — Ideal:** queima linear esperada (~10.67 SP/dia — não editar)
+> 🟠 **Linha 2 — Real:** substituir os `51` pelos pontos efetivamente restantes a cada dia
 
 | Dia | Data | Dia da semana | Pontos Ideal | Pontos Real | Impedimentos |
 |:---:|:----:|:-------------:|:------------:|:-----------:|:-------------|
-| 1  | 25/05 | Segunda | 115 | 102 | — |
-| 2  | 26/05 | Terça   | 106 | 89  | — |
-| 3  | 27/05 | Quarta  | 97  | 76  | — |
-| 4  | 28/05 | Quinta  | 88  | 73  | — |
-| 5  | 29/05 | Sexta   | 80  | 55  | — |
-| 6  | 01/06 | Segunda | 71  | 40 | — |
-| 7  | 02/06 | Terça   | 62  | — | — |
+| 1  | 25/05 | Segunda | 128 | 102 | — |
+| 2  | 26/05 | Terça   | 117 | 89  | — |
+| 3  | 27/05 | Quarta  | 107 | 76  | — |
+| 4  | 28/05 | Quinta  | 96  | 73  | — |
+| 5  | 29/05 | Sexta   | 85  | 55  | — |
+| 6  | 01/06 | Segunda | 75  | 51 | Scope +13 SP (S3_T55–S3_T61); S3_T55 entregue |
+| 7  | 02/06 | Terça   | 64  | — | — |
 | 8  | 03/06 | Quarta  | 53  | — | — |
 | —  | 04/06 | *Quinta — Corpus Christi* | — | — | 🔴 Feriado |
-| 9  | 05/06 | Sexta   | 44  | — | — |
+| 9  | 05/06 | Sexta   | 43  | — | — |
 | —  | 06/06 | *Sábado* | — | — | — |
 | —  | 07/06 | *Domingo* | — | — | — |
-| 10 | 08/06 | Segunda | 35  | — | — |
-| 11 | 09/06 | Terça   | 27  | — | — |
-| 12 | 10/06 | Quarta  | 18  | — | — |
+| 10 | 08/06 | Segunda | 32  | — | — |
+| 11 | 09/06 | Terça   | 21  | — | — |
+| 12 | 10/06 | Quarta  | 11  | — | — |
 | 13 | 11/06 | Quinta  | 0   | — | — |
 
 ---
@@ -153,7 +160,7 @@ Checklists de entrada (DoR) e conclusão (DoD) das histórias desta sprint:
 
 > A preencher ao final da Sprint Review.
 
-**Pontos planejados:** 115
+**Pontos planejados:** 128
 **Pontos entregues (DoD completo):** —
 **Pontos não entregues:** —
 **Velocidade da sprint:** — pontos
