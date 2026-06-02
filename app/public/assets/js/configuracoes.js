@@ -9,203 +9,235 @@
 // ================================
 
 (function () {
+  // ── Guarda de autenticação ────────────────────────────────────────
+  if (!estaAutenticado()) {
+    window.location.href = "index.html";
+    return;
+  }
 
-    // ── Guarda de autenticação ────────────────────────────────────────
-    if (!estaAutenticado()) {
-        window.location.href = 'index.html';
+  // ── Verifica perfil admin ─────────────────────────────────────────
+  // Lê o campo 'perfil' do payload JWT.
+  // Quando T15 adicionar esse campo ao token, a seção de admin aparece automaticamente.
+  function estaAdmin() {
+    const token = obterToken();
+    if (!token) return false;
+    try {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      return payload.is_admin === true;
+    } catch {
+      return false;
+    }
+  }
+
+  // ── Saudação no navbar ────────────────────────────────────────────
+  // navbar.js retorna cedo quando não há #nav-deslogado na página,
+  // então preenchemos manualmente aqui.
+  const navSaudacao = document.getElementById("nav-saudacao");
+  if (navSaudacao) {
+    navSaudacao.textContent = "Olá, " + (obterNome() || "");
+  }
+
+  // ── Pré-preenche campos com dados da sessão ───────────────────────
+  const inputNome = document.getElementById("input-nome");
+  if (inputNome) {
+    inputNome.value = obterNome() || "";
+  }
+
+  // ── Exibe seção de admin se aplicável ────────────────────────────
+  const secaoAdmin = document.getElementById("secao-admin");
+  if (estaAdmin() && secaoAdmin) {
+    secaoAdmin.hidden = false;
+    carregarQuestoes();
+    carregarNiveis();
+    configurarModalProgresso();
+  }
+
+  // ── Formulário: dados pessoais ────────────────────────────────────
+  const formDados = document.getElementById("form-dados");
+  if (formDados) {
+    formDados.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nome = document.getElementById("input-nome").value.trim();
+      const email = document.getElementById("input-email").value.trim();
+      const cpf = document.getElementById("input-cpf").value.trim();
+
+      if (!nome || !email) {
+        mostrarToast("Preencha ao menos o nome e o e-mail.", "erro");
         return;
-    }
+      }
 
-    // ── Verifica perfil admin ─────────────────────────────────────────
-    // Lê o campo 'perfil' do payload JWT.
-    // Quando T15 adicionar esse campo ao token, a seção de admin aparece automaticamente.
-    function estaAdmin() {
-        const token = obterToken();
-        if (!token) return false;
-        try {
-            const payload = JSON.parse(atob(token.split('.')[1]));
-            return payload.is_admin === true;
-        } catch {
-            return false;
-        }
-    }
+      // TODO (T15): PATCH /api/usuarios/:id com { nome, email, cpf }
+      mostrarToast("Dados salvos com sucesso!", "sucesso");
+    });
+  }
 
-    // ── Saudação no navbar ────────────────────────────────────────────
-    // navbar.js retorna cedo quando não há #nav-deslogado na página,
-    // então preenchemos manualmente aqui.
-    const navSaudacao = document.getElementById('nav-saudacao');
-    if (navSaudacao) {
-        navSaudacao.textContent = 'Olá, ' + (obterNome() || '');
-    }
+  // ── Formulário: senha ─────────────────────────────────────────────
+  const formSenha = document.getElementById("form-senha");
+  if (formSenha) {
+    formSenha.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nova = document.getElementById("input-nova-senha").value;
+      const confirmar = document.getElementById("input-confirmar-senha").value;
 
-    // ── Pré-preenche campos com dados da sessão ───────────────────────
-    const inputNome = document.getElementById('input-nome');
-    if (inputNome) {
-        inputNome.value = obterNome() || '';
-    }
+      if (nova.trim().length < 8) {
+        mostrarToast("A senha deve ter no mínimo 8 caracteres.", "erro");
+        return;
+      }
+      if (nova !== confirmar) {
+        mostrarToast("As senhas não coincidem.", "erro");
+        return;
+      }
 
-    // ── Exibe seção de admin se aplicável ────────────────────────────
-    const secaoAdmin = document.getElementById('secao-admin');
-    if (estaAdmin() && secaoAdmin) {
-        secaoAdmin.hidden = false;
-        carregarQuestoes();
-        carregarNiveis();
-        configurarModalProgresso();
-    }
+      // TODO (T15): PATCH /api/usuarios/:id/senha com { senha: nova }
+      mostrarToast("Senha alterada com sucesso!", "sucesso");
+      formSenha.reset();
+    });
+  }
 
-    // ── Formulário: dados pessoais ────────────────────────────────────
-    const formDados = document.getElementById('form-dados');
-    if (formDados) {
-        formDados.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const nome  = document.getElementById('input-nome').value.trim();
-            const email = document.getElementById('input-email').value.trim();
-            const cpf   = document.getElementById('input-cpf').value.trim();
+  // ── Toggle do formulário de nova questão ─────────────────────────
+  const btnNovaQuestao = document.getElementById("btn-nova-questao");
+  const formWrapper = document.getElementById("form-nova-questao-wrapper");
+  const btnCancelar = document.getElementById("btn-cancelar-questao");
+  const formNovaQuestao = document.getElementById("form-nova-questao");
 
-            if (!nome || !email) {
-                mostrarToast('Preencha ao menos o nome e o e-mail.', 'erro');
-                return;
-            }
+  if (btnNovaQuestao && formWrapper) {
+    btnNovaQuestao.addEventListener("click", function () {
+      formWrapper.hidden = !formWrapper.hidden;
+    });
+  }
 
-            // TODO (T15): PATCH /api/usuarios/:id com { nome, email, cpf }
-            mostrarToast('Dados salvos com sucesso!', 'sucesso');
-        });
-    }
+  if (btnCancelar && formWrapper) {
+    btnCancelar.addEventListener("click", function () {
+      formWrapper.hidden = true;
+      if (formNovaQuestao) formNovaQuestao.reset();
+    });
+  }
 
-    // ── Formulário: senha ─────────────────────────────────────────────
-    const formSenha = document.getElementById('form-senha');
-    if (formSenha) {
-        formSenha.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const nova      = document.getElementById('input-nova-senha').value;
-            const confirmar = document.getElementById('input-confirmar-senha').value;
+  if (formNovaQuestao) {
+    formNovaQuestao.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-            if (nova.trim().length < 8) {
-                mostrarToast('A senha deve ter no mínimo 8 caracteres.', 'erro');
-                return;
-            }
-            if (nova !== confirmar) {
-                mostrarToast('As senhas não coincidem.', 'erro');
-                return;
-            }
+      const enunciado = document.getElementById("q-enunciado").value.trim();
+      const modulo = document.getElementById("q-modulo").value;
+      const correta = document.querySelector('input[name="correta"]:checked');
 
-            // TODO (T15): PATCH /api/usuarios/:id/senha com { senha: nova }
-            mostrarToast('Senha alterada com sucesso!', 'sucesso');
-            formSenha.reset();
-        });
-    }
+      if (!enunciado || !modulo) {
+        mostrarToast("Preencha o enunciado e selecione o módulo.", "erro");
+        return;
+      }
+      if (!correta) {
+        mostrarToast("Marque qual alternativa é a correta.", "erro");
+        return;
+      }
 
-    // ── Toggle do formulário de nova questão ─────────────────────────
-    const btnNovaQuestao  = document.getElementById('btn-nova-questao');
-    const formWrapper     = document.getElementById('form-nova-questao-wrapper');
-    const btnCancelar     = document.getElementById('btn-cancelar-questao');
-    const formNovaQuestao = document.getElementById('form-nova-questao');
+      // TODO (T16): POST /api/admin/questoes com os dados do form
+      mostrarToast("Questão criada! (integração pendente — T16)", "sucesso");
+      formNovaQuestao.reset();
+      formWrapper.hidden = true;
+    });
+  }
 
-    if (btnNovaQuestao && formWrapper) {
-        btnNovaQuestao.addEventListener('click', function () {
-            formWrapper.hidden = !formWrapper.hidden;
-        });
-    }
+  // ── Stub: botão "Novo módulo" ──────────────────────────────────────
+  const btnNovoNivel = document.getElementById("btn-novo-nivel");
+  if (btnNovoNivel) {
+    btnNovoNivel.addEventListener("click", function () {
+      mostrarToast("Formulário de módulo: em desenvolvimento (T17)", "erro");
+    });
+  }
 
-    if (btnCancelar && formWrapper) {
-        btnCancelar.addEventListener('click', function () {
-            formWrapper.hidden = true;
-            if (formNovaQuestao) formNovaQuestao.reset();
-        });
-    }
+  // ── Stub: popula tabela de questões com dados de exemplo ─────────
+  async function carregarQuestoes() {
+    const tbody = document.getElementById("questoes-tbody");
+    const vazio = document.getElementById("questoes-vazio");
 
-    if (formNovaQuestao) {
-        formNovaQuestao.addEventListener('submit', function (e) {
-            e.preventDefault();
+    if (!tbody) return;
 
-            const enunciado = document.getElementById('q-enunciado').value.trim();
-            const modulo    = document.getElementById('q-modulo').value;
-            const correta   = document.querySelector('input[name="correta"]:checked');
+    try {
+      const token = obterToken();
 
-            if (!enunciado || !modulo) {
-                mostrarToast('Preencha o enunciado e selecione o módulo.', 'erro');
-                return;
-            }
-            if (!correta) {
-                mostrarToast('Marque qual alternativa é a correta.', 'erro');
-                return;
-            }
+      const response = await fetch("/api/admin/questoes", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
 
-            // TODO (T16): POST /api/admin/questoes com os dados do form
-            mostrarToast('Questão criada! (integração pendente — T16)', 'sucesso');
-            formNovaQuestao.reset();
-            formWrapper.hidden = true;
-        });
-    }
+      if (!response.ok) {
+        throw new Error("Erro ao carregar questões");
+      }
 
-    // ── Stub: botão "Novo módulo" ──────────────────────────────────────
-    const btnNovoNivel = document.getElementById('btn-novo-nivel');
-    if (btnNovoNivel) {
-        btnNovoNivel.addEventListener('click', function () {
-            mostrarToast('Formulário de módulo: em desenvolvimento (T17)', 'erro');
-        });
-    }
+      const questoes = await response.json();
 
-    // ── Stub: popula tabela de questões com dados de exemplo ─────────
-    function carregarQuestoes() {
-        const tbody = document.getElementById('questoes-tbody');
-        const vazio = document.getElementById('questoes-vazio');
-        if (!tbody) return;
+      if (!questoes.length) {
+        tbody.innerHTML = "";
+        if (vazio) vazio.hidden = false;
+        return;
+      }
 
-        // Substituir por GET /api/admin/questoes quando T16 estiver pronto
-        const questoes = [
-            { id: 1, enunciado: 'O que é o Scrum?', modulo: 'Módulo 2', grupo: 'A' },
-            { id: 2, enunciado: 'Quais são os pilares do Scrum?', modulo: 'Módulo 1', grupo: 'B' },
-            { id: 3, enunciado: 'Qual é o papel do Product Owner?', modulo: 'Módulo 2', grupo: 'A' },
-        ];
+      if (vazio) vazio.hidden = true;
 
-        if (!questoes.length) {
-            if (vazio) vazio.hidden = false;
-            return;
-        }
+      tbody.innerHTML = questoes
+        .map(function (q) {
+          const trecho =
+            q.enunciado.length > 55
+              ? q.enunciado.slice(0, 55) + "…"
+              : q.enunciado;
 
-        tbody.innerHTML = questoes.map(function (q) {
-            const trecho = q.enunciado.length > 55
-                ? q.enunciado.slice(0, 55) + '…'
-                : q.enunciado;
-            return `
+          return `
                 <tr>
-                    <td>${q.id}</td>
+                    <td>${q.id_questao}</td>
                     <td>${trecho}</td>
-                    <td>${q.modulo}</td>
+                    <td>Módulo ${q.id_modulo}</td>
                     <td>${q.grupo}</td>
                     <td>
                         <div class="config-tabela-acoes">
                             <button class="btn-tabela btn-tabela--editar"
-                                    onclick="editarQuestao(${q.id})">Editar</button>
+                                onclick="editarQuestao(${q.id_questao})">
+                                Editar
+                            </button>
+
                             <button class="btn-tabela btn-tabela--excluir"
-                                    onclick="excluirQuestao(${q.id})">Excluir</button>
+                                onclick="excluirQuestao(${q.id_questao})">
+                                Excluir
+                            </button>
                         </div>
                     </td>
                 </tr>
             `;
-        }).join('');
+        })
+        .join("");
+    } catch (error) {
+      console.error(error);
+
+      tbody.innerHTML = "";
+
+      if (vazio) {
+        vazio.hidden = false;
+        vazio.textContent = "Erro ao carregar questões.";
+      }
+
+      mostrarToast("Erro ao carregar questões.", "erro");
+    }
+  }
+  // ── Stub: popula tabela de módulos com dados de exemplo ────────────
+  function carregarNiveis() {
+    const tbody = document.getElementById("niveis-tbody");
+    const vazio = document.getElementById("niveis-vazio");
+    if (!tbody) return;
+
+    // Substituir por GET /api/admin/niveis quando T17 estiver pronto
+    const niveis = [
+      { id: 1, nome: "Manifesto Ágil", ordem: 1 },
+      { id: 2, nome: "Framework Scrum", ordem: 2 },
+    ];
+
+    if (!niveis.length) {
+      if (vazio) vazio.hidden = false;
+      return;
     }
 
-    // ── Stub: popula tabela de módulos com dados de exemplo ────────────
-    function carregarNiveis() {
-        const tbody = document.getElementById('niveis-tbody');
-        const vazio = document.getElementById('niveis-vazio');
-        if (!tbody) return;
-
-        // Substituir por GET /api/admin/niveis quando T17 estiver pronto
-        const niveis = [
-            { id: 1, nome: 'Manifesto Ágil',    ordem: 1 },
-            { id: 2, nome: 'Framework Scrum',   ordem: 2 },
-        ];
-
-        if (!niveis.length) {
-            if (vazio) vazio.hidden = false;
-            return;
-        }
-
-        tbody.innerHTML = niveis.map(function (n) {
-            return `
+    tbody.innerHTML = niveis
+      .map(function (n) {
+        return `
                 <tr>
                     <td>${n.id}</td>
                     <td>${n.nome}</td>
@@ -220,135 +252,208 @@
                     </td>
                 </tr>
             `;
-        }).join('');
-    }
+      })
+      .join("");
+  }
 
-    // ── Modal: Gerenciar Progresso ────────────────────────────────────
-    function configurarModalProgresso() {
-        const btnAbrir  = document.getElementById('btn-gerenciar-progresso');
-        const modal     = document.getElementById('modal-progresso');
-        const btnFechar = document.getElementById('btn-fechar-modal-progresso');
+  // ── Modal: Gerenciar Progresso ────────────────────────────────────
+  function configurarModalProgresso() {
+    const btnAbrir = document.getElementById("btn-gerenciar-progresso");
+    const modal = document.getElementById("modal-progresso");
+    const btnFechar = document.getElementById("btn-fechar-modal-progresso");
 
-        if (!btnAbrir || !modal) return;
+    if (!btnAbrir || !modal) return;
 
-        btnAbrir.addEventListener('click', function () {
-            modal.hidden = false;
-            carregarProgressoUsuarios();
+    btnAbrir.addEventListener("click", function () {
+      modal.hidden = false;
+      carregarProgressoUsuarios();
+    });
+
+    btnFechar.addEventListener("click", function () {
+      modal.hidden = true;
+    });
+
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) modal.hidden = true;
+    });
+  }
+
+  function carregarProgressoUsuarios() {
+    const tbody = document.getElementById("usuarios-progresso-tbody");
+    if (!tbody) return;
+    tbody.innerHTML =
+      '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--navy-400)">Carregando...</td></tr>';
+
+    const token = obterToken();
+    fetch("/api/admin/usuarios-progresso", {
+      headers: { Authorization: "Bearer " + token },
+    })
+      .then(function (r) {
+        return r.json();
+      })
+      .then(function (usuarios) {
+        if (!usuarios.length) {
+          tbody.innerHTML =
+            '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--navy-400)">Nenhum aluno cadastrado.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = usuarios
+          .map(function (u) {
+            const modulo = u.modulo_titulo
+              ? "Módulo " + u.id_modulo + " – " + u.modulo_titulo
+              : "—";
+            const tentativas = u.id_exame
+              ? u.tentativas_modulo_atual + " / 2"
+              : "—";
+            return (
+              "<tr>" +
+              "<td>" +
+              escapeHtml(u.nome) +
+              "</td>" +
+              '<td style="font-size:12px;color:var(--navy-300)">' +
+              escapeHtml(u.email) +
+              "</td>" +
+              "<td>" +
+              modulo +
+              "</td>" +
+              "<td>" +
+              tentativas +
+              "</td>" +
+              "<td>" +
+              '<div class="config-tabela-acoes">' +
+              (u.id_exame
+                ? '<button class="btn-tabela btn-tabela--editar" onclick="zerarModulo(' +
+                  u.id_usuario +
+                  ", '" +
+                  escapeHtml(u.nome) +
+                  "')\">Zerar módulo</button>" +
+                  '<button class="btn-tabela btn-tabela--excluir" onclick="reiniciarUsuario(' +
+                  u.id_usuario +
+                  ", '" +
+                  escapeHtml(u.nome) +
+                  "')\">Módulo 1</button>"
+                : '<span style="font-size:12px;color:var(--navy-400)">Sem exame</span>') +
+              "</div>" +
+              "</td>" +
+              "</tr>"
+            );
+          })
+          .join("");
+      })
+      .catch(function () {
+        tbody.innerHTML =
+          '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--red-400)">Erro ao carregar.</td></tr>';
+      });
+  }
+
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  window.zerarModulo = function (idUsuario, nome) {
+    if (
+      !confirm(
+        'Zerar tentativas do módulo atual de "' +
+          nome +
+          '"?\n\nIsso apaga as respostas do módulo atual e permite que o aluno recomece a partir da tentativa 1.',
+      )
+    )
+      return;
+    const token = obterToken();
+    fetch("/api/admin/usuarios/" + idUsuario + "/zerar-modulo", {
+      method: "PATCH",
+      headers: { Authorization: "Bearer " + token },
+    })
+      .then(function (r) {
+        return r.json().then(function (d) {
+          return { ok: r.ok, data: d };
         });
+      })
+      .then(function (res) {
+        mostrarToast(
+          res.ok
+            ? res.data.message
+            : res.data.message || "Erro ao zerar módulo.",
+          res.ok ? "sucesso" : "erro",
+        );
+        if (res.ok) carregarProgressoUsuarios();
+      })
+      .catch(function () {
+        mostrarToast("Erro de conexão.", "erro");
+      });
+  };
 
-        btnFechar.addEventListener('click', function () {
-            modal.hidden = true;
+  window.reiniciarUsuario = function (idUsuario, nome) {
+    if (
+      !confirm(
+        'Reiniciar "' +
+          nome +
+          '" para o Módulo 1?\n\nIsso apaga TODAS as respostas e o histórico de provas do aluno. Esta ação não pode ser desfeita.',
+      )
+    )
+      return;
+    const token = obterToken();
+    fetch("/api/admin/usuarios/" + idUsuario + "/reiniciar", {
+      method: "PATCH",
+      headers: { Authorization: "Bearer " + token },
+    })
+      .then(function (r) {
+        return r.json().then(function (d) {
+          return { ok: r.ok, data: d };
         });
+      })
+      .then(function (res) {
+        mostrarToast(
+          res.ok ? res.data.message : res.data.message || "Erro ao reiniciar.",
+          res.ok ? "sucesso" : "erro",
+        );
+        if (res.ok) carregarProgressoUsuarios();
+      })
+      .catch(function () {
+        mostrarToast("Erro de conexão.", "erro");
+      });
+  };
 
-        modal.addEventListener('click', function (e) {
-            if (e.target === modal) modal.hidden = true;
-        });
-    }
+  // ── Ações das tabelas (expostas no escopo global pelo onclick) ────
+  window.editarQuestao = function () {
+    mostrarToast("Edição de questão: em desenvolvimento (T16)", "erro");
+  };
+  window.excluirQuestao = function () {
+    mostrarToast("Exclusão de questão: em desenvolvimento (T16)", "erro");
+  };
+  window.editarNivel = function () {
+    mostrarToast("Edição de módulo: em desenvolvimento (T17)", "erro");
+  };
+  window.excluirNivel = function () {
+    mostrarToast("Exclusão de módulo: em desenvolvimento (T17)", "erro");
+  };
 
-    function carregarProgressoUsuarios() {
-        const tbody = document.getElementById('usuarios-progresso-tbody');
-        if (!tbody) return;
-        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--navy-400)">Carregando...</td></tr>';
+  // ── Toast de feedback ─────────────────────────────────────────────
+  function mostrarToast(mensagem, tipo) {
+    const toast = document.getElementById("config-toast");
+    const msg = document.getElementById("config-toast-msg");
+    if (!toast || !msg) return;
 
-        const token = obterToken();
-        fetch('/api/admin/usuarios-progresso', {
-            headers: { 'Authorization': 'Bearer ' + token }
-        })
-        .then(function (r) { return r.json(); })
-        .then(function (usuarios) {
-            if (!usuarios.length) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--navy-400)">Nenhum aluno cadastrado.</td></tr>';
-                return;
-            }
-            tbody.innerHTML = usuarios.map(function (u) {
-                const modulo     = u.modulo_titulo ? 'Módulo ' + u.id_modulo + ' – ' + u.modulo_titulo : '—';
-                const tentativas = u.id_exame
-                    ? u.tentativas_modulo_atual + ' / 2'
-                    : '—';
-                return '<tr>' +
-                    '<td>' + escapeHtml(u.nome) + '</td>' +
-                    '<td style="font-size:12px;color:var(--navy-300)">' + escapeHtml(u.email) + '</td>' +
-                    '<td>' + modulo + '</td>' +
-                    '<td>' + tentativas + '</td>' +
-                    '<td>' +
-                        '<div class="config-tabela-acoes">' +
-                            (u.id_exame
-                                ? '<button class="btn-tabela btn-tabela--editar" onclick="zerarModulo(' + u.id_usuario + ', \'' + escapeHtml(u.nome) + '\')">Zerar módulo</button>' +
-                                  '<button class="btn-tabela btn-tabela--excluir" onclick="reiniciarUsuario(' + u.id_usuario + ', \'' + escapeHtml(u.nome) + '\')">Módulo 1</button>'
-                                : '<span style="font-size:12px;color:var(--navy-400)">Sem exame</span>') +
-                        '</div>' +
-                    '</td>' +
-                '</tr>';
-            }).join('');
-        })
-        .catch(function () {
-            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--red-400)">Erro ao carregar.</td></tr>';
-        });
-    }
+    msg.textContent = mensagem;
+    toast.className = "config-toast config-toast--" + tipo;
+    toast.hidden = false;
 
-    function escapeHtml(str) {
-        return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(function () {
+      toast.hidden = true;
+    }, 3000);
+  }
 
-    window.zerarModulo = function (idUsuario, nome) {
-        if (!confirm('Zerar tentativas do módulo atual de "' + nome + '"?\n\nIsso apaga as respostas do módulo atual e permite que o aluno recomece a partir da tentativa 1.')) return;
-        const token = obterToken();
-        fetch('/api/admin/usuarios/' + idUsuario + '/zerar-modulo', {
-            method: 'PATCH',
-            headers: { 'Authorization': 'Bearer ' + token }
-        })
-        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
-        .then(function (res) {
-            mostrarToast(res.ok ? res.data.message : (res.data.message || 'Erro ao zerar módulo.'), res.ok ? 'sucesso' : 'erro');
-            if (res.ok) carregarProgressoUsuarios();
-        })
-        .catch(function () { mostrarToast('Erro de conexão.', 'erro'); });
-    };
-
-    window.reiniciarUsuario = function (idUsuario, nome) {
-        if (!confirm('Reiniciar "' + nome + '" para o Módulo 1?\n\nIsso apaga TODAS as respostas e o histórico de provas do aluno. Esta ação não pode ser desfeita.')) return;
-        const token = obterToken();
-        fetch('/api/admin/usuarios/' + idUsuario + '/reiniciar', {
-            method: 'PATCH',
-            headers: { 'Authorization': 'Bearer ' + token }
-        })
-        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
-        .then(function (res) {
-            mostrarToast(res.ok ? res.data.message : (res.data.message || 'Erro ao reiniciar.'), res.ok ? 'sucesso' : 'erro');
-            if (res.ok) carregarProgressoUsuarios();
-        })
-        .catch(function () { mostrarToast('Erro de conexão.', 'erro'); });
-    };
-
-    // ── Ações das tabelas (expostas no escopo global pelo onclick) ────
-    window.editarQuestao  = function () { mostrarToast('Edição de questão: em desenvolvimento (T16)', 'erro'); };
-    window.excluirQuestao = function () { mostrarToast('Exclusão de questão: em desenvolvimento (T16)', 'erro'); };
-    window.editarNivel    = function () { mostrarToast('Edição de módulo: em desenvolvimento (T17)', 'erro'); };
-    window.excluirNivel   = function () { mostrarToast('Exclusão de módulo: em desenvolvimento (T17)', 'erro'); };
-
-    // ── Toast de feedback ─────────────────────────────────────────────
-    function mostrarToast(mensagem, tipo) {
-        const toast = document.getElementById('config-toast');
-        const msg   = document.getElementById('config-toast-msg');
-        if (!toast || !msg) return;
-
-        msg.textContent = mensagem;
-        toast.className = 'config-toast config-toast--' + tipo;
-        toast.hidden = false;
-
-        clearTimeout(toast._timer);
-        toast._timer = setTimeout(function () {
-            toast.hidden = true;
-        }, 3000);
-    }
-
-    // ── Logout ────────────────────────────────────────────────────────
-    const btnSair = document.getElementById('btn-sair');
-    if (btnSair) {
-        btnSair.addEventListener('click', function () {
-            limparSessao();
-            window.location.href = 'index.html';
-        });
-    }
-
+  // ── Logout ────────────────────────────────────────────────────────
+  const btnSair = document.getElementById("btn-sair");
+  if (btnSair) {
+    btnSair.addEventListener("click", function () {
+      limparSessao();
+      window.location.href = "index.html";
+    });
+  }
 })();
