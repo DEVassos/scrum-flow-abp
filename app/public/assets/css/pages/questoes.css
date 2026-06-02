@@ -22,6 +22,20 @@
   width: 100%;
 }
 
+.questao-imagem[hidden] {
+  display: none;
+}
+
+.questao-ref {
+  display: block;
+  font-size: 11px;
+  color: var(--navy-400);
+  text-align: right;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(163, 184, 216, 0.08);
+}
+
 /* CABEÇALHO DA AVALIAÇÃO */
 .questoes-header {
   background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
