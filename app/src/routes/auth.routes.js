@@ -30,7 +30,7 @@ router.post("/login", async function (req, res) {
 
     await ensureExameInicial(usuario.id_usuario);
 
-    const token = createToken({ id_usuario: usuario.id_usuario });
+    const token = createToken({ id_usuario: usuario.id_usuario, is_admin: usuario.is_admin === true });
 
     return res.status(200).json({
       token,

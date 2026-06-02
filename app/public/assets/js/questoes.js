@@ -133,13 +133,16 @@ function renderizarQuestao() {
 
   document.getElementById("nivel-info").textContent = obterNivelInfo(idModulo);
   document.getElementById("tentativa-info").textContent =
-    `Tentativa ${tentativaAtual}/2`;
+    tentativaAtual <= 2 ? `Tentativa ${tentativaAtual}/2` : "Revisão de conteúdo";
   document.getElementById("questao-numero").textContent =
     `Questão ${questao.numero || indiceAtual + 1}`;
   document.getElementById("questao-titulo").textContent =
     questao.enunciado || "";
-  document.getElementById("questao-imagem").src =
-    questao.imagem ? `/imagens/questoes/${questao.imagem}` : "";
+  const imgEl = document.getElementById("questao-imagem");
+  imgEl.src = questao.imagem ? `/imagens/questoes/${questao.imagem}` : "";
+  imgEl.hidden = !questao.imagem;
+  document.getElementById("questao-ref").textContent =
+    questao.id_questao ? `REF.: ${questao.id_questao}` : "";
   document.getElementById("questao-descricao").textContent = modoLeitura
     ? "Questão já respondida — somente leitura."
     : "Escolha a alternativa correta:";

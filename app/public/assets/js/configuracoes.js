@@ -24,7 +24,7 @@
         if (!token) return false;
         try {
             const payload = JSON.parse(atob(token.split('.')[1]));
-            return payload.perfil === 'admin';
+            return payload.is_admin === true;
         } catch {
             return false;
         }
@@ -50,6 +50,7 @@
         secaoAdmin.hidden = false;
         carregarQuestoes();
         carregarNiveis();
+        configurarModalProgresso();
     }
 
     // ── Formulário: dados pessoais ────────────────────────────────────
@@ -221,6 +222,103 @@
             `;
         }).join('');
     }
+
+    // ── Modal: Gerenciar Progresso ────────────────────────────────────
+    function configurarModalProgresso() {
+        const btnAbrir  = document.getElementById('btn-gerenciar-progresso');
+        const modal     = document.getElementById('modal-progresso');
+        const btnFechar = document.getElementById('btn-fechar-modal-progresso');
+
+        if (!btnAbrir || !modal) return;
+
+        btnAbrir.addEventListener('click', function () {
+            modal.hidden = false;
+            carregarProgressoUsuarios();
+        });
+
+        btnFechar.addEventListener('click', function () {
+            modal.hidden = true;
+        });
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) modal.hidden = true;
+        });
+    }
+
+    function carregarProgressoUsuarios() {
+        const tbody = document.getElementById('usuarios-progresso-tbody');
+        if (!tbody) return;
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--navy-400)">Carregando...</td></tr>';
+
+        const token = obterToken();
+        fetch('/api/admin/usuarios-progresso', {
+            headers: { 'Authorization': 'Bearer ' + token }
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (usuarios) {
+            if (!usuarios.length) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--navy-400)">Nenhum aluno cadastrado.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = usuarios.map(function (u) {
+                const modulo     = u.modulo_titulo ? 'Módulo ' + u.id_modulo + ' – ' + u.modulo_titulo : '—';
+                const tentativas = u.id_exame
+                    ? u.tentativas_modulo_atual + ' / 2'
+                    : '—';
+                return '<tr>' +
+                    '<td>' + escapeHtml(u.nome) + '</td>' +
+                    '<td style="font-size:12px;color:var(--navy-300)">' + escapeHtml(u.email) + '</td>' +
+                    '<td>' + modulo + '</td>' +
+                    '<td>' + tentativas + '</td>' +
+                    '<td>' +
+                        '<div class="config-tabela-acoes">' +
+                            (u.id_exame
+                                ? '<button class="btn-tabela btn-tabela--editar" onclick="zerarModulo(' + u.id_usuario + ', \'' + escapeHtml(u.nome) + '\')">Zerar módulo</button>' +
+                                  '<button class="btn-tabela btn-tabela--excluir" onclick="reiniciarUsuario(' + u.id_usuario + ', \'' + escapeHtml(u.nome) + '\')">Módulo 1</button>'
+                                : '<span style="font-size:12px;color:var(--navy-400)">Sem exame</span>') +
+                        '</div>' +
+                    '</td>' +
+                '</tr>';
+            }).join('');
+        })
+        .catch(function () {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--red-400)">Erro ao carregar.</td></tr>';
+        });
+    }
+
+    function escapeHtml(str) {
+        return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    window.zerarModulo = function (idUsuario, nome) {
+        if (!confirm('Zerar tentativas do módulo atual de "' + nome + '"?\n\nIsso apaga as respostas do módulo atual e permite que o aluno recomece a partir da tentativa 1.')) return;
+        const token = obterToken();
+        fetch('/api/admin/usuarios/' + idUsuario + '/zerar-modulo', {
+            method: 'PATCH',
+            headers: { 'Authorization': 'Bearer ' + token }
+        })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+        .then(function (res) {
+            mostrarToast(res.ok ? res.data.message : (res.data.message || 'Erro ao zerar módulo.'), res.ok ? 'sucesso' : 'erro');
+            if (res.ok) carregarProgressoUsuarios();
+        })
+        .catch(function () { mostrarToast('Erro de conexão.', 'erro'); });
+    };
+
+    window.reiniciarUsuario = function (idUsuario, nome) {
+        if (!confirm('Reiniciar "' + nome + '" para o Módulo 1?\n\nIsso apaga TODAS as respostas e o histórico de provas do aluno. Esta ação não pode ser desfeita.')) return;
+        const token = obterToken();
+        fetch('/api/admin/usuarios/' + idUsuario + '/reiniciar', {
+            method: 'PATCH',
+            headers: { 'Authorization': 'Bearer ' + token }
+        })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, data: d }; }); })
+        .then(function (res) {
+            mostrarToast(res.ok ? res.data.message : (res.data.message || 'Erro ao reiniciar.'), res.ok ? 'sucesso' : 'erro');
+            if (res.ok) carregarProgressoUsuarios();
+        })
+        .catch(function () { mostrarToast('Erro de conexão.', 'erro'); });
+    };
 
     // ── Ações das tabelas (expostas no escopo global pelo onclick) ────
     window.editarQuestao  = function () { mostrarToast('Edição de questão: em desenvolvimento (T16)', 'erro'); };

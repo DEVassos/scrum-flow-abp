@@ -76,6 +76,106 @@ router.get("/usuarios", async (req, res) => {
 });
 
 // ================================
+//   PROGRESSO DE USUÁRIOS
+// ================================
+
+router.get("/usuarios-progresso", async (req, res) => {
+  try {
+    const pool = require("../database/db");
+    const result = await pool.query(`
+      SELECT
+        u.id_usuario,
+        u.nome,
+        u.email,
+        e.id_exame,
+        e.id_modulo,
+        m.titulo AS modulo_titulo,
+        e.tentativa AS tentativa_atual,
+        COALESCE((
+          SELECT COUNT(DISTINCT q2.grupo)::INTEGER
+          FROM respostas r2
+          INNER JOIN questoes q2 ON q2.id_questao = r2.id_questao
+          WHERE r2.id_exame = e.id_exame
+            AND q2.id_modulo = e.id_modulo
+        ), 0) AS tentativas_modulo_atual
+      FROM usuarios u
+      LEFT JOIN exames e ON e.id_usuario = u.id_usuario
+      LEFT JOIN modulos m ON m.id_modulo = e.id_modulo
+      ORDER BY u.nome ASC
+    `);
+    return res.status(200).json(result.rows);
+  } catch (error) {
+    console.error("Erro ao listar progresso:", error);
+    return res.status(500).json({ message: "Erro interno ao listar progresso" });
+  }
+});
+
+// Zera tentativas do módulo atual: apaga respostas do módulo e reseta tentativa para 1
+router.patch("/usuarios/:id/zerar-modulo", async (req, res) => {
+  try {
+    const pool = require("../database/db");
+    const idUsuario = Number(req.params.id);
+    if (!idUsuario) return res.status(400).json({ message: "id inválido" });
+
+    const exameRes = await pool.query(
+      `SELECT id_exame, id_modulo FROM exames WHERE id_usuario = $1 ORDER BY id_exame DESC LIMIT 1`,
+      [idUsuario]
+    );
+    if (!exameRes.rows[0]) return res.status(404).json({ message: "Exame não encontrado" });
+
+    const { id_exame, id_modulo } = exameRes.rows[0];
+
+    await pool.query(
+      `DELETE FROM respostas
+       WHERE id_exame = $1
+         AND id_questao IN (SELECT id_questao FROM questoes WHERE id_modulo = $2)`,
+      [id_exame, id_modulo]
+    );
+
+    await pool.query(`UPDATE exames SET tentativa = 1 WHERE id_exame = $1`, [id_exame]);
+
+    return res.status(200).json({ message: "Tentativas do módulo zeradas com sucesso" });
+  } catch (error) {
+    console.error("Erro ao zerar módulo:", error);
+    return res.status(500).json({ message: "Erro interno" });
+  }
+});
+
+// Reinicia completamente: apaga todas as respostas e volta ao Módulo 1
+router.patch("/usuarios/:id/reiniciar", async (req, res) => {
+  try {
+    const pool = require("../database/db");
+    const idUsuario = Number(req.params.id);
+    if (!idUsuario) return res.status(400).json({ message: "id inválido" });
+
+    const exameRes = await pool.query(
+      `SELECT id_exame FROM exames WHERE id_usuario = $1 ORDER BY id_exame DESC LIMIT 1`,
+      [idUsuario]
+    );
+    if (!exameRes.rows[0]) return res.status(404).json({ message: "Exame não encontrado" });
+
+    const { id_exame } = exameRes.rows[0];
+
+    await pool.query(`DELETE FROM respostas WHERE id_exame = $1`, [id_exame]);
+
+    const grupoRes = await pool.query(
+      `SELECT grupo FROM questoes WHERE id_modulo = 1 AND grupo IS NOT NULL GROUP BY grupo ORDER BY grupo LIMIT 1`
+    );
+    const grupo = grupoRes.rows[0]?.grupo || 1;
+
+    await pool.query(
+      `UPDATE exames SET id_modulo = 1, grupo = $1, tentativa = 1 WHERE id_exame = $2`,
+      [grupo, id_exame]
+    );
+
+    return res.status(200).json({ message: "Usuário reiniciado para o Módulo 1 com sucesso" });
+  } catch (error) {
+    console.error("Erro ao reiniciar usuário:", error);
+    return res.status(500).json({ message: "Erro interno" });
+  }
+});
+
+// ================================
 //   QUESTÕES
 // ================================
 
