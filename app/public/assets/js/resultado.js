@@ -37,11 +37,11 @@ function popularResultado(dados) {
   badge.classList.remove('status-badge--aprovado', 'status-badge--reprovado');
   badge.classList.add(`status-badge--${status}`);
   atualizarTextoPontuacao(dados, status);
+  atualizarBotaoAvancar(dados);
 
   const pct = (dados.percentual ?? 0) + '%';
   document.getElementById('score-ring').style.setProperty('--score-percent', pct);
   document.getElementById('progresso-fill').style.width = pct;
-  atualizarMensagemResultado(dados, status);
 }
 
 function iniciarAnimacaoConclusao() {
@@ -134,6 +134,25 @@ function atualizarMensagemResultado(dados, status) {
   tagEl.textContent = tag;
   tituloEl.textContent = titulo;
   textoEl.textContent = texto;
+}
+
+function configurarBotoesResultado() {
+  const avancarBtn = document.getElementById('btn-avancar-modulo');
+  if (!avancarBtn) return;
+
+  avancarBtn.addEventListener('click', () => {
+    window.location.href = '../dashboard.html';
+  });
+}
+
+function atualizarBotaoAvancar(dados) {
+  const avancarBtn = document.getElementById('btn-avancar-modulo');
+  if (!avancarBtn) return;
+
+  const idModulo = Number(dados.idModulo);
+  const mostrar = dados.status === 'aprovado' && idModulo > 0 && idModulo < 5;
+
+  avancarBtn.hidden = !mostrar;
 }
 
 // ================================
@@ -247,4 +266,5 @@ if (raw) {
   sessionStorage.removeItem('resultado_exame');
 }
 
+configurarBotoesResultado();
 mostrarResultadoPronto();
