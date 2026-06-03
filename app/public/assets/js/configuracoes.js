@@ -189,11 +189,44 @@
     });
   }
 
-  // ── Stub: botão "Novo módulo" ──────────────────────────────────────
+  // ── Botão "Novo módulo" ────────────────────────────────────────────
   const btnNovoNivel = document.getElementById("btn-novo-nivel");
   if (btnNovoNivel) {
-    btnNovoNivel.addEventListener("click", function () {
-      mostrarToast("Formulário de módulo: em desenvolvimento (T17)", "erro");
+    btnNovoNivel.addEventListener("click", async function () {
+      const titulo = prompt("Informe o título do módulo:");
+
+      if (titulo === null) return;
+
+      const tituloLimpo = titulo.trim();
+
+      if (!tituloLimpo) {
+        mostrarToast("Informe o título do módulo.", "erro");
+        return;
+      }
+
+      try {
+        const response = await fetch("/api/admin/niveis", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + obterToken(),
+          },
+          body: JSON.stringify({ titulo: tituloLimpo }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          mostrarToast(data.message || "Erro ao criar módulo.", "erro");
+          return;
+        }
+
+        mostrarToast("Módulo criado com sucesso!", "sucesso");
+        carregarNiveis();
+      } catch (error) {
+        console.error(error);
+        mostrarToast("Erro de conexão ao criar módulo.", "erro");
+      }
     });
   }
 
@@ -270,42 +303,69 @@
       mostrarToast("Erro ao carregar questões.", "erro");
     }
   }
-  // ── Stub: popula tabela de módulos com dados de exemplo ────────────
-  function carregarNiveis() {
+  // ── Popula tabela de módulos ───────────────────────────────────────
+  async function carregarNiveis() {
     const tbody = document.getElementById("niveis-tbody");
     const vazio = document.getElementById("niveis-vazio");
     if (!tbody) return;
 
-    // Substituir por GET /api/admin/niveis quando T17 estiver pronto
-    const niveis = [
-      { id: 1, nome: "Manifesto Ágil", ordem: 1 },
-      { id: 2, nome: "Framework Scrum", ordem: 2 },
-    ];
+    try {
+      const token = obterToken();
 
-    if (!niveis.length) {
-      if (vazio) vazio.hidden = false;
-      return;
-    }
+      const response = await fetch("/api/admin/niveis", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
 
-    tbody.innerHTML = niveis
-      .map(function (n) {
-        return `
+      if (!response.ok) {
+        throw new Error("Erro ao carregar módulos");
+      }
+
+      const niveis = await response.json();
+
+      if (!niveis.length) {
+        tbody.innerHTML = "";
+        if (vazio) {
+          vazio.hidden = false;
+          vazio.textContent = "Nenhum módulo cadastrado.";
+        }
+        return;
+      }
+
+      if (vazio) vazio.hidden = true;
+
+      tbody.innerHTML = niveis
+        .map(function (n) {
+          return `
                 <tr>
-                    <td>${n.id}</td>
-                    <td>${n.nome}</td>
-                    <td>${n.ordem}</td>
+                    <td>${n.id_modulo}</td>
+                    <td>${escapeHtml(n.titulo)}</td>
+                    <td>${n.id_modulo}</td>
                     <td>
                         <div class="config-tabela-acoes">
                             <button class="btn-tabela btn-tabela--editar"
-                                    onclick="editarNivel(${n.id})">Editar</button>
+                                    onclick="editarNivel(${n.id_modulo})">Editar</button>
                             <button class="btn-tabela btn-tabela--excluir"
-                                    onclick="excluirNivel(${n.id})">Excluir</button>
+                                    onclick="excluirNivel(${n.id_modulo})">Excluir</button>
                         </div>
                     </td>
                 </tr>
             `;
-      })
-      .join("");
+        })
+        .join("");
+    } catch (error) {
+      console.error(error);
+
+      tbody.innerHTML = "";
+
+      if (vazio) {
+        vazio.hidden = false;
+        vazio.textContent = "Erro ao carregar módulos.";
+      }
+
+      mostrarToast("Erro ao carregar módulos.", "erro");
+    }
   }
 
   // ── Modal: Gerenciar Progresso ────────────────────────────────────
