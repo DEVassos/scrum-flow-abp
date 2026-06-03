@@ -53,12 +53,12 @@ function iniciarAnimacaoConclusao() {
 
   window.setTimeout(() => {
     overlay.classList.add('conclusao-modulo--saindo');
-  }, 1900);
+  }, 4200);
 
   window.setTimeout(() => {
     overlay.hidden = true;
     overlay.classList.remove('conclusao-modulo--ativo', 'conclusao-modulo--saindo');
-  }, 2400);
+  }, 5000);
 }
 
 function atualizarTextoPontuacao(dados, status) {
