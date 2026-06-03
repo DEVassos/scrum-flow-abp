@@ -20,7 +20,11 @@ if (nome) document.getElementById('nome-usuario').textContent = nome;
 //   POPULAR DADOS
 // ================================
 
+let resultadoDados = null;
+
 function popularResultado(dados) {
+  resultadoDados = dados;
+
   document.getElementById('pontuacao').textContent       = dados.acertos ?? '—';
   document.getElementById('acertos').textContent         = dados.acertos ?? '—';
   document.getElementById('total-questoes').textContent  = dados.total ?? '—';
@@ -37,6 +41,7 @@ function popularResultado(dados) {
   badge.classList.remove('status-badge--aprovado', 'status-badge--reprovado');
   badge.classList.add(`status-badge--${status}`);
   atualizarTextoPontuacao(dados, status);
+  atualizarMensagemResultado(dados, status);
   atualizarBotaoAvancar(dados);
 
   const pct = (dados.percentual ?? 0) + '%';
@@ -141,7 +146,12 @@ function configurarBotoesResultado() {
   if (!avancarBtn) return;
 
   avancarBtn.addEventListener('click', () => {
-    window.location.href = '../dashboard.html';
+    if (resultadoDados && Number(resultadoDados.idModulo) > 0 && Number(resultadoDados.idModulo) < 5) {
+      window.location.href = `../modulos.html?modulo=${Number(resultadoDados.idModulo) + 1}`;
+      return;
+    }
+
+    window.location.href = '../modulos.html';
   });
 }
 
