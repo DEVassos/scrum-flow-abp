@@ -17,7 +17,7 @@ async function listarQuestoes() {
       alternativa_correta,
       imagem
     FROM questoes
-    ORDER BY id_modulo ASC, grupo ASC, numero ASC, id_questao ASC
+    ORDER BY id_questao ASC
     `,
   );
 
