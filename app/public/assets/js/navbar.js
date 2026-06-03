@@ -44,7 +44,7 @@
 
     const nome = obterNome() || "Usuário";
     const payload = obterPayloadToken();
-    const perfil = payload.perfil === "admin" ? "Administrador" : "Estudante";
+    const perfil = String(payload.perfil || "").toLowerCase() === "admin" ? "Administrador" : "Estudante";
     const email = payload.email || "Conta Scrum Flow";
     const iniciais = obterIniciais(nome);
     const dashboardHref =
