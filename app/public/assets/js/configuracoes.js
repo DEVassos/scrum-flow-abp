@@ -114,26 +114,78 @@
   }
 
   if (formNovaQuestao) {
-    formNovaQuestao.addEventListener("submit", function (e) {
+    formNovaQuestao.addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const enunciado = document.getElementById("q-enunciado").value.trim();
       const modulo = document.getElementById("q-modulo").value;
+      const grupo = document.getElementById("q-grupo").value.trim();
+      const numero = document.getElementById("q-numero").value;
+      const dificuldade = document.getElementById("q-dificuldade").value;
+      const alternativaA = document.getElementById("q-alt-a").value.trim();
+      const alternativaB = document.getElementById("q-alt-b").value.trim();
+      const alternativaC = document.getElementById("q-alt-c").value.trim();
+      const alternativaD = document.getElementById("q-alt-d").value.trim();
       const correta = document.querySelector('input[name="correta"]:checked');
 
-      if (!enunciado || !modulo) {
-        mostrarToast("Preencha o enunciado e selecione o módulo.", "erro");
+      if (!enunciado || !modulo || !grupo || !numero || !dificuldade) {
+        mostrarToast(
+          "Preencha enunciado, módulo, grupo, número e dificuldade.",
+          "erro",
+        );
         return;
       }
+
+      if (!alternativaA || !alternativaB || !alternativaC || !alternativaD) {
+        mostrarToast("Preencha todas as alternativas.", "erro");
+        return;
+      }
+
       if (!correta) {
         mostrarToast("Marque qual alternativa é a correta.", "erro");
         return;
       }
 
-      // TODO (T16): POST /api/admin/questoes com os dados do form
-      mostrarToast("Questão criada! (integração pendente — T16)", "sucesso");
-      formNovaQuestao.reset();
-      formWrapper.hidden = true;
+      const dadosQuestao = {
+        id_modulo: Number(modulo),
+        grupo: grupo,
+        numero: Number(numero),
+        dificuldade: Number(dificuldade),
+        enunciado: enunciado,
+        alternativa_a: alternativaA,
+        alternativa_b: alternativaB,
+        alternativa_c: alternativaC,
+        alternativa_d: alternativaD,
+        alternativa_correta: correta.value,
+      };
+
+      try {
+        const response = await fetch("/api/admin/questoes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + obterToken(),
+          },
+          body: JSON.stringify(dadosQuestao),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          mostrarToast(data.message || "Erro ao criar questão.", "erro");
+          return;
+        }
+
+        mostrarToast("Questão criada com sucesso!", "sucesso");
+
+        formNovaQuestao.reset();
+        formWrapper.hidden = true;
+
+        carregarQuestoes();
+      } catch (error) {
+        console.error(error);
+        mostrarToast("Erro de conexão ao criar questão.", "erro");
+      }
     });
   }
 
