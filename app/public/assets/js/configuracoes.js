@@ -37,10 +37,31 @@
     navSaudacao.textContent = "Olá, " + (obterNome() || "");
   }
 
-  // ── Pré-preenche campos com dados da sessão ───────────────────────
-  const inputNome = document.getElementById("input-nome");
-  if (inputNome) {
-    inputNome.value = obterNome() || "";
+  // ── Carrega dados do usuário via API ─────────────────────────────
+  carregarDadosUsuario();
+
+  async function carregarDadosUsuario() {
+    try {
+      const response = await fetch("/api/usuarios/me", {
+        headers: { Authorization: "Bearer " + obterToken() },
+      });
+      if (!response.ok) return;
+      const usuario = await response.json();
+      const inputNome = document.getElementById("input-nome");
+      const inputEmail = document.getElementById("input-email");
+      const inputCpf = document.getElementById("input-cpf");
+      if (inputNome) inputNome.value = usuario.nome || "";
+      if (inputEmail) inputEmail.value = usuario.email || "";
+      if (inputCpf && usuario.cpf) inputCpf.value = formatarCpf(usuario.cpf);
+    } catch (e) {
+      console.error("Erro ao carregar dados do usuário:", e);
+    }
+  }
+
+  function formatarCpf(cpf) {
+    const s = String(cpf || "").replace(/\D/g, "");
+    if (s.length !== 11) return cpf;
+    return s.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   }
 
   // ── Exibe seção de admin se aplicável ────────────────────────────
@@ -55,7 +76,7 @@
   // ── Formulário: dados pessoais ────────────────────────────────────
   const formDados = document.getElementById("form-dados");
   if (formDados) {
-    formDados.addEventListener("submit", function (e) {
+    formDados.addEventListener("submit", async function (e) {
       e.preventDefault();
       const nome = document.getElementById("input-nome").value.trim();
       const email = document.getElementById("input-email").value.trim();
@@ -66,21 +87,49 @@
         return;
       }
 
-      // TODO (T15): PATCH /api/usuarios/:id com { nome, email, cpf }
-      mostrarToast("Dados salvos com sucesso!", "sucesso");
+      try {
+        const body = { nome, email };
+        if (cpf) body.cpf = cpf;
+
+        const response = await fetch("/api/usuarios/me", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + obterToken(),
+          },
+          body: JSON.stringify(body),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          mostrarToast(data.message || "Erro ao salvar dados.", "erro");
+          return;
+        }
+
+        mostrarToast("Dados salvos com sucesso!", "sucesso");
+      } catch (err) {
+        console.error(err);
+        mostrarToast("Erro de conexão ao salvar dados.", "erro");
+      }
     });
   }
 
   // ── Formulário: senha ─────────────────────────────────────────────
   const formSenha = document.getElementById("form-senha");
   if (formSenha) {
-    formSenha.addEventListener("submit", function (e) {
+    formSenha.addEventListener("submit", async function (e) {
       e.preventDefault();
+      const senhaAtual = document.getElementById("input-senha-atual").value;
       const nova = document.getElementById("input-nova-senha").value;
       const confirmar = document.getElementById("input-confirmar-senha").value;
 
+      if (!senhaAtual) {
+        mostrarToast("Informe a senha atual.", "erro");
+        return;
+      }
       if (nova.trim().length < 8) {
-        mostrarToast("A senha deve ter no mínimo 8 caracteres.", "erro");
+        mostrarToast("A nova senha deve ter no mínimo 8 caracteres.", "erro");
         return;
       }
       if (nova !== confirmar) {
@@ -88,9 +137,29 @@
         return;
       }
 
-      // TODO (T15): PATCH /api/usuarios/:id/senha com { senha: nova }
-      mostrarToast("Senha alterada com sucesso!", "sucesso");
-      formSenha.reset();
+      try {
+        const response = await fetch("/api/usuarios/me/senha", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + obterToken(),
+          },
+          body: JSON.stringify({ senha_atual: senhaAtual, nova_senha: nova }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          mostrarToast(data.message || "Erro ao alterar senha.", "erro");
+          return;
+        }
+
+        mostrarToast("Senha alterada com sucesso!", "sucesso");
+        formSenha.reset();
+      } catch (err) {
+        console.error(err);
+        mostrarToast("Erro de conexão ao alterar senha.", "erro");
+      }
     });
   }
 
