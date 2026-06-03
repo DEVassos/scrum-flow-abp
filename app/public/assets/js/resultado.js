@@ -20,7 +20,11 @@ if (nome) document.getElementById('nome-usuario').textContent = nome;
 //   POPULAR DADOS
 // ================================
 
+let resultadoDados = null;
+
 function popularResultado(dados) {
+  resultadoDados = dados;
+
   document.getElementById('pontuacao').textContent       = dados.acertos ?? '—';
   document.getElementById('acertos').textContent         = dados.acertos ?? '—';
   document.getElementById('total-questoes').textContent  = dados.total ?? '—';
@@ -37,11 +41,12 @@ function popularResultado(dados) {
   badge.classList.remove('status-badge--aprovado', 'status-badge--reprovado');
   badge.classList.add(`status-badge--${status}`);
   atualizarTextoPontuacao(dados, status);
+  atualizarMensagemResultado(dados, status);
+  atualizarBotaoAvancar(dados);
 
   const pct = (dados.percentual ?? 0) + '%';
   document.getElementById('score-ring').style.setProperty('--score-percent', pct);
   document.getElementById('progresso-fill').style.width = pct;
-  atualizarMensagemResultado(dados, status);
 }
 
 function iniciarAnimacaoConclusao() {
@@ -134,6 +139,30 @@ function atualizarMensagemResultado(dados, status) {
   tagEl.textContent = tag;
   tituloEl.textContent = titulo;
   textoEl.textContent = texto;
+}
+
+function configurarBotoesResultado() {
+  const avancarBtn = document.getElementById('btn-avancar-modulo');
+  if (!avancarBtn) return;
+
+  avancarBtn.addEventListener('click', () => {
+    if (resultadoDados && Number(resultadoDados.idModulo) > 0 && Number(resultadoDados.idModulo) < 5) {
+      window.location.href = `../modulos.html?modulo=${Number(resultadoDados.idModulo) + 1}`;
+      return;
+    }
+
+    window.location.href = '../modulos.html';
+  });
+}
+
+function atualizarBotaoAvancar(dados) {
+  const avancarBtn = document.getElementById('btn-avancar-modulo');
+  if (!avancarBtn) return;
+
+  const idModulo = Number(dados.idModulo);
+  const mostrar = dados.status === 'aprovado' && idModulo > 0 && idModulo < 5;
+
+  avancarBtn.hidden = !mostrar;
 }
 
 // ================================
@@ -247,4 +276,5 @@ if (raw) {
   sessionStorage.removeItem('resultado_exame');
 }
 
+configurarBotoesResultado();
 mostrarResultadoPronto();
