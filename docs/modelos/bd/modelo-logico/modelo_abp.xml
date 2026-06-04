@@ -1,6 +1,6 @@
 <DBMODEL Version="4.0">
 <SETTINGS>
-<GLOBALSETTINGS ModelName="MODELO LOGICO" IDModel="0" IDVersion="0" VersionStr="1.0.0.0" Comments="" UseVersionHistroy="1" AutoIncVersion="1" DatabaseType="MySQL" ZoomFac="100.00" XPos="0" YPos="77" DefaultDataType="5" DefaultTablePrefix="0" DefSaveDBConn="" DefSyncDBConn="" DefQueryDBConn="" Printer="" HPageCount="4.0" PageAspectRatio="1.440892512336408" PageOrientation="1" PageFormat="A4 (210x297 mm, 8.26x11.7 inches)" SelectedPages="" UsePositionGrid="0" PositionGridX="20" PositionGridY="20" TableNameInRefs="1" DefaultTableType="0" ActivateRefDefForNewRelations="1" FKPrefix="" FKPostfix="" CreateFKRefDefIndex="1" DBQuoteCharacter="`" CreateSQLforLinkedObjects="0" DefModelFont="Tahoma" CanvasWidth="4096" CanvasHeight="2842"/>
+<GLOBALSETTINGS ModelName="MODELO LOGICO" IDModel="0" IDVersion="0" VersionStr="1.0.0.0" Comments="" UseVersionHistroy="1" AutoIncVersion="1" DatabaseType="MySQL" ZoomFac="75.00" XPos="0" YPos="0" DefaultDataType="5" DefaultTablePrefix="0" DefSaveDBConn="" DefSyncDBConn="" DefQueryDBConn="" Printer="" HPageCount="4.0" PageAspectRatio="1.440892512336408" PageOrientation="1" PageFormat="A4 (210x297 mm, 8.26x11.7 inches)" SelectedPages="" UsePositionGrid="0" PositionGridX="20" PositionGridY="20" TableNameInRefs="1" DefaultTableType="0" ActivateRefDefForNewRelations="1" FKPrefix="" FKPostfix="" CreateFKRefDefIndex="1" DBQuoteCharacter="`" CreateSQLforLinkedObjects="0" DefModelFont="Tahoma" CanvasWidth="4096" CanvasHeight="2842"/>
 <DATATYPEGROUPS>
 <DATATYPEGROUP Name="Numeric Types" Icon="1"/>
 <DATATYPEGROUP Name="Date and Time Types" Icon="2"/>
@@ -266,6 +266,9 @@
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
+<COLUMN ID="2100" ColName="is_admin" PrevColName="" Pos="5" idDatatype="22" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<OPTIONSELECTED> </OPTIONSELECTED>
+</COLUMN>
 </COLUMNS>
 <RELATIONS_START>
 <RELATION_START ID="2080"/>
@@ -310,7 +313,7 @@
 </INDEX>
 </INDICES>
 </TABLE>
-<TABLE ID="2020" Tablename="questoes" PrevTableName="Table_03" XPos="950" YPos="116" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="3">
+<TABLE ID="2020" Tablename="questoes" PrevTableName="Table_03" XPos="948" YPos="117" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="3">
 <COLUMNS>
 <COLUMN ID="2021" ColName="id_questao" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
@@ -318,14 +321,15 @@
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2022" ColName="id_modulo" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<COLUMN ID="2022" ColName="id_modulo" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1"/>
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2023" ColName="grupo" PrevColName="" Pos="2" idDatatype="20" DatatypeParams="(20)" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<COLUMN ID="2023" ColName="grupo" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
+<OPTIONSELECT Value="1"/>
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
@@ -371,6 +375,7 @@
 <INDEX ID="2032" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="2021" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2022" LengthParam="0"/>
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="2033" IndexName="questoes_FKIndex1" IndexKind="1" FKRefDef_Obj_id="2081">
@@ -380,7 +385,7 @@
 </INDEX>
 </INDICES>
 </TABLE>
-<TABLE ID="2040" Tablename="exames" PrevTableName="Table_04" XPos="437" YPos="524" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="4">
+<TABLE ID="2040" Tablename="exames" PrevTableName="Table_04" XPos="439" YPos="521" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="" Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="4">
 <COLUMNS>
 <COLUMN ID="2041" ColName="id_exame" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
@@ -388,20 +393,21 @@
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2042" ColName="id_usuario" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<COLUMN ID="2042" ColName="id_usuario" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1"/>
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2043" ColName="id_modulo" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<COLUMN ID="2043" ColName="id_modulo" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1"/>
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2044" ColName="grupo" PrevColName="" Pos="3" idDatatype="20" DatatypeParams="(20)" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
+<COLUMN ID="2044" ColName="grupo" PrevColName="" Pos="3" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="0" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
+<OPTIONSELECT Value="1"/>
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
@@ -428,6 +434,8 @@
 <INDEX ID="2048" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="2041" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2042" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2043" LengthParam="0"/>
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="2049" IndexName="exames_FKIndex1" IndexKind="1" FKRefDef_Obj_id="2080">
@@ -450,13 +458,31 @@
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2062" ColName="id_exame" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<COLUMN ID="2062" ColName="id_exame" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1"/>
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2063" ColName="id_questao" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<COLUMN ID="2063" ColName="id_questao" PrevColName="" Pos="2" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1"/>
+<OPTIONSELECT Value="0"/>
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="2102" ColName="exames_id_modulo" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1"/>
+<OPTIONSELECT Value="0"/>
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="2101" ColName="exames_id_usuario" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
+<OPTIONSELECTED>
+<OPTIONSELECT Value="1"/>
+<OPTIONSELECT Value="0"/>
+</OPTIONSELECTED>
+</COLUMN>
+<COLUMN ID="2103" ColName="questoes_id_modulo" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1"/>
 <OPTIONSELECT Value="0"/>
@@ -482,21 +508,29 @@
 <INDEX ID="2067" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="2061" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2062" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2063" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2102" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2101" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2103" LengthParam="0"/>
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="2068" IndexName="respostas_FKIndex1" IndexKind="1" FKRefDef_Obj_id="2083">
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="2062" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2101" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2102" LengthParam="0"/>
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="2069" IndexName="respostas_FKIndex2" IndexKind="1" FKRefDef_Obj_id="2084">
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="2063" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2103" LengthParam="0"/>
 </INDEXCOLUMNS>
 </INDEX>
 </INDICES>
 </TABLE>
-<TABLE ID="2090" Tablename="certificados" PrevTableName="Table_06" XPos="41" YPos="563" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="Armazena os certificados emitidos para o usuário, conforme RF09." Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="6">
+<TABLE ID="2090" Tablename="certificados" PrevTableName="Table_06" XPos="41" YPos="563" TableType="0" TablePrefix="0" nmTable="0" Temporary="0" UseStandardInserts="0" StandardInserts="\n" TableOptions="DelayKeyTblUpdates=0\nPackKeys=0\nRowChecksum=0\nRowFormat=0\nUseRaid=0\nRaidType=0\n" Comments="Armazena os certificados emitidos para o usu\195\161rio, conforme RF09." Collapsed="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="6">
 <COLUMNS>
 <COLUMN ID="2091" ColName="id_certificado" PrevColName="" Pos="0" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="1" IsForeignKey="0" DefaultValue="" Comments="">
 <OPTIONSELECTED>
@@ -504,16 +538,16 @@
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2092" ColName="id_usuario" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="Usuário dono do certificado.">
+<COLUMN ID="2092" ColName="id_usuario" PrevColName="" Pos="1" idDatatype="5" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="1" NotNull="1" AutoInc="0" IsForeignKey="1" DefaultValue="" Comments="Usu\195\161rio dono do certificado.">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="1"/>
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2093" ColName="data_emissao" PrevColName="" Pos="2" idDatatype="15" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="Data/hora de emissão do certificado.">
+<COLUMN ID="2093" ColName="data_emissao" PrevColName="" Pos="2" idDatatype="15" DatatypeParams="" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="Data/hora de emiss\195\163o do certificado.">
 <OPTIONSELECTED> </OPTIONSELECTED>
 </COLUMN>
-<COLUMN ID="2094" ColName="media_final" PrevColName="" Pos="3" idDatatype="13" DatatypeParams="(5,2)" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="Média final do usuário.">
+<COLUMN ID="2094" ColName="media_final" PrevColName="" Pos="3" idDatatype="13" DatatypeParams="(5,2)" Width="-1" Prec="-1" PrimaryKey="0" NotNull="1" AutoInc="0" IsForeignKey="0" DefaultValue="" Comments="M\195\169dia final do usu\195\161rio.">
 <OPTIONSELECTED>
 <OPTIONSELECT Value="0"/>
 </OPTIONSELECTED>
@@ -526,6 +560,7 @@
 <INDEX ID="2095" IndexName="PRIMARY" IndexKind="0" FKRefDef_Obj_id="-1">
 <INDEXCOLUMNS>
 <INDEXCOLUMN idColumn="2091" LengthParam="0"/>
+<INDEXCOLUMN idColumn="2092" LengthParam="0"/>
 </INDEXCOLUMNS>
 </INDEX>
 <INDEX ID="2096" IndexName="certificados_FKIndex1" IndexKind="1" FKRefDef_Obj_id="2097">
@@ -537,12 +572,12 @@
 </TABLE>
 </TABLES>
 <RELATIONS>
-<RELATION ID="2080" RelationName="Rel_01" Kind="1" SrcTable="2000" DestTable="2040" FKFields="id_usuario=id_usuario\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="2049" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="6"/>
+<RELATION ID="2080" RelationName="Rel_01" Kind="1" SrcTable="2000" DestTable="2040" FKFields="id_usuario=id_usuario\n" FKFieldsComments="\n" relDirection="2" MidOffset="43" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="2049" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="6"/>
 <RELATION ID="2081" RelationName="Rel_02" Kind="1" SrcTable="2010" DestTable="2020" FKFields="id_modulo=id_modulo\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="2033" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="7"/>
 <RELATION ID="2082" RelationName="Rel_03" Kind="1" SrcTable="2010" DestTable="2040" FKFields="id_modulo=id_modulo\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="2050" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="8"/>
-<RELATION ID="2083" RelationName="Rel_04" Kind="1" SrcTable="2040" DestTable="2060" FKFields="id_exame=id_exame\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="2068" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="9"/>
-<RELATION ID="2084" RelationName="Rel_05" Kind="1" SrcTable="2020" DestTable="2060" FKFields="id_questao=id_questao\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="2069" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="10"/>
-<RELATION ID="2097" RelationName="usuarios_1n_certificados" Kind="1" SrcTable="2000" DestTable="2090" FKFields="id_usuario=id_usuario\n" FKFieldsComments="\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="Um usuário pode ter certificados emitidos; cada certificado pertence a um usuário." FKRefDefIndex_Obj_id="2096" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="11"/>
+<RELATION ID="2083" RelationName="Rel_04" Kind="1" SrcTable="2040" DestTable="2060" FKFields="id_exame=id_exame\nid_usuario=exames_id_usuario\nid_modulo=exames_id_modulo\n" FKFieldsComments="\n\n\n" relDirection="2" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="2068" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="9"/>
+<RELATION ID="2084" RelationName="Rel_05" Kind="1" SrcTable="2020" DestTable="2060" FKFields="id_questao=id_questao\nid_modulo=questoes_id_modulo\n" FKFieldsComments="\n\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="" FKRefDefIndex_Obj_id="2069" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="10"/>
+<RELATION ID="2097" RelationName="usuarios_1n_certificados" Kind="1" SrcTable="2000" DestTable="2090" FKFields="id_usuario=id_usuario\n" FKFieldsComments="\n" relDirection="3" MidOffset="0" OptionalStart="0" OptionalEnd="0" CaptionOffsetX="0" CaptionOffsetY="0" StartIntervalOffsetX="0" StartIntervalOffsetY="0" EndIntervalOffsetX="0" EndIntervalOffsetY="0" CreateRefDef="1" Invisible="0" RefDef="Matching=0\nOnDelete=3\nOnUpdate=3\n" Comments="Um usu\195\161rio pode ter certificados emitidos; cada certificado pertence a um usu\195\161rio." FKRefDefIndex_Obj_id="2096" Splitted="0" IsLinkedObject="0" IDLinkedModel="-1" Obj_id_Linked="-1" OrderPos="11"/>
 </RELATIONS>
 <NOTES> </NOTES>
 <IMAGES> </IMAGES>
