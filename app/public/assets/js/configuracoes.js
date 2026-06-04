@@ -168,17 +168,26 @@
   const formWrapper = document.getElementById("form-nova-questao-wrapper");
   const btnCancelar = document.getElementById("btn-cancelar-questao");
   const formNovaQuestao = document.getElementById("form-nova-questao");
+  const btnSalvarQuestao = formNovaQuestao
+    ? formNovaQuestao.querySelector('button[type="submit"]')
+    : null;
+  let questaoEmEdicaoId = null;
 
   if (btnNovaQuestao && formWrapper) {
     btnNovaQuestao.addEventListener("click", function () {
+      if (questaoEmEdicaoId !== null) {
+        limparFormularioQuestao();
+        formWrapper.hidden = false;
+        return;
+      }
+
       formWrapper.hidden = !formWrapper.hidden;
     });
   }
 
   if (btnCancelar && formWrapper) {
     btnCancelar.addEventListener("click", function () {
-      formWrapper.hidden = true;
-      if (formNovaQuestao) formNovaQuestao.reset();
+      limparFormularioQuestao();
     });
   }
 
@@ -186,51 +195,18 @@
     formNovaQuestao.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const enunciado = document.getElementById("q-enunciado").value.trim();
-      const modulo = document.getElementById("q-modulo").value;
-      const grupo = document.getElementById("q-grupo").value.trim();
-      const numero = document.getElementById("q-numero").value;
-      const dificuldade = document.getElementById("q-dificuldade").value;
-      const alternativaA = document.getElementById("q-alt-a").value.trim();
-      const alternativaB = document.getElementById("q-alt-b").value.trim();
-      const alternativaC = document.getElementById("q-alt-c").value.trim();
-      const alternativaD = document.getElementById("q-alt-d").value.trim();
-      const correta = document.querySelector('input[name="correta"]:checked');
+      const dadosQuestao = obterDadosFormularioQuestao();
+      if (!dadosQuestao) return;
 
-      if (!enunciado || !modulo || !grupo || !numero || !dificuldade) {
-        mostrarToast(
-          "Preencha enunciado, módulo, grupo, número e dificuldade.",
-          "erro",
-        );
-        return;
-      }
-
-      if (!alternativaA || !alternativaB || !alternativaC || !alternativaD) {
-        mostrarToast("Preencha todas as alternativas.", "erro");
-        return;
-      }
-
-      if (!correta) {
-        mostrarToast("Marque qual alternativa é a correta.", "erro");
-        return;
-      }
-
-      const dadosQuestao = {
-        id_modulo: Number(modulo),
-        grupo: grupo,
-        numero: Number(numero),
-        dificuldade: Number(dificuldade),
-        enunciado: enunciado,
-        alternativa_a: alternativaA,
-        alternativa_b: alternativaB,
-        alternativa_c: alternativaC,
-        alternativa_d: alternativaD,
-        alternativa_correta: correta.value,
-      };
+      const editando = questaoEmEdicaoId !== null;
+      const url = editando
+        ? "/api/admin/questoes/" + questaoEmEdicaoId
+        : "/api/admin/questoes";
+      const method = editando ? "PUT" : "POST";
 
       try {
-        const response = await fetch("/api/admin/questoes", {
-          method: "POST",
+        const response = await fetch(url, {
+          method: method,
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + obterToken(),
@@ -241,21 +217,124 @@
         const data = await response.json();
 
         if (!response.ok) {
-          mostrarToast(data.message || "Erro ao criar questão.", "erro");
+          mostrarToast(
+            data.message ||
+              (editando ? "Erro ao atualizar questão." : "Erro ao criar questão."),
+            "erro",
+          );
           return;
         }
 
-        mostrarToast("Questão criada com sucesso!", "sucesso");
+        mostrarToast(
+          editando
+            ? "Questão atualizada com sucesso!"
+            : "Questão criada com sucesso!",
+          "sucesso",
+        );
 
-        formNovaQuestao.reset();
-        formWrapper.hidden = true;
-
+        limparFormularioQuestao();
         carregarQuestoes();
       } catch (error) {
         console.error(error);
-        mostrarToast("Erro de conexão ao criar questão.", "erro");
+        mostrarToast(
+          editando
+            ? "Erro de conexão ao atualizar questão."
+            : "Erro de conexão ao criar questão.",
+          "erro",
+        );
       }
     });
+  }
+
+  function obterDadosFormularioQuestao() {
+    const enunciado = document.getElementById("q-enunciado").value.trim();
+    const modulo = document.getElementById("q-modulo").value;
+    const grupo = document.getElementById("q-grupo").value.trim();
+    const numero = document.getElementById("q-numero").value;
+    const dificuldade = document.getElementById("q-dificuldade").value;
+    const alternativaA = document.getElementById("q-alt-a").value.trim();
+    const alternativaB = document.getElementById("q-alt-b").value.trim();
+    const alternativaC = document.getElementById("q-alt-c").value.trim();
+    const alternativaD = document.getElementById("q-alt-d").value.trim();
+    const correta = document.querySelector('input[name="correta"]:checked');
+
+    if (!enunciado || !modulo || !grupo || !numero || !dificuldade) {
+      mostrarToast(
+        "Preencha enunciado, módulo, grupo, número e dificuldade.",
+        "erro",
+      );
+      return null;
+    }
+
+    if (!alternativaA || !alternativaB || !alternativaC || !alternativaD) {
+      mostrarToast("Preencha todas as alternativas.", "erro");
+      return null;
+    }
+
+    if (!correta) {
+      mostrarToast("Marque qual alternativa é a correta.", "erro");
+      return null;
+    }
+
+    return {
+      id_modulo: Number(modulo),
+      grupo: grupo,
+      numero: Number(numero),
+      dificuldade: Number(dificuldade),
+      enunciado: enunciado,
+      alternativa_a: alternativaA,
+      alternativa_b: alternativaB,
+      alternativa_c: alternativaC,
+      alternativa_d: alternativaD,
+      alternativa_correta: correta.value,
+    };
+  }
+
+  function preencherFormularioQuestao(questao) {
+    document.getElementById("q-enunciado").value = questao.enunciado || "";
+    document.getElementById("q-modulo").value = questao.id_modulo || "";
+    document.getElementById("q-grupo").value = questao.grupo || "";
+    document.getElementById("q-numero").value = questao.numero || "";
+    document.getElementById("q-dificuldade").value = normalizarDificuldade(
+      questao.dificuldade,
+    );
+    document.getElementById("q-alt-a").value = questao.alternativa_a || "";
+    document.getElementById("q-alt-b").value = questao.alternativa_b || "";
+    document.getElementById("q-alt-c").value = questao.alternativa_c || "";
+    document.getElementById("q-alt-d").value = questao.alternativa_d || "";
+
+    const correta = String(questao.alternativa_correta || "").toLowerCase();
+    const radioCorreta = document.querySelector(
+      'input[name="correta"][value="' + correta + '"]',
+    );
+    if (radioCorreta) radioCorreta.checked = true;
+  }
+
+  function normalizarDificuldade(dificuldade) {
+    const valor = String(dificuldade || "").toLowerCase();
+    if (valor === "fácil" || valor === "facil") return "1";
+    if (valor === "média" || valor === "media") return "2";
+    if (valor === "difícil" || valor === "dificil") return "3";
+    return valor;
+  }
+
+  function entrarModoEdicaoQuestao(idQuestao, questao) {
+    questaoEmEdicaoId = idQuestao;
+    preencherFormularioQuestao(questao);
+    if (btnSalvarQuestao) btnSalvarQuestao.textContent = "Salvar questão";
+    if (formWrapper) formWrapper.hidden = false;
+    formNovaQuestao.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function sairModoEdicaoQuestao() {
+    questaoEmEdicaoId = null;
+    if (btnSalvarQuestao) btnSalvarQuestao.textContent = "Salvar questão";
+  }
+
+  function limparFormularioQuestao() {
+    sairModoEdicaoQuestao();
+    if (formNovaQuestao) formNovaQuestao.reset();
+    if (formWrapper) formWrapper.hidden = true;
   }
 
   // ── Botão "Novo módulo" ────────────────────────────────────────────
@@ -600,11 +679,55 @@
   };
 
   // ── Ações das tabelas (expostas no escopo global pelo onclick) ────
-  window.editarQuestao = function () {
-    mostrarToast("Edição de questão: em desenvolvimento (T16)", "erro");
+  window.editarQuestao = async function (idQuestao) {
+    try {
+      const response = await fetch("/api/admin/questoes/" + idQuestao, {
+        headers: {
+          Authorization: "Bearer " + obterToken(),
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        mostrarToast(data.message || "Erro ao buscar questão.", "erro");
+        return;
+      }
+
+      entrarModoEdicaoQuestao(idQuestao, data);
+    } catch (error) {
+      console.error(error);
+      mostrarToast("Erro de conexão ao buscar questão.", "erro");
+    }
   };
-  window.excluirQuestao = function () {
-    mostrarToast("Exclusão de questão: em desenvolvimento (T16)", "erro");
+  window.excluirQuestao = async function (idQuestao) {
+    if (!confirm("Deseja excluir esta questão?")) return;
+
+    try {
+      const response = await fetch("/api/admin/questoes/" + idQuestao, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + obterToken(),
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        mostrarToast(data.message || "Erro ao excluir questão.", "erro");
+        return;
+      }
+
+      if (questaoEmEdicaoId === idQuestao) {
+        limparFormularioQuestao();
+      }
+
+      mostrarToast(data.message || "Questão excluída com sucesso!", "sucesso");
+      carregarQuestoes();
+    } catch (error) {
+      console.error(error);
+      mostrarToast("Erro de conexão ao excluir questão.", "erro");
+    }
   };
   window.editarNivel = function () {
     mostrarToast("Edição de módulo: em desenvolvimento (T17)", "erro");
