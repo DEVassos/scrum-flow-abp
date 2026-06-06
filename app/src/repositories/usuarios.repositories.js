@@ -38,7 +38,9 @@ async function findGrupoAleatorio(client, id_modulo) {
     `
         SELECT grupo 
         FROM questoes
-        WHERE id_modulo = $1 AND grupo IS NOT NULL
+        WHERE id_modulo = $1 
+        AND grupo IS NOT NULL
+        AND grupo <> 0
         GROUP BY grupo
         ORDER BY RANDOM()
         LIMIT 1

@@ -249,8 +249,8 @@
   function obterDadosFormularioQuestao() {
     const enunciado = document.getElementById("q-enunciado").value.trim();
     const modulo = document.getElementById("q-modulo").value;
-    const grupo = document.getElementById("q-grupo").value.trim();
-    const numero = document.getElementById("q-numero").value;
+    const grupo = 0;
+    const numero = 0;
     const dificuldade = document.getElementById("q-dificuldade").value;
     const alternativaA = document.getElementById("q-alt-a").value.trim();
     const alternativaB = document.getElementById("q-alt-b").value.trim();
