@@ -165,3 +165,8 @@ DO UPDATE SET
   alternativa_c = EXCLUDED.alternativa_c,
   alternativa_d = EXCLUDED.alternativa_d,
   imagem = EXCLUDED.imagem;
+
+SELECT setval(
+  pg_get_serial_sequence('questoes', 'id_questao'),
+  (SELECT COALESCE(MAX(id_questao), 1) FROM questoes)
+);

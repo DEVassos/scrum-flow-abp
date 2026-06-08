@@ -554,6 +554,22 @@ function atualizarBotoes(modulo) {
   });
 
   botoesAcao.append(botaoProva);
+
+  if (modulo.status === "concluido") {
+    const proximoExiste = modulos.some((m) => m.id === modulo.id + 1);
+    if (proximoExiste) {
+      const botaoAvancar = document.createElement("button");
+      botaoAvancar.className = "btn btn-primary btn-next-module";
+      botaoAvancar.type = "button";
+      botaoAvancar.textContent = "Avançar para o próximo módulo";
+      botaoAvancar.addEventListener("click", () => {
+        window.location.href = `modulos.html?modulo=${modulo.id + 1}`;
+      });
+
+      botaoAvancar.style.marginLeft = "auto";
+      botoesAcao.append(botaoAvancar);
+    }
+  }
 }
 
 function atualizarProgressoGeral() {
