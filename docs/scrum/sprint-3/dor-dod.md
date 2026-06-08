@@ -52,6 +52,7 @@ Um item é considerado **Pronto (Done)** quando atende a **todos** os critérios
 | Autenticação e Sessão | ✅ | Decisões do PO confirmadas (reset via admin, excluir "Lembrar de mim") |
 | Documentação | ✅ | Escopo definido; dependente de código estável para diagramas UML |
 | Gamificação (Extensão Opcional) | ✅ | Escopo definido como stretch goal |
+| Escopo Incremental pós-Planning (S3_T55–S3_T61) | ✅ | 13 SP adicionados em 01/06; tarefas identificadas pelos devs durante execução da US09 e Bug Fixes; responsáveis e estimativas definidos na daily de 01/06 |
 
 <div align="center">
   <a href="sprint-3.md">← Voltar à Sprint 3</a>

@@ -24,14 +24,16 @@
             <span></span>
             <span></span>
         </div>
-        <div class="conclusao-celebracao">
-            <p class="conclusao-celebracao__titulo">Módulo Concluído!</p>
-            <img
-                src="../../assets/img/astronauta_feliz.png"
-                alt="Astronauta comemorando"
-                class="conclusao-celebracao__astronauta"
-            >
-            <p class="conclusao-celebracao__subtitulo">Você avançou para o próximo módulo</p>
+        <div class="conclusao-modulo__card">
+            <div class="conclusao-modulo__icone" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" viewBox="0 0 16 16">
+                    <path
+                        d="M13.485 1.929a.75.75 0 0 1 .086 1.057l-7.25 8.5a.75.75 0 0 1-1.11.037L2.28 8.59a.75.75 0 1 1 1.06-1.06l2.358 2.357 6.73-7.872a.75.75 0 0 1 1.057-.086" />
+                </svg>
+            </div>
+            <span class="conclusao-modulo__tag">Módulo concluído</span>
+            <strong>Você liberou o próximo passo</strong>
+            <p>Seu progresso foi salvo. Continue para o dashboard e avance na trilha Scrum.</p>
         </div>
     </div>
 
@@ -42,11 +44,11 @@
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-links">
                     <li><a href="../index.html" class="nav-link">Home</a></li>
-                    <li><a href="../sobre.html" class="nav-link">Sobre</a></li>
                     <li><a href="../manifesto.html" class="nav-link">Manifesto</a></li>
                     <li><a href="../scrum.html" class="nav-link">Scrum</a></li>
                     <li id="nav-dashboard"><a href="../dashboard.html" class="nav-link">Dashboard</a></li>
-                </ul>
+                    <li><a href="../sobre.html" class="nav-link">Sobre</a></li>
+</ul>
 
                 <div class="navbar__actions">
                     <div id="nav-deslogado">
@@ -142,7 +144,11 @@
 
         <!-- Ações -->
         <div class="resultado-actions">
-            <a href="../dashboard.html" class="btn btn-primary">Voltar ao Dashboard</a>
+            <a href="../dashboard.html" class="btn btn-ghost">Voltar ao Dashboard</a>
+            <button id="btn-avancar-modulo" class="btn btn-primary btn-next-module" hidden>
+                Avançar para o próximo módulo
+                <span class="btn-next-module__icon" aria-hidden="true">→</span>
+            </button>
         </div>
 
     </main>
