@@ -99,11 +99,11 @@
 ### US04 — Controle de Tentativas por Módulo
 > **Como** usuário autenticado, **quero** ter até 2 tentativas por módulo, **para** poder tentar melhorar meu desempenho caso não obtenha uma boa nota na primeira tentativa.
 
-- [ ] O sistema informa ao usuário quantas tentativas restam antes de iniciar a avaliação
-- [ ] Após a 2ª tentativa, o botão de iniciar avaliação é bloqueado para aquele módulo
-- [ ] O controle de tentativas é validado no back-end — não pode ser burlado pelo front-end
-- [ ] A nota considerada para o resultado final é sempre a maior entre as tentativas realizadas
-- [ ] O usuário poderá realizar novas tentativas apenas depois de revisar o material do módulo
+- [x] O sistema informa ao usuário quantas tentativas restam antes de iniciar a avaliação
+- [x] Após a 2ª tentativa, o botão de iniciar avaliação é bloqueado para aquele módulo
+- [x] O controle de tentativas é validado no back-end — não pode ser burlado pelo front-end
+- [x] A nota considerada para o resultado final é sempre a maior entre as tentativas realizadas
+- [x] O usuário poderá realizar novas tentativas apenas depois de revisar o material do módulo
 
 **RF relacionado:** RF06, RF07 | **Aceito por:** Product Owner (validar na Sprint Review)
 
