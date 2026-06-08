@@ -331,7 +331,7 @@ body[data-resultado-status="reprovado"] .score-number {
 }
 
 .conclusao-modulo--saindo {
-    animation: conclusaoFadeOut 0.36s ease both;
+    animation: conclusaoFadeOut 0.8s ease both;
 }
 
 .conclusao-modulo__card {
@@ -465,6 +465,66 @@ body[data-resultado-status="reprovado"] .score-number {
 .conclusao-modulo__efeitos span:first-child {
     --x: 112px;
     --y: -8px;
+}
+
+/* ================================
+   CELEBRAÇÃO COM ASTRONAUTA
+   ================================ */
+
+.conclusao-celebracao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.conclusao-celebracao__titulo {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+    text-shadow: 0 0 32px rgba(245, 158, 11, 0.6);
+    opacity: 0;
+    animation: conclusaoFadeIn 0.4s 0.2s ease both;
+}
+
+.conclusao-celebracao__astronauta {
+    width: 280px;
+    max-width: 55vw;
+    filter: drop-shadow(0 8px 32px rgba(245, 158, 11, 0.45));
+    opacity: 0;
+    animation:
+        astronautaEntrada 0.6s 0.1s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+        astronautaFlutua 2.5s 0.7s ease-in-out infinite;
+}
+
+.conclusao-celebracao__subtitulo {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--amber-400);
+    margin: 0;
+    opacity: 0;
+    animation: conclusaoFadeIn 0.4s 0.5s ease both;
+}
+
+@keyframes astronautaEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(70px) scale(0.75);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes astronautaFlutua {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50%       { transform: translateY(-18px) rotate(3deg); }
 }
 
 @keyframes conclusaoFadeIn {

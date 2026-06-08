@@ -12,6 +12,8 @@
   flex-direction: column;
   padding-top: 80px;
   padding-bottom: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .questao-imagem {

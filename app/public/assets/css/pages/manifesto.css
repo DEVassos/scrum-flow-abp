@@ -1,5 +1,12 @@
 @import url("../global.css");
 
+.manifesto-hero,
+.principios-lista,
+.manifesto-footer {
+    position: relative;
+    z-index: 1;
+}
+
 /* ================================
    HERO
    ================================ */

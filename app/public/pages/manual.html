@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual do Usuário — ScrumFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Importação das fontes oficiais do ScrumFlow: Poppins e Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#0a1530; --navy-800:#0d1c40; --navy-700:#13264f; --navy-600:#1b3361;
+    --orange:#f5a623; --orange-600:#e08e15; --teal:#27b9a2; --teal-soft:#d4f3ee;
+    --ink:#16203a; --ink-soft:#475176; --line:#e6e3da; --line-soft:#efece4;
+    --paper:#fbfaf6; --card:#ffffff; --amber-soft:#fdf3dd; --amber-line:#f0d79a;
+    --red-soft:#fdeceb; --red-line:#f3c5c1; --red:#c0432f;
+    --blue-soft:#e9eefb; --blue-line:#c5d2f2;
+    --maxw:1180px;
+    --shadow:0 1px 2px rgba(16,28,64,.06),0 10px 30px -12px rgba(16,28,64,.18);
+    --shadow-lg:0 24px 60px -22px rgba(10,21,48,.45);
+
+    /* Variáveis das fontes oficiais do projeto */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);font-size:17px;line-height:1.7; /* Atualizado para Inter */
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--font-heading); /* Atualizado para Poppins */
+    line-height:1.12;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  
+  /* Ajuste para manter os títulos dos blocos institucionais com Poppins */
+  .topbar .wm, footer.pg .wm {
+    font-family: var(--font-heading);
+  }
+
+  a{color:var(--orange-600);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:16px;
+    padding:12px 22px;background:rgba(10,21,48,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(245,166,35,.25);color:#fff;
+  }
+  .topbar .wm{font-weight:800;font-size:20px;letter-spacing:-.02em}
+  .topbar .wm b{color:var(--orange)}
+  .topbar .tag{font-size:12.5px;color:#aeb8d6;border-left:1px solid rgba(255,255,255,.18);padding-left:14px;display:none}
+  .topbar .spacer{flex:1}
+  .btn-print{
+    appearance:none;border:0;cursor:pointer;
+    font-family:var(--font-body);/* Atualizado para Inter */
+    font-weight:600;font-size:14px;
+    background:var(--orange);color:#1a1304;padding:9px 16px;border-radius:9px;display:inline-flex;align-items:center;gap:8px;
+    transition:transform .12s ease, background .12s ease;
+  }
+  .btn-print:hover{background:#ffb733;transform:translateY(-1px)}
+  @media(min-width:680px){.topbar .tag{display:block}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:radial-gradient(1200px 500px at 78% -10%, #16315f 0%, var(--navy-800) 42%, var(--navy-900) 100%);color:#fff}
+  .hero .stars{position:absolute;inset:0;pointer-events:none;opacity:.7}
+  .hero .glow{position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle, rgba(245,166,35,.22), transparent 65%);pointer-events:none}
+  .hero-inner{position:relative;max-width:var(--maxw);margin:0 auto;padding:60px 26px 66px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#ffd58a;
+    background:rgba(245,166,35,.12);border:1px solid rgba(245,166,35,.35);padding:7px 14px;border-radius:999px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange)}
+  .hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;margin:22px 0 0;letter-spacing:-.025em}
+  .hero h1 b{color:var(--orange);font-weight:800}
+  .hero p.lead{font-size:clamp(16px,2.2vw,20px);color:#c3cbe6;max-width:620px;margin:18px 0 0;line-height:1.55}
+  .hero .meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-size:13px;color:#dbe2f5;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    padding:7px 13px;border-radius:999px}
+  .chip b{color:#fff}
+
+  /* ---------- LAYOUT ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px;display:grid;grid-template-columns:1fr;gap:40px}
+  @media(min-width:980px){.wrap{grid-template-columns:248px 1fr;gap:54px;align-items:start}}
+
+  /* ---------- TOC ---------- */
+  .toc-toggle{display:flex;align-items:center;gap:10px;width:100%;margin:26px 0 0;padding:13px 16px;
+    background:var(--card);border:1px solid var(--line);border-radius:12px;font-weight:600;cursor:pointer;color:var(--ink);font-size:15px;box-shadow:var(--shadow)}
+  .toc-toggle svg{transition:transform .2s}
+  .toc-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+  nav.toc{margin-top:14px}
+  @media(min-width:980px){
+    .toc-toggle{display:none}
+    nav.toc{position:sticky;top:84px;margin-top:46px;max-height:calc(100vh - 110px);overflow:auto}
+  }
+  nav.toc .toc-title{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin:0 0 10px;padding-left:14px}
+  nav.toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+  nav.toc li{margin:0}
+  nav.toc a{display:block;padding:7px 14px;color:var(--ink-soft);font-size:14.5px;font-weight:500;border-left:2px solid transparent;margin-left:-2px;line-height:1.35}
+  nav.toc a:hover{color:var(--ink);text-decoration:none}
+  nav.toc a.active{color:var(--orange-600);border-left-color:var(--orange);font-weight:600}
+  nav.toc.collapsed{display:none}
+  @media(min-width:980px){nav.toc.collapsed{display:block}}
+
+  /* ---------- CONTENT ---------- */
+  main{min-width:0;padding-bottom:60px}
+  section{padding-top:30px;margin-top:18px;scroll-margin-top:84px}
+  section+section{border-top:1px solid var(--line-soft);margin-top:42px;padding-top:42px}
+  .sec-num{display:inline-block;font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--orange-600); /* Atualizado para Poppins */
+    letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+  h2{font-size:clamp(24px,3.6vw,33px);margin:0 0 14px}
+  h3{font-size:20px;margin:30px 0 10px}
+  p{margin:0 0 15px}
+  .intro-lead{font-size:19px;color:var(--ink-soft);line-height:1.6}
+  strong{font-weight:600}
+  .muted{color:var(--ink-soft)}
+
+  /* steps */
+  ol.steps{counter-reset:step;list-style:none;margin:18px 0;padding:0}
+  ol.steps>li{position:relative;padding:2px 0 18px 52px;margin:0}
+  ol.steps>li:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;
+    width:34px;height:34px;border-radius:10px;background:var(--navy-800);color:#fff;
+    font-family:var(--font-heading); /* Atualizado para Poppins */
+    font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+  ol.steps>li:not(:last-child):after{content:"";position:absolute;left:16px;top:38px;bottom:2px;width:2px;background:var(--line)}
+  ol.steps>li b{font-weight:600}
+
+  ul.plain{margin:14px 0;padding-left:0;list-style:none}
+  ul.plain li{position:relative;padding:5px 0 5px 26px}
+  ul.plain li:before{content:"";position:absolute;left:4px;top:14px;width:7px;height:7px;border-radius:2px;background:var(--orange);transform:rotate(45deg)}
+
+  /* figures */
+  figure{margin:26px 0}
+  .frame{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-lg)}
+  .frame .bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#f4f2ec;border-bottom:1px solid var(--line)}
+  .frame .bar i{width:11px;height:11px;border-radius:50%;background:#d9d4c7;display:inline-block}
+  .frame .bar i:nth-child(1){background:#f0817a}.frame .bar i:nth-child(2){background:#f3c969}.frame .bar i:nth-child(3){background:#7fcf97}
+  .frame .bar .url{margin-left:10px;font-size:12.5px;color:#8b8674;
+    font-family:var(--font-body); /* Atualizado para Inter */
+    background:#fff;border:1px solid var(--line);border-radius:7px;padding:4px 12px;flex:1;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .frame img{display:block;width:100%;height:auto}
+  .frame.tall img{max-width:380px;margin:0 auto}
+  figcaption{font-size:14px;color:var(--ink-soft);margin-top:11px;text-align:center;font-style:italic}
+
+  /* placeholder figure */
+  .ph{border:2px dashed var(--amber-line);background:repeating-linear-gradient(45deg,#fdf8ec,#fdf8ec 12px,#fcf4e0 12px,#fcf4e0 24px);
+    border-radius:14px;padding:40px 24px;text-align:center;color:#9a7a2e}
+  .ph .ico{font-size:30px;line-height:1}
+  .ph b{display:block;font-family:var(--font-heading);font-size:16px;color:#7a5e16;margin-top:8px} /* Atualizado para Poppins */
+  .ph span{font-size:13.5px;color:#a78c4d}
+
+  /* callouts */
+  .note{display:flex;gap:14px;padding:16px 18px;border-radius:12px;margin:22px 0;border:1px solid;line-height:1.55;font-size:15.5px}
+  .note .ic{flex:none;width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff}
+  .note p{margin:0}
+  .note.tip{background:var(--teal-soft);border-color:#aee5dc}
+  .note.tip .ic{background:var(--teal)}
+  .note.warn{background:var(--amber-soft);border-color:var(--amber-line)}
+  .note.warn .ic{background:var(--orange)}
+  .note.imp{background:var(--red-soft);border-color:var(--red-line)}
+  .note.imp .ic{background:var(--red)}
+  .note.info{background:var(--blue-soft);border-color:var(--blue-line)}
+  .note.info .ic{background:#3b5bb5}
+
+  /* module cards */
+  .mods{display:grid;gap:12px;margin:22px 0}
+  .mod{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+  .mod .n{flex:none;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-heading); /* Atualizado para Poppins */
+    color:#fff;background:var(--navy-700);font-size:15px}
+  .mod:nth-child(1) .n{background:#1d8f7f}.mod:nth-child(2) .n{background:#2a6f8c}
+  .mod:nth-child(3) .n{background:#3a5aa0}.mod:nth-child(4) .n{background:#5b4bb0}.mod:nth-child(5) .n{background:#8a3f9c}
+  .mod h4{margin:0 0 2px;font-size:16px}
+  .mod p{margin:0;font-size:14.5px;color:var(--ink-soft)}
+
+  /* status legend */
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+  .badge{font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:5px 11px;border-radius:999px;text-transform:uppercase}
+  .b-done{background:var(--teal-soft);color:#10796a;border:1px solid #a6e3d9}
+  .b-now{background:var(--amber-soft);color:#a3760c;border:1px solid var(--amber-line)}
+  .b-lock{background:#eceaf2;color:#5a5470;border:1px solid #d6d2e2}
+
+  /* faq */
+  .faq details{border:1px solid var(--line);border-radius:12px;background:var(--card);margin:10px 0;overflow:hidden;box-shadow:var(--shadow)}
+  .faq summary{cursor:pointer;padding:15px 18px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:after{content:"+";font-size:22px;color:var(--orange-600);font-weight:400;line-height:1;transition:transform .2s}
+  .faq details[open] summary:after{transform:rotate(45deg)}
+  .faq .ans{padding:0 18px 16px;color:var(--ink-soft);font-size:15.5px}
+  .faq .ans p{margin:0 0 8px}
+
+  /* table */
+  .tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:15px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .tbl th,.tbl td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-soft)}
+  .tbl th{background:var(--navy-800);color:#fff;font-weight:600;font-family:var(--font-heading);font-size:14px;letter-spacing:.01em} /* Atualizado para Poppins */
+  .tbl tr:last-child td{border-bottom:0}
+  .tbl tr:nth-child(even) td{background:#faf8f2}
+
+  /* certificate demo */
+  .cert-demo-wrap{margin:24px 0}
+  .cert-demo{position:relative;background:var(--navy-800);color:#dfe6f5;border:1px solid var(--navy-600);
+    border-top:3px solid var(--orange);border-bottom:3px solid var(--orange);padding:34px 30px;text-align:center;border-radius:6px;
+    box-shadow:0 22px 50px -20px rgba(10,21,48,.6)}
+  .cert-demo:before{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.12);pointer-events:none}
+  .cert-demo .cd-watermark{position:absolute;inset:0;pointer-events:none;z-index:4;border-radius:6px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='160'%3E%3Ctext x='150' y='86' font-family='Arial,sans-serif' font-size='30' font-weight='700' letter-spacing='3' fill='%23f5a623' fill-opacity='0.16' text-anchor='middle' transform='rotate(-25 150 86)'%3EMODELO%3C/text%3E%3C/svg%3E");
+    background-repeat:repeat}
+  .cert-demo .cd-marca{font-family:var(--font-heading);font-weight:800;font-size:34px;color:#fff;letter-spacing:1px;line-height:1} /* Atualizado para Poppins */
+  .cert-demo .cd-marca span{color:var(--orange)}
+  .cert-demo .cd-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8b96b8;margin-top:3px}
+  .cert-demo .cd-rule{display:flex;align-items:center;gap:8px;width:60%;margin:16px auto}
+  .cert-demo .cd-rule:before,.cert-demo .cd-rule:after{content:"";flex:1;height:1px;background:linear-gradient(to right,transparent,var(--orange),transparent)}
+  .cert-demo .cd-dia{width:7px;height:7px;background:var(--orange);transform:rotate(45deg)}
+  .cert-demo .cd-titulo{font-family:var(--font-heading);font-weight:700;font-size:26px;color:#fff;text-transform:uppercase;letter-spacing:5px;margin:4px 0 2px} /* Atualizado para Poppins */
+  .cert-demo .cd-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8b96b8}
+  .cert-demo .cd-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#aeb8d6;margin:20px 0 6px}
+  .cert-demo .cd-nome{font-family:var(--font-heading);font-weight:600;font-size:28px;color:var(--orange);margin:0} /* Atualizado para Poppins */
+  .cert-demo .cd-cpf{font-size:13px;color:#aeb8d6;margin:6px 0 0}
+  .cert-demo .cd-texto{font-size:14px;color:#c3cbe6;line-height:1.7;max-width:480px;margin:14px auto 0}
+  .cert-demo .cd-texto b{color:#fff}
+  .cert-demo .cd-media-l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8b96b8;margin:16px 0 2px}
+  .cert-demo .cd-media-v{font-family:var(--font-heading);font-weight:700;font-size:30px;color:var(--teal);margin:0} /* Atualizado para Poppins */
+  .cert-demo table{width:100%;max-width:420px;margin:14px auto 0;border-collapse:collapse;font-size:13px}
+  .cert-demo th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#8b96b8;font-weight:600;text-align:left;padding:6px 10px;border-bottom:1px solid var(--navy-600)}
+  .cert-demo th:last-child,.cert-demo td:last-child{text-align:right}
+  .cert-demo td{padding:7px 10px;color:#c3cbe6;border-bottom:1px solid rgba(255,255,255,.06)}
+  .cert-demo td:last-child{color:var(--orange);font-weight:600}
+  .cert-demo .cd-hash{display:inline-block;margin-top:18px;background:rgba(10,21,48,.5);border:1px solid var(--navy-600);border-radius:6px;padding:9px 16px}
+  .cert-demo .cd-hash b{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:4px;font-weight:600}
+  .cert-demo .cd-hash code{font-family:"Courier New",monospace;font-size:12px;color:#aeb8d6;word-break:break-all}
+  .cert-demo .cd-ass{display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap;margin-top:26px}
+  .cert-demo .cd-ass div{text-align:center}
+  .cert-demo .cd-ass .ln{width:150px;border-bottom:1px solid var(--navy-600);margin:0 auto 6px}
+  .cert-demo .cd-ass .nm{font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:#c3cbe6}
+  .cert-demo .cd-ass .cg{font-size:10px;color:var(--orange-600);margin-top:2px}
+  .cert-demo .cd-emissao{font-size:12px;color:#8b96b8;margin-top:18px}
+
+  /* score ring demo */
+  .score-demo{display:flex;flex-direction:column;align-items:center;gap:14px;padding:28px;background:var(--navy-800);border-radius:16px;border:1px solid var(--navy-600)}
+  .score-demo .ring{position:relative;width:150px;height:150px}
+  .score-demo .ring .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:var(--font-heading);font-weight:800;font-size:38px;line-height:1} /* Atualizado para Poppins */
+  .score-demo .ring .num small{font-size:14px;color:#9aa6c9;font-weight:600}
+  .score-demo .sb{font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:6px 16px;border-radius:999px;background:var(--teal-soft);color:#10796a;border:1px solid #a6e3d9}
+
+  /* footer */
+  footer.pg{background:var(--navy-900);color:#aeb8d6;margin-top:30px;padding:38px 26px}
+  footer.pg .fin{max-width:var(--maxw);margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  footer.pg .wm{font-family:var(--font-heading);font-weight:800;font-size:22px;color:#fff} /* Atualizado para Poppins */
+  footer.pg .wm b{color:var(--orange)}
+  footer.pg small{display:block;color:#7c87a8;margin-top:6px;font-size:13px}
+  footer.pg .right{font-size:13.5px;text-align:right;color:#8c97ba;line-height:1.6}
+
+  /* print */
+  @media print{
+    .topbar,.toc-toggle,nav.toc,.hero .glow,.hero .stars{display:none!important}
+    body{font-size:11.5pt;background:#fff}
+    .wrap{display:block;padding:0 8mm}
+    .hero{background:var(--navy-800)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;color:#fff!important}
+    .hero-inner{padding:22px 8mm}
+    section{break-inside:avoid-page}
+    figure,.note,.mod,.faq details,.tbl{break-inside:avoid}
+    .frame{box-shadow:none;border:1px solid #ccc}
+    .ph{background:#fff}
+    a{color:var(--ink);text-decoration:none}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .frame.tall img{max-width:300px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="wm">Scrum<b>Flow</b></span>
+  <span class="tag">Manual do Usuário</span>
+  <span class="spacer"></span>
+  <button class="btn-print" onclick="window.print()">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Salvar como PDF
+  </button>
+</div>
+
+<header class="hero">
+  <svg class="stars" preserveAspectRatio="none" viewBox="0 0 1200 400" aria-hidden="true">
+    <g fill="#ffffff">
+      <circle cx="80" cy="60" r="1.3" opacity=".7"/><circle cx="240" cy="120" r="1" opacity=".5"/>
+      <circle cx="420" cy="40" r="1.6" opacity=".8"/><circle cx="560" cy="170" r="1" opacity=".5"/>
+      <circle cx="700" cy="80" r="1.2" opacity=".6"/><circle cx="900" cy="140" r="1.5" opacity=".7"/>
+      <circle cx="1050" cy="60" r="1" opacity=".5"/><circle cx="1150" cy="200" r="1.3" opacity=".6"/>
+      <circle cx="160" cy="240" r="1" opacity=".5"/><circle cx="340" cy="300" r="1.4" opacity=".7"/>
+      <circle cx="620" cy="320" r="1" opacity=".5"/><circle cx="980" cy="300" r="1.2" opacity=".6"/>
+      <circle cx="780" cy="240" r="1" opacity=".45"/><circle cx="1120" cy="340" r="1.3" opacity=".6"/>
+      <circle cx="60" cy="340" r="1" opacity=".5"/><circle cx="500" cy="250" r="1" opacity=".5"/>
+    </g>
+  </svg>
+  <div class="glow"></div>
+  <div class="hero-inner">
+    <span class="eyebrow"><span class="dot"></span> Portal de Certificação em Metodologias Ágeis</span>
+    <h1>Manual do <b>Usuário</b></h1>
+    <p class="lead">Tudo o que você precisa para criar sua conta, percorrer os módulos, fazer as avaliações e conquistar seu certificado no ScrumFlow.</p>
+    <div class="meta">
+      <span class="chip"><b>5</b> módulos</span>
+      <span class="chip"><b>10</b> questões por avaliação</span>
+      <span class="chip"><b>2</b> tentativas por módulo</span>
+      <span class="chip">Certificado com média <b>≥ 7,0</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <button class="toc-toggle" aria-expanded="false" aria-controls="toc">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    Índice do manual
+    <span style="flex:1"></span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+
+  <nav class="toc collapsed" id="toc">
+    <p class="toc-title">Neste manual</p>
+    <ol>
+      <li><a href="#sobre">Sobre o ScrumFlow</a></li>
+      <li><a href="#inicio">A página inicial</a></li>
+      <li><a href="#cadastro">1. Criar sua conta</a></li>
+      <li><a href="#login">2. Entrar no portal</a></li>
+      <li><a href="#dashboard">3. Seu painel (Dashboard)</a></li>
+      <li><a href="#avaliacoes">4. Como funcionam as avaliações</a></li>
+      <li><a href="#fazer">5. Fazendo uma avaliação</a></li>
+      <li><a href="#notas">6. Notas e aprovação</a></li>
+      <li><a href="#progresso">7. Progresso e histórico</a></li>
+      <li><a href="#certificado">8. Seu certificado</a></li>
+      <li><a href="#conta">9. Conta e configurações</a></li>
+      <li><a href="#faq">Perguntas frequentes</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section id="sobre" style="border-top:0;margin-top:24px;padding-top:34px">
+      <span class="sec-num">Introdução</span>
+      <h2>Sobre o ScrumFlow</h2>
+      <p class="intro-lead">O ScrumFlow é um portal gratuito para você aprender e <strong>certificar</strong> seus conhecimentos em metodologias ágeis, com foco em Scrum.</p>
+      <p>A ideia é simples: você avança por <strong>5 módulos</strong>, do básico ao avançado. Em cada módulo você faz uma avaliação com questões práticas e, conforme vai concluindo os módulos com bom desempenho, libera o próximo. Ao terminar todos eles com a média necessária, você desbloqueia um <strong>certificado digital</strong> com suas notas.</p>
+      <p>Este manual acompanha o caminho do começo ao fim: <strong>criar conta → entrar → estudar os módulos → fazer as avaliações → acompanhar o progresso → emitir o certificado</strong>. Use o índice ao lado para pular direto para o que precisar.</p>
+      <div class="note info">
+        <span class="ic">i</span>
+        <p>O ScrumFlow é <strong>100% online e gratuito</strong>. Você só precisa de um navegador (no computador ou no celular) e de uma conta — que você cria em menos de um minuto.</p>
+      </div>
+    </section>
+
+    <section id="inicio">
+      <span class="sec-num">Visão geral</span>
+      <h2>A página inicial</h2>
+      <p>Ao acessar o ScrumFlow, você chega à página inicial. No topo ficam o menu de navegação (<strong>Home, Sobre, Manifesto, Scrum</strong>) e, no canto direito, os botões <strong>Entrar</strong> e <strong>Criar conta</strong>.</p>
+      <figure>
+        <div class="frame">
+          <div class="bar"><i></i><i></i><i></i><span class="url">scrumflow — Home</span></div>
+          <img src="../assets/img/print-index.png" alt="Página inicial do ScrumFlow com o título 'Aprenda Scrum do zero ao certificado'">
+        </div>
+        <figcaption>Página inicial: o botão <b>Começar agora</b> leva você ao cadastro.</figcaption>
+      </figure>
+      <p>No centro, o botão <strong>Começar agora →</strong> leva você direto para a criação de conta, e <strong>Conhecer o Scrum</strong> abre o conteúdo introdutório sobre a metodologia. Mais abaixo, alguns números resumem o portal:</p>
+      <ul class="plain">
+        <li><b>5 módulos de ensino</b>, do básico ao avançado;</li>
+        <li><b>+150 questões práticas</b> no banco de questões;</li>
+        <li><b>100% online e gratuito</b>.</li>
+      </ul>
+      <p>No rodapé você encontra links úteis do projeto — <strong>GitHub, Guia de Contribuição e Documentação</strong> — além dos créditos da FATEC Jacareí e da equipe DEVassos.</p>
+      <figure>
+        <div class="frame">
+          <div class="bar"><i></i><i></i><i></i><span class="url">scrumflow — rodapé</span></div>
+          <img src="../assets/img/print-footer.png" alt="Rodapé da página inicial com links do projeto e créditos">
+        </div>
+        <figcaption>Rodapé com os links de GitHub, Guia de Contribuição e Documentação.</figcaption>
+      </figure>
+      <div class="note tip">
+        <span class="ic">✓</span>
+        <p>As páginas <strong>Sobre</strong> (o projeto e a equipe), <strong>Manifesto</strong> (os 12 princípios do Manifesto Ágil) e <strong>Scrum</strong> (uma introdução ao “fluxo” do Scrum) trazem conteúdo de apoio. Vale a leitura antes das avaliações — ajuda bastante nas questões.</p>
+      </div>
+    </section>
+
+    <section id="cadastro">
+      <span class="sec-num">Passo 1</span>
+      <h2>Criar sua conta</h2>
+      <p>Para usar o portal e guardar seu progresso, o primeiro passo é criar uma conta. Clique em <strong>Criar conta</strong> (no topo) ou em <strong>Começar agora</strong> (na página inicial). O formulário abre como um painel que desliza pela lateral della tela.</p>
+      <figure>
+        <div class="frame tall">
+          <div class="bar"><i></i><i></i><i></i><span class="url">scrumflow — Criar conta</span></div>
+          <img src="../assets/img/print-cadastro.png" alt="Formulário de cadastro com campos de nome, CPF, e-mail e senha">
+        </div>
+        <figcaption>Tela <b>Criar conta</b>.</figcaption>
+      </figure>
+      <p>Preencha os campos do formulário:</p>
+      <ol class="steps">
+        <li><b>Nome completo</b> — seu nome, que aparecerá no certificado.</li>
+        <li><b>CPF</b> — no formato <code>000.000.000-00</code>. Ele é o seu identificador de acesso (você fará login com o CPF, e não com o e-mail).</li>
+        <li><b>E-mail</b> — um endereço válido, no formato <code>seu@email.com</code>.</li>
+        <li><b>Senha</b> — com <b>no mínimo 8 caracteres</b>. Toque no ícone de olho para conferir o que digitou.</li>
+        <li><b>Confirmar senha</b> — repita a mesma senha para evitar erros de digitação.</li>
+        <li>Clique em <b>Criar conta →</b> para finalizar.</li>
+      </ol>
+      <div class="note warn">
+        <span class="ic">!</span>
+        <p>Cada CPF só pode ter <strong>uma conta</strong> no portal. Anote a senha em um lugar seguro — você vai precisar dela junto com o CPF toda vez que entrar.</p>
+      </div>
+      <p class="muted">Já tem conta? Use o link <strong>“Já tem conta? Entrar”</strong> no fim do formulário para ir direto ao login.</p>
+    </section>
+
+    <section id="login">
+      <span class="sec-num">Passo 2</span>
+      <h2>Entrar no portal</h2>
+      <p>Com a conta criada, clique em <strong>Entrar</strong> no topo da página para acessar.</p>
+      <figure>
+        <div class="frame tall">
+          <div class="bar"><i></i><i></i><i></i><span class="url">scrumflow — Entrar</span></div>
+          <img src="../assets/img/print-login.png" alt="Tela de login com campos de CPF e senha">
+        </div>
+        <figcaption>Tela <b>Entrar no time</b>.</figcaption>
+      </figure>
+      <ol class="steps">
+        <li>Digite seu <b>CPF</b> no formato <code>000.000.000-00</code>.</li>
+        <li>Digite sua <b>senha</b> (use o ícone de olho se quiser conferir).</li>
+        <li>Clique em <b>Entrar no Sprint →</b>.</li>
+      </ol>
+      <p>Pronto! Você será levado ao seu <strong>painel (Dashboard)</strong>, onde acompanha tudo. Não tem conta ainda? O link <strong>“Não tem uma conta? Criar conta”</strong> leva você de volta ao cadastro.</p>
+      <div class="note info">
+        <span class="ic">i</span>
+        <p>Lembre-se: o login é feito com o <strong>CPF</strong>, não com o e-mail.</p>
+      </div>
+    </section>
+
+    <section id="dashboard">
+      <span class="sec-num">Passo 3</span>
+      <h2>Seu painel (Dashboard)</h2>
+      <p>O Dashboard é a sua central. É aqui que você vê todos os módulos, acompanha o progresso, consulta o histórico e acessa o certificado.</p>
+      <figure>
+        <div class="frame">
+          <div class="bar"><i></i><i></i><i></i><span class="url">scrumflow — Dashboard</span></div>
+          <img src="../assets/img/print-dashboard.png" alt="Painel do usuário mostrando os cinco módulos, histórico de tentativas e área do certificado">
+        </div>
+        <figcaption>Dashboard: módulos à esquerda, histórico e certificado à direita.</figcaption>
+      </figure>
+      <p>No menu lateral esquerdo há três áreas: <strong>Módulos</strong> (esta tela), <strong>Histórico</strong> (todas as suas tentativas) e <strong>Config.</strong> (sua conta). No centro fica a lista <strong>“Seus Módulos”</strong>.</p>
+
+      <h3>Os 5 módulos</h3>
+      <div class="mods">
+        <div class="mod"><span class="n">1</span><div><h4>Fundamentos das Metodologias Ágeis</h4><p>O ponto de partida — conceitos essenciais do ágil.</p></div></div>
+        <div class="mod"><span class="n">2</span><div><h4>Scrum: Estrutura, Papéis e Artefatos</h4><p>Como o Scrum se organiza: papéis e artefatos.</p></div></div>
+        <div class="mod"><span class="n">3</span><div><h4>Eventos do Scrum e Fluxo de Trabalho</h4><p>As cerimônias e o ciclo de trabalho na prática.</p></div></div>
+        <div class="mod"><span class="n">4</span><div><h4>Práticas Ágeis, Métricas e Qualidade</h4><p>Indicadores, qualidade e boas práticas.</p></div></div>
+        <div class="mod"><span class="n">5</span><div><h4>Aplicação Prática, Cenários e Análise Crítica</h4><p>O nível avançado: aplicar tudo em cenários reais.</p></div></div>
+      </div>
+
+      <h3>Como ler o status de cada módulo</h3>
+      <p>Cada módulo mostra um selo de situação, sua <strong>melhor nota</strong> e quantas <strong>tentativas</strong> ainda restam:</p>
+      <div class="badges">
+        <span class="badge b-done">Concluído</span>
+        <span class="badge b-now">Em andamento</span>
+        <span class="badge b-lock">Bloqueado</span>
+      </div>
+      <ul class="plain">
+        <li><b>Concluído</b> — você já finalizou o módulo. A barra fica completa e aparece a sua melhor nota (ex.: <em>“Melhor Nota: 10,0 — ✓ Aprovado”</em>).</li>
+        <li><b>Em andamento</b> — é o módulo que está liberado para você fazer agora.</li>
+        <li><b>Bloqueado</b> — ainda não disponível. Os módulos abrem <strong>em sequência</strong>: você precisa avançar no atual para liberar o próximo.</li>
+      </ul>
+      <div class="note tip">
+        <span class="ic">✓</span>
+        <p>Comece sempre pelo módulo marcado como <strong>Em andamento</strong>. Conforme você o conclui, o próximo módulo é desbloqueado automaticamente.</p>
+      </div>
+    </section>
+
+    <section id="avaliacoes">
+      <span class="sec-num">Passo 4</span>
+      <h2>Como funcionam as avaliações</h2>
+      <p>Cada módulo tem uma avaliação. Antes de começar, vale entender as regras — elas valem para todos os módulos:</p>
+      <table class="tbl">
+        <tr><th>Regra</th><th>Como funciona</th></tr>
+        <tr><td>Questões por avaliação</td><td><b>10 questões</b>, sorteadas de um banco maior — a cada tentativa, o conjunto pode mudar.</td></tr>
+        <tr><td>Dificuldade</td><td>Sempre <b>3 fáceis, 4 médias e 3 difíceis</b>.</td></tr>
+        <tr><td>Tentativas</td><td><b>Até 2 tentativas</b> por módulo.</td></tr>
+        <tr><td>Nota que vale</td><td>A <b>maior nota</b> entre as suas tentativas é a que conta.</td></tr>
+      </table>
+      <div class="note warn">
+        <span class="ic">!</span>
+        <p>Você tem <strong>duas tentativas por módulo</strong>. Use-as com calma: como vale a maior nota, a segunda tentativa serve para melhorar o resultado, mas não há uma terceira chance.</p>
+      </div>
+    </section>
+
+    <section id="fazer">
+      <span class="sec-num">Passo 5</span>
+      <h2>Fazendo uma avaliação</h2>
+      <p>No Dashboard, clique no módulo liberado para abri-lo. Você entra na <strong>página do módulo</strong>, onde estuda o conteúdo e acessa a avaliação.</p>
+      <figure>
+        <div class="frame">
+          <div class="bar"><i></i><i></i><i></i><span class="url">scrumflow — Módulo 2</span></div>
+          <img src="../assets/img/print-modulos.png" alt="Página de um módulo com a lista de módulos à esquerda, o status Disponível, o contador de tentativas e o conteúdo de estudo">
+        </div>
+        <figcaption>Página do módulo: conteúdo de estudo no centro e a lista de módulos à esquerda.</figcaption>
+      </figure>
+      <p>Nessa tela você encontra:</p>
+      <ul class="plain">
+        <li>à esquerda, a <b>lista de módulos</b> — clique para navegar entre eles (os marcados como <em>Bloqueado</em> não abrem);</li>
+        <li>no topo, o selo de status (<b>Disponível</b>) e o contador de <b>Tentativas</b> (ex.: <em>1 / 2</em>), que mostra quantas você já usou;</li>
+        <li>no centro, o <b>conteúdo de estudo</b> do módulo — leia com calma antes de avaliar;</li>
+        <li>ao final do conteúdo, os botões <b>“Iniciar módulo”</b> (que abre a avaliação) e <b>“Ver progresso”</b>.</li>
+      </ul>
+      <div class="note info">
+        <span class="ic">i</span>
+        <p>O status <strong>“Disponível”</strong> (na página do módulo) é o mesmo que <strong>“Em andamento”</strong> (no Dashboard): significa que o módulo está liberado para você fazer agora.</p>
+      </div>
+      <div class="note tip">
+        <span class="ic">✓</span>
+        <p>Estude o conteúdo da página <strong>antes</strong> de iniciar a avaliação. Como as questões são sorteadas, dominar o tema vale mais do que tentar adivinhar.</p>
+      </div>
+      <h3>Passo a passo da avaliação</h3>
+      <p>Depois de estudar o conteúdo, role a página até o acesso à avaliação. O caminho geral é este:</p>
+      <ol class="steps">
+        <li>No módulo liberado, clique para <b>iniciar a avaliação</b>.</li>
+        <li>A cada questão, leia o enunciado e <b>escolha uma alternativa (A, B, C ou D)</b>.</li>
+        <li><b>Avance pelas questões</b> até responder todas as 10 (os pontinhos no rodapé indicam em qual você está).</li>
+        <li>Ao terminar, <b>finalize</b> a avaliação para registrar suas respostas.</li>
+        <li>Veja sua <b>nota</b> na tela de resultado.</li>
+        <li>Se quiser, use a <b>2ª tentativa</b> para tentar uma nota melhor (vale a maior).</li>
+      </ol>
+      <p>As questões aparecem <strong>uma de cada vez</strong>. No topo da tela ficam o botão <strong>“← Voltar ao Material”</strong> (que retorna ao conteúdo de estudo), o nome do tópico no centro e o contador <strong>“Tentativa 1/2”</strong> no canto.</p>
+      <figure>
+        <div class="frame">
+          <div class="bar"><i></i><i></i><i></i><span class="url">scrumflow — Avaliação</span></div>
+          <img src="../assets/img/avaliacao.png" alt="Tela de avaliação mostrando a Questão 1 com quatro alternativas de A a D">
+        </div>
+        <figcaption>Tela da avaliação: uma questão por vez, com alternativas de <b>A</b> a <b>D</b>.</figcaption>
+      </figure>
+      <figure>
+        <p>Assim que você finaliza, o portal abre a <strong>tela de resultado</strong>, que traz:</p>
+        <ul class="plain">
+          <li>sua <b>nota</b> em destaque, dentro de um círculo de pontuação;</li>
+          <li>um selo de <b>Aprovado</b> ou <b>Reprovado</b> para aquela tentativa;</li>
+          <li>uma <b>revisão questão a questão</b>: cada questão fica marcada como acerto (verde) ou erro (vermelho), mostrando inclusive a <b>resposta correta</b>;</li>
+          <li>botões de ação para <b>voltar</b> ou <b>seguir adiante</b>.</li>
+        </ul>
+        <figure>
+          <div class="score-demo">
+            <div class="ring">
+              <svg width="150" height="150" viewBox="0 0 150 150">
+                <circle cx="75" cy="75" r="64" fill="none" stroke="#1b3361" stroke-width="12"/>
+                <circle cx="75" cy="75" r="64" fill="none" stroke="#27b9a2" stroke-width="12" stroke-linecap="round"
+                  stroke-dasharray="402" stroke-dashoffset="60" transform="rotate(-90 75 75)"/>
+              </svg>
+              <div class="num">8,5<small>/10</small></div>
+            </div>
+            <span class="sb">✓ Aprovado</span>
+          </div>
+          <figcaption>Modelo ilustrativo da tela de resultado (a nota e o status reais variam por tentativa).</figcaption>
+        </figure>
+        <div class="note tip">
+          <span class="ic">✓</span>
+          <p>Ao concluir um módulo, o portal exibe uma breve <strong>animação de comemoração</strong> antes de liberar o próximo. 🎉 E você pode rever essas questões quando quiser, depois, na aba <strong>Histórico</strong>.</p>
+        </div>
+        <div class="note info">
+          <span class="ic">i</span>
+          <p>Como as questões são <strong>sorteadas</strong>, na 2ª tentativa você pode receber um conjunto diferente. Por isso, estudar o conteúdo do módulo é o melhor caminho — não dá para “decorar” as questões.</p>
+        </div>
+      </section>
+
+      <section id="notas">
+        <span class="sec-num">Passo 6</span>
+        <h2>Notas e aprovação</h2>
+        <p>As notas no ScrumFlow seguem a escala de <strong>0 a 10</strong> (ex.: <em>10,0</em>). Veja como elas se combinam:</p>
+        <ul class="plain">
+          <li><b>Nota do módulo</b> — é a <b>maior nota</b> entre as tentativas que você fez naquele módulo.</li>
+          <li><b>Conclusão do módulo</b> — um módulo só é considerado concluído depois que você é <b>aprovado</b> na avaliação dele. Ao concluir, o próximo módulo é liberado.</li>
+          <li><b>Média final</b> — é a média das notas finais de todos os módulos concluídos.</li>
+          <li><b>Certificado</b> — fica disponível quando você conclui <b>todos os 5 módulos com média ≥ 7,0</b>.</li>
+        </ul>
+        <div class="note imp">
+          <span class="ic">!</span>
+          <p><strong>Para liberar o certificado, sua média final precisa ser igual ou maior que 7,0.</strong> Por isso, vale usar a 2ª tentativa nos módulos em que a nota ficou mais baixa, para puxar a média para cima.</p>
+        </div>
+      </section>
+
+      <section id="progresso">
+        <span class="sec-num">Passo 7</span>
+        <h2>Progresso e histórico</h2>
+        <p>O ScrumFlow registra tudo o que você faz, então é fácil saber onde você está. Há dois lugares para acompanhar:</p>
+        <h3>No Dashboard — resumo rápido</h3>
+        <p>À direita do Dashboard, o quadro <strong>“Histórico de Tentativas”</strong> lista as últimas avaliações com <strong>módulo, data e pontuação</strong>. O bloco <strong>“Seu Certificado”</strong>, logo abaixo, mostra o quanto falta — por exemplo, <em>“Progresso atual: 1/5 módulos concluídos”</em>.</p>
+        <h3>Na aba Histórico — revisão completa</h3>
+        <p>Clicando em <strong>“Ver todas”</strong> ou em <strong>Histórico</strong> no menu lateral, você abre a página <strong>“Histórico de Questões”</strong>, onde revê cada prova <strong>questão a questão</strong>. Nela você tem:</p>
+        <ul class="plain">
+          <li>à esquerda, a lista de módulos já avaliados (cada um marcado como <b>aprovado</b> ou <b>reprovado</b>, com sua nota);</li>
+          <li>à direita, todas as questões daquela avaliação, mostrando <b>a alternativa que você escolheu</b> e <b>qual era a correta</b>;</li>
+          <li>marcação por cor: <b>verde</b> para acertos e <b>vermelho</b> para erros.</li>
+        </ul>
+        <figure>
+          <div class="frame">
+            <div class="bar"><i></i><i></i><i></i><span class="url">scrumflow — Histórico de Questões</span></div>
+            <img src="../assets/img/print-historico.png" alt="Página Histórico de Questões mostrando a revisão de uma avaliação com acertos e a resposta correta destacada em verde">
+          </div>
+          <figcaption>Aba <b>Histórico de Questões</b>: revisão da avaliação, com a alternativa correta destacada.</figcaption>
+        </figure>
+        <div class="note tip">
+          <span class="ic">✓</span>
+          <p>O histórico é ótimo para <strong>estudar antes da 2ª tentativa</strong>: revise as questões que você errou e confira as respostas corretas.</p>
+        </div>
+      </section>
+
+      <section id="certificado">
+        <span class="sec-num">Passo 8</span>
+        <h2>Seu certificado</h2>
+        <p>O certificado é o objetivo final da sua jornada. Ele aparece bloqueado no Dashboard até você cumprir os requisitos:</p>
+        <ol class="steps">
+          <li>Concluir os <b>5 módulos</b>.</li>
+          <li>Atingir <b>média final ≥ 7,0</b>.</li>
+          <li>Com isso, o bloco <b>“Seu Certificado”</b> é desbloqueado e você pode emitir o documento.</li>
+        </ol>
+        <p>O certificado é <strong>digital e personalizado</strong>. Ele traz:</p>
+        <ul class="plain">
+          <li>seu <b>nome</b> e <b>CPF</b>;</li>
+          <li>o texto de conclusão com o <b>período</b> do curso;</li>
+          <li>sua <b>média final</b> e uma <b>tabela com a nota de cada módulo</b>;</li>
+          <li>um <b>código de verificação</b> único, que comprova a autenticidade;</li>
+          <li>a <b>data de emissão</b> e as assinaturas institucionais.</li>
+        </ul>
+        <p>Na tela do certificado há os botões <strong>“Imprimir / Exportar PDF”</strong> (para salvar uma cópia) e <strong>“Voltar ao Dashboard”</strong>. Veja abaixo um modelo de como ele se parece:</p>
+        <div class="cert-demo-wrap">
+          <div class="cert-demo">
+            <div class="cd-watermark"></div>
+            <div class="cd-marca">Scrum<span>Flow</span></div>
+            <div class="cd-tag">Portal de Certificação</div>
+            <div class="cd-rule"><span class="cd-dia"></span></div>
+            <div class="cd-titulo">Certificado</div>
+            <div class="cd-sub">Metodologias Ágeis · ScrumFlow · DSM 2026-1</div>
+            <div class="cd-label">Certificamos que</div>
+            <p class="cd-nome">Seu Nome Completo</p>
+            <p class="cd-cpf">CPF: 000.000.000-00</p>
+            <p class="cd-texto">concluiu com êxito todos os módulos do curso <b>ScrumFlow</b>, trilha de aprendizagem em metodologia ágil Scrum, no período de <b>13/04/2026</b> a <b>11/06/2026</b>.</p>
+            <div class="cd-media-l">Média Final</div>
+            <p class="cd-media-v">8,6</p>
+            <table>
+              <thead><tr><th>Módulo</th><th>Nota</th></tr></thead>
+              <tbody>
+                <tr><td>1 — Fundamentos das Metodologias Ágeis</td><td>10,0</td></tr>
+                <tr><td>2 — Scrum: Estrutura, Papéis e Artefatos</td><td>8,0</td></tr>
+                <tr><td>3 — Eventos do Scrum e Fluxo de Trabalho</td><td>9,0</td></tr>
+                <tr><td>4 — Práticas Ágeis, Métricas e Qualidade</td><td>8,0</td></tr>
+                <tr><td>5 — Aplicação Prática e Análise Crítica</td><td>8,0</td></tr>
+              </tbody>
+            </table>
+            <div class="cd-hash"><b>Código de Verificação</b><code>a1b2c3d4-5e6f-7890-abcd-ef1234567890</code></div>
+            <div class="cd-ass">
+              <div><div class="ln"></div><div class="nm">Diretor Acadêmico</div><div class="cg">FATEC Jacareí</div></div>
+              <div><div class="ln"></div><div class="nm">Coordenador do Projeto</div><div class="cg">ScrumFlow – DSM 2026/1</div></div>
+            </div>
+            <p class="cd-emissao">Emitido em 11/06/2026</p>
+          </div>
+        </div>
+        <figcaption style="text-align:center;font-style:italic;color:var(--ink-soft);font-size:14px;margin-top:-10px">Modelo ilustrativo — os dados são preenchidos automaticamente com as suas informações.</figcaption>
+        <div class="note imp">
+          <span class="ic">!</span>
+          <p><strong>Autenticidade:</strong> todo certificado traz um <strong>Código de Verificação</strong> único, vinculado às suas notas. É ele que comprova que o documento é verdadeiro — um print ou imagem alterada não passa na conferência por esse código.</p>
+        </div>
+        <div class="note info">
+          <span class="ic">i</span>
+          <p>Enquanto não atingir os requisitos, o bloco do certificado fica bloqueado e mostra a mensagem de progresso (ex.: <em>“Complete todos os módulos com média ≥ 7,0 para desbloquear seu certificado”</em>) — então é só seguir avançando nos módulos.</p>
+        </div>
+      </section>
+
+      <section id="conta">
+        <span class="sec-num">Passo 9</span>
+        <h2>Conta e configurações</h2>
+        <p>No topo direito, quando você está logado, aparece uma <strong>saudação com o seu nome</strong> (e um avatar com suas iniciais) ao lado do botão <strong>Sair</strong>, usado para encerrar a sessão.</p>
+        <p>No menu lateral, a aba <strong>Config.</strong> reúne os ajustes da sua conta, em dois cartões:</p>
+        <ul class="plain">
+          <li><b>Dados Pessoais</b> — atualize seu <b>nome</b>, <b>e-mail</b> e <b>CPF</b> e clique em <b>“Salvar alterações”</b>.</li>
+          <li><b>Segurança</b> — defina uma <b>nova senha</b> (mínimo 8 caracteres), confirme e clique em <b>“Alterar senha”</b>.</li>
+        </ul>
+        <div class="note info">
+          <span class="ic">i</span>
+          <p>Se a sua conta tiver perfil de <strong>administrador</strong>, a página de Configurações exibe uma área extra de <strong>Administração</strong> (gerenciar questões, módulos e o progresso dos alunos). Para o uso comum, basta os cartões de Dados Pessoais e Segurança.</p>
+        </div>
+        <div class="note warn">
+          <span class="ic">!</span>
+          <p>Ao usar um computador compartilhado, lembre-se de <strong>sair da conta</strong> (botão <em>Sair</em>) ao terminar.</p>
+        </div>
+      </section>
+
+      <section id="faq">
+        <span class="sec-num">Ajuda</span>
+        <h2>Perguntas frequentes</h2>
+        <div class="faq">
+          <details>
+            <summary>Como troco a minha senha?</summary>
+            <div class="ans"><p>Estando logado, vá em <b>Config.</b> (menu lateral) e use o cartão <b>Segurança</b> para definir uma nova senha. Se você não conseguir entrar na conta, procure a equipe responsável pelo portal.</p></div>
+          </details>
+          <details>
+            <summary>Posso fazer um módulo mais avançado antes dos anteriores?</summary>
+            <div class="ans"><p>Não. Os módulos abrem em sequência: é preciso avançar no módulo atual para liberar o próximo. Os que ainda não estão disponíveis aparecem como <b>Bloqueado</b>.</p></div>
+          </details>
+          <details>
+            <summary>Quantas vezes posso refazer uma avaliação?</summary>
+            <div class="ans"><p>Até <b>2 tentativas por módulo</b>. Vale a <b>maior nota</b> entre elas. Não há uma terceira tentativa.</p></div>
+          </details>
+          <details>
+            <summary>As questões são sempre as mesmas?</summary>
+            <div class="ans"><p>Não. Elas são <b>sorteadas</b> a partir de um banco de questões, sempre com a mesma proporção de dificuldade (3 fáceis, 4 médias, 3 difíceis). A cada tentativa o conjunto pode mudar.</p></div>
+          </details>
+          <details>
+            <summary>Qual nota preciso para tirar o certificado?</summary>
+            <div class="ans"><p>É necessário concluir os 5 módulos com <b>média final igual ou maior que 7,0</b>.</p></div>
+          </details>
+          <details>
+            <summary>Consigo usar o ScrumFlow pelo celular?</summary>
+            <div class="ans"><p>Sim. O portal é feito para funcionar bem em celular, tablet e computador — basta um navegador.</p></div>
+          </details>
+          <details>
+            <summary>Faço login com CPF ou e-mail?</summary>
+            <div class="ans"><p>Com o <b>CPF</b> e a senha. O e-mail é usado no cadastro e no certificado, mas o acesso é pelo CPF.</p></div>
+          </details>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="pg">
+    <div class="fin">
+      <div>
+        <div class="wm">Scrum<b>Flow</b></div>
+        <small>Portal de Certificação em Metodologias Ágeis · Online e gratuito</small>
+      </div>
+      <div class="right">
+        FATEC Jacareí — 1DSM · ABP 2026/1<br>
+        Desenvolvido pela equipe DEVassos
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mobile TOC toggle
+    var tBtn=document.querySelector('.toc-toggle'), toc=document.getElementById('toc');
+    tBtn.addEventListener('click',function(){
+      var open=toc.classList.toggle('collapsed')===false;
+      tBtn.setAttribute('aria-expanded',String(open));
+    });
+    // close on click (mobile)
+    toc.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        if(window.innerWidth<980){toc.classList.add('collapsed');tBtn.setAttribute('aria-expanded','false');}
+      });
+    });
+    // scrollspy
+    var links=[].slice.call(toc.querySelectorAll('a'));
+    var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          if(map[e.target.id])map[e.target.id].classList.add('active');
+        }
+      });
+    },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    document.querySelectorAll('main section').forEach(function(s){obs.observe(s);});
+  </script>
+</body>
+</html>

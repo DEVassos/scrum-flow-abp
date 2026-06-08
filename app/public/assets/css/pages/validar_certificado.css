@@ -1,0 +1,269 @@
+@import url("../global.css");
+
+/* ================================
+   PÁGINA DE VALIDAÇÃO DE CERTIFICADO
+   (fallbacks em var(--x, …) garantem o visual mesmo
+   se alguma variável não existir no global.css)
+   ================================ */
+
+[hidden] { display: none !important; }
+
+.validar-page {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 120px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* CABEÇALHO */
+.validar-cabecalho {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.validar-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    color: var(--amber-400, #fbbf24);
+    background-color: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: var(--font-heading, "Bricolage Grotesque", system-ui, sans-serif);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.validar-titulo {
+    font-family: var(--font-heading, "Bricolage Grotesque", system-ui, sans-serif);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--white, #fff);
+    margin: 0;
+    line-height: 1.1;
+}
+
+.validar-titulo span { color: var(--amber-500, #f59e0b); }
+
+.validar-subtitulo {
+    font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--slate-400, #94a3b8);
+    max-width: 520px;
+    margin: 0;
+}
+
+.validar-subtitulo strong { color: var(--navy-200, #a3b8d8); }
+
+/* FORMULÁRIO */
+.validar-form {
+    background-color: var(--navy-800, #0f2044);
+    border: 1px solid var(--navy-600, #1e3a7a);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-label {
+    font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+    font-size: 13px;
+    color: var(--navy-200, #a3b8d8);
+    font-weight: 500;
+}
+
+.validar-input-linha {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.input {
+    flex: 1;
+    min-width: 0;
+    background-color: var(--navy-900, #0a1628);
+    border: 1px solid var(--navy-600, #1e3a7a);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--white, #fff);
+    font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+    border-color: var(--amber-500, #f59e0b);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+}
+
+.input::placeholder { color: var(--slate-600, #475569); }
+
+.validar-input-linha .btn { white-space: nowrap; }
+
+/* ERRO DE CAMPO */
+.campo-erro {
+    font-size: 12px;
+    color: var(--red-500, #ef4444);
+    display: none;
+}
+
+.campo-erro.visivel { display: block; }
+.input.erro { border-color: var(--red-500, #ef4444); }
+
+/* FEEDBACK (carregando) */
+.validar-feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+    color: var(--navy-200, #a3b8d8);
+    font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+}
+
+.validar-spinner {
+    width: 38px;
+    height: 38px;
+    border: 3px solid var(--navy-600, #1e3a7a);
+    border-top-color: var(--amber-500, #f59e0b);
+    border-radius: 50%;
+    animation: validar-spin 0.8s linear infinite;
+}
+
+@keyframes validar-spin { to { transform: rotate(360deg); } }
+
+/* RESULTADO */
+.validar-resultado {
+    background-color: var(--navy-800, #0f2044);
+    border: 1px solid var(--navy-600, #1e3a7a);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.validar-resultado--valido { border-top: 3px solid var(--teal-500, #0d9488); }
+.validar-resultado--invalido { border-top: 3px solid var(--red-500, #ef4444); }
+
+.validar-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading, "Bricolage Grotesque", system-ui, sans-serif);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.validar-status--ok { color: var(--teal-500, #0d9488); }
+.validar-status--erro { color: var(--red-500, #ef4444); }
+
+/* DADOS */
+.validar-dados {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 0;
+}
+
+.validar-dados div { display: flex; flex-direction: column; gap: 2px; }
+
+.validar-dados dt {
+    font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--slate-400, #94a3b8);
+}
+
+.validar-dados dd {
+    margin: 0;
+    font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+    font-size: 15px;
+    color: var(--white, #fff);
+    font-weight: 600;
+}
+
+/* TABELA */
+.validar-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+    font-size: 14px;
+}
+
+.validar-tabela th {
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--slate-400, #94a3b8);
+    font-weight: 600;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--navy-600, #1e3a7a);
+}
+
+.validar-tabela th:last-child, .validar-tabela td:last-child { text-align: right; }
+
+.validar-tabela td {
+    padding: 9px 10px;
+    color: var(--navy-200, #a3b8d8);
+    border-bottom: 1px solid rgba(74, 111, 165, 0.18);
+}
+
+.validar-tabela tbody tr:last-child td { border-bottom: none; }
+.validar-tabela td:last-child { color: var(--amber-400, #fbbf24); font-weight: 600; }
+
+/* CÓDIGO CONFIRMADO */
+.validar-codigo-confirmado {
+    background: rgba(10, 22, 40, 0.55);
+    border: 1px solid var(--navy-600, #1e3a7a);
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+.validar-codigo-confirmado span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--teal-500, #0d9488);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.validar-codigo-confirmado code {
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    color: var(--navy-200, #a3b8d8);
+    word-break: break-all;
+}
+
+.validar-invalido-msg {
+    margin: 0;
+    font-family: var(--font-body, "IBM Plex Sans", system-ui, sans-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--navy-200, #a3b8d8);
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .validar-page { padding-top: 96px; }
+    .validar-titulo { font-size: 30px; }
+    .validar-input-linha { flex-direction: column; }
+    .validar-input-linha .btn { width: 100%; }
+    .validar-dados { grid-template-columns: 1fr; }
+}
