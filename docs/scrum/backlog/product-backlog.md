@@ -57,13 +57,13 @@
 ### US01 — Cadastro de usuário
 > **Como** visitante do sistema, **quero** me cadastrar informando meu CPF, nome completo, e-mail e senha, **para** criar uma conta e acessar as avaliações da plataforma.
 
-- [ ] O campo CPF deve aceitar apenas CPFs válidos no formato `XXX.XXX.XXX-XX`
-- [ ] CPF deve ser o identificador único — tentativas de cadastro com CPF já existente devem ser rejeitadas com mensagem clara
-- [ ] Campos obrigatórios: CPF, nome completo, e-mail, senha
-- [ ] A senha deve ter no mínimo 8 caracteres
-- [ ] Senha deve ser armazenada em hash (nunca em texto puro)
-- [ ] Após cadastro bem-sucedido, o usuário é redirecionado para a página de login
-- [ ] A interface deve ser responsiva e funcionar em dispositivos móveis
+- [x] O campo CPF deve aceitar apenas CPFs válidos no formato `XXX.XXX.XXX-XX`
+- [x] CPF deve ser o identificador único — tentativas de cadastro com CPF já existente devem ser rejeitadas com mensagem clara
+- [x] Campos obrigatórios: CPF, nome completo, e-mail, senha
+- [x] A senha deve ter no mínimo 8 caracteres
+- [x] Senha deve ser armazenada em hash (nunca em texto puro)
+- [x] Após cadastro bem-sucedido, o usuário é redirecionado para a página de login
+- [x] A interface deve ser responsiva e funcionar em dispositivos móveis
 
 **RF relacionado:** RF01 | **Aceito por:** Product Owner (validar na Sprint Review)
 
