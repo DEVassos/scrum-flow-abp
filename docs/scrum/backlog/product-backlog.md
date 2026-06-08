@@ -112,10 +112,10 @@
 ### US05 — Nota Final por Módulo
 > **Como** usuário autenticado, **quero** visualizar minha nota final em cada módulo, **para** acompanhar meu desempenho individual por módulo.
 
-- [ ] A nota exibida é sempre a maior obtida entre as tentativas realizadas no módulo
-- [ ] Módulos não iniciados exibem status "Não iniciado"
-- [ ] Módulos com tentativas disponíveis exibem quantas restam
-- [ ] O cálculo é realizado e armazenado no back-end
+- [x] A nota exibida é sempre a maior obtida entre as tentativas realizadas no módulo
+- [x] Módulos não iniciados exibem status "Não iniciado"
+- [x] Módulos com tentativas disponíveis exibem quantas restam
+- [x] O cálculo é realizado e armazenado no back-end
 
 **RF relacionado:** RF07, RF11 | **Aceito por:** Product Owner (validar na Sprint Review)
 
