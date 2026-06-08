@@ -72,11 +72,11 @@
 ### US02 — Login
 > **Como** usuário cadastrado, **quero** fazer login usando meu CPF e senha, **para** acessar minha área personalizada na plataforma.
 
-- [ ] O login aceita apenas CPF e senha (sem e-mail)
-- [ ] Redirecionar para o Dashboard após login bem-sucedido
-- [ ] Em caso de credenciais inválidas, a mensagem de erro não especifica qual campo está errado (prevenção de enumeração)
-- [ ] Usuário inativo ou inexistente recebe a mesma mensagem genérica de erro
-- [ ] A sessão/token é gerenciada pelo back-end
+- [x] O login aceita apenas CPF e senha (sem e-mail)
+- [x] Redirecionar para o Dashboard após login bem-sucedido
+- [x] Em caso de credenciais inválidas, a mensagem de erro não especifica qual campo está errado (prevenção de enumeração)
+- [x] Usuário inativo ou inexistente recebe a mesma mensagem genérica de erro
+- [x] A sessão/token é gerenciada pelo back-end
 
 **RF relacionado:** RF02 | **Aceito por:** Product Owner (validar na Sprint Review)
 
