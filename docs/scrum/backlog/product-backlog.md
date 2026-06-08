@@ -85,12 +85,12 @@
 ### US03 — Realizar Avaliação de Módulo
 > **Como** usuário autenticado, **quero** iniciar uma avaliação de um módulo, **para** ser avaliado com 10 questões do banco de questões daquele módulo.
 
-- [ ] Ao iniciar, o sistema sorteia aleatoriamente: 3 questões fáceis, 4 médias e 3 difíceis
-- [ ] As questões são selecionadas a partir de um banco de 30 questões por módulo
-- [ ] As alternativas de cada questão são exibidas embaralhadas
-- [ ] As questões sorteadas são registradas no banco **antes** de serem exibidas (para auditoria)
-- [ ] O usuário não pode avançar sem selecionar uma alternativa
-- [ ] Ao finalizar, o sistema registra as respostas e calcula a pontuação no back-end
+- [x] Ao iniciar, o sistema sorteia aleatoriamente: 3 questões fáceis, 4 médias e 3 difíceis
+- [x] As questões são selecionadas a partir de um banco de 30 questões por módulo
+- [x] As alternativas de cada questão são exibidas embaralhadas
+- [x] As questões sorteadas são registradas no banco **antes** de serem exibidas (para auditoria)
+- [x] O usuário não pode avançar sem selecionar uma alternativa
+- [x] Ao finalizar, o sistema registra as respostas e calcula a pontuação no back-end
 
 **RF relacionado:** RF03, RF04, RF05 | **Aceito por:** Product Owner (validar na Sprint Review)
 
