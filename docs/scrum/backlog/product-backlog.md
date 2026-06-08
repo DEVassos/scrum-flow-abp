@@ -136,11 +136,11 @@
 ### US07 — Certificado Digital
 > **Como** usuário que concluiu todos os módulos, **quero** receber um certificado digital, **para** comprovar minha participação e desempenho na plataforma.
 
-- [ ] O certificado só é disponibilizado após o usuário realizar ao menos uma tentativa em todos os módulos
-- [ ] O certificado contém: nome completo, CPF, e-mail, data de emissão e média final
-- [ ] Notas por módulo discriminadas no certificado 
-- [ ] O certificado pode ser visualizado no navegador e/ou exportado
-- [ ] Gerado e armazenado no banco — ao acessar novamente, exibe o mesmo certificado sem reelaborá-lo
+- [x] O certificado só é disponibilizado após o usuário realizar ao menos uma tentativa em todos os módulos
+- [x] O certificado contém: nome completo, CPF, e-mail, data de emissão e média final
+- [x] Notas por módulo discriminadas no certificado 
+- [x] O certificado pode ser visualizado no navegador e/ou exportado
+- [x] Gerado e armazenado no banco — ao acessar novamente, exibe o mesmo certificado sem reelaborá-lo
 
 **RF relacionado:** RF09 | **Aceito por:** Product Owner (validar na Sprint Review)
 
