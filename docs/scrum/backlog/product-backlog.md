@@ -149,10 +149,10 @@
 ### US08 — Histórico de Tentativas
 > **Como** usuário autenticado, **quero** consultar o histórico detalhado das minhas tentativas, **para** revisar meu desempenho e as questões que foram sorteadas.
 
-- [ ] O histórico exibe por tentativa: data/hora, pontuação obtida e questões sorteadas
-- [ ] As respostas escolhidas e a alternativa correta são indicadas
-- [ ] O histórico é organizado por módulo e ordenado cronologicamente
-- [ ] Os dados são recuperados do banco de dados
+- [x] O histórico exibe por tentativa: data/hora, pontuação obtida e questões sorteadas
+- [x] As respostas escolhidas e a alternativa correta são indicadas
+- [x] O histórico é organizado por módulo e ordenado cronologicamente
+- [x] Os dados são recuperados do banco de dados
 
 **RF relacionado:** RF10 | **Aceito por:** Product Owner (validar na Sprint Review)
 
