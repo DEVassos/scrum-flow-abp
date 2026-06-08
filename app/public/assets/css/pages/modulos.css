@@ -386,8 +386,17 @@
 
 .painel-acoes {
     display: flex;
+    align-items: center;
     gap: 16px;
 }
+
+.painel-acoes .btn-next-module {
+    margin-left: auto;
+    min-width: 260px;
+    padding: 14px 20px;
+    font-size: 14px;
+}
+
 
 .tentativas-esgotadas-msg {
     font-size: 13px;
@@ -438,6 +447,16 @@
     .painel-topo {
         flex-direction: column;
         gap: 12px;
+    }
+
+    .painel-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .painel-acoes .btn-next-module {
+        width: 100%;
+        margin-left: 0;
     }
 
     .painel-titulo {

@@ -33,7 +33,7 @@ Ao final desta sprint, o usuário autenticado conseguirá consultar o histórico
 | — | Refatoração de Fluxo (Bônus) | 5 | Andrea, Henrique, Lucas |
 | — | Apresentação Final | 3 | Gustavo, Gabriel, Time completo |
 
-**Total de pontos comprometidos:** 115 SP
+**Total de pontos comprometidos:** 115 SP *(+ 13 SP adicionados em 01/06 → total 128 SP)*
 
 ---
 
@@ -123,19 +123,39 @@ Ao final desta sprint, o usuário autenticado conseguirá consultar o histórico
 - [ ] S3_T53 — Criar roteiro da apresentação final — Responsável: Gustavo + Gabriel *(2 SP)*
 - [ ] S3_T54 — Realizar ensaio técnico — Responsável: Time completo *(1 SP)*
 
+### Escopo Incremental pós-Planning *(+13 SP — adicionado em 01/06/2026)*
+
+> Tarefas identificadas pelos desenvolvedores durante a execução da sprint e adicionadas ao backlog via issues #300, #306, #310, #311, #312.
+
+#### US09 — Área Administrativa (complemento)
+
+- [ ] S3_T55 — Exibir acesso administrativo após login de usuário admin — Responsável: Vinicius + Marcello *(2 SP)*
+- [ ] S3_T56 — Integrar área administrativa aos endpoints de questões e níveis — Responsável: Vinicius + Gabriel *(3 SP)*
+- [ ] S3_T57 — Integrar edição e exclusão de questões e níveis na área administrativa — Responsável: Vinicius + Gabriel *(2 SP)*
+- [ ] S3_T58 — Adequar formulário administrativo ao modelo de questões do backend — Responsável: Vinicius + Gabriel *(1 SP)*
+
+#### Bug Fixes (complemento)
+
+- [ ] S3_T59 — Corrigir carregamento de imagens no questionário — Responsável: Gustavo *(1 SP)*
+- [ ] S3_T60 — Corrigir página Scrum — Responsável: Gustavo *(1 SP)*
+
+#### Infraestrutura (complemento)
+
+- [ ] S3_T61 — Recriar banco de dados em nuvem — Responsável: Gustavo *(3 SP)*
+
 ---
 
 ## Distribuição de Tarefas por Integrante
 
 | Membro | Papel | Qtd (Tarefas / SP) | Tarefas |
 |--------|:-----:|:------------------:|---------|
-| Gabriel Travensolli | SM | 12 (26 SP) | S3_T02, S3_T09, S3_T10, S3_T12, S3_T20, S3_T23, S3_T29, S3_T41, S3_T42, S3_T45, S3_T46, S3_T53 |
-| Gustavo Koiti | PO | 11 (26 SP) | S3_T01, S3_T03, S3_T14, S3_T18, S3_T19, S3_T22, S3_T43, S3_T44, S3_T50, S3_T53, S3_T54 |
+| Gabriel Travensolli | SM | 15 (32 SP) | S3_T02, S3_T09, S3_T10, S3_T12, S3_T20, S3_T23, S3_T29, S3_T41, S3_T42, S3_T45, S3_T46, S3_T53, **S3_T56, S3_T57, S3_T58** |
+| Gustavo Koiti | PO | 14 (31 SP) | S3_T01, S3_T03, S3_T14, S3_T18, S3_T19, S3_T22, S3_T43, S3_T44, S3_T50, S3_T53, S3_T54, **S3_T59, S3_T60, S3_T61** |
 | Andrea Turíbio | Dev | 21 (39 SP) | S3_T05, S3_T08, S3_T11, S3_T16, S3_T21, S3_T25, S3_T27, S3_T28, S3_T30, S3_T31, S3_T32, S3_T33, S3_T37, S3_T38, S3_T39, S3_T40, S3_T46, S3_T48, S3_T49, S3_T51, S3_T52 |
 | Henrique Camargo | Dev | 19 (46 SP) | S3_T04, S3_T06, S3_T07, S3_T15, S3_T16, S3_T17, S3_T21, S3_T28, S3_T30, S3_T34, S3_T35, S3_T36, S3_T37, S3_T38, S3_T40, S3_T47, S3_T48, S3_T51, S3_T52 |
 | Lucas Amorim | Dev | 18 (40 SP) | S3_T04, S3_T05, S3_T06, S3_T07, S3_T08, S3_T15, S3_T17, S3_T21, S3_T27, S3_T29, S3_T30, S3_T31, S3_T34, S3_T35, S3_T39, S3_T47, S3_T49, S3_T51 |
-| Marcello Campbell | Dev | 13 (34 SP) | S3_T01, S3_T03, S3_T13, S3_T14, S3_T18, S3_T19, S3_T22, S3_T24, S3_T26, S3_T36, S3_T41, S3_T50, S3_T54 |
-| Vinicius Augusto | Dev | 14 (33 SP) | S3_T02, S3_T09, S3_T10, S3_T12, S3_T13, S3_T19, S3_T20, S3_T23, S3_T24, S3_T26, S3_T41, S3_T42, S3_T45, S3_T54 |
+| Marcello Campbell | Dev | 14 (36 SP) | S3_T01, S3_T03, S3_T13, S3_T14, S3_T18, S3_T19, S3_T22, S3_T24, S3_T26, S3_T36, S3_T41, S3_T50, S3_T54, **S3_T55** |
+| Vinicius Augusto | Dev | 18 (41 SP) | S3_T02, S3_T09, S3_T10, S3_T12, S3_T13, S3_T19, S3_T20, S3_T23, S3_T24, S3_T26, S3_T41, S3_T42, S3_T45, S3_T54, **S3_T55, S3_T56, S3_T57, S3_T58** |
 
 ---
 
