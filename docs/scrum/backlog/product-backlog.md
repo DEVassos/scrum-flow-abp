@@ -40,15 +40,15 @@
 ### DOC — Documentação da Aplicação
 > **Como** time de desenvolvimento, **quero** documentar a aplicação, **para** alinhar o time e embasar o desenvolvimento nas sprints seguintes.
 
-- [ ] `README.md` do repositório está estruturado com descrição do projeto, tecnologias utilizadas e instruções de execução
-- [ ] Kanban do projeto está configurado e reflete o andamento das tarefas da sprint
-- [ ] Diagramas de Caso de Uso cobrem todos os fluxos principais do sistema
-- [ ] Diagrama de Classes reflete as entidades, atributos e relacionamentos acordados pelo time
-- [ ] Diagramas de Sequência cobrem os fluxos de cadastro, login e avaliação
-- [ ] Modelo Conceitual do BD está produzido e revisado pelo time
-- [ ] Modelo Lógico do BD está alinhado ao modelo conceitual e compatível com o PostgreSQL
-- [ ] Identidade visual (paleta de cores, tipografia e logotipo) está definida e registrada
-- [ ] Protótipo no Figma cobre as telas principais da aplicação e está navegável
+- [x] `README.md` do repositório está estruturado com descrição do projeto, tecnologias utilizadas e instruções de execução
+- [x] Kanban do projeto está configurado e reflete o andamento das tarefas da sprint
+- [x] Diagramas de Caso de Uso cobrem todos os fluxos principais do sistema
+- [x] Diagrama de Classes reflete as entidades, atributos e relacionamentos acordados pelo time
+- [x] Diagramas de Sequência cobrem os fluxos de cadastro, login e avaliação
+- [x] Modelo Conceitual do BD está produzido e revisado pelo time
+- [x] Modelo Lógico do BD está alinhado ao modelo conceitual e compatível com o PostgreSQL
+- [x] Identidade visual (paleta de cores, tipografia e logotipo) está definida e registrada
+- [x] Protótipo no Figma cobre as telas principais da aplicação e está navegável
 
 **Aceito por:** Product Owner (validar na Sprint Review)
 
@@ -178,7 +178,7 @@
 | 14/04/2026 | Criação inicial do backlog | Gustavo Koiti (PO) |
 | 15/05/2026 | Atualização de informações requisitadas pelo cliente | Gustavo Koiti (PO) |
 | 21/05/2026 | Adição de tarefas de escopo extra (T30, T31, T32) à Sprint 2 | Gustavo Koiti (PO) |
-| 08/06/2026 | Correção das prioridades | Gustavo Koiti (PO) |
+| 08/06/2026 | Correção das prioridades e finaliza tasks das Sprints | Gustavo Koiti (PO) |
 
 ---
 
