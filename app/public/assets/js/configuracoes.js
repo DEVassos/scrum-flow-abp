@@ -171,6 +171,8 @@
   const btnSalvarQuestao = formNovaQuestao
     ? formNovaQuestao.querySelector('button[type="submit"]')
     : null;
+  const btnToggleQuestoes = document.getElementById("btn-toggle-questoes");
+  const questoesListaWrapper = document.getElementById("questoes-lista-wrapper");
   let questaoEmEdicaoId = null;
 
   if (btnNovaQuestao && formWrapper) {
@@ -182,6 +184,15 @@
       }
 
       formWrapper.hidden = !formWrapper.hidden;
+    });
+  }
+
+  if (btnToggleQuestoes && questoesListaWrapper) {
+    btnToggleQuestoes.addEventListener("click", function () {
+      questoesListaWrapper.hidden = !questoesListaWrapper.hidden;
+      btnToggleQuestoes.textContent = questoesListaWrapper.hidden
+        ? "Ver questões cadastradas"
+        : "Ocultar questões cadastradas";
     });
   }
 
