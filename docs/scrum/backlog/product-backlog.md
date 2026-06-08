@@ -124,10 +124,10 @@
 ### US06 — Média Final
 > **Como** usuário autenticado, **quero** ver minha média final calculada automaticamente ao concluir todos os módulos, **para** saber meu resultado global na plataforma.
 
-- [ ] A média final é a média aritmética das melhores notas obtidas em cada módulo
-- [ ] O cálculo é realizado exclusivamente no back-end
-- [ ] A média é exibida com uma casa decimal
-- [ ] A média só é exibida quando todos os módulos tiverem sido tentados ao menos uma vez
+- [x] A média final é a média aritmética das melhores notas obtidas em cada módulo
+- [x] O cálculo é realizado exclusivamente no back-end
+- [x] A média é exibida com uma casa decimal
+- [x] A média só é exibida quando todos os módulos tiverem sido tentados ao menos uma vez
 
 **RF relacionado:** RF08 | **Aceito por:** Product Owner (validar na Sprint Review)
 
