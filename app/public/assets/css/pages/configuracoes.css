@@ -132,6 +132,17 @@
     white-space: nowrap;
 }
 
+.config-card-acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
+
+.config-card-acoes .config-btn-nova {
+    margin-left: 0;
+}
+
 /* ================================
    FORMULÁRIOS
    ================================ */
@@ -415,6 +426,16 @@
     .config-btn-nova {
         margin-left: 0;
         width: 100%;
+    }
+
+    .config-card-acoes {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .config-card-acoes .btn {
+        flex: 1 1 220px;
+        width: auto;
     }
 }
 
