@@ -346,6 +346,11 @@ document.getElementById("form-login").addEventListener("submit", async function 
     valido = false;
   }
   if (!valido) return;
+  // Desabilita o botão e mostra "Carregando..." para feedback visual durante a requisição
+  const btnLogin = e.target.querySelector('button[type="submit"]');
+  const textoOriginal = btnLogin.innerHTML;
+  btnLogin.innerHTML = "Carregando...";
+  btnLogin.classList.add("btn-loading");
 
   try {
     const resp = await fetch("/api/auth/login", {
@@ -370,5 +375,8 @@ document.getElementById("form-login").addEventListener("submit", async function 
   } catch (err) {
     console.error("Falha no login:", err);
     mostrarErro(senhaInput, erroSenha, "Erro ao conectar com o servidor.");
+  } finally {
+    btnLogin.innerHTML = textoOriginal;
+    btnLogin.classList.remove("btn-loading");
   }
 });
