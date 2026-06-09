@@ -38,7 +38,9 @@ async function findGrupoAleatorio(client, id_modulo) {
     `
         SELECT grupo 
         FROM questoes
-        WHERE id_modulo = $1 AND grupo IS NOT NULL
+        WHERE id_modulo = $1 
+        AND grupo IS NOT NULL
+        AND grupo <> 0
         GROUP BY grupo
         ORDER BY RANDOM()
         LIMIT 1
@@ -309,6 +311,15 @@ async function ensureExameInicial(id_usuario) {
   };
 }
 
+// Retorna apenas o hash da senha do usuário (para verificação de senha atual)
+async function findSenhaHashById(id_usuario) {
+  const result = await pool.query(
+    `SELECT senha FROM usuarios WHERE id_usuario = $1`,
+    [id_usuario],
+  );
+  return result.rows[0]?.senha || null;
+}
+
 // Atualiza SENHA do usuário por ID (sem precisar da senha original)
 async function updateUsuarioSenhaById(id_usuario, senhaHash) {
   const result = await pool.query(
@@ -330,6 +341,7 @@ module.exports = {
   updateUsuarioMail,
   updateUsuarioSenha,
   findUsuarioById,
+  findSenhaHashById,
   findUsuarioByCpfAndSenha,
   usuarioTemExame,
   recriarExameInicial,
