@@ -70,106 +70,8 @@
         </div>
     </main>
 
-    <!-- Overlay escuro atrás do modal -->
-    <div id="modal-overlay" class="modal-overlay"></div>
-
-    <!-- Modal de login/cadastro — desliza da direita -->
-    <div id="modal-login" class="modal-lateral">
-        <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
-
-        <!-- VIEW: LOGIN -->
-        <div id="view-login" class="modal-view">
-            <h2 class="modal-titulo">Entrar no time</h2>
-            <p class="modal-subtitulo">Bem-vindo de volta! Faça login para continuar.</p>
-
-            <form id="form-login">
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cpf">CPF</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cpf" class="input" placeholder="000.000.000-00">
-                    </div>
-                    <span class="campo-erro" id="erro-cpf-login"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="senha">Senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="senha" class="input" placeholder="Digite sua senha">
-                        <span class="campo-icone-direita" id="toggle-senha">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-senha-login"></span>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Entrar no Sprint &rarr;</button>
-
-                <div class="modal-rodape">
-                    Não tem uma conta? <a href="#" id="link-ir-cadastro" class="link-amber">Criar conta</a>
-                </div>
-            </form>
-        </div>
-
-        <!-- VIEW: CADASTRO -->
-        <div id="view-cadastro" class="modal-view">
-            <h2 class="modal-titulo">Criar conta</h2>
-            <p class="modal-subtitulo">Junte-se ao time e comece sua jornada Scrum.</p>
-
-            <form id="form-cadastro">
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-nome">Nome completo</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cad-nome" class="input" placeholder="Seu nome completo">
-                    </div>
-                    <span class="campo-erro" id="erro-nome"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-cpf">CPF</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cad-cpf" class="input" placeholder="000.000.000-00" maxlength="14">
-                    </div>
-                    <span class="campo-erro" id="erro-cpf"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-email">E-mail</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9993;</span>
-                        <input type="email" id="cad-email" class="input" placeholder="seu@email.com">
-                    </div>
-                    <span class="campo-erro" id="erro-email"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-senha">Senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="cad-senha" class="input" placeholder="Mínimo 8 caracteres">
-                        <span class="campo-icone-direita" id="toggle-cad-senha">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-senha"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-confirmar">Confirmar senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="cad-confirmar" class="input" placeholder="Repita a senha">
-                        <span class="campo-icone-direita" id="toggle-cad-confirmar">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-confirmar"></span>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Criar conta &rarr;</button>
-                <div class="modal-rodape">
-                    Já tem conta? <a href="#" id="link-ir-login" class="link-amber">Entrar</a>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Container do modal de login/cadastro — conteúdo injetado pelo modal-login.js -->
+    <div id="modal-login"></div>
 
 
     <!-- Footer -->
@@ -188,6 +90,7 @@
     <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. usados pelo index.js -->
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/modal-login.js"></script>
     <script src="../assets/js/index.js"></script>
 </body>
 
