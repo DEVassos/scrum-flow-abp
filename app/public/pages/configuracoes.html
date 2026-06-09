@@ -330,12 +330,21 @@
                   Crie, edite ou remova questões do banco de dados
                 </p>
               </div>
-              <button
-                class="btn btn-primary config-btn-nova"
-                id="btn-nova-questao"
-              >
-                + Nova questão
-              </button>
+              <div class="config-card-acoes">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="btn-toggle-questoes"
+                >
+                  Exibir questões cadastradas
+                </button>
+                <button
+                  class="btn btn-primary config-btn-nova"
+                  id="btn-nova-questao"
+                >
+                  + Nova questão
+                </button>
+              </div>
             </div>
 
             <!-- Formulário de nova questão (expandível) -->
@@ -471,14 +480,6 @@
                 </div>
               </form>
             </div>
-
-            <button
-              type="button"
-              class="btn btn-ghost"
-              id="btn-toggle-questoes"
-            >
-              Ver questões cadastradas
-            </button>
 
             <!-- Tabela de questões -->
             <div class="config-tabela-wrapper" id="questoes-lista-wrapper" hidden>
