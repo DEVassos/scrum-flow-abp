@@ -7,7 +7,12 @@
 
   // Injeta HTML do modal no container reservado em cada página
   const modalEl = document.getElementById("modal-login");
+  // Desativa transition antes de aplicar a classe para o browser não animar
+  // a posição inicial (translateX 0 → 100%) ao inserir o elemento no DOM
+  modalEl.style.transition = "none";
   modalEl.className = "modal-lateral";
+  void modalEl.offsetWidth; // força reflow: browser confirma posição sem animação
+  modalEl.style.transition = "";
   modalEl.innerHTML = `
     <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
 
