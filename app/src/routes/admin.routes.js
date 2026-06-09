@@ -87,6 +87,7 @@ router.get("/usuarios-progresso", async (req, res) => {
         u.id_usuario,
         u.nome,
         u.email,
+        u.is_admin,
         e.id_exame,
         e.id_modulo,
         m.titulo AS modulo_titulo,
@@ -137,6 +138,31 @@ router.patch("/usuarios/:id/zerar-modulo", async (req, res) => {
     return res.status(200).json({ message: "Tentativas do módulo zeradas com sucesso" });
   } catch (error) {
     console.error("Erro ao zerar módulo:", error);
+    return res.status(500).json({ message: "Erro interno" });
+  }
+});
+
+// Ativa ou desativa admin do usuário
+router.patch("/usuarios/:id/toggle-admin", async (req, res) => {
+  try {
+    const pool = require("../database/db");
+    const idUsuario = Number(req.params.id);
+    if (!idUsuario) return res.status(400).json({ message: "id inválido" });
+
+    const result = await pool.query(
+      `UPDATE usuarios SET is_admin = NOT is_admin WHERE id_usuario = $1 RETURNING id_usuario, nome, is_admin`,
+      [idUsuario]
+    );
+
+    if (!result.rows[0]) return res.status(404).json({ message: "Usuário não encontrado" });
+
+    const usuario = result.rows[0];
+    return res.status(200).json({
+      message: usuario.is_admin ? "Admin ativado com sucesso" : "Admin removido com sucesso",
+      is_admin: usuario.is_admin,
+    });
+  } catch (error) {
+    console.error("Erro ao alterar admin:", error);
     return res.status(500).json({ message: "Erro interno" });
   }
 });

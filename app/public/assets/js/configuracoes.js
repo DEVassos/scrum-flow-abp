@@ -570,9 +570,7 @@
         }
         tbody.innerHTML = usuarios
           .map(function (u) {
-            const modulo = u.modulo_titulo
-              ? "Módulo " + u.id_modulo + " – " + u.modulo_titulo
-              : "—";
+            const modulo = u.id_modulo ? "Módulo " + u.id_modulo : "—";
             const tentativas = u.id_exame
               ? u.tentativas_modulo_atual + " / 2"
               : "—";
@@ -604,6 +602,17 @@
                   escapeHtml(u.nome) +
                   "')\">Módulo 1</button>"
                 : '<span style="font-size:12px;color:var(--navy-400)">Sem exame</span>') +
+              '<button class="btn-tabela ' +
+              (u.is_admin ? "btn-tabela--excluir" : "btn-tabela--editar") +
+              '" onclick="toggleAdmin(' +
+              u.id_usuario +
+              ", '" +
+              escapeHtml(u.nome) +
+              "', " +
+              u.is_admin +
+              ')">' +
+              (u.is_admin ? "Remover admin" : "Tornar admin") +
+              "</button>" +
               "</div>" +
               "</td>" +
               "</tr>"
@@ -680,6 +689,31 @@
       .then(function (res) {
         mostrarToast(
           res.ok ? res.data.message : res.data.message || "Erro ao reiniciar.",
+          res.ok ? "sucesso" : "erro",
+        );
+        if (res.ok) carregarProgressoUsuarios();
+      })
+      .catch(function () {
+        mostrarToast("Erro de conexão.", "erro");
+      });
+  };
+
+  window.toggleAdmin = function (idUsuario, nome, isAdmin) {
+    const acao = isAdmin ? "remover admin de" : "tornar admin";
+    if (!confirm('Deseja ' + acao + ' "' + nome + '"?')) return;
+    const token = obterToken();
+    fetch("/api/admin/usuarios/" + idUsuario + "/toggle-admin", {
+      method: "PATCH",
+      headers: { Authorization: "Bearer " + token },
+    })
+      .then(function (r) {
+        return r.json().then(function (d) {
+          return { ok: r.ok, data: d };
+        });
+      })
+      .then(function (res) {
+        mostrarToast(
+          res.ok ? res.data.message : res.data.message || "Erro ao alterar admin.",
           res.ok ? "sucesso" : "erro",
         );
         if (res.ok) carregarProgressoUsuarios();
