@@ -10,6 +10,49 @@
     return estaEmSubpasta() ? "../" + arquivo : arquivo;
   }
 
+  // ================================
+  //   INJEÇÃO DO HTML DO NAVBAR
+  //   Cada página tem apenas <nav class="navbar" id="navbar"></nav>.
+  //   O conteúdo é inserido aqui para não duplicar em todos os HTMLs.
+  // ================================
+
+  const navbar = document.getElementById("navbar");
+  if (navbar) {
+    navbar.innerHTML = `
+      <div class="navbar__container">
+        <a href="${hrefRaiz('index.html')}" class="logo">Scrum<span class="flow">Flow</span></a>
+
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-links">
+            <li><a href="${hrefRaiz('index.html')}" class="nav-link">Home</a></li>
+            <li><a href="${hrefRaiz('manifesto.html')}" class="nav-link">Manifesto</a></li>
+            <li><a href="${hrefRaiz('scrum.html')}" class="nav-link">Scrum</a></li>
+            <li id="nav-dashboard"><a href="${hrefRaiz('dashboard.html')}" class="nav-link">Dashboard</a></li>
+            <li><a href="${hrefRaiz('sobre.html')}" class="nav-link">Sobre</a></li>
+            <li><a href="${hrefRaiz('manual.html')}" class="nav-link" target="_blank" rel="noopener">Manual de uso</a></li>
+          </ul>
+
+          <div class="navbar__actions">
+            <div id="nav-deslogado">
+              <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+              <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
+            </div>
+            <div id="nav-logado" hidden>
+              <span id="nav-saudacao" class="nav-saudacao"></span>
+              <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    `;
+  }
+
   function textoSeguro(valor) {
     return String(valor || "")
       .replace(/&/g, "&amp;")
