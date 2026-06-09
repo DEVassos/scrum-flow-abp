@@ -147,7 +147,9 @@
           body: JSON.stringify({ senha_atual: senhaAtual, nova_senha: nova }),
         });
 
-        const data = await response.json();
+        const data = await response.json().catch(function () {
+          return {};
+        });
 
         if (!response.ok) {
           mostrarToast(data.message || "Erro ao alterar senha.", "erro");
