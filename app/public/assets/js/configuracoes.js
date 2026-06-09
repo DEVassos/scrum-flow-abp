@@ -613,6 +613,11 @@
               ')">' +
               (u.is_admin ? "Remover admin" : "Tornar admin") +
               "</button>" +
+              '<button class="btn-tabela btn-tabela--excluir" onclick="excluirUsuario(' +
+              u.id_usuario +
+              ", '" +
+              escapeHtml(u.nome) +
+              '\')" style="background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.4);color:#f87171">Excluir</button>' +
               "</div>" +
               "</td>" +
               "</tr>"
@@ -689,6 +694,37 @@
       .then(function (res) {
         mostrarToast(
           res.ok ? res.data.message : res.data.message || "Erro ao reiniciar.",
+          res.ok ? "sucesso" : "erro",
+        );
+        if (res.ok) carregarProgressoUsuarios();
+      })
+      .catch(function () {
+        mostrarToast("Erro de conexão.", "erro");
+      });
+  };
+
+  window.excluirUsuario = function (idUsuario, nome) {
+    if (
+      !confirm(
+        'Excluir "' +
+          nome +
+          '"?\n\nIsso remove permanentemente o usuário e todo o seu histórico. Esta ação não pode ser desfeita.',
+      )
+    )
+      return;
+    const token = obterToken();
+    fetch("/api/admin/usuarios/" + idUsuario, {
+      method: "DELETE",
+      headers: { Authorization: "Bearer " + token },
+    })
+      .then(function (r) {
+        return r.json().then(function (d) {
+          return { ok: r.ok, data: d };
+        });
+      })
+      .then(function (res) {
+        mostrarToast(
+          res.ok ? res.data.message : res.data.message || "Erro ao excluir.",
           res.ok ? "sucesso" : "erro",
         );
         if (res.ok) carregarProgressoUsuarios();
