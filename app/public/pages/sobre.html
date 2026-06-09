@@ -1,249 +1,563 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../assets/img/scrum_icon.png">
-    <link rel="stylesheet" href="../assets/css/pages/sobre.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../assets/img/scrum_icon.png" />
+    <link rel="stylesheet" href="../assets/css/pages/sobre.css" />
     <title>ScrumFlow | Sobre</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <canvas id="stars-canvas"></canvas>
     <div class="blob-esquerda"></div>
     <div class="blob-direita"></div>
 
     <nav class="navbar">
-        <div class="navbar__container">
-            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
-                    <li><a href="scrum.html" class="nav-link">Scrum</a></li>
-                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-                    <li><a href="sobre.html" class="nav-link active">Sobre</a></li>
-</ul>
-                <div class="navbar__actions">
-                    <div id="nav-deslogado">
-                        <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
-                        <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
-                    </div>
-                    <div id="nav-logado" hidden>
-                        <span id="nav-saudacao" class="nav-saudacao"></span>
-                        <button id="btn-sair" class="btn btn-ghost">Sair</button>
-                    </div>
-                </div>
+      <div class="navbar__container">
+        <a href="index.html" class="logo"
+          >Scrum<span class="flow">Flow</span></a
+        >
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
+            <li><a href="scrum.html" class="nav-link">Scrum</a></li>
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="sobre.html" class="nav-link active">Sobre</a></li>
+          </ul>
+          <div class="navbar__actions">
+            <div id="nav-deslogado">
+              <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+              <a href="#" id="btn-criar-conta" class="btn btn-primary"
+                >Criar conta</a
+              >
             </div>
-            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div id="nav-logado" hidden>
+              <span id="nav-saudacao" class="nav-saudacao"></span>
+              <button id="btn-sair" class="btn btn-ghost">Sair</button>
+            </div>
+          </div>
         </div>
+        <button
+          class="navbar__hamburger"
+          id="hamburger"
+          aria-label="Abrir menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </nav>
 
     <main class="sobre-page">
-        <section class="sobre-hero">
-            <div class="sobre-hero__grid">
-                <div class="sobre-hero__copy">
-                    <span class="sobre-eyebrow">Projeto ABP 1DSM 2026/1</span>
-                    <h1>ScrumFlow transforma o estudo de Scrum em uma jornada de certificação prática.</h1>
-                    <p>Uma plataforma criada para estudantes da FATEC Jacareí que une conteúdo, exercícios e avaliação
-                        em um fluxo intuitivo, visual e focado em resultados.</p>
+      <section class="sobre-hero">
+        <div class="sobre-hero__grid">
+          <div class="sobre-hero__copy">
+            <span class="sobre-eyebrow">Projeto ABP 1DSM 2026/1</span>
+            <h1>
+              ScrumFlow transforma o estudo de Scrum em uma jornada de
+              certificação prática.
+            </h1>
+            <p>
+              Uma plataforma criada para estudantes da FATEC Jacareí que une
+              conteúdo, exercícios e avaliação em um fluxo intuitivo, visual e
+              focado em resultados.
+            </p>
+          </div>
+          <aside class="sobre-hero__panel">
+            <span class="panel-label">Instituição</span>
+            <img
+              src="../assets/img/logo_fatec_transparente.png"
+              alt="Logo FATEC Jacareí"
+            />
+            <strong>FATEC Jacareí</strong>
+            <span
+              >Desenvolvido para o curso de Análise e Desenvolvimento de
+              Sistemas, sob a disciplina de ABP.</span
+            >
+            <div class="sobre-panel__list">
+              <div>
+                <span>Meta</span>
+                <strong>Certificar estudantes em Scrum</strong>
+              </div>
+              <div>
+                <span>Foco</span>
+                <strong>Prática real e avaliação</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
 
-                </div>
-                <aside class="sobre-hero__panel">
-                    <span class="panel-label">Instituição</span>
-                    <img src="../assets/img/logo_fatec_transparente.png" alt="Logo FATEC Jacareí">
-                    <strong>FATEC Jacareí</strong>
-                    <span>Desenvolvido para o curso de Análise e Desenvolvimento de Sistemas, sob a disciplina de
-                        ABP.</span>
-                    <div class="sobre-panel__list">
-                        <div>
-                            <span>Meta</span>
-                            <strong>Certificar estudantes em Scrum</strong>
-                        </div>
-                        <div>
-                            <span>Foco</span>
-                            <strong>Prática real e avaliação</strong>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </section>
+      <section class="sobre-section sobre-section--overview">
+        <div class="sobre-section__header">
+          <h2>O que o ScrumFlow entrega</h2>
+          <p>
+            Uma experiência de estudo estruturada que mistura teoria, prática e
+            certificação em uma única aplicação.
+          </p>
+        </div>
+        <div class="sobre-grid sobre-grid--project">
+          <article class="sobre-card sobre-card--wide">
+            <span class="sobre-card__label">Visão</span>
+            <h2>Ser referência acadêmica em certificação ágil.</h2>
+            <p>
+              O ScrumFlow foi pensado para apoiar o desenvolvimento das
+              habilidades de gestão ágil e entregar um produto reconhecido
+              dentro do ambiente acadêmico.
+            </p>
+          </article>
+          <article class="sobre-card">
+            <span class="sobre-card__label">Missão</span>
+            <h2>Organizar aprendizado com clareza.</h2>
+            <p>
+              Transformar conceitos de Scrum em conteúdo simples, com prática
+              contínua e indicadores visuais que ajudam a fixar o conhecimento.
+            </p>
+          </article>
+          <article class="sobre-card">
+            <span class="sobre-card__label">Diferencial</span>
+            <h2>Experiência pensada para estudantes.</h2>
+            <p>
+              A navegação fluida, o layout acessível e as métricas de progresso
+              tornam o portal agradável e eficaz.
+            </p>
+          </article>
+        </div>
+      </section>
 
-        <section class="sobre-section sobre-section--overview">
-            <div class="sobre-section__header">
-                <h2>O que o ScrumFlow entrega</h2>
-                <p>Uma experiência de estudo estruturada que mistura teoria, prática e certificação em uma única
-                    aplicação.</p>
+      <section class="sobre-section sobre-team">
+        <div class="sobre-section__header">
+          <h2>Equipe DEVassos</h2>
+          <p>
+            Uma equipe multidisciplinar que trabalhou em conjunto para entregar
+            o ScrumFlow como projeto ABP.
+          </p>
+        </div>
+        <div class="team-grid">
+          <article class="team-card team-card--po">
+            <div class="team-card__top">
+              <div class="team-card__avatar">GK</div>
+              <span class="team-card__badge">Product Owner</span>
             </div>
-            <div class="sobre-grid sobre-grid--project">
-                <article class="sobre-card sobre-card--wide">
-                    <span class="sobre-card__label">Visão</span>
-                    <h2>Ser referência acadêmica em certificação ágil.</h2>
-                    <p>O ScrumFlow foi pensado para apoiar o desenvolvimento das habilidades de gestão ágil e entregar
-                        um produto reconhecido dentro do ambiente acadêmico.</p>
-                </article>
-                <article class="sobre-card">
-                    <span class="sobre-card__label">Missão</span>
-                    <h2>Organizar aprendizado com clareza.</h2>
-                    <p>Transformar conceitos de Scrum em conteúdo simples, com prática contínua e indicadores visuais
-                        que ajudam a fixar o conhecimento.</p>
-                </article>
-                <article class="sobre-card">
-                    <span class="sobre-card__label">Diferencial</span>
-                    <h2>Experiência pensada para estudantes.</h2>
-                    <p>A navegação fluida, o layout acessível e as métricas de progresso tornam o portal agradável e
-                        eficaz.</p>
-                </article>
+            <h3>Gustavo Koiti</h3>
+            <p>
+              Responsável por priorizar as entregas, definir o backlog e manter
+              o produto alinhado aos objetivos do curso.
+            </p>
+            <div class="team-card__links">
+              <a
+                href="https://github.com/gustavokoitiyoshimura"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a href="https://linkedin.com/in/" target="_blank" rel="noopener"
+                >LinkedIn</a
+              >
             </div>
-        </section>
+          </article>
+          <article class="team-card team-card--sm">
+            <div class="team-card__top">
+              <div class="team-card__avatar">GT</div>
+              <span class="team-card__badge">Scrum Master</span>
+            </div>
+            <h3>Gabriel Travensolli</h3>
+            <p>
+              Garantiu a cadência, a comunicação e as retrospectivas para que o
+              time seguisse o fluxo ágil.
+            </p>
+            <div class="team-card__links">
+              <a
+                href="https://github.com/travensolli"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/gabrieltravensolli/"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <div class="team-card__top">
+              <div class="team-card__avatar">AT</div>
+              <span class="team-card__badge">Desenvolvedora</span>
+            </div>
+            <h3>Andrea Turíbio</h3>
+            <p>
+              Contribuiu no desenvolvimento da interface e na construção das
+              páginas do portal.
+            </p>
+            <div class="team-card__links">
+              <a
+                href="https://github.com/DeaTuribio"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/andrea-turibio-41507467/"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <div class="team-card__top">
+              <div class="team-card__avatar">HC</div>
+              <span class="team-card__badge">Desenvolvedor</span>
+            </div>
+            <h3>Henrique Camargo</h3>
+            <p>
+              Implementou funcionalidades e ajudou a integrar o portal com a
+              experiência de usuário.
+            </p>
+            <div class="team-card__links">
+              <a
+                href="https://github.com/henriqueptbd-cell"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/henrique-camargo-6275a6394/"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <div class="team-card__top">
+              <div class="team-card__avatar">LA</div>
+              <span class="team-card__badge">Desenvolvedor</span>
+            </div>
+            <h3>Lucas Amorim</h3>
+            <p>
+              Focou na arquitetura do front-end e na organização das páginas de
+              conteúdo.
+            </p>
+            <div class="team-card__links">
+              <a
+                href="https://github.com/LUCASAMR23"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/lucas-amorim-4b3312362/"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <div class="team-card__top">
+              <div class="team-card__avatar">MC</div>
+              <span class="team-card__badge">Desenvolvedor</span>
+            </div>
+            <h3>Marcello Campbell</h3>
+            <p>
+              Trabalhou no layout e nas interações do portal, garantindo fluidez
+              visual em cada tela.
+            </p>
+            <div class="team-card__links">
+              <a
+                href="https://github.com/mparise28-dev"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/marcello-parise-campbell-fonseca-147965194/"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <div class="team-card__top">
+              <div class="team-card__avatar">VA</div>
+              <span class="team-card__badge">Desenvolvedor</span>
+            </div>
+            <h3>Vinicius Augusto</h3>
+            <p>
+              Auxiliou nas funcionalidades, no layout e no suporte técnico para
+              manter a consistência do portal.
+            </p>
+            <div class="team-card__links">
+              <a
+                href="https://github.com/viniciusaugusto1997"
+                target="_blank"
+                rel="noopener"
+                >GitHub</a
+              >
+              <a
+                href="https://linkedin.com/in/"
+                target="_blank"
+                rel="noopener"
+                aria-disabled="true"
+                >LinkedIn</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <section class="sobre-section sobre-team">
-            <div class="sobre-section__header">
-                <h2>Equipe DEVassos</h2>
-                <p>Uma equipe multidisciplinar que trabalhou em conjunto para entregar o ScrumFlow como projeto ABP.</p>
-            </div>
-            <div class="team-grid">
-                <article class="team-card team-card--po">
-                    <div class="team-card__top">
-                        <div class="team-card__avatar">GK</div>
-                        <span class="team-card__badge">Product Owner</span>
-                    </div>
-                    <h3>Gustavo Koiti</h3>
-                    <p>Responsável por priorizar as entregas, definir o backlog e manter o produto alinhado aos
-                        objetivos do curso.</p>
-                    <div class="team-card__links">
-                        <a href="https://github.com/gustavokoitiyoshimura" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </article>
-                <article class="team-card team-card--sm">
-                    <div class="team-card__top">
-                        <div class="team-card__avatar">GT</div>
-                        <span class="team-card__badge">Scrum Master</span>
-                    </div>
-                    <h3>Gabriel Travensolli</h3>
-                    <p>Garantiu a cadência, a comunicação e as retrospectivas para que o time seguisse o fluxo ágil.</p>
-                    <div class="team-card__links">
-                        <a href="https://github.com/travensolli" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://www.linkedin.com/in/gabrieltravensolli/" target="_blank"
-                            rel="noopener">LinkedIn</a>
-                    </div>
-                </article>
-                <article class="team-card">
-                    <div class="team-card__top">
-                        <div class="team-card__avatar">AT</div>
-                        <span class="team-card__badge">Desenvolvedora</span>
-                    </div>
-                    <h3>Andrea Turíbio</h3>
-                    <p>Contribuiu no desenvolvimento da interface e na construção das páginas do portal.</p>
-                    <div class="team-card__links">
-                        <a href="https://github.com/DeaTuribio" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://www.linkedin.com/in/andrea-turibio-41507467/" target="_blank"
-                            rel="noopener">LinkedIn</a>
-                    </div>
-                </article>
-                <article class="team-card">
-                    <div class="team-card__top">
-                        <div class="team-card__avatar">HC</div>
-                        <span class="team-card__badge">Desenvolvedor</span>
-                    </div>
-                    <h3>Henrique Camargo</h3>
-                    <p>Implementou funcionalidades e ajudou a integrar o portal com a experiência de usuário.</p>
-                    <div class="team-card__links">
-                        <a href="https://github.com/henriqueptbd-cell" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://www.linkedin.com/in/henrique-camargo-6275a6394/" target="_blank"
-                            rel="noopener">LinkedIn</a>
-                    </div>
-                </article>
-                <article class="team-card">
-                    <div class="team-card__top">
-                        <div class="team-card__avatar">LA</div>
-                        <span class="team-card__badge">Desenvolvedor</span>
-                    </div>
-                    <h3>Lucas Amorim</h3>
-                    <p>Focou na arquitetura do front-end e na organização das páginas de conteúdo.</p>
-                    <div class="team-card__links">
-                        <a href="https://github.com/LUCASAMR23" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://www.linkedin.com/in/lucas-amorim-4b3312362/" target="_blank"
-                            rel="noopener">LinkedIn</a>
-                    </div>
-                </article>
-                <article class="team-card">
-                    <div class="team-card__top">
-                        <div class="team-card__avatar">MC</div>
-                        <span class="team-card__badge">Desenvolvedor</span>
-                    </div>
-                    <h3>Marcello Campbell</h3>
-                    <p>Trabalhou no layout e nas interações do portal, garantindo fluidez visual em cada tela.</p>
-                    <div class="team-card__links">
-                        <a href="https://github.com/mparise28-dev" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://www.linkedin.com/in/marcello-parise-campbell-fonseca-147965194/"
-                            target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </article>
-                <article class="team-card">
-                    <div class="team-card__top">
-                        <div class="team-card__avatar">VA</div>
-                        <span class="team-card__badge">Desenvolvedor</span>
-                    </div>
-                    <h3>Vinicius Augusto</h3>
-                    <p>Auxiliou nas funcionalidades, no layout e no suporte técnico para manter a consistência do
-                        portal.</p>
-                    <div class="team-card__links">
-                        <a href="https://github.com/viniciusaugusto1997" target="_blank" rel="noopener">GitHub</a>
-                        <a href="https://linkedin.com/in/" target="_blank" rel="noopener"
-                            aria-disabled="true">LinkedIn</a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="sobre-section sobre-section--values">
-            <div class="sobre-section__header">
-                <h2>Valores do ScrumFlow</h2>
-                <p>Projetado para apoiar o aprendizado com foco em clareza, colaboração e entrega contínua.</p>
-            </div>
-            <div class="sobre-grid">
-                <article class="sobre-card">
-                    <span class="sobre-card__label">Valor</span>
-                    <h2>Aprendizado acessível</h2>
-                    <p>Conteúdos apresentados de forma simples e direta, para que todos possam acompanhar sem perder o
-                        foco.</p>
-                </article>
-                <article class="sobre-card">
-                    <span class="sobre-card__label">Valor</span>
-                    <h2>Prática constante</h2>
-                    <p>Questões práticas e histórico de desempenho ajudam a transformar teoria em habilidade real.</p>
-                </article>
-                <article class="sobre-card sobre-card--wide">
-                    <span class="sobre-card__label">Promessa</span>
-                    <h2>Mais do que um site, uma experiência de estudo.</h2>
-                    <p>O objetivo é criar um ambiente que prepare o aluno para aplicar Scrum com confiança e
-                        competência.</p>
-                </article>
-            </div>
-        </section>
+      <section class="sobre-section sobre-section--values">
+        <div class="sobre-section__header">
+          <h2>Valores do ScrumFlow</h2>
+          <p>
+            Projetado para apoiar o aprendizado com foco em clareza, colaboração
+            e entrega contínua.
+          </p>
+        </div>
+        <div class="sobre-grid">
+          <article class="sobre-card">
+            <span class="sobre-card__label">Valor</span>
+            <h2>Aprendizado acessível</h2>
+            <p>
+              Conteúdos apresentados de forma simples e direta, para que todos
+              possam acompanhar sem perder o foco.
+            </p>
+          </article>
+          <article class="sobre-card">
+            <span class="sobre-card__label">Valor</span>
+            <h2>Prática constante</h2>
+            <p>
+              Questões práticas e histórico de desempenho ajudam a transformar
+              teoria em habilidade real.
+            </p>
+          </article>
+          <article class="sobre-card sobre-card--wide">
+            <span class="sobre-card__label">Promessa</span>
+            <h2>Mais do que um site, uma experiência de estudo.</h2>
+            <p>
+              O objetivo é criar um ambiente que prepare o aluno para aplicar
+              Scrum com confiança e competência.
+            </p>
+          </article>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <hr class="footer__divider">
-            <div class="footer__bottom">
-                <p class="footer__copy">&copy; 2026 <strong>ScrumFlow</strong> &mdash; DEVassos. Todos os direitos
-                    reservados.</p>
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <div id="modal-login" class="modal-lateral">
+      <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
+
+      <div id="view-login" class="modal-view">
+        <h2 class="modal-titulo">Entrar no time</h2>
+        <p class="modal-subtitulo">Bem-vindo de volta! FaÃ§a login para continuar.</p>
+
+        <form id="form-login">
+          <div class="campo-grupo">
+            <label class="campo-label" for="cpf">CPF</label>
+            <div class="campo-wrapper">
+              <span class="campo-icone">&#9679;</span>
+              <input type="text" id="cpf" class="input" placeholder="000.000.000-00" />
             </div>
+            <span class="campo-erro" id="erro-cpf-login"></span>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="senha">Senha</label>
+            <div class="campo-wrapper">
+              <span class="campo-icone">&#9679;</span>
+              <input type="password" id="senha" class="input" placeholder="Digite sua senha" />
+              <span class="campo-icone-direita" id="toggle-senha">&#128065;</span>
+            </div>
+            <span class="campo-erro" id="erro-senha-login"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Entrar no Sprint &rarr;
+          </button>
+
+          <div class="modal-rodape">
+            NÃ£o tem uma conta?
+            <a href="#" id="link-ir-cadastro" class="link-amber">Criar conta</a>
+          </div>
+        </form>
+      </div>
+
+      <div id="view-cadastro" class="modal-view">
+        <h2 class="modal-titulo">Criar conta</h2>
+        <p class="modal-subtitulo">Junte-se ao time e comece sua jornada Scrum.</p>
+
+        <form id="form-cadastro">
+          <div class="campo-grupo">
+            <label class="campo-label" for="cad-nome">Nome completo</label>
+            <div class="campo-wrapper">
+              <span class="campo-icone">&#9679;</span>
+              <input type="text" id="cad-nome" class="input" placeholder="Seu nome completo" />
+            </div>
+            <span class="campo-erro" id="erro-nome"></span>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="cad-cpf">CPF</label>
+            <div class="campo-wrapper">
+              <span class="campo-icone">&#9679;</span>
+              <input
+                type="text"
+                id="cad-cpf"
+                class="input"
+                placeholder="000.000.000-00"
+                maxlength="14"
+              />
+            </div>
+            <span class="campo-erro" id="erro-cpf"></span>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="cad-email">E-mail</label>
+            <div class="campo-wrapper">
+              <span class="campo-icone">&#9993;</span>
+              <input type="email" id="cad-email" class="input" placeholder="seu@email.com" />
+            </div>
+            <span class="campo-erro" id="erro-email"></span>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="cad-senha">Senha</label>
+            <div class="campo-wrapper">
+              <span class="campo-icone">&#9679;</span>
+              <input type="password" id="cad-senha" class="input" placeholder="MÃ­nimo 8 caracteres" />
+              <span class="campo-icone-direita" id="toggle-cad-senha">&#128065;</span>
+            </div>
+            <span class="campo-erro" id="erro-senha"></span>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="cad-confirmar">Confirmar senha</label>
+            <div class="campo-wrapper">
+              <span class="campo-icone">&#9679;</span>
+              <input
+                type="password"
+                id="cad-confirmar"
+                class="input"
+                placeholder="Repita a senha"
+              />
+              <span class="campo-icone-direita" id="toggle-cad-confirmar">&#128065;</span>
+            </div>
+            <span class="campo-erro" id="erro-confirmar"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Criar conta &rarr;
+          </button>
+          <div class="modal-rodape">
+            JÃ¡ tem conta? <a href="#" id="link-ir-login" class="link-amber">Entrar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <!-- Coluna Marca -->
+          <div class="footer__brand">
+            <a href="index.html" class="footer__logo"
+              >Scrum<span class="flow">Flow</span></a
+            >
+            <div class="footer__badge">
+              <span class="footer__badge-dot"></span>
+              Online e Gratuito
+            </div>
+          </div>
+
+          <!-- Coluna Descrição (centro) -->
+          <div class="footer__desc-col">
+            <p class="footer__desc">
+              Portal de aprendizado em metodologias ágeis, desenvolvido como
+              Projeto ABP do 1º semestre de 2026 na FATEC Jacareí.
+            </p>
+          </div>
+
+          <!-- Coluna Projeto -->
+          <div>
+            <h3 class="footer__col-title">Projeto</h3>
+            <ul class="footer__links">
+              <li>
+                <a
+                  href="https://github.com/DEVassos/scrum-flow-abp"
+                  target="_blank"
+                  rel="noopener"
+                  >GitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="http://github.com/DEVassos/scrum-flow-abp/blob/develop/CONTRIBUTING.md"
+                  target="_blank"
+                  rel="noopener"
+                  >Guia de Contribuição</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/DEVassos/scrum-flow-abp/tree/develop/docs"
+                  target="_blank"
+                  >Documentação</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <hr class="footer__divider" />
+
+        <!-- Logos institucionais + info -->
+        <div class="footer__inst-bar">
+          <div class="footer__fatec">
+            <img
+              src="../assets/img/cps-favicon.ico"
+              alt="Centro Paula Souza"
+              class="footer__inst-logo footer__inst-logo--cps"
+            />
+            <img
+              src="../assets/img/logo_fatec_transparente.png"
+              alt="Fatec Jacareí"
+              class="footer__inst-logo"
+            />
+            <img
+              src="../assets/img/logo_dsm_transparente.png"
+              alt="DSM - Desenvolvimento de Software Multiplataforma"
+              class="footer__inst-logo footer__inst-logo--dsm"
+            />
+            <span class="footer__inst-text"
+              >FATEC Jacareí Prof. Francisco Moura &mdash; 1DSM ABP 2026/1</span
+            >
+          </div>
+        </div>
+
+        <hr class="footer__divider" />
+
+        <!-- Copyright centralizado -->
+        <div class="footer__bottom">
+          <p class="footer__copy">
+            &copy; 2026 <strong>ScrumFlow</strong> &mdash; DEVassos. Todos os
+            direitos reservados.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="../assets/js/stars.js"></script>
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/api.js"></script>
     <script src="../assets/js/navbar.js"></script>
-</body>
-
+    <script src="../assets/js/index.js"></script>
+  </body>
 </html>
