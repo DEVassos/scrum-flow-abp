@@ -1,11 +1,9 @@
 @import url("../global.css");
-@import url("./dashboard.css");
 
 /* Garante que [hidden] não seja sobrescrito por display:flex das classes */
 [hidden] { display: none !important; }
 
 /* FIX: content.css define svg { width: 200px } — reseta para ícones do layout */
-.sidebar-link svg,
 .config-card-icon svg,
 .admin-badge svg {
     width: unset;
@@ -409,15 +407,6 @@
 }
 
 @media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
-
-    .dashboard-main {
-        margin-left: 0;
-        padding: 24px 20px 48px;
-    }
-
     /* Botão "Nova questão" vai para linha separada no header */
     .config-card-header {
         flex-wrap: wrap;
