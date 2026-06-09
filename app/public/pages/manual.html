@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Importação das fontes oficiais do ScrumFlow: Poppins e Inter -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jomhuria&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy-900:#0a1530; --navy-800:#0d1c40; --navy-700:#13264f; --navy-600:#1b3361;
@@ -21,6 +21,7 @@
     --shadow-lg:0 24px 60px -22px rgba(10,21,48,.45);
 
     /* Variáveis das fontes oficiais do projeto */
+    --font-logo: 'Jomhuria', cursive;
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
   }
@@ -40,7 +41,7 @@
   
   /* Ajuste para manter os títulos dos blocos institucionais com Poppins */
   .topbar .wm, footer.pg .wm {
-    font-family: var(--font-heading);
+    font-family: var(--font-logo);
   }
 
   a{color:var(--orange-600);text-decoration:none}
@@ -52,8 +53,8 @@
     padding:12px 22px;background:rgba(10,21,48,.92);backdrop-filter:blur(8px);
     border-bottom:1px solid rgba(245,166,35,.25);color:#fff;
   }
-  .topbar .wm{font-weight:800;font-size:20px;letter-spacing:-.02em}
-  .topbar .wm b{color:var(--orange)}
+  .topbar .wm{font-size:56px;line-height:1;color:#fff;text-decoration:none;cursor:pointer}
+  .topbar .wm .flow{color:#F59E0B}
   .topbar .tag{font-size:12.5px;color:#aeb8d6;border-left:1px solid rgba(255,255,255,.18);padding-left:14px;display:none}
   .topbar .spacer{flex:1}
   .btn-print{
@@ -64,7 +65,9 @@
     transition:transform .12s ease, background .12s ease;
   }
   .btn-print:hover{background:#ffb733;transform:translateY(-1px)}
-  @media(min-width:680px){.topbar .tag{display:block}}
+@media(min-width:680px){.topbar .tag{display:block}}
+  @media(max-width:1024px){.topbar .wm{font-size:44px}}
+  @media(max-width:768px){.topbar .wm{font-size:40px}}
 
   /* ---------- HERO ---------- */
   .hero{position:relative;overflow:hidden;background:radial-gradient(1200px 500px at 78% -10%, #16315f 0%, var(--navy-800) 42%, var(--navy-900) 100%);color:#fff}
@@ -249,7 +252,7 @@
   /* footer */
   footer.pg{background:var(--navy-900);color:#aeb8d6;margin-top:30px;padding:38px 26px}
   footer.pg .fin{max-width:var(--maxw);margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
-  footer.pg .wm{font-family:var(--font-heading);font-weight:800;font-size:22px;color:#fff} /* Atualizado para Poppins */
+  footer.pg .wm{font-family:var(--font-logo);font-weight:800;font-size:22px;color:#fff}
   footer.pg .wm b{color:var(--orange)}
   footer.pg small{display:block;color:#7c87a8;margin-top:6px;font-size:13px}
   footer.pg .right{font-size:13.5px;text-align:right;color:#8c97ba;line-height:1.6}
@@ -274,7 +277,7 @@
 <body>
 
 <div class="topbar">
-  <span class="wm">Scrum<b>Flow</b></span>
+  <a href="index.html" class="wm">Scrum<span class="flow">Flow</span></a>
   <span class="tag">Manual do Usuário</span>
   <span class="spacer"></span>
   <button class="btn-print" onclick="window.print()">
@@ -533,15 +536,14 @@
         </div>
         <figcaption>Tela da avaliação: uma questão por vez, com alternativas de <b>A</b> a <b>D</b>.</figcaption>
       </figure>
+      <p>Assim que você finaliza, o portal abre a <strong>tela de resultado</strong>, que traz:</p>
+      <ul class="plain">
+        <li>sua <b>nota</b> em destaque, dentro de um círculo de pontuação;</li>
+        <li>um selo de <b>Aprovado</b> ou <b>Reprovado</b> para aquela tentativa;</li>
+        <li>uma <b>revisão questão a questão</b>: cada questão fica marcada como acerto (verde) ou erro (vermelho), mostrando inclusive a <b>resposta correta</b>;</li>
+        <li>botões de ação para <b>voltar</b> ou <b>seguir adiante</b>.</li>
+      </ul>
       <figure>
-        <p>Assim que você finaliza, o portal abre a <strong>tela de resultado</strong>, que traz:</p>
-        <ul class="plain">
-          <li>sua <b>nota</b> em destaque, dentro de um círculo de pontuação;</li>
-          <li>um selo de <b>Aprovado</b> ou <b>Reprovado</b> para aquela tentativa;</li>
-          <li>uma <b>revisão questão a questão</b>: cada questão fica marcada como acerto (verde) ou erro (vermelho), mostrando inclusive a <b>resposta correta</b>;</li>
-          <li>botões de ação para <b>voltar</b> ou <b>seguir adiante</b>.</li>
-        </ul>
-        <figure>
           <div class="score-demo">
             <div class="ring">
               <svg width="150" height="150" viewBox="0 0 150 150">
