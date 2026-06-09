@@ -13,47 +13,8 @@
     <div class="blob-esquerda"></div>
     <div class="blob-direita"></div>
 
-    <nav class="navbar">
-      <div class="navbar__container">
-        <a href="index.html" class="logo"
-          >Scrum<span class="flow">Flow</span></a
-        >
-
-        <div class="nav-menu" id="nav-menu">
-          <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="manifesto.html" class="nav-link">Manifesto</a></li>
-            <li><a href="scrum.html" class="nav-link">Scrum</a></li>
-            <li><a href="sobre.html" class="nav-link">Sobre</a></li>
-            <li><a href="manual.html" class="nav-link">Manual de Uso</a></li>
-          </ul>
-
-          <div class="navbar__actions">
-            <!-- nav-deslogado e nav-logado são alternados pelo navbar.js -->
-            <div id="nav-deslogado">
-              <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
-              <a href="#" id="btn-criar-conta" class="btn btn-primary"
-                >Criar conta</a
-              >
-            </div>
-            <div id="nav-logado" hidden>
-              <span id="nav-saudacao" class="nav-saudacao"></span>
-              <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
-            </div>
-          </div>
-        </div>
-
-        <button
-          class="navbar__hamburger"
-          id="hamburger"
-          aria-label="Abrir menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </nav>
+    <!-- Conteúdo injetado pelo navbar.js -->
+    <nav class="navbar" id="navbar"></nav>
 
     <main class="container">
       <article class="scrum-content">
