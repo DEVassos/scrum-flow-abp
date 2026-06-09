@@ -147,7 +147,9 @@
           body: JSON.stringify({ senha_atual: senhaAtual, nova_senha: nova }),
         });
 
-        const data = await response.json();
+        const data = await response.json().catch(function () {
+          return {};
+        });
 
         if (!response.ok) {
           mostrarToast(data.message || "Erro ao alterar senha.", "erro");
@@ -570,9 +572,7 @@
         }
         tbody.innerHTML = usuarios
           .map(function (u) {
-            const modulo = u.modulo_titulo
-              ? "Módulo " + u.id_modulo + " – " + u.modulo_titulo
-              : "—";
+            const modulo = u.id_modulo ? "Módulo " + u.id_modulo : "—";
             const tentativas = u.id_exame
               ? u.tentativas_modulo_atual + " / 2"
               : "—";
@@ -604,6 +604,22 @@
                   escapeHtml(u.nome) +
                   "')\">Módulo 1</button>"
                 : '<span style="font-size:12px;color:var(--navy-400)">Sem exame</span>') +
+              '<button class="btn-tabela ' +
+              (u.is_admin ? "btn-tabela--excluir" : "btn-tabela--editar") +
+              '" onclick="toggleAdmin(' +
+              u.id_usuario +
+              ", '" +
+              escapeHtml(u.nome) +
+              "', " +
+              u.is_admin +
+              ')">' +
+              (u.is_admin ? "Remover admin" : "Tornar admin") +
+              "</button>" +
+              '<button class="btn-tabela btn-tabela--excluir" onclick="excluirUsuario(' +
+              u.id_usuario +
+              ", '" +
+              escapeHtml(u.nome) +
+              '\')" style="background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.4);color:#f87171">Excluir</button>' +
               "</div>" +
               "</td>" +
               "</tr>"
@@ -680,6 +696,62 @@
       .then(function (res) {
         mostrarToast(
           res.ok ? res.data.message : res.data.message || "Erro ao reiniciar.",
+          res.ok ? "sucesso" : "erro",
+        );
+        if (res.ok) carregarProgressoUsuarios();
+      })
+      .catch(function () {
+        mostrarToast("Erro de conexão.", "erro");
+      });
+  };
+
+  window.excluirUsuario = function (idUsuario, nome) {
+    if (
+      !confirm(
+        'Excluir "' +
+          nome +
+          '"?\n\nIsso remove permanentemente o usuário e todo o seu histórico. Esta ação não pode ser desfeita.',
+      )
+    )
+      return;
+    const token = obterToken();
+    fetch("/api/admin/usuarios/" + idUsuario, {
+      method: "DELETE",
+      headers: { Authorization: "Bearer " + token },
+    })
+      .then(function (r) {
+        return r.json().then(function (d) {
+          return { ok: r.ok, data: d };
+        });
+      })
+      .then(function (res) {
+        mostrarToast(
+          res.ok ? res.data.message : res.data.message || "Erro ao excluir.",
+          res.ok ? "sucesso" : "erro",
+        );
+        if (res.ok) carregarProgressoUsuarios();
+      })
+      .catch(function () {
+        mostrarToast("Erro de conexão.", "erro");
+      });
+  };
+
+  window.toggleAdmin = function (idUsuario, nome, isAdmin) {
+    const acao = isAdmin ? "remover admin de" : "tornar admin";
+    if (!confirm('Deseja ' + acao + ' "' + nome + '"?')) return;
+    const token = obterToken();
+    fetch("/api/admin/usuarios/" + idUsuario + "/toggle-admin", {
+      method: "PATCH",
+      headers: { Authorization: "Bearer " + token },
+    })
+      .then(function (r) {
+        return r.json().then(function (d) {
+          return { ok: r.ok, data: d };
+        });
+      })
+      .then(function (res) {
+        mostrarToast(
+          res.ok ? res.data.message : res.data.message || "Erro ao alterar admin.",
           res.ok ? "sucesso" : "erro",
         );
         if (res.ok) carregarProgressoUsuarios();

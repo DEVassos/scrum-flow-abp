@@ -480,8 +480,8 @@
     border: 1px solid rgba(245, 158, 11, 0.2);
     border-radius: 16px;
     width: 100%;
-    max-width: 820px;
-    max-height: 80vh;
+    max-width: 1100px;
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
     box-shadow: 0 16px 48px rgba(10, 22, 40, 0.8);
