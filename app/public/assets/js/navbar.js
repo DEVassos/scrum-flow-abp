@@ -87,7 +87,10 @@
 
     const nome = obterNome() || "Usuário";
     const payload = obterPayloadToken();
-    const perfil = String(payload.perfil || "").toLowerCase() === "admin" ? "Administrador" : "Estudante";
+    const ehAdmin =
+      payload.is_admin === true ||
+      String(payload.perfil || "").toLowerCase() === "admin";
+    const perfil = ehAdmin ? "Administrador" : "Estudante";
     const email = payload.email || "Conta Scrum Flow";
     const iniciais = obterIniciais(nome);
     const dashboardHref =
@@ -118,7 +121,7 @@
               <span class="profile-menu__role">${textoSeguro(perfil)}</span>
               <span class="profile-menu__email">${textoSeguro(email)}</span>
             </div>
-            <span class="profile-menu__level" data-profile-level aria-label="Nível atual">Nível 0</span>
+            <span class="profile-menu__level" data-profile-level aria-label="Módulo atual">Módulo 0</span>
           </div>
 
           <div class="profile-menu__items">
@@ -199,13 +202,13 @@
         return Boolean(modulo.aprovado);
       }).length;
 
-      elemento.textContent = "Nível " + concluidos;
+      elemento.textContent = "Módulo " + concluidos;
       elemento.setAttribute(
         "aria-label",
-        concluidos + " nível" + (concluidos === 1 ? "" : "s") + " concluído" + (concluidos === 1 ? "" : "s"),
+        concluidos + " módulo" + (concluidos === 1 ? "" : "s") + " concluído" + (concluidos === 1 ? "" : "s"),
       );
     } catch {
-      elemento.textContent = "Nível 0";
+      elemento.textContent = "Módulo 0";
     }
   }
 
