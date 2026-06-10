@@ -167,6 +167,7 @@
 
 /* CARD DA QUESTÃO */
 .questao-card {
+  scroll-margin-top: 100px;
   background: linear-gradient(
     135deg,
     rgba(15, 32, 68, 0.8) 0%,
@@ -413,6 +414,13 @@
 
 .progresso-dot.respondida {
   background: var(--teal-500);
+}
+
+.aviso-selecao {
+  text-align: center;
+  color: var(--amber-500);
+  font-size: 13px;
+  margin: 0;
 }
 
 /* CONTROLES DE NAVEGAÇÃO */
