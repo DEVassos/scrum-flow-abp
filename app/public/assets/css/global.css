@@ -10,6 +10,7 @@
 @import url('./components/sidebar.css');
 @import url('./components/validacao.css');
 @import url('./components/footer.css');
+@import url('./components/card.css');
 
 :root {
   /* Cores Principais (Navy) */
