@@ -1,4 +1,5 @@
 @import url("../global.css");
+@import url("../components/card.css");
 
 /* content.css tem svg { width:200px; height:200px }.
    [hidden] precisa de !important para não ser sobrescrito
@@ -50,8 +51,6 @@
 }
 
 .nivel-card {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-700);
     border-radius: 10px;
     padding: 14px 18px;
     display: flex;
@@ -238,9 +237,6 @@
 }
 
 .lateral-card {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-700);
-    border-radius: 14px;
     padding: 22px 20px;
     display: flex;
     flex-direction: column;
