@@ -1,4 +1,5 @@
 @import url("../global.css");
+@import url("../components/card.css");
 
 /* Garante que [hidden] não seja sobrescrito por display:flex das classes */
 [hidden] { display: none !important; }
@@ -59,10 +60,6 @@
    ================================ */
 
 .config-card {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-700);
-    border-radius: 16px;
-    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 20px;

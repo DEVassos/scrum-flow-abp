@@ -1,4 +1,5 @@
 @import url("../global.css");
+@import url("../components/card.css");
 
 [hidden] { display: none !important; }
 
@@ -72,10 +73,6 @@
    ================================ */
 
 .historico-sidebar {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-600);
-    border-radius: 20px;
-    padding: 24px;
     position: sticky;
     top: calc(64px + 24px);
     max-height: calc(100vh - 64px - 48px);
@@ -113,9 +110,6 @@
 
 .historico-modulo-item {
     width: 100%;
-    background-color: var(--navy-900);
-    border: 1px solid var(--navy-600);
-    border-radius: 14px;
     padding: 16px;
     cursor: pointer;
     text-align: left;
@@ -163,10 +157,6 @@
    ================================ */
 
 .historico-painel {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-600);
-    border-radius: 20px;
-    padding: 32px;
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -263,11 +253,7 @@
 }
 
 .questao-card {
-    background-color: var(--navy-900);
-    border: 1px solid var(--navy-600);
     border-left-width: 3px;
-    border-radius: 14px;
-    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;

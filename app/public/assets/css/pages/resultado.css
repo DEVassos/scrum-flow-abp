@@ -1,5 +1,6 @@
 @import url("../global.css");
 @import url("./dashboard.css");
+@import url("../components/card.css");
 
 .resultado-container {
     min-height: 100vh;
@@ -37,10 +38,6 @@
 }
 
 .resultado-score-card {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-600);
-    border-radius: 16px;
-    padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -226,9 +223,6 @@ body[data-resultado-status="reprovado"] .score-number {
 }
 
 .resultado-detalhes {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-600);
-    border-radius: 16px;
     padding: 28px;
     display: flex;
     flex-direction: column;
@@ -671,10 +665,6 @@ body[data-resultado-status="reprovado"] .score-number {
 }
 
 .revisao-card {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-600);
-    border-radius: 16px;
-    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
