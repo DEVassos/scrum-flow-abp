@@ -11,7 +11,9 @@
 .modulo-painel,
 .resultado-score-card,
 .resultado-detalhes,
-.revisao-card {
+.revisao-card,
+.nivel-card,
+.lateral-card {
     background-color: var(--navy-800);
     border: 1px solid var(--navy-600);
 }
