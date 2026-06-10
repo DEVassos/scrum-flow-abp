@@ -60,6 +60,9 @@
                   rel="noopener"
                 >Documenta&ccedil;&atilde;o</a>
               </li>
+              <li>
+                <a href="${hrefPagina("validar_certificado.html")}">Validar Certificado</a>
+              </li>
             </ul>
           </div>
         </div>
