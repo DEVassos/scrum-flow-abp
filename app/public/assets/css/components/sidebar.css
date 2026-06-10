@@ -87,8 +87,9 @@
 
 .dashboard-subtitulo {
     font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--slate-400);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--amber-400);
     margin: 0;
 }
 
