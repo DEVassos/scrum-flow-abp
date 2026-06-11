@@ -1,6 +1,6 @@
 # 🔄 Gestão Ágil — Scrum
 
-← [Índice da Documentação](../00-INDICE.md)
+← [Índice da Documentação](../README.md)
 
 Visão geral de como o time aplica Scrum no projeto.
 
@@ -73,5 +73,5 @@ Cada sprint mantém o checklist específico em `sprint-N/dor-dod.md`.
 ---
 
 <div align="center">
-  <a href="../00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../README.md">← Voltar ao Índice</a>
 </div>

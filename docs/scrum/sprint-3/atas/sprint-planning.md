@@ -1,4 +1,4 @@
-← [Sprint 3](../sprint-3.md)
+← [Índice da Documentação](../../../README.md) · [Gestão Ágil — Scrum](../../README.md) · [Sprint 3](../sprint-3.md)
 
 # Sprint Planning — Sprint 3
 
@@ -193,5 +193,5 @@ Ao final desta sprint, o usuário autenticado conseguirá consultar o histórico
 - Scrum Master deve acompanhar burndown diariamente e escalar se P0+P1 não forem concluídos até o final da Semana 2.
 
 <div align="center">
-  <a href="../sprint-3.md">← Voltar à Sprint 3</a>
+    <a href="../../../README.md">← Voltar ao Índice</a> · <a href="../../README.md">Gestão Ágil — Scrum</a> · <a href="../sprint-3.md">Sprint 3</a>
 </div>

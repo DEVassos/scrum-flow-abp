@@ -1,6 +1,6 @@
 # Guia de Contribuição — DEVassos / ABP 1DSM 2026/1
 
-← [Índice da Documentação](./docs/00-INDICE.md)
+← [Índice da Documentação](./docs/README.md)
 
 > Este documento define as regras de trabalho colaborativo para o projeto ABP do 1º semestre de 2026.
 > Todos os membros do time devem ler e seguir estas diretrizes.
@@ -109,5 +109,5 @@ Não. O PR precisa da aprovação de ao menos 1 outro membro antes do merge.
 ---
 
 <div align="center">
-  <a href="./docs/00-INDICE.md">← Voltar ao Índice</a>
+  <a href="./docs/README.md">← Voltar ao Índice</a>
 </div>

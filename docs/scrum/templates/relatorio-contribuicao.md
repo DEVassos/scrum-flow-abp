@@ -1,6 +1,6 @@
 # 📋 Relatório de Contribuição — Sprint [NUMERO]
 
-← [Índice da Documentação](../../00-INDICE.md) · [Sprint [NUMERO]](../sprint-[NUMERO]/sprint-[NUMERO].md) · [Dailies](../sprint-[NUMERO]/atas/dailies/)
+← [Índice da Documentação](../../README.md) · [Sprint [NUMERO]](../sprint-[NUMERO]/sprint-[NUMERO].md) · [Dailies](../sprint-[NUMERO]/atas/dailies/)
 
 **Período:** [DATA_INICIO] — [DATA_FIM] ([QTD] dias úteis)  
 **Sprint Goal:** [OBJETIVO_DA_SPRINT]  

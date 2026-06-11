@@ -1,4 +1,4 @@
-← [Sprint 2](../sprint-2.md)
+← [Índice da Documentação](../../README.md) · [Gestão Ágil — Scrum](../README.md) · [Sprint 2](sprint-2.md)
 
 # Checklist de DoR e DoD — Sprint 2
 
@@ -52,5 +52,5 @@ Um item é considerado **Pronto (Done)** quando atende a **todos** os critérios
 | US07 — Certificado Digital | ✅ | Critérios validados na Sprint Planning |
 
 <div align="center">
-  <a href="../sprint-2.md">← Voltar à Sprint 2</a>
+  <a href="../../README.md">← Voltar ao Índice</a> · <a href="../README.md">Gestão Ágil — Scrum</a> · <a href="sprint-2.md">Sprint 2</a>
 </div>

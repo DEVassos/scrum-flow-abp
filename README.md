@@ -21,19 +21,22 @@
 
 ---
 
-## Documentação para Avaliação
+## Documentação Completa
 
-| O que avaliar | Link direto |
+| Documento | Onde encontrar |
 |---|---|
-| Modelagem do banco de dados (conceitual + lógico) | [docs/modelos/bd/](./docs/modelos/bd/README.md) |
-| Diagramas UML (casos de uso, classes, sequência) | [docs/modelos/uml/](./docs/modelos/uml/README.md) |
+| Índice geral de documentação | [docs/README.md](./docs/README.md) |
+| Requisitos funcionais, não funcionais e restrições | [docs/edital/desafio-1dsm-2026-1.md](./docs/edital/desafio-1dsm-2026-1.md#requisitos) |
+| Modelagem do banco de dados | [docs/modelos/bd/](./docs/modelos/bd/) |
+| Diagramas UML | [docs/modelos/uml/](./docs/modelos/uml/) |
+| Visão do produto (para o cliente) | [docs/produto/visao-produto.md](./docs/produto/visao-produto.md) |
+| Manual do usuário | [docs/produto/manual-usuario.md](./docs/produto/manual-usuario.md) |
 | Product Backlog e histórias de usuário | [docs/scrum/backlog/product-backlog.md](./docs/scrum/backlog/product-backlog.md) |
 | Sprint 1 — backlog, DoR/DoD e atas | [docs/scrum/sprint-1/](./docs/scrum/sprint-1/sprint-1.md) · [▶ Vídeo](https://youtu.be/rQ7mEWP7sGU) |
 | Sprint 2 — backlog, DoR/DoD e atas | [docs/scrum/sprint-2/](./docs/scrum/sprint-2/sprint-2.md) · [▶ Vídeo](https://youtu.be/YXv9-3iwp9A) |
 | Sprint 3 — backlog, DoR/DoD e atas | [docs/scrum/sprint-3/](./docs/scrum/sprint-3/sprint-3.md) · [▶ Vídeo](https://youtu.be/pa0tak9AOZI) |
 | Requisitos funcionais, não funcionais e restrições | [docs/README.md](./docs/README.md#requisitos-e-restrições) |
 | Kanban do projeto | [GitHub Projects](https://github.com/orgs/DEVassos/projects/4) |
-
 ---
 
 ## Sumário
@@ -43,7 +46,6 @@
 - [Como Executar](#como-executar)
 - [Sprints e Entregas](#sprints-e-entregas)
 - [Equipe](#equipe)
-- [Documentação Completa](#documentação-completa)
 - [Tecnologias](#tecnologias)
 - [Licença](#licença)
 
@@ -95,15 +97,14 @@ O projeto integra em uma única entrega os conteúdos do semestre — **HTML, CS
 
 ## Como Executar
 
-**Pré-requisitos:** Node.js 18+, PostgreSQL 14+ e Git.
+**Pré-requisitos:** Node.js 18+, um PostgreSQL acessível via `DATABASE_URL` (ex.: Neon, com SSL) e Git.
 
 ```bash
 git clone https://github.com/DEVassos/scrum-flow-abp.git
 cd scrum-flow-abp/app
-cp .env.example .env        # preencha POSTGRES_PASSWORD e JWT_SECRET
+cp .env.example .env        # preencha DATABASE_URL e JWT_SECRET
 npm install
-createdb abp
-npm run db:init             # cria tabelas e insere questões
+npm run db:init             # cria tabelas e carrega módulos + questões
 npm run dev
 ```
 
@@ -188,20 +189,6 @@ Acesse: [http://localhost:3005](http://localhost:3005)
     </tr>
   </tbody>
 </table>
-
----
-
-## Documentação Completa
-
-| Documento | Onde encontrar |
-|---|---|
-| Índice geral de documentação | [docs/README.md](./docs/README.md) |
-| Artefatos da Sprint 1 | [docs/scrum/sprint-1/](./docs/scrum/sprint-1/) |
-| Artefatos da Sprint 2 | [docs/scrum/sprint-2/](./docs/scrum/sprint-2/) |
-| Artefatos da Sprint 3 | [docs/scrum/sprint-3/](./docs/scrum/sprint-3/) |
-| Modelagem do banco de dados | [docs/modelos/bd/](./docs/modelos/bd/) |
-| Diagramas UML | [docs/modelos/uml/](./docs/modelos/uml/) |
-| Rotas da API e estrutura do código | [app/README.md](./app/README.md) |
 
 ---
 
