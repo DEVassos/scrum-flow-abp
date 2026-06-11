@@ -1,8 +1,33 @@
 # ScrumFlow — Manual de Identidade Visual
 
-← [Índice da Documentação](../00-INDICE.md)
+← [Índice da Documentação](../README.md)
 
 **Versão 1.0 · Sprint 1 · ABP 2026-1 · FATEC Jacareí**
+
+> 📄 **Fonte de verdade:** este `.md` é a versão canônica e versionada. Os arquivos [`.docx`](./identidade-visual-scrumflow.docx) e [`.pdf`](./identidade-visual-scrumflow.pdf) são cópias de distribuição/impressão e podem ficar desatualizadas — em caso de divergência, vale o `.md`.
+
+---
+
+## A Marca em 1 Página
+
+> Resumo rápido para consulta. O detalhamento completo (regras, usos indevidos e CSS) vem nas seções seguintes.
+
+**Conceito:** *Scrum* (estrutura) + *Flow* (fluxo/imersão). Tema **dark**, alinhado à indústria de TI. Valores: profissionalismo, confiança, ação, clareza, modernidade.
+
+**Cores principais:**
+
+| Cor | Hex | Uso |
+|---|---|---|
+| 🟦 Navy 900 | `#0A1628` | Fundo principal |
+| 🟦 Navy 800 | `#0F2044` | Cards, modais |
+| 🟧 Amber 500 | `#F59E0B` | Botões/CTA, destaques, links ativos |
+| 🟩 Teal 500 | `#0D9488` | Sucesso / concluído |
+| 🟥 Red 500 | `#EF4444` | Erro / tentativa esgotada |
+| ⬜ White | `#FFFFFF` | Texto sobre fundo escuro |
+
+**Tipografia:** **Jomhuria** (logo) · **Poppins** (títulos e botões) · **Inter** (texto e inputs).
+
+**Logo:** nome em Jomhuria, com o "S" em Amber 500. Versão clara (Navy `#0A1628` sobre branco) para impressão de certificados.
 
 ---
 
@@ -519,5 +544,5 @@ Durante a concepção da identidade visual do ScrumFlow, o time consultou as seg
 ---
 
 <div align="center">
-  <a href="../00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../README.md">← Voltar ao Índice</a>
 </div>

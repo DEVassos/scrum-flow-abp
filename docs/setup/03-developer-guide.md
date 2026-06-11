@@ -1,8 +1,8 @@
 # 💻 Guia do Desenvolvedor
 
-← [Índice da Documentação](./00-INDICE.md)
+← [Índice da Documentação](../README.md)
 
-Guia para quem vai contribuir com código. Para subir a app, veja [Quickstart](./01-QUICKSTART.md).
+Guia para quem vai contribuir com código. Para subir a app, veja [Quickstart](./01-quickstart.md).
 
 ---
 
@@ -37,7 +37,7 @@ Guia para quem vai contribuir com código. Para subir a app, veja [Quickstart](.
 
 **Banco (PostgreSQL — DDL puro, sem ORM):**
 - Schemas e seeds em `src/infra/init/` (7 arquivos numerados)
-- Pool de conexão: `src/database/db.js` (variáveis `POSTGRES_*`)
+- Pool de conexão: `src/database/db.js` (via `DATABASE_URL`, com SSL)
 
 ---
 
@@ -119,11 +119,11 @@ Para chamadas à API autenticadas, importar os helpers:
 ## Trabalhando com o Banco
 
 - Nunca executar DML avulso — sempre via script versionado
-- Novas tabelas: criar `src/infra/init/NN_schema_<nome>.sql` (numerar em sequência)
-- Para resetar: `dropdb abp && createdb abp && npm run db:init`
+- Novas tabelas: criar `src/infra/init/NN_schema_<nome>.sql` (numerar em sequência) e referenciar em `src/infra/run-sql.js`
+- O `npm run db:init` roda contra o banco do `DATABASE_URL` (ver [02-setup.md → Banco de Dados](./02-setup.md#banco-de-dados))
 - Para inspecionar:
   ```bash
-  psql abp
+  psql "$DATABASE_URL"
   # \dt              → listar tabelas
   # \d <tabela>      → descrever colunas e tipos
   # SELECT * FROM usuarios LIMIT 5;
@@ -147,7 +147,7 @@ DevTools do navegador (F12):
 
 ### Banco
 ```bash
-psql abp
+psql "$DATABASE_URL"
 # Verificar se os dados foram inseridos corretamente
 SELECT cpf, nome, email FROM usuarios;
 ```
@@ -156,28 +156,28 @@ SELECT cpf, nome, email FROM usuarios;
 
 ## Fluxo de Contribuição
 
-1. Pegar tarefa do Sprint Backlog ([sprint-1.md](./scrum/sprint-1/sprint-1.md))
+1. Pegar tarefa do Sprint Backlog ([sprint-1.md](../scrum/sprint-1/sprint-1.md))
 2. Criar branch a partir de `develop`:
    ```bash
    git checkout develop && git pull
    git checkout -b feature/USXX-descricao-curta
    ```
 3. Codar + testar localmente
-4. Commit seguindo [Conventional Commits](../CONTRIBUTING.md#convenção-de-commits)
+4. Commit seguindo [Conventional Commits](../../CONTRIBUTING.md#convenção-de-commits)
 5. Push e abrir PR contra `develop`
 6. Aguardar revisão de ao menos 1 par
 7. **Atualizar a documentação relacionada no mesmo PR**
 
-> Detalhes completos: [CONTRIBUTING.md](../CONTRIBUTING.md)
+> Detalhes completos: [CONTRIBUTING.md](../../CONTRIBUTING.md)
 
 ---
 
 ## 🔗 Próximos Passos
-- 🤝 [CONTRIBUTING.md](../CONTRIBUTING.md)
-- 🔄 [Gestão Ágil (Scrum)](./scrum/README.md)
+- 🤝 [CONTRIBUTING.md](../../CONTRIBUTING.md)
+- 🔄 [Gestão Ágil (Scrum)](../scrum/README.md)
 
 ---
 
 <div align="center">
-  <a href="./00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../README.md">← Voltar ao Índice</a>
 </div>
