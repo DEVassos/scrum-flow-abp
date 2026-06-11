@@ -1,4 +1,4 @@
-← [Índice da Documentação](../../../00-INDICE.md) · [Sprint 1](../sprint-1.md)
+← [Índice da Documentação](../../../README.md) · [Gestão Ágil — Scrum](../../README.md) · [Sprint 2](../sprint-2.md)
 
 # Sprint Review — Sprint 2
 
@@ -96,5 +96,5 @@ As histórias da Sprint 2 foram validadas e aceitas pelo PO. Ressalvas registrad
 ---
 
 <div align="center">
-  <a href="../../../00-INDICE.md">← Voltar ao Índice</a> · <a href="../sprint-2.md">Sprint 2</a>
+  <a href="../../../README.md">← Voltar ao Índice</a> · <a href="../../README.md">Gestão Ágil — Scrum</a> · <a href="../sprint-2.md">Sprint 2</a>
 </div>
