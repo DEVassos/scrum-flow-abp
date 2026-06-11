@@ -21,34 +21,33 @@
 
 ## Instalação Rápida
 
-**Pré-requisitos:** Node.js 18+, PostgreSQL 14+.
+**Pré-requisitos:** Node.js 18+ e um PostgreSQL acessível via `DATABASE_URL` (ex.: [Neon](https://neon.tech), Supabase ou RDS — gerenciados, com SSL).
 
 ```bash
-cp .env.example .env        # preencha POSTGRES_PASSWORD e JWT_SECRET
+cp .env.example .env        # preencha DATABASE_URL e JWT_SECRET
 npm install
-createdb abp
-npm run db:init             # cria as tabelas e insere as questões
+npm run db:init             # cria as tabelas e insere os módulos + questões
 npm run dev
 ```
 
 Acesse: [http://localhost:3005](http://localhost:3005)
 
+> O `npm run db:init` executa os SQLs de `src/infra/init/` no banco apontado por `DATABASE_URL` — não é necessário `createdb` quando se usa um banco gerenciado.
+
 ---
 
 ## Variáveis de Ambiente
 
-Copie `.env.example` para `.env` e preencha os valores marcados com `—`:
+Copie `.env.example` para `.env` e preencha os valores em branco:
 
 | Variável | Descrição | Padrão |
 |---|---|---|
 | `PORT` | Porta do servidor | `3005` |
-| `POSTGRES_HOST` | Host do PostgreSQL | `localhost` |
-| `POSTGRES_PORT` | Porta do PostgreSQL | `5432` |
-| `POSTGRES_USER` | Usuário do banco | `postgres` |
-| `POSTGRES_PASSWORD` | Senha do banco | — |
-| `POSTGRES_DB` | Nome do banco | `abp` |
+| `DATABASE_URL` | String de conexão PostgreSQL (usada pelo servidor **e** pelo `db:init`) | — |
 | `JWT_SECRET` | Chave de assinatura JWT | — |
 | `DEFAULT_EXPIRES_IN_SECONDS` | Duração do token em segundos | `600` |
+
+> **Conexão (`src/database/db.js`):** a aplicação usa exclusivamente `DATABASE_URL` e ativa **SSL** sempre que ela está definida — por isso o banco precisa suportar SSL (caso de provedores gerenciados como o Neon). As variáveis `POSTGRES_*` do template estão **comentadas e não são utilizadas** atualmente. Para rodar contra um PostgreSQL local sem SSL, ajuste o `ssl` em `src/database/db.js`.
 
 ---
 
