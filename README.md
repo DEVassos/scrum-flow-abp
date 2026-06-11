@@ -35,7 +35,6 @@
 | Sprint 1 — backlog, DoR/DoD e atas | [docs/scrum/sprint-1/](./docs/scrum/sprint-1/sprint-1.md) · [▶ Vídeo](https://youtu.be/rQ7mEWP7sGU) |
 | Sprint 2 — backlog, DoR/DoD e atas | [docs/scrum/sprint-2/](./docs/scrum/sprint-2/sprint-2.md) · [▶ Vídeo](https://youtu.be/YXv9-3iwp9A) |
 | Sprint 3 — backlog, DoR/DoD e atas | [docs/scrum/sprint-3/](./docs/scrum/sprint-3/sprint-3.md) · [▶ Vídeo](https://youtu.be/pa0tak9AOZI) |
-| Requisitos funcionais, não funcionais e restrições | [docs/README.md](./docs/README.md#requisitos-e-restrições) |
 | Kanban do projeto | [GitHub Projects](https://github.com/orgs/DEVassos/projects/4) |
 ---
 
