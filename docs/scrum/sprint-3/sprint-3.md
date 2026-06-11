@@ -1,4 +1,4 @@
-← [Índice da Documentação](../../00-INDICE.md)
+← [Índice da Documentação](../../README.md) · [Gestão Ágil — Scrum](../README.md)
 
 # Sprint 3
 
@@ -138,8 +138,8 @@ xychart-beta
 | Cerimônia | Ata |
 |-----------|-----|
 | Sprint Planning | [atas/sprint-planning.md](atas/sprint-planning.md) |
-| Sprint Review | [atas/sprint-review.md](atas/sprint-review.md) |
-| Sprint Retrospective | [atas/sprint-retrospectiva.md](atas/sprint-retrospectiva.md) |
+| Sprint Review | _A realizar em 11/06/2026_ |
+| Sprint Retrospective | _A realizar em 11/06/2026_ |
 | Dailies | [atas/dailies/](atas/dailies/) |
 
 > As atas são criadas a partir dos templates em [`templates/`](../templates/).
@@ -154,20 +154,35 @@ Checklists de entrada (DoR) e conclusão (DoD) das histórias desta sprint:
 
 ---
 
+## Documentos Complementares
+
+| Documento | Descrição |
+|---|---|
+| [relatorio-contribuicao-3.md](relatorio-contribuicao-3.md) | Participação da equipe por integrante e frentes de trabalho |
+
+---
+
 ## Resultado da Sprint
 
-> A preencher ao final da Sprint Review.
+> Encerramento e Sprint Review em **11/06/2026**. Números abaixo refletem o estado do burndown ao final do dia 10/06.
 
-**Pontos planejados:** 128
-**Pontos entregues (DoD completo):** —
-**Pontos não entregues:** —
-**Velocidade da sprint:** — pontos
+**Pontos planejados:** 128 (115 iniciais + 13 de escopo incremental em 01/06)
+**Pontos entregues (DoD completo):** 118
+**Pontos restantes:** 10
+**Aproveitamento até 10/06:** ~92%
 
-**Histórias concluídas:** —
-**Histórias não entregues (e motivo):** —
+**Histórias concluídas:** US08 (Histórico de tentativas) e US09 (Área administrativa), além de 13 correções de bugs, melhorias de UX/UI, gamificação e atualização de documentação.
+
+**Itens ainda em aberto (10 SP):** organização do repositório e da documentação Git (S3_T23, S3_T45 — em andamento), animação de geração de certificado (S3_T48), atualização do deploy no Render (S3_T50) e preparação da apresentação final (S3_T53, S3_T54).
 
 ### Observações sobre a execução
 
-> Registre desvios do burndown, bloqueios recorrentes, mudança de escopo ou qualquer fato relevante para a retrospectiva.
+- Burndown adiantado em relação à linha ideal durante quase toda a sprint; os 10 SP restantes concentram-se em tarefas de fechamento e apresentação.
+- **Mudança de escopo:** +13 SP (S3_T55–S3_T61) adicionados em 01/06 para concluir a integração da área administrativa e recriar o banco em nuvem.
+- Terminologia **"Nível" → "Módulo"** unificada na interface (S3_T37).
 
-_A preencher na Sprint Review / Retrospectiva._
+---
+
+<div align="center">
+  <a href="../../README.md">← Voltar ao Índice</a> · <a href="../README.md">Gestão Ágil — Scrum</a>
+</div>
