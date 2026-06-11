@@ -1,6 +1,6 @@
 # Product Backlog
 
-← [Índice da Documentação](../../00-INDICE.md)
+← [Índice da Documentação](../../README.md)
 
 > Artefato mantido pelo **Product Owner**. Revisado e refinado ao início de cada sprint.  
 > Histórias seguem o formato: *"Como [persona], quero [ação] para [benefício]."*
@@ -182,5 +182,5 @@
 ---
 
 <div align="center">
-  <a href="../../00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../../README.md">← Voltar ao Índice</a>
 </div>
