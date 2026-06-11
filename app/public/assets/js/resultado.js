@@ -36,7 +36,10 @@ function popularResultado(dados) {
   const status = dados.status === 'aprovado' ? 'aprovado' : 'reprovado';
   document.body.dataset.resultadoStatus = status;
   atualizarHeroResultado(status);
-  if (status === 'aprovado') iniciarAnimacaoConclusao();
+  if (status === 'aprovado') {
+    if (Number(dados.idModulo) === 5) iniciarCelebracaoFinal();
+    else iniciarAnimacaoConclusao();
+  }
   badge.textContent = status === 'aprovado' ? 'Aprovado' : 'Reprovado';
   badge.classList.remove('status-badge--aprovado', 'status-badge--reprovado');
   badge.classList.add(`status-badge--${status}`);
@@ -47,6 +50,23 @@ function popularResultado(dados) {
   const pct = (dados.percentual ?? 0) + '%';
   document.getElementById('score-ring').style.setProperty('--score-percent', pct);
   document.getElementById('progresso-fill').style.width = pct;
+}
+
+function iniciarCelebracaoFinal() {
+  const overlay = document.getElementById('conclusao-final');
+  if (!overlay) return;
+
+  overlay.hidden = false;
+  overlay.classList.add('conclusao-final--ativo');
+
+  window.setTimeout(() => {
+    overlay.classList.add('conclusao-final--saindo');
+  }, 5800);
+
+  window.setTimeout(() => {
+    overlay.hidden = true;
+    overlay.classList.remove('conclusao-final--ativo', 'conclusao-final--saindo');
+  }, 6800);
 }
 
 function iniciarAnimacaoConclusao() {
