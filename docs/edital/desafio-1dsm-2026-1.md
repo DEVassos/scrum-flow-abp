@@ -1,8 +1,10 @@
 # Faculdade de Tecnologia Professor Francisco de Moura – FATEC Jacareí
 
-← [Índice da Documentação](../00-INDICE.md)
+← [Índice da Documentação](../README.md)
 
 **Versão do documento:** 06/02/2026
+
+> 📄 **Fonte de verdade:** este `.md` é a versão canônica e versionada do edital. O arquivo [`Desafio 1DSM - 2026-1.pdf`](./Desafio%201DSM%20-%202026-1.pdf) é a cópia oficial de distribuição; em caso de divergência, vale o `.md`. Siglas (RF/RNF/RP) explicadas no [Glossário](../GLOSSARIO.md).
 
 ## ABP - Aprendizagem Baseada em Projetos – 2026-1
 
@@ -84,5 +86,5 @@ O objetivo educacional é integrar, em um único projeto, os conteúdos do semes
 ---
 
 <div align="center">
-  <a href="../00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../README.md">← Voltar ao Índice</a>
 </div>
