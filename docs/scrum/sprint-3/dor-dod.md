@@ -1,5 +1,4 @@
-← [Sprint 3](sprint-3.md)
-
+← [Índice da Documentação](../../README.md) · [Gestão Ágil — Scrum](../README.md) · [Sprint 3](sprint-3.md)
 # Checklist de DoR e DoD — Sprint 3
 
 > **DoR (Definition of Ready):** critérios que um item do backlog deve atender **antes** de entrar em uma sprint.
@@ -55,5 +54,5 @@ Um item é considerado **Pronto (Done)** quando atende a **todos** os critérios
 | Escopo Incremental pós-Planning (S3_T55–S3_T61) | ✅ | 13 SP adicionados em 01/06; tarefas identificadas pelos devs durante execução da US09 e Bug Fixes; responsáveis e estimativas definidos na daily de 01/06 |
 
 <div align="center">
-  <a href="sprint-3.md">← Voltar à Sprint 3</a>
+  <a href="../../README.md">← Voltar ao Índice</a> · <a href="../README.md">Gestão Ágil — Scrum</a> · <a href="sprint-3.md">Sprint 3</a>
 </div>
