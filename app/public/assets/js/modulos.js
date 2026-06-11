@@ -456,7 +456,7 @@ function mapearModulo(moduloApi) {
     progresso,
     questoes,
     questoesRespondidas: id === idModuloAtual ? respondidasAtual : questoes,
-    tentativasUsadas: aprovado ? Number(moduloApi.tentativas_usadas) || 1 : tentativaAtual,
+    tentativasUsadas: Number(moduloApi.tentativas_usadas) || 0,
     tentativasMaximas: TENTATIVAS_MAXIMAS,
     melhorNota,
     aprovado,
