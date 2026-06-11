@@ -1,138 +1,81 @@
-← [Voltar ao README principal](../README.md) · [📚 Índice da Documentação](./00-INDICE.md)
-
-# 📚 Documentação Técnica — Sistema de Avaliação por Níveis com Certificação
+# Documentação — ScrumFlow
 
 **ABP 1DSM 2026/1 · FATEC Jacareí · Equipe DEVassos**
 
-> Esta é a central técnica do projeto. Utilize o índice abaixo para navegar pelos artefatos de documentação, requisitos, modelagem e gestão ágil.
+← [Voltar ao README principal](../README.md)
+
+> Porta de entrada da documentação. A documentação está organizada em **duas camadas**: a camada **Produto** (para conhecer e usar a plataforma, sem termos técnicos) e a camada **Técnica & Ágil** (modelagem, código e gestão Scrum). Use os atalhos abaixo conforme seu objetivo.
 
 ---
 
-## 🚀 Atalhos por Objetivo
+## Por onde começar?
 
-- 🆕 **Primeira vez aqui?** → [Quickstart em 5 min](./01-QUICKSTART.md)
-- 💻 **Vou desenvolver?** → [Guia do Desenvolvedor](./03-DEVELOPER-GUIDE.md)
-- 🔄 **Vim por causa do Scrum?** → [Gestão Ágil](./scrum/README.md)
-- 📖 **Procuro um doc específico?** → [Índice Completo](./00-INDICE.md)
-
----
-
-## 📋 Requisitos e Restrições
-
-Fonte: [Edital do Desafio ABP — versão 06/02/2026](./edital/desafio-1dsm-2026-1.md)
-
-### Requisitos Funcionais (RF)
-
-| ID                | Descrição                                                                           |
-| ----------------- | ----------------------------------------------------------------------------------- |
-| RF01              | Cadastro de usuário com CPF (identificador único), nome, e-mail e senha             |
-| RF02              | Login exclusivamente por CPF e senha                                                |
-| RF03              | Seleção aleatória de 10 questões de um banco de 30 por módulo                       |
-| RF04              | Classificação das questões em: fácil, médio e difícil                               |
-| RF05              | Composição obrigatória da avaliação: 3 fáceis · 4 médias · 3 difíceis               |
-| RF06              | Limite de 2 tentativas por módulo por usuário                                       |
-| RF07              | Nota final do módulo = maior nota entre as tentativas realizadas                    |
-| RF08              | Resultado final = média das notas finais de cada módulo                             |
-| RF09              | Emissão de certificado com nome, CPF, e-mail, data e notas discriminadas por módulo |
-| RF10              | Histórico de tentativas contendo data/hora, pontuação e questões sorteadas          |
-| RF11              | Consulta de progresso (módulos concluídos, tentativas restantes e melhor nota)      |
-| RF12 _(opcional)_ | Área administrativa para cadastro e manutenção de questões, módulos e imagens       |
-
-### Requisitos Não Funcionais (RNF)
-
-| ID        | Descrição                                                                                                |
-| --------- | -------------------------------------------------------------------------------------------------------- |
-| RNF01     | Interface simples, clara e responsiva (mobile-friendly)                                                  |
-| RNF02     | Tempo de resposta adequado para carregamento e registro de respostas                                     |
-| **RNF03** | **Tratamento de dados pessoais em conformidade com a LGPD**                                              |
-| RNF04     | Prevenção de fraudes: lógica de notas e controle de tentativas obrigatoriamente no back-end              |
-| RNF05     | Práticas ágeis: backlog priorizado, sprints definidas, versionamento com Git e critérios de pronto (DoD) |
-| RNF06     | Documentação mínima: modelo de dados, instruções de execução e rotas da API                              |
-
-### Restrições de Projeto (RP)
-
-| ID       | Restrição                                                                                                                     |
-| -------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| RP01     | O front-end deve ser desenvolvido exclusivamente com HTML, CSS e JavaScript puro — sem uso de frameworks ou bibliotecas de UI |
-| **RP02** | **O banco de dados é exclusivamente PostgreSQL, com DDL e DML explícitos — sem uso de ORMs**                                  |
-| RP03     | O sistema deve ser entregue e funcional dentro do prazo das 3 sprints definidas no cronograma                                 |
-| RP04     | Toda a lógica de negócio (cálculo de notas, controle de tentativas) deve residir no back-end, nunca no front-end              |
-| RP05     | O versionamento deve seguir o fluxo Git Flow adaptado, com contribuições via Pull Request aprovado                            |
+| Você quer... | Vá para |
+|---|---|
+| **Conhecer o produto** (visão geral, telas, benefícios) | [Visão do Produto](./produto/visao-produto.md) |
+| **Usar a plataforma** (passo a passo de cada tela) | [Manual do Usuário](./produto/manual-usuario.md) |
+| **Entender o escopo e os requisitos** | [Edital do Desafio](./edital/desafio-1dsm-2026-1.md) |
+| **Rodar a aplicação** em 5 minutos | [Quickstart](./setup/01-quickstart.md) |
+| **Contribuir com código** | [Guia do Desenvolvedor](./setup/03-developer-guide.md) · [CONTRIBUTING](../CONTRIBUTING.md) |
+| **Ver a identidade visual** (cores, tipografia, logo) | [Identidade Visual](./identidade-visual/identidade-visual-scrumflow.md) |
+| **Ver os modelos** (banco e UML) | [Modelos](./modelos/README.md) |
+| **Acompanhar a gestão ágil** (sprints, atas, backlog) | [Gestão Ágil (Scrum)](./scrum/README.md) |
 
 ---
 
-## 📅 Metodologia Ágil
+## Camada Produto
 
-O projeto é conduzido com o framework **Scrum**, seguindo seus pilares de transparência, inspeção e adaptação. A adoção do Scrum é um requisito da disciplina (RNF05).
+Documentos voltados ao cliente e ao usuário final — linguagem direta, sem jargão técnico.
 
-> **Nota:** Para detalhes sobre o cronograma oficial e a composição da equipe (papéis), consulte o [README principal](../README.md).
-
-### Cerimônias Scrum
-
-| Cerimônia                | Frequência            | Objetivo                                                            |
-| ------------------------ | --------------------- | ------------------------------------------------------------------- |
-| **Sprint Planning**      | Início de cada sprint | Selecionar itens do backlog e planejar tarefas da sprint            |
-| **Daily Scrum**          | Diária (≤ 15 min)     | Sincronizar o time: o que foi feito, o que será feito, impedimentos |
-| **Sprint Review**        | Final de cada sprint  | Apresentar o incremento entregue e coletar feedback                 |
-| **Sprint Retrospective** | Final de cada sprint  | Refletir sobre o processo e definir melhorias                       |
-| **Backlog Refinement**   | Durante a sprint      | Detalhar e estimar histórias futuras                                |
-
-As atas de todas as cerimônias são registradas e versionadas, organizadas por sprint em `scrum/sprint-N/atas/`.
+| Documento | Descrição |
+|---|---|
+| [produto/visao-produto.md](./produto/visao-produto.md) | O que é o ScrumFlow, o que ele entrega e como se parece |
+| [produto/manual-usuario.md](./produto/manual-usuario.md) | Guia de uso completo, tela a tela |
 
 ---
 
-## 🗂️ Índice de Documentos
+## Camada Técnica & Ágil
 
-### 📌 Referência do Desafio (`edital/`)
+### Requisitos e Escopo
 
-| Documento                                                           | Descrição                                            |
-| ------------------------------------------------------------------- | ---------------------------------------------------- |
-| [Desafio 1DSM - 2026-1.pdf](edital/Desafio%201DSM%20-%202026-1.pdf) | Enunciado oficial do desafio ABP (versão 06/02/2026) |
-| [desafio-1dsm-2026-1.md](edital/desafio-1dsm-2026-1.md)             | Enunciado em Markdown — RF, RNF e RP completos       |
+A **fonte única** dos requisitos (RF, RNF e restrições) é o edital. Os demais documentos apenas referenciam-no.
 
-### 🔄 Gestão Ágil (`scrum/`)
+| Documento | Descrição |
+|---|---|
+| [edital/desafio-1dsm-2026-1.md](./edital/desafio-1dsm-2026-1.md) | Enunciado oficial — RF, RNF e RP completos (fonte canônica) |
 
-| Documento | Caminho | Descrição |
-| --------- | ------- | --------- |
-| Contexto Ágil (README) | [scrum/README.md](scrum/README.md) | Visão geral da gestão ágil: papéis, cerimônias e fluxo de trabalho |
-| Product Backlog | [scrum/backlog/product-backlog.md](scrum/backlog/product-backlog.md) | Histórias de usuário priorizadas (US01–US09) com critérios de aceite |
+### Setup e Desenvolvimento
 
+| Documento | Descrição |
+|---|---|
+| [setup/01-quickstart.md](./setup/01-quickstart.md) | Rodar a aplicação localmente em 5 minutos |
+| [setup/02-setup.md](./setup/02-setup.md) | Banco de dados, scripts e troubleshooting |
+| [setup/03-developer-guide.md](./setup/03-developer-guide.md) | Arquitetura, convenções e como contribuir com código |
+| [setup/seed-dev-cert.md](./setup/seed-dev-cert.md) | Atalho de dev para simular conclusão de todos os módulos |
+| [../app/README.md](../app/README.md) | Referência técnica do app: variáveis de ambiente, scripts e rotas da API |
 
-#### Estrutura Padrão por Sprint
+### Design e Modelagem
 
-As Sprints documentadas (Sprints 1 a 3) seguem a estrutura de diretórios abaixo, localizada em `scrum/sprint-N/`:
+| Documento | Descrição |
+|---|---|
+| [identidade-visual/](./identidade-visual/identidade-visual-scrumflow.md) | Paleta, tipografia, logotipo e protótipos |
+| [modelos/README.md](./modelos/README.md) | Visão geral dos modelos (banco + UML) |
+| [modelos/bd/README.md](./modelos/bd/README.md) | Modelagem do PostgreSQL (conceitual + lógico) |
+| [modelos/uml/README.md](./modelos/uml/README.md) | Diagramas UML por requisito |
 
-| Arquivo | Descrição |
-| ------- | --------- |
-| `sprint-N.md` | Documento geral: meta, sprint backlog e burndown |
-| `dor-dod.md` | Critérios de entrada (DoR) e conclusão (DoD) validados por história |
-| `atas/sprint-planning.md` | Ata da Sprint Planning |
-| `atas/sprint-review.md` | Ata da Sprint Review |
-| `atas/sprint-retrospective.md` | Ata da Sprint Retrospective |
-| `atas/dailies/` | Atas das Daily Scrums |
+### Gestão Ágil (Scrum)
 
-> **Status:** A Sprint 1 está em andamento — `sprint-1.md`, `dor-dod.md` e atas já disponíveis. As pastas de Sprint 2 e 3 serão preenchidas nas respectivas sprints.
-
-### 🗄️ Banco de Dados (`bd/`)
-
-| Documento         | Caminho                                   | Descrição                                            |
-| ----------------- | ----------------------------------------- | ---------------------------------------------------- |
-| Modelos de Banco de Dados | [modelos/bd/README.md](modelos/bd/README.md) | Modelos Conceitual e Lógico com entidades e relacionamentos       |
-
-### 📐 Modelagem UML (`uml/`)
-
-| Documento                  | Caminho                                                        | Descrição                                       |
-| -------------------------- | -------------------------------------------------------------- | ----------------------------------------------- |
-| Diagramas UML Gerais       | [modelos/uml/README.md](modelos/uml/README.md)             | Diagramas UML por requisito        |
-
-### 📋 Usuário Final (`manual-usuario/`)
-
-| Documento         | Caminho                                            | Descrição                          |
-| ----------------- | -------------------------------------------------- | ---------------------------------- |
-| Manual do Usuário | [manual-usuario/manual-usuario.md](manual-usuario/manual-usuario.md) | Guia de uso completo da plataforma |
+| Documento | Descrição |
+|---|---|
+| [scrum/README.md](./scrum/README.md) | Papéis, cerimônias e fluxo de trabalho |
+| [scrum/backlog/product-backlog.md](./scrum/backlog/product-backlog.md) | Histórias de usuário priorizadas com critérios de aceite |
+| [scrum/sprint-1/sprint-1.md](./scrum/sprint-1/sprint-1.md) | Sprint 1 — concluída |
+| [scrum/sprint-2/sprint-2.md](./scrum/sprint-2/sprint-2.md) | Sprint 2 — concluída |
+| [scrum/sprint-3/sprint-3.md](./scrum/sprint-3/sprint-3.md) | Sprint 3 — encerramento em 11/06/2026 |
+| [scrum/templates/](./scrum/templates/) | Templates de atas e cerimônias |
 
 ---
 
 <div align="center">
-  <a href="../README.md">← Voltar ao README principal</a> · <a href="./00-INDICE.md">📚 Índice da Documentação</a>
+  <a href="../README.md">← Voltar ao README principal</a>
 </div>

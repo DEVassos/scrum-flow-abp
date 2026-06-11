@@ -1,6 +1,6 @@
 # Product Backlog
 
-← [Índice da Documentação](../../00-INDICE.md)
+← [Índice da Documentação](../../README.md)
 
 > Artefato mantido pelo **Product Owner**. Revisado e refinado ao início de cada sprint.  
 > Histórias seguem o formato: *"Como [persona], quero [ação] para [benefício]."*
@@ -25,13 +25,13 @@
 | DOC | time de desenvolvimento | documentar a aplicação (UML, modelagem de dados, identidade visual e protótipo) | alinhar o time e embasar o desenvolvimento nas sprints seguintes | 🔴 Alta | Sprint 1 | ✅ Concluído |
 | US01 | usuário | me cadastrar com CPF, nome, e-mail e senha | criar acesso com o sistema | 🔴 Alta | Sprint 1 | ✅ Concluído |
 | US02 | usuário | fazer login com CPF e senha | acessar minha conta com segurança | 🔴 Alta | Sprint 1 | ✅ Concluído |
-| US03 | usuário | realizar uma avaliação de nível com 10 questões sorteadas | ser avaliado no conteúdo do nível | 🔴 Alta | Sprint 2 | ✅ Concluído |
-| US04 | usuário | ter até 2 tentativas por nível | melhorar meu desempenho se necessário | 🔴 Alta | Sprint 2 | ✅ Concluído |
-| US05 | usuário | visualizar minha nota final por nível | acompanhar meu progresso individualmente | 🟡 Média | Sprint 2 | ✅ Concluído |
-| US06 | usuário | ver minha média final calculada automaticamente | saber meu resultado geral ao concluir todos os níveis | 🟡 Média | Sprint 2 | ✅ Concluído |
+| US03 | usuário | realizar uma avaliação de módulo com 10 questões sorteadas | ser avaliado no conteúdo do módulo | 🔴 Alta | Sprint 2 | ✅ Concluído |
+| US04 | usuário | ter até 2 tentativas por módulo | melhorar meu desempenho se necessário | 🔴 Alta | Sprint 2 | ✅ Concluído |
+| US05 | usuário | visualizar minha nota final por módulo | acompanhar meu progresso individualmente | 🟡 Média | Sprint 2 | ✅ Concluído |
+| US06 | usuário | ver minha média final calculada automaticamente | saber meu resultado geral ao concluir todos os módulos | 🟡 Média | Sprint 2 | ✅ Concluído |
 | US07 | usuário | receber um certificado com meus dados e notas | comprovar minha conclusão do ciclo de avaliação | 🟡 Média | Sprint 2 | ✅ Concluído |
-| US08 | usuário | consultar meu histórico de tentativas | revisar meu desempenho e as questões sorteadas | 🟢 Baixa | Sprint 3 | 🔲 Não iniciado |
-| US09 | administrador | cadastrar e gerenciar questões e níveis via área administrativa | manter o banco de questões atualizado sem alterar o código | 🟢 Baixa | Sprint 3 | 🔲 Não iniciado |
+| US08 | usuário | consultar meu histórico de tentativas | revisar meu desempenho e as questões sorteadas | 🔴 Alta | Sprint 3 | ✅ Concluído |
+| US09 | administrador | cadastrar e gerenciar questões e módulos via área administrativa | manter o banco de questões atualizado sem alterar o código | 🔴 Alta | Sprint 3 | ✅ Concluído |
 
 ---
 
@@ -82,11 +82,11 @@
 
 ---
 
-### US03 — Realizar Avaliação de Nível
-> **Como** usuário autenticado, **quero** iniciar uma avaliação de um nível, **para** ser avaliado com 10 questões do banco de questões daquele nível.
+### US03 — Realizar Avaliação de Módulo
+> **Como** usuário autenticado, **quero** iniciar uma avaliação de um módulo, **para** ser avaliado com 10 questões do banco de questões daquele módulo.
 
 - [ ] Ao iniciar, o sistema sorteia aleatoriamente: 3 questões fáceis, 4 médias e 3 difíceis
-- [ ] As questões são selecionadas a partir de um banco de 30 questões por nível
+- [ ] As questões são selecionadas a partir de um banco de 30 questões por módulo
 - [ ] As alternativas de cada questão são exibidas embaralhadas
 - [ ] As questões sorteadas são registradas no banco **antes** de serem exibidas (para auditoria)
 - [ ] O usuário não pode avançar sem selecionar uma alternativa
@@ -96,11 +96,11 @@
 
 ---
 
-### US04 — Controle de Tentativas por Nível
-> **Como** usuário autenticado, **quero** ter até 2 tentativas por nível, **para** poder tentar melhorar meu desempenho caso não obtenha uma boa nota na primeira tentativa.
+### US04 — Controle de Tentativas por Módulo
+> **Como** usuário autenticado, **quero** ter até 2 tentativas por módulo, **para** poder tentar melhorar meu desempenho caso não obtenha uma boa nota na primeira tentativa.
 
 - [ ] O sistema informa ao usuário quantas tentativas restam antes de iniciar a avaliação
-- [ ] Após a 2ª tentativa, o botão de iniciar avaliação é bloqueado para aquele nível
+- [ ] Após a 2ª tentativa, o botão de iniciar avaliação é bloqueado para aquele módulo
 - [ ] O controle de tentativas é validado no back-end — não pode ser burlado pelo front-end
 - [ ] A nota considerada para o resultado final é sempre a maior entre as tentativas realizadas
 - [ ] O usuário poderá realizar novas tentativas apenas depois de revisar o material do módulo
@@ -109,12 +109,12 @@
 
 ---
 
-### US05 — Nota Final por Nível
-> **Como** usuário autenticado, **quero** visualizar minha nota final em cada nível, **para** acompanhar meu desempenho individual por nível.
+### US05 — Nota Final por Módulo
+> **Como** usuário autenticado, **quero** visualizar minha nota final em cada módulo, **para** acompanhar meu desempenho individual por módulo.
 
-- [ ] A nota exibida é sempre a maior obtida entre as tentativas realizadas no nível
-- [ ] Níveis não iniciados exibem status "Não iniciado"
-- [ ] Níveis com tentativas disponíveis exibem quantas restam
+- [ ] A nota exibida é sempre a maior obtida entre as tentativas realizadas no módulo
+- [ ] Módulos não iniciados exibem status "Não iniciado"
+- [ ] Módulos com tentativas disponíveis exibem quantas restam
 - [ ] O cálculo é realizado e armazenado no back-end
 
 **RF relacionado:** RF07, RF11 | **Aceito por:** Product Owner (validar na Sprint Review)
@@ -122,23 +122,23 @@
 ---
 
 ### US06 — Média Final
-> **Como** usuário autenticado, **quero** ver minha média final calculada automaticamente ao concluir todos os níveis, **para** saber meu resultado global na plataforma.
+> **Como** usuário autenticado, **quero** ver minha média final calculada automaticamente ao concluir todos os módulos, **para** saber meu resultado global na plataforma.
 
-- [ ] A média final é a média aritmética das melhores notas obtidas em cada nível
+- [ ] A média final é a média aritmética das melhores notas obtidas em cada módulo
 - [ ] O cálculo é realizado exclusivamente no back-end
 - [ ] A média é exibida com uma casa decimal
-- [ ] A média só é exibida quando todos os níveis tiverem sido tentados ao menos uma vez
+- [ ] A média só é exibida quando todos os módulos tiverem sido tentados ao menos uma vez
 
 **RF relacionado:** RF08 | **Aceito por:** Product Owner (validar na Sprint Review)
 
 ---
 
 ### US07 — Certificado Digital
-> **Como** usuário que concluiu todos os níveis, **quero** receber um certificado digital, **para** comprovar minha participação e desempenho na plataforma.
+> **Como** usuário que concluiu todos os módulos, **quero** receber um certificado digital, **para** comprovar minha participação e desempenho na plataforma.
 
-- [ ] O certificado só é disponibilizado após o usuário realizar ao menos uma tentativa em todos os níveis
+- [ ] O certificado só é disponibilizado após o usuário realizar ao menos uma tentativa em todos os módulos
 - [ ] O certificado contém: nome completo, CPF, e-mail, data de emissão e média final
-- [ ] Notas por nível discriminadas no certificado 
+- [ ] Notas por módulo discriminadas no certificado 
 - [ ] O certificado pode ser visualizado no navegador e/ou exportado
 - [ ] Gerado e armazenado no banco — ao acessar novamente, exibe o mesmo certificado sem reelaborá-lo
 
@@ -151,7 +151,7 @@
 
 - [ ] O histórico exibe por tentativa: data/hora, pontuação obtida e questões sorteadas
 - [ ] As respostas escolhidas e a alternativa correta são indicadas
-- [ ] O histórico é organizado por nível e ordenado cronologicamente
+- [ ] O histórico é organizado por módulo e ordenado cronologicamente
 - [ ] Os dados são recuperados do banco de dados
 
 **RF relacionado:** RF10 | **Aceito por:** Product Owner (validar na Sprint Review)
@@ -159,10 +159,10 @@
 ---
 
 ### US09 — Área Administrativa *(Extensão Opcional)*
-> **Como** administrador do sistema, **quero** gerenciar questões, alternativas, níveis e imagens via interface administrativa, **para** manter o banco de questões atualizado sem necessidade de acesso direto ao banco de dados.
+> **Como** administrador do sistema, **quero** gerenciar questões, alternativas, módulos e imagens via interface administrativa, **para** manter o banco de questões atualizado sem necessidade de acesso direto ao banco de dados.
 
 - [ ] Acesso restrito a usuários com perfil `admin`
-- [ ] CRUD completo de: níveis, questões, alternativas e imagens
+- [ ] CRUD completo de: módulos, questões, alternativas e imagens
 - [ ] Cada questão deve ter exatamente uma alternativa marcada como correta
 - [ ] Upload ou vinculação de imagem às questões
 - [ ] Interface responsiva
@@ -178,9 +178,10 @@
 | 14/04/2026 | Criação inicial do backlog | Gustavo Koiti (PO) |
 | 15/05/2026 | Atualização de informações requisitadas pelo cliente | Gustavo Koiti (PO) |
 | 21/05/2026 | Adição de tarefas de escopo extra (T30, T31, T32) à Sprint 2 | Gustavo Koiti (PO) |
+| 11/06/2026 | Conclusão de US08 e US09 na Sprint 3; encerramento do backlog do projeto (todas as histórias concluídas) | Gustavo Koiti (PO) |
 
 ---
 
 <div align="center">
-  <a href="../../00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../../README.md">← Voltar ao Índice</a>
 </div>

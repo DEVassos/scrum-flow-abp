@@ -1,0 +1,517 @@
+﻿@import url("../global.css");
+
+#stars-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sobre-page {
+    position: relative;
+    z-index: 1;
+    padding: 140px 28px 120px;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.sobre-hero {
+    min-height: 660px;
+    display: flex;
+    align-items: flex-start;
+    padding: 48px 0 24px;
+    border-bottom: 1px solid rgba(74, 111, 165, 0.22);
+}
+
+.sobre-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) 440px;
+    gap: 64px;
+    align-items: start;
+}
+
+.sobre-hero__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sobre-eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    color: var(--amber-400);
+    background-color: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.sobre-hero h1 {
+    max-width: 720px;
+    margin: 0;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 52px;
+    line-height: 1.05;
+}
+
+.sobre-hero p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--navy-200);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.sobre-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.sobre-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, auto));
+    gap: 18px;
+    margin-top: 26px;
+}
+
+.sobre-stat {
+    background-color: rgba(15, 32, 68, 0.78);
+    border: 1px solid rgba(74, 111, 165, 0.26);
+    border-radius: 14px;
+    padding: 18px 16px;
+    text-align: center;
+}
+
+.sobre-stat strong {
+    display: block;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.sobre-stat span {
+    color: var(--navy-200);
+    font-family: var(--font-body);
+    font-size: 13px;
+}
+
+.sobre-hero__panel {
+    background:
+        radial-gradient(circle at top, rgba(245, 158, 11, 0.16), transparent 44%),
+        rgba(15, 32, 68, 0.88);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-radius: 18px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.sobre-hero__panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--amber-500), transparent);
+}
+
+.panel-label {
+    display: inline-flex;
+    color: var(--amber-400);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.sobre-hero__panel img {
+    max-height: 82px;
+    width: auto;
+    object-fit: contain;
+}
+
+.sobre-hero__panel strong {
+    display: block;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 22px;
+}
+
+.sobre-hero__panel span {
+    display: block;
+    color: var(--slate-400);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.sobre-panel__list {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.sobre-panel__list div {
+    display: grid;
+    gap: 6px;
+}
+
+.sobre-panel__list span {
+    color: var(--navy-200);
+    font-family: var(--font-body);
+    font-size: 13px;
+}
+
+.sobre-panel__list strong {
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 16px;
+}
+
+.sobre-section {
+    padding: 96px 0;
+}
+
+.sobre-section--institution {
+    background-color: rgba(15, 32, 68, 0.48);
+    border-top: 1px solid rgba(74, 111, 165, 0.18);
+    border-bottom: 1px solid rgba(74, 111, 165, 0.18);
+}
+
+.sobre-section__header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 42px;
+}
+
+.sobre-section__header h2 {
+    margin: 0;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 36px;
+    line-height: 1.14;
+}
+
+.sobre-section__header p {
+    margin: 0;
+    color: var(--navy-200);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 760px;
+}
+
+.sobre-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.sobre-grid--project {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sobre-card {
+    min-height: 260px;
+    background: linear-gradient(180deg, rgba(15, 32, 68, 0.96), rgba(10, 22, 40, 0.92));
+    border: 1px solid rgba(74, 111, 165, 0.32);
+    border-radius: 22px;
+    padding: 34px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sobre-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(245, 158, 11, 0.38);
+    box-shadow: 0 18px 42px rgba(10, 22, 40, 0.35);
+}
+
+.sobre-card--wide {
+    grid-row: auto;
+}
+
+.sobre-card__label {
+    color: var(--amber-400);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.sobre-card h2 {
+    margin: 12px 0 10px;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 24px;
+}
+
+.sobre-card p {
+    margin: 0;
+    color: var(--navy-200);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.sobre-institution {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 36px;
+    align-items: center;
+    background-color: rgba(10, 22, 40, 0.5);
+    border: 1px solid rgba(74, 111, 165, 0.28);
+    border-radius: 18px;
+    padding: 36px;
+}
+
+.sobre-institution__logos {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.sobre-institution__logos img {
+    max-height: 72px;
+    max-width: 130px;
+    object-fit: contain;
+}
+
+.sobre-institution__text h3 {
+    margin: 0 0 10px;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 24px;
+}
+
+.sobre-institution__text p {
+    margin: 0;
+    color: var(--navy-200);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.team-card {
+    min-height: 260px;
+    background:
+        linear-gradient(160deg, rgba(15, 32, 68, 0.94), rgba(10, 22, 40, 0.92));
+    border: 1px solid rgba(74, 111, 165, 0.28);
+    border-radius: 20px;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.team-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 0%, rgba(245, 158, 11, 0.16), transparent 34%),
+        radial-gradient(circle at 100% 100%, rgba(13, 148, 136, 0.08), transparent 36%);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.team-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 158, 11, 0.42);
+    box-shadow: 0 16px 40px rgba(10, 22, 40, 0.42);
+}
+
+.team-card--po,
+.team-card--sm {
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+.team-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.team-card__avatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background-color: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.42);
+    color: var(--amber-400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 800;
+    box-shadow: 0 0 18px rgba(245, 158, 11, 0.16);
+}
+
+.team-card__badge {
+    color: var(--navy-900);
+    background-color: var(--amber-500);
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.team-card h3 {
+    margin: 8px 0 0;
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 21px;
+    line-height: 1.2;
+}
+
+.team-card p {
+    margin: 0;
+    color: var(--navy-200);
+    font-family: var(--font-body);
+    font-size: 14px;
+}
+
+.team-card__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.team-card__links a {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 0 12px;
+    color: var(--navy-50);
+    background-color: rgba(238, 243, 251, 0.06);
+    border: 1px solid rgba(238, 243, 251, 0.12);
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.team-card__links a:hover {
+    background-color: var(--amber-500);
+    color: var(--navy-900);
+    transform: translateY(-1px);
+}
+
+.team-card__links a[aria-disabled="true"] {
+    color: var(--slate-400);
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.team-card__links a[aria-disabled="true"]:hover {
+    background-color: rgba(238, 243, 251, 0.06);
+    color: var(--slate-400);
+    transform: none;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.tech-list span {
+    color: var(--navy-50);
+    background-color: rgba(15, 32, 68, 0.88);
+    border: 1px solid rgba(74, 111, 165, 0.35);
+    border-radius: 999px;
+    padding: 12px 16px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .sobre-hero__grid,
+    .sobre-grid,
+    .sobre-grid--project,
+    .sobre-institution,
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre-card--wide {
+        grid-row: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .sobre-page {
+        padding-top: 90px;
+        padding-bottom: 64px;
+    }
+
+    .sobre-hero {
+        min-height: auto;
+        padding-bottom: 32px;
+    }
+
+    .sobre-hero h1 {
+        font-size: 42px;
+    }
+
+    .sobre-hero p,
+    .sobre-section__header p,
+    .sobre-card p,
+    .team-card p {
+        font-size: 15px;
+    }
+
+    .sobre-section__header h2 {
+        font-size: 30px;
+    }
+
+    .team-card__links a {
+        min-width: 120px;
+    }
+}

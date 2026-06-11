@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="icon" type="image/png" href="../assets/img/scrum_icon.png">
     <link rel="stylesheet" href="../assets/css/pages/modulos.css">
 
     <title>ScrumFlow | Módulos</title>
@@ -15,44 +15,45 @@
     <div class="blob-esquerda"></div>
     <div class="blob-direita"></div>
 
-    <nav class="navbar">
-        <div class="navbar__container">
+    <!-- Conteúdo injetado pelo navbar.js -->
+    <nav class="navbar" id="navbar"></nav>
 
-            <a href="index.html" class="logo">
-                Scrum<span class="flow">Flow</span>
-            </a>
+    <div class="dashboard-wrapper">
 
-            <div class="nav-menu" id="nav-menu">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="modulos.html" class="sidebar-link sidebar-link--ativo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2" />
+                    </svg>
+                    Módulos
+                </a>
+                <a href="historicoquestoes.html" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
+                    </svg>
+                    Histórico
+                </a>
+                <a href="configuracoes.html" class="sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+                        <path
+                            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.892 3.433-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+                    </svg>
+                    Config.
+                </a>
+            </nav>
+        </aside>
 
-                <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
-                    <li><a href="modulo-2/scrum.html" class="nav-link">Scrum</a></li>
-                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-                    <li><a href="modulos.html" class="nav-link nav-link--ativo">Módulos</a></li>
-                </ul>
+        <main class="modulos-container">
 
-                <div class="navbar__actions">
-                    <div id="nav-logado">
-                        <span id="nav-saudacao" class="nav-saudacao"></span>
-                        <button id="btn-sair" class="btn btn-ghost">Sair</button>
-                    </div>
-                </div>
-
-            </div>
-
-            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-        </div>
-    </nav>
-
-    <main class="modulos-container">
-
-        <section class="modulos-hero">
+            <section class="modulos-hero">
 
             <div class="hero-content">
 
@@ -92,9 +93,9 @@
 
             </div>
 
-        </section>
+            </section>
 
-        <section class="modulos-layout">
+            <section class="modulos-layout">
 
             <aside class="modulos-sidebar">
 
@@ -143,24 +144,19 @@
 
                 <div class="painel-conteudo"></div>
 
-                <div class="painel-acoes">
-
-                    <button class="btn btn-primary">
-                        Iniciar módulo
-                    </button>
-
-                    <button class="btn btn-ghost">
-                        Ver progresso
-                    </button>
-
-                </div>
+                <div class="painel-acoes"></div>
 
             </section>
 
-        </section>
+            </section>
 
-    </main>
+        </main>
 
+    </div>
+
+    <!-- Footer -->
+    <script src="../assets/js/footer.js"></script>
+    <script src="../assets/js/stars.js"></script>
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/api.js"></script>
     <script src="../assets/js/navbar.js"></script>

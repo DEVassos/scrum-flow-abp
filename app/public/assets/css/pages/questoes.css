@@ -12,6 +12,30 @@
   flex-direction: column;
   padding-top: 80px;
   padding-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.questao-imagem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.questao-imagem[hidden] {
+  display: none;
+}
+
+.questao-ref {
+  display: block;
+  font-size: 11px;
+  color: var(--navy-400);
+  text-align: right;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(163, 184, 216, 0.08);
 }
 
 /* CABEÇALHO DA AVALIAÇÃO */
@@ -143,6 +167,7 @@
 
 /* CARD DA QUESTÃO */
 .questao-card {
+  scroll-margin-top: 100px;
   background: linear-gradient(
     135deg,
     rgba(15, 32, 68, 0.8) 0%,
@@ -389,6 +414,13 @@
 
 .progresso-dot.respondida {
   background: var(--teal-500);
+}
+
+.aviso-selecao {
+  text-align: center;
+  color: var(--amber-500);
+  font-size: 13px;
+  margin: 0;
 }
 
 /* CONTROLES DE NAVEGAÇÃO */

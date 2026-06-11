@@ -1,0 +1,78 @@
+/* ================================
+   CARD BASE
+   ================================ */
+
+.card,
+.config-card,
+.historico-sidebar,
+.historico-painel,
+.hero-status-card,
+.modulos-sidebar,
+.modulo-painel,
+.resultado-score-card,
+.resultado-detalhes,
+.revisao-card,
+.nivel-card,
+.lateral-card {
+    background-color: var(--navy-800);
+    border: 1px solid var(--navy-600);
+}
+
+.card--border-700,
+.nivel-card,
+.lateral-card,
+.config-card {
+    border-color: var(--navy-700);
+}
+
+.card--inset,
+.historico-modulo-item,
+.questao-card,
+.modulo-item,
+.painel-card {
+    background-color: var(--navy-900);
+    border: 1px solid var(--navy-600);
+}
+
+.card--radius-14,
+.lateral-card,
+.historico-modulo-item,
+.questao-card,
+.modulo-item {
+    border-radius: 14px;
+}
+
+.card--radius-16,
+.config-card,
+.painel-card,
+.resultado-score-card,
+.resultado-detalhes,
+.revisao-card {
+    border-radius: 16px;
+}
+
+.card--radius-20,
+.historico-sidebar,
+.historico-painel,
+.modulos-sidebar,
+.modulo-painel {
+    border-radius: 20px;
+}
+
+.card--padding-24,
+.config-card,
+.historico-sidebar,
+.questao-card,
+.hero-status-card,
+.modulos-sidebar,
+.painel-card,
+.resultado-score-card,
+.revisao-card {
+    padding: 24px;
+}
+
+.card--padding-32,
+.historico-painel,
+.modulo-painel {
+    padding: 32px;
+}

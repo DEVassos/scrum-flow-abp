@@ -26,6 +26,7 @@
   align-items: center;
   width: 100%;
   padding: 0 48px;
+  position: relative; /* ancora o nav-links centralizado por position:absolute */
 }
 
 .logo {
@@ -42,7 +43,7 @@
 }
 
 /* Remove os marcadores de lista (bolinhas) e o espaçamento padrão do <ul> */
-/* display: flex coloca os itens em linha com espaçamento entre eles */
+/* position:absolute + left/top 50% + translate centraliza os links no container */
 .nav-links {
   display: flex;
   align-items: center;
@@ -50,6 +51,11 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
 /* Estilo padrão de cada link de navegação */
@@ -91,29 +97,364 @@
   display: none !important;
 }
 
-/* Saudação ao usuário logado exibida na navbar */
+/* Saudação ao usuário logado — chip amber consistente com os badges da aplicação */
 .nav-saudacao {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--amber-400);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 20px;
+  padding: 5px 12px;
+  white-space: nowrap;
+}
+
+/* ================================
+   PROFILE MENU
+   ================================ */
+
+.profile-menu {
+  position: relative;
+  font-family: var(--font-heading);
+}
+
+.profile-menu__trigger {
+  min-width: 78px;
+  height: 58px;
+  border: 0;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+}
+
+.profile-menu__trigger:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+  border-radius: 999px;
+}
+
+.profile-menu__avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--amber-500);
+  background:
+    radial-gradient(circle at 35% 30%, rgba(251, 184, 36, 0.16), transparent 45%),
+    var(--navy-800);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  box-shadow: 0 0 26px rgba(245, 158, 11, 0.26);
+}
+
+.profile-menu__chevron {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 7px solid var(--slate-400);
+  transition: transform 0.2s ease, border-top-color 0.2s ease;
+}
+
+.profile-menu__trigger:hover .profile-menu__avatar,
+.profile-menu__trigger[aria-expanded="true"] .profile-menu__avatar {
+  box-shadow: 0 0 34px rgba(245, 158, 11, 0.42);
+}
+
+.profile-menu__trigger:hover .profile-menu__chevron,
+.profile-menu__trigger[aria-expanded="true"] .profile-menu__chevron {
+  border-top-color: var(--amber-500);
+}
+
+.profile-menu__trigger[aria-expanded="true"] .profile-menu__chevron {
+  transform: rotate(180deg);
+}
+
+.profile-menu__panel {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  width: min(420px, calc(100vw - 32px));
+  padding: 24px 26px;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(74, 111, 165, 0.16), transparent 34%),
+    linear-gradient(160deg, rgba(15, 32, 68, 0.98), rgba(5, 15, 35, 0.99));
+  border: 2px solid var(--amber-500);
+  border-radius: 18px;
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.5),
+    0 0 24px rgba(245, 158, 11, 0.26);
+  z-index: 1200;
+  animation: profileDropdown 0.18s ease;
+}
+
+.profile-menu__panel::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  right: 42px;
+  width: 22px;
+  height: 22px;
+  background: rgba(15, 32, 68, 0.98);
+  border-left: 2px solid var(--amber-500);
+  border-top: 2px solid var(--amber-500);
+  transform: rotate(45deg);
+}
+
+@keyframes profileDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.profile-menu__header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 20px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(238, 243, 251, 0.2);
+}
+
+.profile-menu__avatar-wrap {
+  position: relative;
+}
+
+.profile-menu__avatar--large {
+  width: 64px;
+  height: 64px;
+  font-size: 20px;
+  border-width: 3px;
+}
+
+.profile-menu__status {
+  position: absolute;
+  right: 2px;
+  bottom: 4px;
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--navy-800);
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.7);
+}
+
+.profile-menu__identity {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-menu__identity strong {
+  color: var(--white);
+  font-size: 19px;
+  line-height: 1.15;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-menu__role {
+  color: var(--amber-500);
   font-size: 14px;
-  color: var(--amber-100)
+  font-weight: 700;
+}
+
+.profile-menu__email {
+  color: var(--slate-400);
+  font-size: 13px;
+  font-family: var(--font-body);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-menu__level {
+  align-self: center;
+  border-radius: 10px;
+  background-color: rgba(238, 243, 251, 0.08);
+  border: 1px solid rgba(238, 243, 251, 0.08);
+  color: var(--amber-400);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+.profile-menu__level::before {
+  content: "♛";
+  margin-right: 8px;
+}
+
+.profile-menu__items {
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(238, 243, 251, 0.14);
+}
+
+.profile-menu__item {
+  width: 100%;
+  min-height: 58px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--white);
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 16px;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 10px;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.profile-menu__item:hover,
+.profile-menu__item:focus-visible {
+  background-color: rgba(238, 243, 251, 0.07);
+  outline: none;
+  transform: translateX(2px);
+}
+
+.profile-menu__text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-menu__text strong {
+  color: inherit;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.profile-menu__text small {
+  color: var(--slate-400);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.profile-menu__icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  color: var(--white);
+}
+
+.profile-menu__icon--grid {
+  width: 26px;
+  height: 26px;
+}
+
+.profile-menu__icon--grid::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  box-shadow:
+    15px 0 0 -2px var(--navy-900), 15px 0 0 0 currentColor,
+    0 15px 0 -2px var(--navy-900), 0 15px 0 0 currentColor,
+    15px 15px 0 -2px var(--navy-900), 15px 15px 0 0 currentColor;
+}
+
+.profile-menu__icon--gear::before {
+  content: "⚙";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.profile-menu__icon--logout::before {
+  content: "↪";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  line-height: 1;
+  transform: rotate(180deg);
+}
+
+.profile-menu__arrow {
+  width: 11px;
+  height: 11px;
+  border-right: 3px solid var(--amber-500);
+  border-top: 3px solid var(--amber-500);
+  transform: rotate(45deg);
+}
+
+.profile-menu__item--logout {
+  color: #ff6b6b;
+  grid-template-columns: 34px minmax(0, 1fr);
+}
+
+.profile-menu__item--logout .profile-menu__text strong {
+  color: #ff6b6b;
+}
+
+.profile-menu__item--logout:hover,
+.profile-menu__item--logout:focus-visible {
+  background-color: rgba(239, 68, 68, 0.1);
 }
 
 /* ================================
    RESPONSIVIDADE
    ================================ */
 
-/* Tablet — reduz padding e logo pra não estourar a linha */
-@media (max-width: 768px) {
+/* Desktop compacto — previne overflow em telas até 1024px */
+@media (max-width: 1024px) {
     .navbar__container {
-        padding: 0 16px;
+        padding: 0 32px;
     }
 
     .logo {
-        font-size: 40px;
+        font-size: 44px;
     }
 
+    /* Volta para fluxo normal: no hamburger os links ficam dentro do dropdown */
     .nav-links {
+        position: static;
+        transform: none;
+        top: auto;
+        white-space: normal;
         gap: 16px;
+    }
+
+    .nav-menu {
+        flex: unset;
+        justify-content: unset;
     }
 
     /* Remove "Home" da lista — o próprio logo já leva pra página inicial */
@@ -126,11 +467,14 @@
    HAMBURGUER
    ================================ */
 
-/* Agrupa links e botões lado a lado no desktop */
+/* nav-menu ocupa todo o espaço restante; empurra os botões pro final (direita) */
+/* nav-links saiu do fluxo (position:absolute), então justify-content afeta só os botões */
 .nav-menu {
     display: flex;
     align-items: center;
     gap: 40px;
+    flex: 1;
+    justify-content: flex-end;
 }
 
 /* Escondido no desktop — só aparece no mobile */
@@ -167,15 +511,21 @@
     transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (max-width: 480px) {
-        .logo {
-        font-size: 34px;
+/* Tablet/mobile — colapsa o menu em hamburger a partir de 768px */
+@media (max-width: 768px) {
+    .navbar__container {
+        padding: 0 16px;
     }
+
+    .logo {
+        font-size: 40px;
+    }
+
     .navbar__hamburger {
         display: flex;
     }
 
-    /* No mobile o nav-menu vira dropdown que desce da navbar */
+    /* No tablet/mobile o nav-menu vira dropdown que desce da navbar */
     .nav-menu {
         position: fixed;
         top: 64px;
@@ -231,5 +581,56 @@
         width: 100%;
         text-align: center;
         display: block;
+    }
+
+    .profile-menu {
+        width: 100%;
+    }
+
+    .profile-menu__trigger {
+        width: 100%;
+        height: 56px;
+    }
+
+    .profile-menu__panel {
+        position: static;
+        width: 100%;
+        margin-top: 12px;
+        padding: 22px 18px;
+        border-radius: 14px;
+    }
+
+    .profile-menu__panel::before {
+        display: none;
+    }
+
+    .profile-menu__header {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .profile-menu__level {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .profile-menu__avatar--large {
+        width: 64px;
+        height: 64px;
+        font-size: 20px;
+    }
+
+    .profile-menu__identity strong {
+        font-size: 19px;
+    }
+
+    .profile-menu__item {
+        grid-template-columns: 34px minmax(0, 1fr) 14px;
+        gap: 12px;
+        padding: 10px 8px;
+    }
+
+    .profile-menu__item--logout {
+        grid-template-columns: 34px minmax(0, 1fr);
     }
 }

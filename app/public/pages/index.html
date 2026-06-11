@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/img/scrum_icon.png">
     <link rel="stylesheet" href="../assets/css/pages/index.css">
     <title>ScrumFlow | Home</title>
 </head>
@@ -14,55 +15,17 @@
     <div class="blob-esquerda"></div>
     <div class="blob-direita"></div>
 
-    <nav class="navbar">
-        <div class="navbar__container">
-            <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
-
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
-                    <li><a href="modulo-2/scrum.html" class="nav-link">Scrum</a></li>
-                    <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-                </ul>
-
-                <div class="navbar__actions">
-                    <div id="nav-deslogado">
-                        <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
-                        <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
-                    </div>
-                    <div id="nav-logado" hidden>
-                        <span id="nav-saudacao" class="nav-saudacao"></span>
-                        <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
-                    </div>
-                </div>
-            </div>
-
-            <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    <!-- Conteúdo injetado pelo navbar.js -->
+    <nav class="navbar" id="navbar"></nav>
 
     <header class="apresentacao">
 
         <!-- Astronauta -->
-        <img
-            src="../assets/img/astronauta.png"
-            alt="Astronauta flutuando"
-            class="deco-img deco-img--astronauta"
-            aria-hidden="true"
-        >
+        <img src="../assets/img/astronauta.png" alt="Astronauta flutuando" class="deco-img deco-img--astronauta"
+            aria-hidden="true">
 
         <!-- Lua-->
-        <img
-            src="../assets/img/moon.png"
-            alt="Lua"
-            class="deco-img deco-img--moon"
-            aria-hidden="true"
-        >
+        <img src="../assets/img/moon.png" alt="Lua" class="deco-img deco-img--moon" aria-hidden="true">
 
         <div class="container">
             <div class="apresentacao__badge">
@@ -103,181 +66,19 @@
         </div>
     </header>
 
-    <!-- Overlay escuro atrás do modal -->
-    <div id="modal-overlay" class="modal-overlay"></div>
-
-    <!-- Modal de login/cadastro — desliza da direita -->
-    <div id="modal-login" class="modal-lateral">
-        <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
-
-        <!-- VIEW: LOGIN -->
-        <div id="view-login" class="modal-view">
-            <h2 class="modal-titulo">Entrar no time</h2>
-            <p class="modal-subtitulo">Bem-vindo de volta! Faça login para continuar.</p>
-
-            <form id="form-login">
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cpf">CPF</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cpf" class="input" placeholder="000.000.000-00">
-                    </div>
-                    <span class="campo-erro" id="erro-cpf-login"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="senha">Senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="senha" class="input" placeholder="Digite sua senha">
-                        <span class="campo-icone-direita" id="toggle-senha">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-senha-login"></span>
-                </div>
-
-                <div class="modal-opcoes">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="lembrar" class="checkbox-input">
-                        <span class="checkbox-custom"></span>
-                        Lembrar de mim
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Entrar no Sprint &rarr;</button>
-
-                <div class="modal-rodape">
-                    Não tem uma conta? <a href="#" id="link-ir-cadastro" class="link-amber">Criar conta</a>
-                </div>
-            </form>
-        </div>
-
-        <!-- VIEW: CADASTRO -->
-        <div id="view-cadastro" class="modal-view">
-            <h2 class="modal-titulo">Criar conta</h2>
-            <p class="modal-subtitulo">Junte-se ao time e comece sua jornada Scrum.</p>
-
-            <form id="form-cadastro">
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-nome">Nome completo</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cad-nome" class="input" placeholder="Seu nome completo">
-                    </div>
-                    <span class="campo-erro" id="erro-nome"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-cpf">CPF</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cad-cpf" class="input" placeholder="000.000.000-00" maxlength="14">
-                    </div>
-                    <span class="campo-erro" id="erro-cpf"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-email">E-mail</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9993;</span>
-                        <input type="email" id="cad-email" class="input" placeholder="seu@email.com">
-                    </div>
-                    <span class="campo-erro" id="erro-email"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-senha">Senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="cad-senha" class="input" placeholder="Mínimo 8 caracteres">
-                        <span class="campo-icone-direita" id="toggle-cad-senha">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-senha"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-confirmar">Confirmar senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="cad-confirmar" class="input" placeholder="Repita a senha">
-                        <span class="campo-icone-direita" id="toggle-cad-confirmar">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-confirmar"></span>
-                </div>
-
-
-                <button type="submit" class="btn btn-primary btn-full">Criar conta &rarr;</button>
-                <div class="modal-rodape">
-                    Já tem conta? <a href="#" id="link-ir-login" class="link-amber">Entrar</a>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Container do modal de login/cadastro — conteúdo injetado pelo modal-login.js -->
+    <div id="modal-login"></div>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-
-            <div class="footer__grid">
-
-                <!-- Coluna Marca -->
-                <div class="footer__brand">
-                    <a href="index.html" class="footer__logo">Scrum<span class="flow">Flow</span></a>
-                    <div class="footer__badge">
-                        <span class="footer__badge-dot"></span>
-                        Online e Gratuito
-                    </div>
-                </div>
-
-                <!-- Coluna Descrição (centro) -->
-                <div class="footer__desc-col">
-                    <p class="footer__desc">
-                        Portal de aprendizado em metodologias ágeis, desenvolvido como Projeto ABP do 1º semestre de 2026 na FATEC Jacareí.
-                    </p>
-                </div>
-
-                <!-- Coluna Projeto -->
-                <div>
-                    <h3 class="footer__col-title">Projeto</h3>
-                    <ul class="footer__links">
-                        <li><a href="https://github.com/DEVassos/scrum-flow-abp" target="_blank" rel="noopener">GitHub</a></li>
-                        <li><a href="../../CONTRIBUTING.md" target="_blank">Guia de Contribuição</a></li>
-                        <li><a href="../../docs/00-INDICE.md" target="_blank">Documentação</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-
-            <hr class="footer__divider">
-
-            <!-- Logos institucionais + info -->
-            <div class="footer__inst-bar">
-                <div class="footer__fatec">
-                    <img src="../assets/img/cps-favicon.ico" alt="Centro Paula Souza" class="footer__inst-logo footer__inst-logo--cps">
-                    <img src="../assets/img/logo_fatec_transparente.png" alt="Fatec Jacareí" class="footer__inst-logo">
-                    <img src="../assets/img/logo_dsm_transparente.png" alt="DSM - Desenvolvimento de Software Multiplataforma" class="footer__inst-logo footer__inst-logo--dsm">
-                    <span class="footer__inst-text">FATEC Jacareí Prof. Francisco Moura &mdash; 1DSM ABP 2026/1</span>
-                </div>
-            </div>
-
-            <hr class="footer__divider">
-
-            <!-- Copyright centralizado -->
-            <div class="footer__bottom">
-                <p class="footer__copy">
-                    &copy; 2026 <strong>ScrumFlow</strong> &mdash; DEVassos. Todos os direitos reservados.
-                </p>
-            </div>
-
-        </div>
-    </footer>
-
+    <script src="../assets/js/footer.js"></script>
     <!-- Animação de estrelas: carregada primeiro para criar o canvas de fundo -->
     <script src="../assets/js/stars.js"></script>
 
-    <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. usados pelo index.js -->
+    <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. -->
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/navbar.js"></script>
+    <!-- modal-login.js injeta o HTML do modal e toda lógica compartilhada de autenticação -->
+    <script src="../assets/js/modal-login.js"></script>
     <script src="../assets/js/index.js"></script>
 </body>
 

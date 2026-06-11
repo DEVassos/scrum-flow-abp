@@ -1,5 +1,5 @@
 <!-- Template — copie para seu destino e ajuste o caminho do Índice -->
-← [Índice da Documentação](../../00-INDICE.md)
+← [Índice da Documentação](../../README.md)
 
 # Daily Scrum — [DATA: DD/MM/YYYY]
 

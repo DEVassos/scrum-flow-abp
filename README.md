@@ -1,12 +1,12 @@
 <div align="center">
 
-# Sistema de Avaliação por Níveis com Certificação
+# ScrumFlow — Portal de Certificação em Metodologias Ágeis
 
 **Projeto ABP — 1º Semestre de Desenvolvimento de Software Multiplataforma · FATEC Jacareí · 2026/1**
 
-> 🏫 **Parceiro:** FATEC Jacareí (Interno) · **Orientador:** Prof. Antonio Egydio São Thiago Graça · **Focal Point:** Prof. Marcelo Augusto Sudo · **Kick-off:** 09/04/2026
+> **Parceiro:** FATEC Jacareí (Interno) · **Orientador:** Prof. Antonio Egydio São Thiago Graça · **Focal Point:** Prof. Marcelo Augusto Sudo · **Kick-off:** 09/04/2026
 
-[![Status](https://img.shields.io/badge/status-Desenvolvendo-yellow)](https://github.com/DEVassos/scrum-flow-abp)
+[![Status](https://img.shields.io/badge/status-Projeto%20conclu%C3%ADdo-success)](https://github.com/DEVassos/scrum-flow-abp)
 [![Kanban](https://img.shields.io/badge/Kanban-Board-blue?logo=github)](https://github.com/orgs/DEVassos/projects/4)
 [![Licença](https://img.shields.io/badge/licença-MIT-green)](./LICENSE)
 
@@ -21,83 +21,111 @@
 
 ---
 
-## 📋 Sumário
+## Documentação Completa
 
-- [Visão Geral](#visão-geral)
-- [Principais Funcionalidades](#principais-funcionalidades)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Status e Como Executar](#status-e-como-executar)
-- [Sprints](#sprints)
+| Documento | Onde encontrar |
+|---|---|
+| Índice geral de documentação | [docs/README.md](./docs/README.md) |
+| Requisitos funcionais, não funcionais e restrições | [docs/edital/desafio-1dsm-2026-1.md](./docs/edital/desafio-1dsm-2026-1.md#requisitos) |
+| Modelagem do banco de dados | [docs/modelos/bd/](./docs/modelos/bd/) |
+| Diagramas UML | [docs/modelos/uml/](./docs/modelos/uml/) |
+| Visão do produto (para o cliente) | [docs/produto/visao-produto.md](./docs/produto/visao-produto.md) |
+| Manual do usuário | [docs/produto/manual-usuario.md](./docs/produto/manual-usuario.md) |
+| Product Backlog e histórias de usuário | [docs/scrum/backlog/product-backlog.md](./docs/scrum/backlog/product-backlog.md) |
+| Sprint 1 — backlog, DoR/DoD e atas | [docs/scrum/sprint-1/](./docs/scrum/sprint-1/sprint-1.md) · [▶ Vídeo](https://youtu.be/rQ7mEWP7sGU) |
+| Sprint 2 — backlog, DoR/DoD e atas | [docs/scrum/sprint-2/](./docs/scrum/sprint-2/sprint-2.md) · [▶ Vídeo](https://youtu.be/YXv9-3iwp9A) |
+| Sprint 3 — backlog, DoR/DoD e atas | [docs/scrum/sprint-3/](./docs/scrum/sprint-3/sprint-3.md) · [▶ Vídeo](https://youtu.be/pa0tak9AOZI) |
+| Requisitos funcionais, não funcionais e restrições | [docs/README.md](./docs/README.md#requisitos-e-restrições) |
+| Kanban do projeto | [GitHub Projects](https://github.com/orgs/DEVassos/projects/4) |
+---
+
+## Sumário
+
+- [O que é o ScrumFlow?](#o-que-é-o-scrumflow)
+- [Funcionalidades](#funcionalidades)
+- [Como Executar](#como-executar)
+- [Sprints e Entregas](#sprints-e-entregas)
 - [Equipe](#equipe)
-- [Documentação Técnica](#documentação-técnica)
+- [Tecnologias](#tecnologias)
 - [Licença](#licença)
 
 ---
 
-## 🎯 Visão Geral
+## O que é o ScrumFlow?
 
-O aprendizado de metodologias ágeis é fundamental na formação do desenvolvedor de software — mas sem um mecanismo estruturado de avaliação, é difícil para o estudante saber o que já domina e o que ainda precisa consolidar.
+O ScrumFlow é um **portal web de certificação interna em metodologias ágeis**. O usuário se cadastra, realiza avaliações progressivas divididas em **módulos de dificuldade crescente** (básico ao avançado), e ao concluir todos os módulos recebe um **certificado digital** com suas notas.
 
-Este projeto propõe a criação de um **portal web de certificação interna em metodologias ágeis**: o usuário se cadastra, realiza avaliações progressivas divididas em **5 níveis de dificuldade** (do básico ao avançado), com questões sorteadas aleatoriamente de um banco de questões, e ao concluir todos os níveis recebe um **certificado digital** baseado no seu desempenho.
-
-O projeto integra em uma única entrega os conteúdos do semestre: **HTML, CSS e JavaScript puro**, **PostgreSQL** e a metodologia **Scrum** — desenvolvido ao longo de três sprints durante o 1º semestre de 2026.
+O projeto integra em uma única entrega os conteúdos do semestre — **HTML, CSS e JavaScript puro**, **PostgreSQL**, **Node.js** e a metodologia **Scrum** — desenvolvido ao longo de três sprints no 1º semestre de 2026.
 
 ---
 
-## ✨ Principais Funcionalidades
+## Funcionalidades
 
-- **Cadastro e autenticação** de usuários via CPF (identificador único), nome, e-mail e senha
-- **Avaliações divididas em 5 módulos** de dificuldade progressivos (básico ao avançado)
-- **Sorteio de 10 questões** por avaliação, balanceadas por dificuldade (3 fáceis · 4 médias · 3 difíceis), a partir de um banco de 30 por módulo
-- **Limite de 2 tentativas por módulo**, com a maior nota sendo considerada como resultado final
-- **Cálculo automático** da média final com base nas melhores notas de cada módulo
-- **Geração de certificado digital dinâmico** com nome, CPF, e-mail, data de emissão e notas discriminadas por módulo — validado via hash único
-- **Histórico completo de tentativas** com data/hora, pontuação e questões sorteadas
-- **Consulta de progresso** em tempo real (módulos concluídos, tentativas restantes e melhor nota)
+### Autenticação
+- Cadastro com nome, e-mail, CPF e senha (CPF como identificador único)
+- Login via CPF e senha com token JWT
+- Sessão armazenada no navegador via `localStorage`
+
+### Avaliação
+- Módulos progressivos (do básico ao avançado), cada um com 10 questões sorteadas aleatoriamente
+- Questões balanceadas por dificuldade: 3 fáceis · 4 médias · 3 difíceis
+- Banco de questões com 150 questões (30 por módulo em grupos distintos)
+- Limite de **2 tentativas por módulo**, com a maior nota sendo o resultado final
+- Avanço automático para o próximo módulo ao concluir o atual
+
+### Resultados e Histórico
+- Tela de resultado ao final de cada módulo com pontuação e gabarito
+- Histórico de questões por módulo: enunciado, resposta marcada e resposta correta
+- Progresso em tempo real no dashboard: módulos concluídos, tentativas restantes e melhor nota
+
+### Certificado
+- Geração de **certificado digital** com nome, CPF, e-mail, data de emissão e notas por módulo
+- Certificado validável publicamente via **hash único** (URL compartilhável)
+
+### Conteúdo Educacional
+- Página completa sobre **Scrum** com conceitos, papéis, cerimônias e artefatos
+- Página do **Manifesto Ágil** com os 12 princípios e navegação por âncoras
+
+### Painel Administrativo *(Sprint 3)*
+- Acesso exclusivo para usuários com perfil `admin`
+- Listagem de todos os usuários e seus progressos
+- Zerar tentativas do módulo atual ou reiniciar completamente um usuário
+- CRUD completo de questões (criar, editar, excluir)
+- CRUD de módulos/níveis
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
+## Como Executar
 
-| Camada             | Tecnologia                | Restrição                                  |
-| ------------------ | ------------------------- | ------------------------------------------ |
-| **Front-end**      | HTML5 · CSS3 · JavaScript | Sem uso de frameworks — apenas código puro |
-| **Back-end**       | Node.js                   | —                                          |
-| **Banco de Dados** | PostgreSQL                | Apenas DDL e DML explícitos; sem ORMs      |
-| **Versionamento**  | Git + GitHub (Git Flow)   | —                                          |
-
----
-
-## 🚀 Status e Como Executar
-
-> **Status Atual: Em desenvolvimento — Sprint 1 encerrada · Sprint 2 inicia em 04/05/2026.**
-
-Para rodar a aplicação localmente em 5 minutos, siga o [Quickstart](./docs/01-QUICKSTART.md).
+**Pré-requisitos:** Node.js 18+, um PostgreSQL acessível via `DATABASE_URL` (ex.: Neon, com SSL) e Git.
 
 ```bash
 git clone https://github.com/DEVassos/scrum-flow-abp.git
 cd scrum-flow-abp/app
-cp .env.example .env   # preencha POSTGRES_PASSWORD e JWT_SECRET
-npm install && createdb abp && npm run db:init && npm run dev
+cp .env.example .env        # preencha DATABASE_URL e JWT_SECRET
+npm install
+npm run db:init             # cria tabelas e carrega módulos + questões
+npm run dev
 ```
 
 Acesse: [http://localhost:3005](http://localhost:3005)
 
----
-
-## 📅 Sprints
-
-| Etapa                  | Período              | Entregáveis                                  | Vídeo            |
-| ---------------------- | -------------------- | -------------------------------------------- | ---------------- |
-| **Kick-off**           | 09/04/2026           | Documentação inicial e scaffolding           | —                |
-| [**Sprint 1**](./docs/scrum/sprint-1/sprint-1.md) | 13/04 — 30/04/2026   | Setup · Banco de Dados · Cadastro e Login    | [▶ Assistir](https://youtu.be/rQ7mEWP7sGU) |
-| [**Sprint 2**](./docs/scrum/sprint-2/sprint-2.md) | 04/05 — 21/05/2026   | Avaliação · Sorteio de Questões · Tentativas · Resultado Final · Certificado · Histórico| [▶ Assistir](https://youtu.be/YXv9-3iwp9A?si=H825GGN9ZulsM6Ch) |
-| **Sprint 3**           | 25/05 — 11/06/2026   | Página Administrativa e Refinos de UX    | A disponibilizar |
-| **Apresentação Final** | Semana de 22/06/2026 | Entrega e demonstração ao parceiro           | A disponibilizar |
+> Guia detalhado com variáveis de ambiente e solução de problemas: [app/README.md](./app/README.md)
 
 ---
 
-## 👥 Equipe
+## Sprints e Entregas
+
+| Etapa | Período | O que foi entregue | Vídeo |
+|---|---|---|---|
+| **Kick-off** | 09/04/2026 | Documentação inicial e scaffolding | — |
+| [**Sprint 1**](./docs/scrum/sprint-1/sprint-1.md) | 13/04 – 30/04/2026 | Banco de dados · Cadastro · Login · JWT | [▶ Assistir](https://youtu.be/rQ7mEWP7sGU) |
+| [**Sprint 2**](./docs/scrum/sprint-2/sprint-2.md) | 04/05 – 21/05/2026 | Avaliação · Sorteio · Tentativas · Resultado · Certificado · Histórico | [▶ Assistir](https://youtu.be/YXv9-3iwp9A?si=H825GGN9ZulsM6Ch) |
+| [**Sprint 3**](./docs/scrum/sprint-3/sprint-3.md) | 25/05 – 11/06/2026 | Histórico de tentativas · Painel Admin · Refinamentos de UX/UI · Gamificação | [▶ Assistir](https://youtu.be/pa0tak9AOZI) |
+
+---
+
+## Equipe
 
 <table>
   <thead>
@@ -113,49 +141,49 @@ Acesse: [http://localhost:3005](http://localhost:3005)
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/261997502" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Gustavo Koiti</td>
-      <td>Product Owner<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=gustavokoitiyoshimura"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=gustavokoitiyoshimura&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
+      <td>Product Owner</td>
       <td><a href="https://github.com/gustavokoitiyoshimura">@gustavokoitiyoshimura</a></td>
       <td><a href="https://linkedin.com/in/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/55038859" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Gabriel Travensolli</td>
-      <td>Scrum Master<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=travensolli"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=travensolli&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
+      <td>Scrum Master</td>
       <td><a href="https://github.com/travensolli">@travensolli</a></td>
       <td><a href="https://www.linkedin.com/in/gabrieltravensolli/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/139165742" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Andrea Turíbio</td>
-      <td>Desenvolvedora<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=DeaTuribio"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=DeaTuribio&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
+      <td>Desenvolvedora</td>
       <td><a href="https://github.com/DeaTuribio">@DeaTuribio</a></td>
       <td><a href="https://www.linkedin.com/in/andrea-turibio-41507467/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/233653222" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Henrique Camargo</td>
-      <td>Desenvolvedor<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=henriqueptbd-cell"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=henriqueptbd-cell&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
+      <td>Desenvolvedor</td>
       <td><a href="https://github.com/henriqueptbd-cell">@henriqueptbd-cell</a></td>
       <td><a href="https://www.linkedin.com/in/henrique-camargo-6275a6394/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/177771290" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Lucas Amorim</td>
-      <td>Desenvolvedor<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=LUCASAMR23"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=LUCASAMR23&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
+      <td>Desenvolvedor</td>
       <td><a href="https://github.com/LUCASAMR23">@LUCASAMR23</a></td>
       <td><a href="https://www.linkedin.com/in/lucas-amorim-4b3312362/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/242081514" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Marcello Campbell</td>
-      <td>Desenvolvedor<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=mparise28-dev"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=mparise28-dev&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
+      <td>Desenvolvedor</td>
       <td><a href="https://github.com/mparise28-dev">@mparise28-dev</a></td>
       <td><a href="https://www.linkedin.com/in/marcello-parise-campbell-fonseca-147965194/">LinkedIn</a></td>
     </tr>
     <tr>
       <td><img src="https://avatars.githubusercontent.com/u/261281418" width="60" style="border-radius:50%" alt="foto"/></td>
       <td>Vinicius Augusto</td>
-      <td>Desenvolvedor<br/><a href="https://github.com/DEVassos/scrum-flow-abp/commits?author=viniciusaugusto1997"><img src="https://img.shields.io/github/commit-activity/t/DEVassos/scrum-flow-abp?authorFilter=viniciusaugusto1997&style=flat&label=commits&color=007ec6" alt="commits"/></a></td>
+      <td>Desenvolvedor</td>
       <td><a href="https://github.com/viniciusaugusto1997">@viniciusaugusto1997</a></td>
       <td><a href="https://linkedin.com/in/">LinkedIn</a></td>
     </tr>
@@ -164,31 +192,24 @@ Acesse: [http://localhost:3005](http://localhost:3005)
 
 ---
 
-## 📚 Documentação Técnica
+## Tecnologias
 
-> Quer entender as regras de negócio, modelagem de dados, requisitos ou como o Scrum está sendo aplicado?
-
-### 📂 [Acesse o Índice da Documentação em `docs/`](./docs/00-INDICE.md)
-
-> 🆕 **Primeira vez aqui?** → [Quickstart em 5 min](./docs/01-QUICKSTART.md)
-> 💻 **Vai desenvolver?** → [Guia do Desenvolvedor](./docs/03-DEVELOPER-GUIDE.md)
-
-Lá você encontrará o índice central com acesso a:
-
-- 📋 Requisitos Funcionais, Não Funcionais e Restrições de Projeto
-- 📅 Cronograma detalhado e artefatos de cada Sprint
-- 🗄️ Modelagem do banco de dados (conceitual e lógico)
-- 📐 Diagramas UML (Casos de Uso, Classes e Sequência)
-- 🔄 Papéis Scrum, cerimônias e fluxo de versionamento
+| Camada | Tecnologia | Restrição |
+|---|---|---|
+| **Front-end** | HTML5 · CSS3 · JavaScript | Sem frameworks — código puro |
+| **Back-end** | Node.js + Express 5 | — |
+| **Banco de Dados** | PostgreSQL 14+ | DDL e DML explícitos; sem ORMs |
+| **Autenticação** | JWT (`jsonwebtoken`) | Stateless, expira em 10 min |
+| **Versionamento** | Git + GitHub (Git Flow) | — |
 
 ---
 
-## 📄 Licença
+## Licença
 
 Distribuído sob a licença especificada no arquivo [LICENSE](./LICENSE).
 
 ---
 
 <div align="center">
-  Desenvolvido com dedicação pela equipe <strong>DEVassos</strong> · 1DSM 2026/1
+  Desenvolvido pela equipe <strong>DEVassos</strong> · 1DSM 2026/1
 </div>

@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/img/scrum_icon.png">
     <link rel="stylesheet" href="assets/css/pages/index.css">
     <title>ScrumFlow | 404
 
@@ -17,37 +17,8 @@
     <div class="blob-esquerda"></div>
     <div class="blob-direita"></div>
 
-    <nav class="navbar">
-    <div class="navbar__container">
-        <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
-
-        <div class="nav-menu" id="nav-menu">
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="modulo-1/manifesto.html" class="nav-link">Manifesto</a></li>
-                <li><a href="modulo-2/scrum.html" class="nav-link">Scrum</a></li>
-                <li id="nav-dashboard"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-            </ul>
-
-            <div class="navbar__actions">
-                <div id="nav-deslogado">
-                    <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
-                    <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
-                </div>
-                <div id="nav-logado" hidden>
-                    <span id="nav-saudacao" class="nav-saudacao"></span>
-                    <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
-                </div>
-            </div>
-        </div>
-
-        <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-</nav>
+    <!-- Conteúdo injetado pelo navbar.js -->
+    <nav class="navbar" id="navbar"></nav>
 
     <main class="error404">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -59,17 +30,9 @@
                 528L480 491.4zM160 320C160 284.7 188.7 256 224 256C259.3 256 288 284.7 288 
                 320C288 355.3 259.3 384 224 384C188.7 384 160 355.3 160 320zM416 256C451.3 
                 256 480 284.7 480 320C480 355.3 451.3 384 416 384C380.7 384 352 355.3 352 
-                320C352 284.7 380.7 256 416 256z" stroke="white" stroke-width="5" fill="white"
-            />
-            <animateTransform
-                attributeName="transform"
-                begin="0s"
-                dur="5s"
-                type="rotate"
-                from="0 0 0"
-                to="360 0 0"
-                repeatCount="indefinite" 
-            />
+                320C352 284.7 380.7 256 416 256z" stroke="white" stroke-width="5" fill="white" />
+            <animateTransform attributeName="transform" begin="0s" dur="5s" type="rotate" from="0 0 0" to="360 0 0"
+                repeatCount="indefinite" />
 
         </svg>
         <div>
@@ -77,119 +40,17 @@
         </div>
     </main>
 
-        <!-- Overlay escuro atrás do modal -->
-    <div id="modal-overlay" class="modal-overlay"></div>
-
-    <!-- Modal de login/cadastro — desliza da direita -->
-    <div id="modal-login" class="modal-lateral">
-        <a href="index.html" class="logo">Scrum<span class="flow">Flow</span></a>
-
-        <!-- VIEW: LOGIN -->
-        <div id="view-login" class="modal-view">
-            <h2 class="modal-titulo">Entrar no time</h2>
-            <p class="modal-subtitulo">Bem-vindo de volta! Faça login para continuar.</p>
-
-            <form id="form-login">
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cpf">CPF</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cpf" class="input" placeholder="000.000.000-00">
-                    </div>
-                    <span class="campo-erro" id="erro-cpf-login"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="senha">Senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="senha" class="input" placeholder="Digite sua senha">
-                        <span class="campo-icone-direita" id="toggle-senha">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-senha-login"></span>
-                </div>
-
-                <div class="modal-opcoes">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="lembrar" class="checkbox-input">
-                        <span class="checkbox-custom"></span>
-                        Lembrar de mim
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Entrar no Sprint &rarr;</button>
-
-                <div class="modal-rodape">
-                    Não tem uma conta? <a href="#" id="link-ir-cadastro" class="link-amber">Criar conta</a>
-                </div>
-            </form>
-        </div>
-
-        <!-- VIEW: CADASTRO -->
-        <div id="view-cadastro" class="modal-view">
-            <h2 class="modal-titulo">Criar conta</h2>
-            <p class="modal-subtitulo">Junte-se ao time e comece sua jornada Scrum.</p>
-
-            <form id="form-cadastro">
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-nome">Nome completo</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cad-nome" class="input" placeholder="Seu nome completo">
-                    </div>
-                    <span class="campo-erro" id="erro-nome"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-cpf">CPF</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="text" id="cad-cpf" class="input" placeholder="000.000.000-00" maxlength="14">
-                    </div>
-                    <span class="campo-erro" id="erro-cpf"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-email">E-mail</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9993;</span>
-                        <input type="email" id="cad-email" class="input" placeholder="seu@email.com">
-                    </div>
-                    <span class="campo-erro" id="erro-email"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-senha">Senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="cad-senha" class="input" placeholder="Mínimo 8 caracteres">
-                        <span class="campo-icone-direita" id="toggle-cad-senha">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-senha"></span>
-                </div>
-
-                <div class="campo-grupo">
-                    <label class="campo-label" for="cad-confirmar">Confirmar senha</label>
-                    <div class="campo-wrapper">
-                        <span class="campo-icone">&#9679;</span>
-                        <input type="password" id="cad-confirmar" class="input" placeholder="Repita a senha">
-                        <span class="campo-icone-direita" id="toggle-cad-confirmar">&#128065;</span>
-                    </div>
-                    <span class="campo-erro" id="erro-confirmar"></span>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Criar conta &rarr;</button>
-                <div class="modal-rodape">
-                    Já tem conta? <a href="#" id="link-ir-login" class="link-amber">Entrar</a>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- Container do modal de login/cadastro — conteúdo injetado pelo modal-login.js -->
+    <div id="modal-login"></div>
 
 
+    <!-- Footer -->
+    <script src="../assets/js/footer.js"></script>
+<script src="../assets/js/stars.js"></script>
     <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. usados pelo index.js -->
     <script src="../assets/js/auth.js"></script>
     <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/modal-login.js"></script>
     <script src="../assets/js/index.js"></script>
 </body>
 

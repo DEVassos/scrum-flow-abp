@@ -1,4 +1,5 @@
 @import url("../global.css");
+@import url("../components/card.css");
 
 /* content.css tem svg { width:200px; height:200px }.
    [hidden] precisa de !important para não ser sobrescrito
@@ -11,7 +12,6 @@
    Aqui sobrescrevemos esse reset para os SVGs do dashboard.
    ================================ */
 
-.sidebar-link svg,
 .nivel-indicador svg,
 .certificado-lock svg,
 .cert-liberado-badge svg {
@@ -26,112 +26,12 @@
 }
 
 /* ================================
-   WRAPPER GERAL (sidebar + main)
-   ================================ */
-
-.dashboard-wrapper {
-    display: flex;
-    min-height: 100vh;
-    padding-top: 64px;
-    position: relative;
-    z-index: 1;
-}
-
-/* ================================
-   SIDEBAR
-   ================================ */
-
-.sidebar {
-    width: 160px;
-    flex-shrink: 0;
-    background-color: var(--navy-800);
-    border-right: 1px solid var(--navy-700);
-    padding: 24px 0;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    height: calc(100vh - 64px);
-    display: flex;
-    flex-direction: column;
-    z-index: 10;
-}
-
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 0 12px;
-}
-
-.sidebar-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 12px;
-    border-radius: 8px;
-    font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--slate-400);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.7px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.sidebar-link svg {
-    flex-shrink: 0;
-    opacity: 0.6;
-}
-
-.sidebar-link:hover {
-    background-color: var(--navy-700);
-    color: var(--white);
-}
-
-.sidebar-link--ativo {
-    color: var(--white);
-    background-color: var(--navy-700);
-}
-
-.sidebar-link--ativo svg {
-    opacity: 1;
-    color: var(--amber-500);
-}
-
-/* ================================
-   CONTEÚDO PRINCIPAL
-   ================================ */
-
-.dashboard-main {
-    margin-left: 160px;
-    flex: 1;
-    padding: 28px 32px 64px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    min-width: 0;
-}
-
-.dashboard-header {
-    border-bottom: 1px solid var(--navy-700);
-    padding-bottom: 16px;
-}
-
-.dashboard-subtitulo {
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--slate-400);
-    margin: 0;
-}
-
-/* ================================
    LAYOUT DE DUAS COLUNAS
    ================================ */
 
 .dashboard-layout {
     display: grid;
-    grid-template-columns: 1fr 260px;
+    grid-template-columns: minmax(0, 1fr) 300px;
     gap: 24px;
     align-items: start;
 }
@@ -141,19 +41,7 @@
 }
 
 /* ================================
-   SEÇÃO DE TÍTULO
-   ================================ */
-
-.secao-titulo {
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--white);
-    margin: 0 0 20px 0;
-}
-
-/* ================================
-   LISTA DE NÍVEIS
+   LISTA DE MÓDULOS
    ================================ */
 
 .niveis-lista {
@@ -163,14 +51,16 @@
 }
 
 .nivel-card {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-700);
     border-radius: 10px;
     padding: 14px 18px;
     display: flex;
     align-items: flex-start;
     gap: 14px;
     transition: border-color 0.2s ease;
+}
+
+.nivel-card:not(.nivel-bloqueado) {
+    cursor: pointer;
 }
 
 .nivel-card:not(.nivel-bloqueado):hover {
@@ -347,9 +237,6 @@
 }
 
 .lateral-card {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-700);
-    border-radius: 14px;
     padding: 22px 20px;
     display: flex;
     flex-direction: column;
@@ -528,17 +415,6 @@
     }
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
-
-    .dashboard-main {
-        margin-left: 0;
-        padding: 24px 20px 48px;
-    }
-}
-
 @media (max-width: 600px) {
     .nivel-cabecalho {
         flex-direction: column;
@@ -555,17 +431,6 @@
         flex-direction: column;
     }
 }
-/* ================================
-   NAVBAR: saudação + sair em linha
-   ================================ */
-
-@media (min-width: 481px) {
-    .nav-menu {
-        flex-direction: row;
-        gap: 32px;
-    }
-}
-
 #nav-logado {
     display: flex;
     align-items: center;

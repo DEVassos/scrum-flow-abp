@@ -1,8 +1,10 @@
 # Modelos e Diagramas do Projeto
 
-← [Índice da Documentação](../00-INDICE.md)
+← [Índice da Documentação](../README.md)
 
-Este documento reúne a documentação visual e técnica do **Portal de Certificação em Metodologias Ágeis**. Os diagramas detalham como os requisitos do edital e do backlog da sprint serão contemplados e estruturados.
+Este documento reúne a documentação visual e técnica do **Portal de Certificação em Metodologias Ágeis**. Os diagramas detalham como cada requisito é contemplado e estruturado.
+
+> Os requisitos (RF/RNF/RP) citados aqui têm como **fonte única** o [Edital](../edital/desafio-1dsm-2026-1.md). Significado das siglas no [Glossário](../GLOSSARIO.md).
 
 ---
 
@@ -10,7 +12,7 @@ Este documento reúne a documentação visual e técnica do **Portal de Certific
 **Arquivo:** `dcu_scrum.svg`
 
 O diagrama fornece a visão holística das interações do Usuário e do Sistema de Gerenciamento com a plataforma.
-*   O **Usuário** interage com fluxos vitais: Cadastrar (RF01), Logar com CPF (RF02), Avaliar Nível (RF05) e Consultar Progresso (RF11).
+*   O **Usuário** interage com fluxos vitais: Cadastrar (RF01), Logar com CPF (RF02), Avaliar Módulo (RF05) e Consultar Progresso (RF11).
 *   O **Sistema de Gerenciamento** coordena fluxos ocultos de regra de negócio (back-end): Selecionar e Classificar questões (RF03, RF04), Limitar tentativas (RF06), Atribuir maior nota e calcular média (RF07, RF08), Manter histórico (RF10) e Emitir certificado (RF09). Essa separação reforça que toda lógica sensível fica isolada no servidor (RNF04). 
 *   O diagrama também prevê a extensão de Aprimorar informações (RF12).
 
@@ -44,7 +46,7 @@ Para garantir a rastreabilidade, cada Requisito Funcional (RF) do sistema foi mo
 
 ### RF05 - Composição da Avaliação e RF06 - Limite de Tentativas
 **Classes:** `RF05_dc_avaliar.svg`, `RF06_dc_tentativa.svg` | **Sequência:** `RF05_ds_avaliar.svg`, `RF06_ds_tentativa.svg`  
-**Descrição:** Nestes fluxos, a entidade intermedeia a geração da prova. A sequência apresenta a interface chamando a composição estrita de 3 Fáceis, 4 Médias e 3 Difíceis (RF05) e consolidando as respostas. O fluxo do RF06 enfatiza o método `limitar_tentativa()` barrando o acesso caso o limite máximo de 2 tentativas por nível tenha sido atingido (RF06).
+**Descrição:** Nestes fluxos, a entidade intermedeia a geração da prova. A sequência apresenta a interface chamando a composição estrita de 3 Fáceis, 4 Médias e 3 Difíceis (RF05) e consolidando as respostas. O fluxo do RF06 enfatiza o método `limitar_tentativa()` barrando o acesso caso o limite máximo de 2 tentativas por módulo tenha sido atingido (RF06).
 *RF05:*
 ![DC Avaliar](uml/classes/RF05_dc_avaliar.svg)
 ![DS Avaliar](uml/sequencia/RF05_ds_avaliar.svg)
@@ -64,13 +66,13 @@ Para garantir a rastreabilidade, cada Requisito Funcional (RF) do sistema foi mo
 
 ### RF09 - Emissão de Certificado
 **Classes:** `RF09_dc_certificado.svg` | **Sequência:** `RF09_ds_certificado.svg`  
-**Descrição:** A classe de usuário comunica-se com a `cad_media_final` para obter a nota validada. A sequência demonstra a compilação dos dados (Nome, CPF, média) gerando o certificado apenas para usuários que completaram todos os níveis e foram aprovados (RF09).
+**Descrição:** A classe de usuário comunica-se com a `cad_media_final` para obter a nota validada. A sequência demonstra a compilação dos dados (Nome, CPF, média) gerando o certificado apenas para usuários que completaram todos os módulos e foram aprovados (RF09).
 ![DC Certificado](uml/classes/RF09_dc_certificado.svg)
 ![DS Certificado](uml/sequencia/RF09_ds_certificado.svg)
 
 ### RF10 - Histórico e RF11 - Progresso
 **Classes:** `RF10_dc_historico.svg`, `RF11_dc_progresso.svg` | **Sequência:** `RF10_ds_historico.svg`, `RF11_ds_progresso.svg`  
-**Descrição:** Para garantir a transparência do usuário na plataforma (US08). A classe de avaliação disponibiliza o método `exibir_historico()`, que traz as questões sorteadas e as datas no `RF10_ds_historico.svg`. O progresso geral (níveis concluídos e pendentes) é orquestrado na sequência do RF11.
+**Descrição:** Para garantir a transparência do usuário na plataforma (US08). A classe de avaliação disponibiliza o método `exibir_historico()`, que traz as questões sorteadas e as datas no `RF10_ds_historico.svg`. O progresso geral (módulos concluídos e pendentes) é orquestrado na sequência do RF11.
 *RF10:*
 ![DC Histórico](uml/classes/RF10_dc_historico.svg)
 ![DS Histórico](uml/sequencia/RF10_ds_historico.svg)
@@ -88,27 +90,27 @@ Para garantir a rastreabilidade, cada Requisito Funcional (RF) do sistema foi mo
 
 ## 💾 3. Modelagem de Banco de Dados
 
-Em conformidade com a restrição **RP02**, o banco de dados foi modelado exclusivamente para PostgreSQL, utilizando DDL e DML explícitos (sem uso de ORMs). Toda a persistência, como usuários, níveis, questões e resultados (RP04), é suportada pelos modelos abaixo.
+Em conformidade com a restrição **RP02**, o banco de dados foi modelado exclusivamente para PostgreSQL, utilizando DDL e DML explícitos (sem uso de ORMs). Toda a persistência, como usuários, módulos, questões e resultados (RP04), é suportada pelos modelos abaixo.
 
 ### 3.1 Modelo Conceitual (DER)
 **Arquivo:** `modelo_conceitual.jpg`  
 **Descrição e Confronto:** O Modelo Conceitual ilustra as entidades principais do domínio da aplicação e seus relacionamentos:
 *   **usuário:** Centraliza os dados de acesso (CPF, nome, email, senha), atendendo diretamente ao RF01 e às regras da LGPD (RNF03).
-*   **tentativa e resultado:** Relacionam-se ao usuário e ao nível para armazenar o histórico de avaliações (pontuação, timestamp), garantindo o rastreio exigido pelo RF10 e o cálculo da maior nota (RF07) e média final (RF08).
-*   **nível, questao e alternativa:** Estruturam o banco de perguntas. A relação indica que um nível possui várias questões, e estas possuem alternativas, suportando o controle de dificuldades exigido pelo RF04.
+*   **tentativa e resultado:** Relacionam-se ao usuário e ao módulo para armazenar o histórico de avaliações (pontuação, timestamp), garantindo o rastreio exigido pelo RF10 e o cálculo da maior nota (RF07) e média final (RF08).
+*   **módulo, questao e alternativa:** Estruturam o banco de perguntas. A relação indica que um módulo possui várias questões, e estas possuem alternativas, suportando o controle de dificuldades exigido pelo RF04.
 
 ![Modelo Conceitual](bd/modelo-conceitual/modelo_conceitual.jpg)
 
 ### 3.2 Modelo Lógico
 **Arquivo:** `modelo_logico.png`  
 **Descrição e Confronto:** O Modelo Lógico traduz a visão conceitual para o formato relacional:
-*   **Tabelas Principais:** `usuarios`, `modulos` (níveis), `exames` (avaliações iniciadas), `questoes` e `respostas`.
+*   **Tabelas Principais:** `usuarios`, `modulos`, `exames` (avaliações iniciadas), `questoes` e `respostas`.
 *   **Regras Embutidas:** O vínculo das Chaves Estrangeiras (FKs) entre `respostas` e `questoes` permite registrar a alternativa marcada (`alternativa_marcada`) e verificar se está correta (`correta: BOOL`), atendendo à necessidade do back-end auditar o histórico e calcular as notas com segurança para evitar fraudes (RNF04, RP04).
 
-![Modelo Lógico](bd/modelo-logico/modelo_logico.png)
+![Modelo Lógico](bd/modelo-logico/MODELO_IMAGEM.png)
 
 ---
 
 <div align="center">
-  <a href="../00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../README.md">← Voltar ao Índice</a>
 </div>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/img/scrum_icon.png">
+    <link rel="stylesheet" href="../assets/css/pages/validar_certificado.css">
+    <title>ScrumFlow | Validar Certificado</title>
+</head>
+
+<body>
+
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
+
+    <!-- Conteúdo injetado pelo navbar.js -->
+    <nav class="navbar" id="navbar"></nav>
+
+    <main class="validar-page">
+
+        <header class="validar-cabecalho">
+            <span class="validar-eyebrow">Autenticidade</span>
+            <h1 class="validar-titulo">Validar <span>Certificado</span></h1>
+            <p class="validar-subtitulo">
+                Cole o <strong>Código de Verificação</strong> impresso no certificado para confirmar
+                que ele é autêntico e foi emitido pelo ScrumFlow.
+            </p>
+        </header>
+
+        <!-- Formulário -->
+        <form class="validar-form" id="form-validar" novalidate>
+            <label class="campo-label" for="input-codigo">Código de Verificação</label>
+            <div class="validar-input-linha">
+                <input type="text" id="input-codigo" class="input"
+                    placeholder="Ex.: a1b2c3d4-5e6f-7890-abcd-ef1234567890" autocomplete="off" spellcheck="false">
+                <button type="submit" class="btn btn-primary" id="btn-validar">Validar</button>
+            </div>
+            <span class="campo-erro" id="erro-codigo">Informe o código de verificação.</span>
+        </form>
+
+        <!-- Estado: carregando -->
+        <div class="validar-feedback" id="estado-carregando" hidden>
+            <div class="validar-spinner"></div>
+            <p>Verificando código…</p>
+        </div>
+
+        <!-- Estado: certificado AUTÊNTICO -->
+        <section class="validar-resultado validar-resultado--valido" id="estado-valido" hidden>
+            <div class="validar-status validar-status--ok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Certificado autêntico
+            </div>
+
+            <dl class="validar-dados">
+                <div><dt>Nome</dt><dd id="res-nome">—</dd></div>
+                <div><dt>CPF</dt><dd id="res-cpf">—</dd></div>
+                <div><dt>Média final</dt><dd id="res-media">—</dd></div>
+                <div><dt>Emitido em</dt><dd id="res-emissao">—</dd></div>
+            </dl>
+
+            <table class="validar-tabela">
+                <thead>
+                    <tr>
+                        <th>Módulo</th>
+                        <th>Nota</th>
+                    </tr>
+                </thead>
+                <tbody id="res-modulos"></tbody>
+            </table>
+
+            <div class="validar-codigo-confirmado">
+                <span>Código verificado</span>
+                <code id="res-codigo">—</code>
+            </div>
+        </section>
+
+        <!-- Estado: NÃO encontrado / inválido -->
+        <section class="validar-resultado validar-resultado--invalido" id="estado-invalido" hidden>
+            <div class="validar-status validar-status--erro">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="m15 9-6 6M9 9l6 6" />
+                </svg>
+                Certificado não encontrado
+            </div>
+            <p class="validar-invalido-msg" id="invalido-msg">
+                Não localizamos nenhum certificado com esse código. Confira se digitou corretamente —
+                certificados autênticos do ScrumFlow sempre podem ser verificados aqui.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Container do modal de login/cadastro — conteúdo injetado pelo modal-login.js -->
+    <div id="modal-login"></div>
+
+    <script src="../assets/js/stars.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/modal-login.js"></script>
+    <script src="../assets/js/footer.js"></script>
+    <script src="../assets/js/validar_certificado.js"></script>
+
+</body>
+
+</html>

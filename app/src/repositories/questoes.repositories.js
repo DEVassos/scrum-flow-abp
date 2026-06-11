@@ -176,6 +176,7 @@ async function findOutroGrupoAleatorio(idUsuario, idModulo) {
     FROM questoes q
     WHERE q.id_modulo = $1
       AND q.grupo IS NOT NULL
+      AND q.grupo <> 0
       AND q.grupo NOT IN (
         SELECT e.grupo
         FROM exames e

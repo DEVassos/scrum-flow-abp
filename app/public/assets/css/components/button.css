@@ -68,3 +68,10 @@
   text-align: center;
   margin-top: 8px;
 }
+
+/* Estado de carregamento para button */
+.btn-loading {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}

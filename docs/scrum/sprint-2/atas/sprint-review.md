@@ -1,4 +1,4 @@
-← [Índice da Documentação](../../../00-INDICE.md) · [Sprint 1](../sprint-1.md)
+← [Índice da Documentação](../../../README.md) · [Gestão Ágil — Scrum](../../README.md) · [Sprint 2](../sprint-2.md)
 
 # Sprint Review — Sprint 2
 
@@ -22,9 +22,9 @@
 
 | ID   | História                  | SP  | Status      | Observações                                               |
 | ---- | ------------------------- | --- | ----------- | --------------------------------------------------------- |
-| US03 | Realizar Avaliação de Nível | 27 | ✅ Entregue | A Avaliação do módulo é automaticamente disponibilizada assim que o usuário garante seu acesso ao módulo seguinte |
-| US04 | Controle de Tentativas por Nível | 16 | ✅ Entregue | O backend garante que o usuário possua tentativas limitadas de realização do exame, evitando que sua certificação seja emitida por meio de exaustão do banco de questões |
-| US05 | Nota Final por Nível | 2 | ✅ Entregue | Ao realizar novas tentativas dos exames de cada módulo, o sistema computa automaticamente a melhor nota e a disponibiliza no histórico do usuário |
+| US03 | Realizar Avaliação de Módulo | 27 | ✅ Entregue | A Avaliação do módulo é automaticamente disponibilizada assim que o usuário garante seu acesso ao módulo seguinte |
+| US04 | Controle de Tentativas por Módulo | 16 | ✅ Entregue | O backend garante que o usuário possua tentativas limitadas de realização do exame, evitando que sua certificação seja emitida por meio de exaustão do banco de questões |
+| US05 | Nota Final por Módulo | 2 | ✅ Entregue | Ao realizar novas tentativas dos exames de cada módulo, o sistema computa automaticamente a melhor nota e a disponibiliza no histórico do usuário |
 | US06 | Média Final | 5 | ✅ Entregue | O desempenho final do usuário é automaticamente calculado assim que é aprovado no último exame |
 | US07 | Certificado Digital | 13 | ✅ Entregue | Assim que o usuário conclui a realização do curso, o certificado é imediatamente disponibilizado para download e/ou impressão |
 | — | Ressalvas de escopo | 11 | ⚠️ Entregue parcialmente | Responsividade CSS: time com expectativa de melhoras ainda mais a responsividade da aplicação em diferentes dispositivos |
@@ -96,5 +96,5 @@ As histórias da Sprint 2 foram validadas e aceitas pelo PO. Ressalvas registrad
 ---
 
 <div align="center">
-  <a href="../../../00-INDICE.md">← Voltar ao Índice</a> · <a href="../sprint-2.md">Sprint 2</a>
+  <a href="../../../README.md">← Voltar ao Índice</a> · <a href="../../README.md">Gestão Ágil — Scrum</a> · <a href="../sprint-2.md">Sprint 2</a>
 </div>

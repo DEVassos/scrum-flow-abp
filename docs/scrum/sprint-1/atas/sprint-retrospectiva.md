@@ -1,4 +1,4 @@
-← [Índice da Documentação](../../../00-INDICE.md) · [Sprint 1](../sprint-1.md)
+← [Índice da Documentação](../../../README.md) · [Gestão Ágil — Scrum](../../README.md) · [Sprint 1](../sprint-1.md)
 
 # Sprint Retrospective — Sprint 1
 
@@ -72,5 +72,5 @@ Como destaque positivo do SM: a equipe entregou, além das histórias comprometi
 ---
 
 <div align="center">
-  <a href="../../../00-INDICE.md">← Voltar ao Índice</a> · <a href="../sprint-1.md">Sprint 1</a>
+  <a href="../../../README.md">← Voltar ao Índice</a> · <a href="../../README.md">Gestão Ágil — Scrum</a> · <a href="../sprint-1.md">Sprint 1</a>
 </div>

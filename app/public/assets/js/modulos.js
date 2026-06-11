@@ -414,8 +414,12 @@ async function carregarModulos() {
     const dados = await response.json();
     modulos = dados.map(mapearModulo);
 
+    const paramId = new URLSearchParams(location.search).get("modulo");
+    const moduloParam = paramId ? modulos.find((m) => m.id === Number(paramId)) : null;
     moduloSelecionado =
-      modulos.find((modulo) => modulo.status !== "bloqueado") || modulos[0];
+      (moduloParam && moduloParam.status !== "bloqueado" ? moduloParam : null) ||
+      modulos.find((modulo) => modulo.status !== "bloqueado") ||
+      modulos[0];
 
     renderizarSidebar();
     atualizarTela(moduloSelecionado);
@@ -452,7 +456,7 @@ function mapearModulo(moduloApi) {
     progresso,
     questoes,
     questoesRespondidas: id === idModuloAtual ? respondidasAtual : questoes,
-    tentativasUsadas: aprovado ? Number(moduloApi.tentativas_usadas) || 1 : tentativaAtual,
+    tentativasUsadas: Number(moduloApi.tentativas_usadas) || 0,
     tentativasMaximas: TENTATIVAS_MAXIMAS,
     melhorNota,
     aprovado,
@@ -494,7 +498,8 @@ function atualizarTela(modulo) {
   painelBadge.textContent = formatarStatus(modulo.status);
   painelTitulo.textContent = modulo.nome;
   painelDescricao.textContent = gerarDescricao(modulo);
-  painelTentativas.textContent = `${modulo.tentativasUsadas} / ${modulo.tentativasMaximas}`;
+  const tentativasExibidas = Math.min(modulo.tentativasUsadas, modulo.tentativasMaximas);
+  painelTentativas.textContent = `${tentativasExibidas} / ${modulo.tentativasMaximas}`;
 
   renderizarConteudo(modulo);
   atualizarSidebarAtiva();
@@ -529,6 +534,16 @@ function atualizarBotoes(modulo) {
     return;
   }
 
+  if (modulo.status !== "concluido" && modulo.tentativasUsadas >= modulo.tentativasMaximas) {
+    botoesAcao.innerHTML = `
+      <p class="tentativas-esgotadas-msg">
+        Você atingiu o limite de tentativas para este módulo.
+        Entre em contato com o administrador do curso para continuar.
+      </p>
+    `;
+    return;
+  }
+
   const botaoProva = document.createElement("button");
   botaoProva.className = "btn btn-primary";
   botaoProva.type = "button";
@@ -539,6 +554,22 @@ function atualizarBotoes(modulo) {
   });
 
   botoesAcao.append(botaoProva);
+
+  if (modulo.status === "concluido") {
+    const proximoExiste = modulos.some((m) => m.id === modulo.id + 1);
+    if (proximoExiste) {
+      const botaoAvancar = document.createElement("button");
+      botaoAvancar.className = "btn btn-primary btn-next-module";
+      botaoAvancar.type = "button";
+      botaoAvancar.textContent = "Avançar para o próximo módulo";
+      botaoAvancar.addEventListener("click", () => {
+        window.location.href = `modulos.html?modulo=${modulo.id + 1}`;
+      });
+
+      botaoAvancar.style.marginLeft = "auto";
+      botoesAcao.append(botaoAvancar);
+    }
+  }
 }
 
 function atualizarProgressoGeral() {

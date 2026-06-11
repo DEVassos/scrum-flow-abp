@@ -1,26 +1,232 @@
 (function () {
-  // ── Active link ──────────────────────────────────────────────────────────
-  // Remove qualquer classe "active" hardcoded no HTML e aplica no link
-  // correspondente à página atual, garantindo o destaque amarelo correto.
+  function estaEmSubpasta() {
+    const partes = window.location.pathname.split("/");
+    return ["modulo-1", "modulo-2", "modulo-3", "exame"].some(function (pasta) {
+      return partes.includes(pasta);
+    });
+  }
+
+  function hrefRaiz(arquivo) {
+    return estaEmSubpasta() ? "../" + arquivo : arquivo;
+  }
+
+  // ================================
+  //   INJEÇÃO DO HTML DO NAVBAR
+  //   Cada página tem apenas <nav class="navbar" id="navbar"></nav>.
+  //   O conteúdo é inserido aqui para não duplicar em todos os HTMLs.
+  // ================================
+
+  const navbar = document.getElementById("navbar");
+  if (navbar) {
+    navbar.innerHTML = `
+      <div class="navbar__container">
+        <a href="${hrefRaiz('index.html')}" class="logo">Scrum<span class="flow">Flow</span></a>
+
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-links">
+            <li><a href="${hrefRaiz('index.html')}" class="nav-link">Home</a></li>
+            <li><a href="${hrefRaiz('manifesto.html')}" class="nav-link">Manifesto</a></li>
+            <li><a href="${hrefRaiz('scrum.html')}" class="nav-link">Scrum</a></li>
+            <li id="nav-dashboard"><a href="${hrefRaiz('dashboard.html')}" class="nav-link">Dashboard</a></li>
+            <li><a href="${hrefRaiz('sobre.html')}" class="nav-link">Sobre</a></li>
+            <li><a href="${hrefRaiz('manual.html')}" class="nav-link" target="_blank" rel="noopener">Manual de uso</a></li>
+          </ul>
+
+          <div class="navbar__actions">
+            <div id="nav-deslogado">
+              <a href="#" id="btn-entrar" class="btn btn-ghost">Entrar</a>
+              <a href="#" id="btn-criar-conta" class="btn btn-primary">Criar conta</a>
+            </div>
+            <div id="nav-logado" hidden>
+              <span id="nav-saudacao" class="nav-saudacao"></span>
+              <button id="btn-sair-index" class="btn btn-ghost">Sair</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="navbar__hamburger" id="hamburger" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    `;
+  }
+
+  function textoSeguro(valor) {
+    return String(valor || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function obterPayloadToken() {
+    try {
+      return JSON.parse(atob(obterToken().split(".")[1]));
+    } catch {
+      return {};
+    }
+  }
+
+  function obterIniciais(nome) {
+    const partes = String(nome || "Usuario")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2);
+
+    return partes.map(function (parte) {
+      return parte.charAt(0).toUpperCase();
+    }).join("") || "U";
+  }
+
+  function configurarMenuUsuario(container) {
+    if (!container || container.dataset.profileMenu === "true") return;
+
+    const nome = obterNome() || "Usuário";
+    const payload = obterPayloadToken();
+    const ehAdmin =
+      payload.is_admin === true ||
+      String(payload.perfil || "").toLowerCase() === "admin";
+    const perfil = ehAdmin ? "Administrador" : "Estudante";
+    const email = payload.email || "Conta Scrum Flow";
+    const iniciais = obterIniciais(nome);
+    const dashboardHref =
+      document.querySelector("#nav-dashboard a")?.getAttribute("href") ||
+      hrefRaiz("dashboard.html");
+
+    container.dataset.profileMenu = "true";
+    container.innerHTML = `
+      <div class="profile-menu">
+        <button
+          type="button"
+          class="profile-menu__trigger"
+          aria-label="Abrir menu do usuário"
+          aria-expanded="false"
+        >
+          <span class="profile-menu__avatar" aria-hidden="true">${textoSeguro(iniciais)}</span>
+          <span class="profile-menu__chevron" aria-hidden="true"></span>
+        </button>
+
+        <div class="profile-menu__panel" hidden>
+          <div class="profile-menu__header">
+            <div class="profile-menu__avatar-wrap">
+              <span class="profile-menu__avatar profile-menu__avatar--large" aria-hidden="true">${textoSeguro(iniciais)}</span>
+              <span class="profile-menu__status" aria-hidden="true"></span>
+            </div>
+            <div class="profile-menu__identity">
+              <strong>${textoSeguro(nome)}</strong>
+              <span class="profile-menu__role">${textoSeguro(perfil)}</span>
+              <span class="profile-menu__email">${textoSeguro(email)}</span>
+            </div>
+            <span class="profile-menu__level" data-profile-level aria-label="Módulo atual">Módulo 0</span>
+          </div>
+
+          <div class="profile-menu__items">
+            <a class="profile-menu__item" href="${dashboardHref}">
+              <span class="profile-menu__icon profile-menu__icon--grid" aria-hidden="true"></span>
+              <span class="profile-menu__text">
+                <strong>Dashboard</strong>
+                <small>Visão geral do sistema</small>
+              </span>
+              <span class="profile-menu__arrow" aria-hidden="true"></span>
+            </a>
+
+            <a class="profile-menu__item" href="${hrefRaiz("configuracoes.html")}">
+              <span class="profile-menu__icon profile-menu__icon--gear" aria-hidden="true"></span>
+              <span class="profile-menu__text">
+                <strong>Configurações</strong>
+                <small>Ajustes da sua conta</small>
+              </span>
+              <span class="profile-menu__arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <button class="profile-menu__item profile-menu__item--logout" type="button" data-logout>
+            <span class="profile-menu__icon profile-menu__icon--logout" aria-hidden="true"></span>
+            <span class="profile-menu__text">
+              <strong>Sair</strong>
+              <small>Encerrar sua sessão</small>
+            </span>
+          </button>
+        </div>
+      </div>
+    `;
+
+    const trigger = container.querySelector(".profile-menu__trigger");
+    const panel = container.querySelector(".profile-menu__panel");
+    const logout = container.querySelector("[data-logout]");
+    const level = container.querySelector("[data-profile-level]");
+
+    function fecharMenu() {
+      panel.hidden = true;
+      trigger.setAttribute("aria-expanded", "false");
+    }
+
+    trigger.addEventListener("click", function () {
+      const deveAbrir = panel.hidden;
+      panel.hidden = !deveAbrir;
+      trigger.setAttribute("aria-expanded", String(deveAbrir));
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!container.contains(event.target)) fecharMenu();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") fecharMenu();
+    });
+
+    logout.addEventListener("click", function () {
+      limparSessao();
+      window.location.href = hrefRaiz("index.html");
+    });
+
+    atualizarNivelConcluido(level);
+  }
+
+  async function atualizarNivelConcluido(elemento) {
+    if (!elemento || !obterToken()) return;
+
+    try {
+      const resposta = await fetch("/api/questoes/modulos", {
+        headers: { Authorization: `Bearer ${obterToken()}` },
+      });
+
+      if (!resposta.ok) return;
+
+      const modulos = await resposta.json();
+      const concluidos = modulos.filter(function (modulo) {
+        return Boolean(modulo.aprovado);
+      }).length;
+
+      elemento.textContent = "Módulo " + concluidos;
+      elemento.setAttribute(
+        "aria-label",
+        concluidos + " módulo" + (concluidos === 1 ? "" : "s") + " concluído" + (concluidos === 1 ? "" : "s"),
+      );
+    } catch {
+      elemento.textContent = "Módulo 0";
+    }
+  }
+
   const paginaAtual = window.location.pathname.split("/").pop() || "index.html";
 
   document.querySelectorAll(".nav-link").forEach(function (link) {
     link.classList.remove("active");
     const href = link.getAttribute("href");
-    if (href && paginaAtual === href) {
+    if (href && paginaAtual === href.split("/").pop()) {
       link.classList.add("active");
     }
   });
 
-  // ── Dashboard link ───────────────────────────────────────────────────────
-  // O link para Dashboard só deve aparecer para usuários autenticados.
   const linkDashboard = document.getElementById("nav-dashboard");
   if (linkDashboard) {
     linkDashboard.style.display = estaAutenticado() ? "" : "none";
   }
 
-    // ── Hamburguer ───────────────────────────────────────────────────────────
-  // Abre e fecha o menu vertical. Fecha também ao clicar em qualquer link.
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
 
@@ -38,33 +244,22 @@
     });
   }
 
-  // ── Estado da navbar (logado / deslogado) ────────────────────────────────
   const navDeslogado = document.getElementById("nav-deslogado");
-  const navLogado    = document.getElementById("nav-logado");
+  const navLogado = document.getElementById("nav-logado");
 
-  if (!navDeslogado || !navLogado) return; // página sem os dois blocos (ex: dashboard)
+  if (!navDeslogado || !navLogado) {
+    if (estaAutenticado()) {
+      configurarMenuUsuario(document.querySelector(".navbar__actions"));
+    }
+    return;
+  }
 
   if (estaAutenticado()) {
     navDeslogado.hidden = true;
-    navLogado.hidden    = false;
-
-    const saudacao = document.getElementById("nav-saudacao");
-    if (saudacao) saudacao.textContent = "Olá, " + obterNome();
+    navLogado.hidden = false;
+    configurarMenuUsuario(navLogado);
   } else {
     navDeslogado.hidden = false;
-    navLogado.hidden    = true;
+    navLogado.hidden = true;
   }
-
-  // ── Botão Sair ───────────────────────────────────────────────────────────
-  // Trata tanto "btn-sair" (padrão) quanto "btn-sair-index" (index.html),
-  // centralizando o comportamento de logout em todas as páginas.
-  ["btn-sair", "btn-sair-index"].forEach(function (id) {
-    const btn = document.getElementById(id);
-    if (btn) {
-      btn.addEventListener("click", function () {
-        limparSessao();
-        window.location.href = "index.html";
-      });
-    }
-  });
 })();

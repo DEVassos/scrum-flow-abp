@@ -1,12 +1,12 @@
 # 🗄️ Modelagem do Banco de Dados
 
-← [Índice da Documentação](../../00-INDICE.md) · [Modelos](../README.md)
+← [Índice da Documentação](../../README.md) · [Modelos](../README.md)
 
-Documentação dos modelos conceitual e lógico do PostgreSQL.
+Documentação dos modelos conceitual e lógico do PostgreSQL. Os requisitos referenciados (RF/RP) têm como fonte única o [Edital](../../edital/desafio-1dsm-2026-1.md); veja siglas no [Glossário](../../GLOSSARIO.md).
 
-> 📌 **Restrição (RP02):** apenas DDL e DML explícitos. Nenhum ORM permitido.
+> 📌 **Restrição ([RP02](../../GLOSSARIO.md)):** apenas DDL e DML explícitos. Nenhum ORM permitido.
 
-> ⚠️ **Modelos em evolução:** os modelos abaixo refletem o estado atual do projeto. Novas tabelas e relacionamentos serão adicionados conforme os requisitos das Sprints 2 e 3 (avaliações, histórico, certificado) forem implementados.
+> Os modelos abaixo refletem o estado final do projeto (Sprints 1–3): usuários, módulos, questões, exames, respostas e certificados.
 
 ---
 
@@ -22,7 +22,7 @@ Entidades, atributos e relacionamentos do domínio.
 
 Tabelas, tipos, PKs, FKs e índices para PostgreSQL.
 
-![Modelo Lógico](./modelo-logico/modelo_logico.png)
+![Modelo Lógico](./modelo-logico/MODELO_IMAGEM.png)
 
 > Arquivo fonte editável: [modelo_abp.xml](./modelo-logico/modelo_abp.xml) (brModelo/draw.io)
 
@@ -38,7 +38,7 @@ Tabelas, tipos, PKs, FKs e índices para PostgreSQL.
 | `exames` | `id_exame`, `id_modulo`, `id_usuario`, `grupo`, `tentativa` | RF06, RF10 |
 | `respostas` | `id_resposta`, `id_exame`, `id_questao`, `nota`, `resposta`, `respondido_em` | RF07, RF10 |
 
-> **Estado atual (Sprint 1):** 5 módulos e 150 questões carregados via seed.
+> **Carga inicial (seed):** 5 módulos e 150 questões. O hash público de validação do certificado (RF09) fica na coluna `usuarios.certificado_hash`.
 
 ---
 
@@ -48,10 +48,10 @@ Os arquivos SQL ficam em `app/src/infra/init/` e são executados em ordem pelo `
 
 Banco utilizado: **`abp`** (PostgreSQL 14+).
 
-Veja detalhes em [02-SETUP.md → Banco de Dados](../../02-SETUP.md#banco-de-dados).
+Veja detalhes em [02-setup.md → Banco de Dados](../../setup/02-setup.md#banco-de-dados).
 
 ---
 
 <div align="center">
-  <a href="../../00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../../README.md">← Voltar ao Índice</a>
 </div>

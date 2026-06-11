@@ -1,89 +1,11 @@
 @import url("../global.css");
+@import url("../components/card.css");
 
 [hidden] { display: none !important; }
-
-.sidebar-link svg {
-    width: unset;
-    height: unset;
-}
 
 .blob-esquerda,
 .blob-direita {
     z-index: 0;
-}
-
-/* ================================
-   WRAPPER
-   ================================ */
-
-.dashboard-wrapper {
-    display: flex;
-    min-height: 100vh;
-    padding-top: 64px;
-    position: relative;
-    z-index: 1;
-}
-
-/* ================================
-   SIDEBAR FIXA (nav de páginas)
-   ================================ */
-
-.sidebar {
-    width: 160px;
-    flex-shrink: 0;
-    background-color: var(--navy-800);
-    border-right: 1px solid var(--navy-700);
-    padding: 24px 0;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    height: calc(100vh - 64px);
-    display: flex;
-    flex-direction: column;
-    z-index: 10;
-}
-
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 0 12px;
-}
-
-.sidebar-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 12px;
-    border-radius: 8px;
-    font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--slate-400);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.7px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.sidebar-link svg {
-    flex-shrink: 0;
-    opacity: 0.6;
-}
-
-.sidebar-link:hover {
-    background-color: var(--navy-700);
-    color: var(--white);
-}
-
-.sidebar-link--ativo {
-    color: var(--white);
-    background-color: var(--navy-700);
-}
-
-.sidebar-link--ativo svg {
-    opacity: 1;
-    color: var(--amber-500);
 }
 
 /* ================================
@@ -151,10 +73,6 @@
    ================================ */
 
 .historico-sidebar {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-600);
-    border-radius: 20px;
-    padding: 24px;
     position: sticky;
     top: calc(64px + 24px);
     max-height: calc(100vh - 64px - 48px);
@@ -192,9 +110,6 @@
 
 .historico-modulo-item {
     width: 100%;
-    background-color: var(--navy-900);
-    border: 1px solid var(--navy-600);
-    border-radius: 14px;
     padding: 16px;
     cursor: pointer;
     text-align: left;
@@ -242,10 +157,6 @@
    ================================ */
 
 .historico-painel {
-    background-color: var(--navy-800);
-    border: 1px solid var(--navy-600);
-    border-radius: 20px;
-    padding: 32px;
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -342,11 +253,7 @@
 }
 
 .questao-card {
-    background-color: var(--navy-900);
-    border: 1px solid var(--navy-600);
     border-left-width: 3px;
-    border-radius: 14px;
-    padding: 24px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -508,10 +415,6 @@
 }
 
 @media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
-
     .historico-main {
         margin-left: 0;
     }

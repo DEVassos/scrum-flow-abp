@@ -133,14 +133,35 @@ function renderizarQuestao() {
 
   document.getElementById("nivel-info").textContent = obterNivelInfo(idModulo);
   document.getElementById("tentativa-info").textContent =
-    `Tentativa ${tentativaAtual}/2`;
+    tentativaAtual <= 2 ? `Tentativa ${tentativaAtual}/2` : "Revisão de conteúdo";
   document.getElementById("questao-numero").textContent =
     `Questão ${questao.numero || indiceAtual + 1}`;
   document.getElementById("questao-titulo").textContent =
     questao.enunciado || "";
+  const imagemElemento = document.getElementById("questao-imagem");
+  // Esconde por padrão e exibe apenas quando existir imagem válida
+  imagemElemento.style.display = "none";
+  imagemElemento.onerror = () => {
+    imagemElemento.src = "";
+    imagemElemento.style.display = "none";
+  };
+
+  if (questao.imagem) {
+    imagemElemento.src = `/imagens/questoes/${questao.imagem}`;
+    imagemElemento.style.display = "block";
+  } else {
+    imagemElemento.src = "";
+    imagemElemento.style.display = "none";
+  }
+
   document.getElementById("questao-descricao").textContent = modoLeitura
     ? "Questão já respondida — somente leitura."
     : "Escolha a alternativa correta:";
+
+  const refEl = document.getElementById("questao-ref");
+  if (refEl) refEl.textContent = `Ref.: ${questao.id_questao}`;
+
+  document.getElementById("aviso-selecao").hidden = true;
 
   // Limpa e remonta as opções
   const container = document.querySelector(".questao-opcoes");
@@ -185,6 +206,8 @@ function renderizarQuestao() {
   });
 
   renderizarProgresso();
+
+  document.querySelector(".questao-card").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 // Atualiza os dots de progresso conforme o histórico
@@ -210,18 +233,14 @@ function atualizarBotoes() {
 
   document.getElementById("btn-anterior").disabled = indiceAtual <= 0;
 
-  // Na fronteira (questão nova): só habilita Próxima se houver seleção
-  // No histórico (questão já respondida): sempre habilitado
-  document.getElementById("btn-proxima").disabled = naFronteira
-    ? !opcaoSelecionada
-    : false;
+  document.getElementById("btn-proxima").disabled = false;
 }
 
 // ================================
 //   SELEÇÃO
 // ================================
 
-// Marca visualmente a opção clicada e habilita o botão Próxima
+// Marca visualmente a opção clicada e esconde aviso de seleção obrigatória
 function selecionarOpcao(letra) {
   opcaoSelecionada = letra;
 
@@ -229,7 +248,7 @@ function selecionarOpcao(letra) {
     item.classList.toggle("selecionada", item.dataset.opcao === letra);
   });
 
-  document.getElementById("btn-proxima").disabled = false;
+  document.getElementById("aviso-selecao").hidden = true;
 }
 
 // ================================
@@ -249,7 +268,10 @@ async function proximaQuestao() {
   }
 
   // Na fronteira: precisa de uma opção selecionada para avançar
-  if (!opcaoSelecionada) return;
+  if (!opcaoSelecionada) {
+    document.getElementById("aviso-selecao").hidden = false;
+    return;
+  }
 
   // Registra a resposta no histórico antes de enviar
   historico[indiceAtual].resposta = opcaoSelecionada.toLowerCase();
@@ -357,8 +379,9 @@ function irParaResultado() {
       total: totalRespondidas,
       percentual,
       modulo: obterNivelInfo(idModulo),
+      idModulo,
       data: new Date().toLocaleDateString("pt-BR"),
-      status: percentual >= 60 ? "aprovado" : "reprovado",
+      status: percentual >= 70 ? "aprovado" : "reprovado",
     }),
   );
 

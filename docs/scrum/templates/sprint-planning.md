@@ -1,5 +1,5 @@
 <!-- Template — copie para seu destino e ajuste o caminho do Índice -->
-← [Índice da Documentação](../../00-INDICE.md)
+← [Índice da Documentação](../../README.md)
 
 # Sprint Planning — Sprint X
 
@@ -15,7 +15,7 @@
 
 > Defina em uma frase o objetivo central desta sprint — o que o time se compromete a entregar e qual valor isso gera.
 
-_Exemplo: "Ao final desta sprint, o usuário conseguirá se cadastrar, fazer login e iniciar uma avaliação de nível."_
+_Exemplo: "Ao final desta sprint, o usuário conseguirá se cadastrar, fazer login e iniciar uma avaliação de módulo."_
 
 ---
 
