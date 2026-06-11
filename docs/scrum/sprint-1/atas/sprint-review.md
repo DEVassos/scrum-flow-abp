@@ -1,4 +1,4 @@
-← [Índice da Documentação](../../../00-INDICE.md) · [Sprint 1](../sprint-1.md)
+← [Índice da Documentação](../../../README.md) · [Gestão Ágil — Scrum](../../README.md) · [Sprint 1](../sprint-1.md)
 
 # Sprint Review — Sprint 1
 
@@ -81,12 +81,12 @@ Fluxo demonstrado (vídeo):
 
 ## Feedback do Product Owner
 
-| Item | Feedback | Ação Necessária |
-|------|----------|-----------------|
-| DOC — Documentação geral | Todos os artefatos foram produzidos dentro do esperado. O README está claro e as instruções de execução são objetivas. Os diagramas cobrem os fluxos principais e a identidade visual está alinhada com a proposta do projeto. | Nenhuma — aprovado |
-| US01 — Cadastro | O fluxo de cadastro funciona conforme os critérios de aceite. A validação de CPF duplicado está clara para o usuário. **Ressalva:** a responsividade em dispositivos móveis não está satisfatória — a interface não se comporta adequadamente em telas pequenas. | Ajustar responsividade (CSS mobile-first) nas Sprints 2 ou 3 |
-| US02 — Login | O login funciona corretamente com CPF e senha. O redirecionamento para o painel de módulos ocorre sem erros e as mensagens de erro genéricas estão de acordo com o requisito de segurança. | Nenhuma — aprovado |
-| Entrega adicional | A equipe entregou, além do comprometido, a página de manifesto e a página "O que é Scrum" — iniciativa valorizada pelo PO como demonstração de comprometimento e cuidado com a experiência do usuário. | Nenhuma — destaque positivo |
+| Item                     | Feedback                                                                                                                                                                                                                                                         | Ação Necessária                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| DOC — Documentação geral | Todos os artefatos foram produzidos dentro do esperado. O README está claro e as instruções de execução são objetivas. Os diagramas cobrem os fluxos principais e a identidade visual está alinhada com a proposta do projeto.                                   | Nenhuma — aprovado                                           |
+| US01 — Cadastro          | O fluxo de cadastro funciona conforme os critérios de aceite. A validação de CPF duplicado está clara para o usuário. **Ressalva:** a responsividade em dispositivos móveis não está satisfatória — a interface não se comporta adequadamente em telas pequenas. | Ajustar responsividade (CSS mobile-first) nas Sprints 2 ou 3 |
+| US02 — Login             | O login funciona corretamente com CPF e senha. O redirecionamento para o painel de módulos ocorre sem erros e as mensagens de erro genéricas estão de acordo com o requisito de segurança.                                                                       | Nenhuma — aprovado                                           |
+| Entrega adicional        | A equipe entregou, além do comprometido, a página de manifesto e a página "O que é Scrum" — iniciativa valorizada pelo PO como demonstração de comprometimento e cuidado com a experiência do usuário.                                                           | Nenhuma — destaque positivo                                  |
 
 ---
 
@@ -103,5 +103,5 @@ As histórias da Sprint 1 foram validadas e aceitas pelo PO. Ressalva registrada
 ---
 
 <div align="center">
-  <a href="../../../00-INDICE.md">← Voltar ao Índice</a> · <a href="../sprint-1.md">Sprint 1</a>
+   <a href="../../../README.md">← Voltar ao Índice</a> · <a href="../../README.md">Gestão Ágil — Scrum</a> · <a href="../sprint-1.md">Sprint 1</a>
 </div>
