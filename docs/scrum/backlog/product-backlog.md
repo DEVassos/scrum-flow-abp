@@ -30,8 +30,8 @@
 | US05 | usuário | visualizar minha nota final por módulo | acompanhar meu progresso individualmente | 🟡 Média | Sprint 2 | ✅ Concluído |
 | US06 | usuário | ver minha média final calculada automaticamente | saber meu resultado geral ao concluir todos os módulos | 🟡 Média | Sprint 2 | ✅ Concluído |
 | US07 | usuário | receber um certificado com meus dados e notas | comprovar minha conclusão do ciclo de avaliação | 🟡 Média | Sprint 2 | ✅ Concluído |
-| US08 | usuário | consultar meu histórico de tentativas | revisar meu desempenho e as questões sorteadas | 🔴 Alta | Sprint 3 | 🔄 Em andamento |
-| US09 | administrador | cadastrar e gerenciar questões e módulos via área administrativa | manter o banco de questões atualizado sem alterar o código | 🔴 Alta | Sprint 3 | 🔄 Em andamento |
+| US08 | usuário | consultar meu histórico de tentativas | revisar meu desempenho e as questões sorteadas | 🔴 Alta | Sprint 3 | ✅ Concluído |
+| US09 | administrador | cadastrar e gerenciar questões e módulos via área administrativa | manter o banco de questões atualizado sem alterar o código | 🔴 Alta | Sprint 3 | ✅ Concluído |
 
 ---
 
@@ -178,6 +178,7 @@
 | 14/04/2026 | Criação inicial do backlog | Gustavo Koiti (PO) |
 | 15/05/2026 | Atualização de informações requisitadas pelo cliente | Gustavo Koiti (PO) |
 | 21/05/2026 | Adição de tarefas de escopo extra (T30, T31, T32) à Sprint 2 | Gustavo Koiti (PO) |
+| 11/06/2026 | Conclusão de US08 e US09 na Sprint 3; encerramento do backlog do projeto (todas as histórias concluídas) | Gustavo Koiti (PO) |
 
 ---
 

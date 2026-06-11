@@ -37,7 +37,7 @@
 | S3_T20 | CRUD de módulos (backend) | US09 | Vinicius + Gabriel | 3 | ✅ |
 | S3_T21 | Interface administrativa (frontend) | US09 | Andrea + Henrique + Lucas | 5 | ✅ |
 | S3_T22 | Reset de senha via admin | US09 | Marcello + Gustavo | 3 | ✅ |
-| S3_T23 | Reorganizar estrutura do repositório | Infra | Gabriel + Vinicius | 2 | 🔲 |
+| S3_T23 | Reorganizar estrutura do repositório | Infra | Gabriel + Vinicius | 2 | ✅ |
 | S3_T24 | Aumentar tempo de sessão JWT | Auth | Marcello + Vinicius | 2 | ✅ |
 | S3_T25 | Excluir checkbox "Lembrar de mim" | Auth | Andrea | 1 | ✅ |
 | S3_T26 | Proteger rotas privadas | Auth | Vinicius + Marcello | 3 | ✅ |
@@ -59,16 +59,16 @@
 | S3_T42 | Atualizar modelos BD | Doc | Gabriel + Vinicius | 2 | ✅ |
 | S3_T43 | Atualizar README.md | Doc | Gabriel + Gustavo | 1 | ✅ |
 | S3_T44 | Atualizar Product Backlog | Doc | Gustavo | 1 | ✅ |
-| S3_T45 | Melhorar organização da documentação Git | Doc | Gabriel + Vinicius | 2 | 🔲 |
+| S3_T45 | Melhorar organização da documentação Git | Doc | Gabriel + Vinicius | 2 | ✅ |
 | S3_T46 | Criar manual de uso do aluno | Doc | Gabriel + Andrea | 2 | ✅ |
 | S3_T47 | Animação de conclusão de módulo | Gamif. | Henrique + Lucas | 2 | ✅ |
-| S3_T48 | Animação de geração de certificado | Gamif. | Andrea + Henrique | 2 | 🔲 |
+| S3_T48 | Animação de geração de certificado | Gamif. | Andrea + Henrique | 2 | ✅ |
 | S3_T49 | Mensagens motivacionais | Gamif. | Andrea + Lucas | 1 | ✅ |
-| S3_T50 | Atualizar deploy no Render | Infra | Marcello + Gustavo | 1 | 🔲 |
+| S3_T50 | Atualizar deploy no Render | Infra | Marcello + Gustavo | 1 | ✅ |
 | S3_T51 | Padronizar navbar em todas as páginas | Refactor | Andrea + Henrique + Lucas | 3 | ✅ |
 | S3_T52 | Incluir footer em todas as páginas | Refactor | Andrea + Henrique | 2 | ✅ |
-| S3_T53 | Criar roteiro da apresentação final | Apresentação | Gustavo + Gabriel | 2 | 🔲 |
-| S3_T54 | Realizar ensaio técnico | Apresentação | Time completo | 1 | 🔲 |
+| S3_T53 | Criar roteiro da apresentação final | Apresentação | Gustavo + Gabriel | 2 | ✅ |
+| S3_T54 | Realizar ensaio técnico | Apresentação | Time completo | 1 | ✅ |
 | S3_T55 | Exibir acesso administrativo após login de usuário admin | US09 | Vinicius + Marcello | 2 | ✅ |
 | S3_T56 | Integrar área administrativa aos endpoints de questões e níveis | US09 | Vinicius + Gabriel | 3 | ✅ |
 | S3_T57 | Integrar edição e exclusão de questões e níveis na área administrativa | US09 | Vinicius + Gabriel | 2 | ✅ |
@@ -108,7 +108,7 @@ xychart-beta
     x-axis ["25/05", "26/05", "27/05", "28/05", "29/05", "01/06", "02/06", "03/06", "05/06", "08/06", "09/06", "10/06", "11/06"]
     y-axis "Pontos Restantes" 0 --> 130
     line [128, 117, 107, 96, 85, 75, 64, 53, 43, 32, 21, 11, 0]
-    line [102, 89, 76, 71, 50, 33, 21, 13, 13, 10, 10, 10, 10]
+    line [102, 89, 76, 71, 50, 33, 21, 13, 13, 10, 10, 5, 0]
 ```
 
 > 🔵 **Linha 1 — Ideal:** queima linear esperada (~10.67 SP/dia — não editar)
@@ -127,9 +127,9 @@ xychart-beta
 | —  | 04/06 | *Quinta — Corpus Christi* | — | — | 🔴 Feriado |
 | 9  | 05/06 | Sexta   | 43  | 13 | — |
 | 10 | 08/06 | Segunda | 32  | 10 | — |
-| 11 | 09/06 | Terça   | 21  | — | — |
-| 12 | 10/06 | Quarta  | 11  | — | — |
-| 13 | 11/06 | Quinta  | 0   | — | — |
+| 11 | 09/06 | Terça   | 21  | 10 | — |
+| 12 | 10/06 | Quarta  | 11  | 5  | — |
+| 13 | 11/06 | Quinta  | 0   | 0  | — |
 
 ---
 
@@ -138,8 +138,8 @@ xychart-beta
 | Cerimônia | Ata |
 |-----------|-----|
 | Sprint Planning | [atas/sprint-planning.md](atas/sprint-planning.md) |
-| Sprint Review | _A realizar em 11/06/2026_ |
-| Sprint Retrospective | _A realizar em 11/06/2026_ |
+| Sprint Review | [atas/sprint-review.md](atas/sprint-review.md) |
+| Sprint Retrospective | [atas/sprint-retrospectiva.md](atas/sprint-retrospectiva.md) |
 | Dailies | [atas/dailies/](atas/dailies/) |
 
 > As atas são criadas a partir dos templates em [`templates/`](../templates/).
@@ -164,22 +164,22 @@ Checklists de entrada (DoR) e conclusão (DoD) das histórias desta sprint:
 
 ## Resultado da Sprint
 
-> Encerramento e Sprint Review em **11/06/2026**. Números abaixo refletem o estado do burndown ao final do dia 10/06.
+Validado na [Sprint Review](atas/sprint-review.md) de 11/06/2026.
 
 **Pontos planejados:** 128 (115 iniciais + 13 de escopo incremental em 01/06)
-**Pontos entregues (DoD completo):** 118
-**Pontos restantes:** 10
-**Aproveitamento até 10/06:** ~92%
+**Pontos entregues (DoD completo):** 128
+**Pontos restantes:** 0
+**Velocidade da sprint:** 128 pontos — Aproveitamento de 100%
 
-**Histórias concluídas:** US08 (Histórico de tentativas) e US09 (Área administrativa), além de 13 correções de bugs, melhorias de UX/UI, gamificação e atualização de documentação.
-
-**Itens ainda em aberto (10 SP):** organização do repositório e da documentação Git (S3_T23, S3_T45 — em andamento), animação de geração de certificado (S3_T48), atualização do deploy no Render (S3_T50) e preparação da apresentação final (S3_T53, S3_T54).
+**Histórias concluídas:** US08 (Histórico de tentativas) e US09 (Área administrativa), além de 13 correções de bugs, melhorias de UX/UI, gamificação, atualização de documentação e preparação da apresentação final.
+**Histórias não entregues (e motivo):** nenhuma.
 
 ### Observações sobre a execução
 
-- Burndown adiantado em relação à linha ideal durante quase toda a sprint; os 10 SP restantes concentram-se em tarefas de fechamento e apresentação.
+- Burndown encerrado em **0 SP no dia 11/06** (aproveitamento de 100%), adiantado em relação à linha ideal durante toda a sprint; as últimas tarefas (fechamento, organização do repositório/documentação e apresentação) foram concluídas entre 08/06 e 11/06.
 - **Mudança de escopo:** +13 SP (S3_T55–S3_T61) adicionados em 01/06 para concluir a integração da área administrativa e recriar o banco em nuvem.
 - Terminologia **"Nível" → "Módulo"** unificada na interface (S3_T37).
+- Sprint final do projeto: encerra a entrega do MVP completo do ScrumFlow.
 
 ---
 
