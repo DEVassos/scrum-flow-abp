@@ -1,6 +1,6 @@
 # Atalho de Desenvolvimento: Simular Conclusão de Todos os Módulos
 
-← [Manual do Usuário](./manual-usuario.md)
+← [Índice da Documentação](../README.md) · [Manual do Usuário](../produto/manual-usuario.md)
 
 Explica como pular diretamente para o estado de certificado disponível sem precisar responder todas as provas manualmente. Útil durante o desenvolvimento para testar a página de certificado e o fluxo do dashboard.
 
