@@ -1,10 +1,10 @@
 # 📐 Diagramas UML
 
-← [Índice da Documentação](../../00-INDICE.md) · [Modelos](../README.md)
+← [Índice da Documentação](../../README.md) · [Modelos](../README.md)
 
 Diagramas que mapeiam cada Requisito Funcional (RF) em estrutura (Classes) e comportamento (Sequência).
 
-> ⚠️ **Diagramas em evolução:** os modelos refletem o design inicial do projeto e serão revisados ao longo das sprints conforme a implementação avança e decisões técnicas são tomadas.
+> Definição completa dos RF: [Edital](../../edital/desafio-1dsm-2026-1.md) (fonte única) · siglas no [Glossário](../../GLOSSARIO.md).
 
 ---
 
@@ -39,10 +39,10 @@ Visão holística das interações entre Usuário e Sistema.
 
 ## 🛠️ Editar os Diagramas
 
-Arquivo fonte: [scrum-flow-uml-astah.asta](./scrum-flow-uml-astah.asta) (Astah Community).
+Arquivo fonte: [ABP Scrum.asta](./ABP%20Scrum.asta) (Astah Community).
 
 ---
 
 <div align="center">
-  <a href="../../00-INDICE.md">← Voltar ao Índice</a>
+  <a href="../../README.md">← Voltar ao Índice</a>
 </div>
