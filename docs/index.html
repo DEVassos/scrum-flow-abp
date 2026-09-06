@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/img/scrum_icon.png">
+    <link rel="stylesheet" href="../assets/css/pages/index.css">
+    <title>ScrumFlow | Home</title>
+</head>
+
+<body>
+
+    <!-- Formas decorativas de fundo -->
+    <div class="blob-esquerda"></div>
+    <div class="blob-direita"></div>
+
+    <!-- Conteúdo injetado pelo navbar.js -->
+    <nav class="navbar" id="navbar"></nav>
+
+    <header class="apresentacao">
+
+        <!-- Astronauta -->
+        <img src="../assets/img/astronauta.png" alt="Astronauta flutuando" class="deco-img deco-img--astronauta"
+            aria-hidden="true">
+
+        <!-- Lua-->
+        <img src="../assets/img/moon.png" alt="Lua" class="deco-img deco-img--moon" aria-hidden="true">
+
+        <div class="container">
+            <div class="apresentacao__badge">
+                <span class="apresentacao__status-dot"></span>
+                Portal de Certificação em Metodologias Ágeis
+            </div>
+            <h1 class="apresentacao__title">Aprenda <strong>Scrum</strong> do zero ao certificado</h1>
+            <p class="apresentacao__subtitle">Domine a estrutura ágil mais utilizada no mundo, valide seus conhecimentos
+                e
+                impulsione sua carreira tecnológica.</p>
+
+            <div class="apresentacao__actions">
+                <a href="#" id="btn-comecar-agora" class="btn btn-primary">Começar agora →</a>
+                <a href="scrum.html" class="btn btn-ghost">Conhecer o Scrum</a>
+            </div>
+
+            <div class="apresentacao__stats">
+                <div class="stat-item">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Módulos de Ensino</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">+150</div>
+                    <div class="stat-label">Questões Práticas</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Online e Gratuito</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value">ABP 1º Semestre</div>
+                    <div class="stat-label">FATEC Jacareí 2026</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container do modal de login/cadastro — conteúdo injetado pelo modal-login.js -->
+    <div id="modal-login"></div>
+
+    <!-- FOOTER -->
+    <script src="../assets/js/footer.js"></script>
+    <!-- Animação de estrelas: carregada primeiro para criar o canvas de fundo -->
+    <script src="../assets/js/stars.js"></script>
+
+    <!-- auth.js deve ser carregado primeiro: define salvarToken, estaAutenticado etc. -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <!-- modal-login.js injeta o HTML do modal e toda lógica compartilhada de autenticação -->
+    <script src="../assets/js/modal-login.js"></script>
+    <script src="../assets/js/index.js"></script>
+</body>
+
+</html>
